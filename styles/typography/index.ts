@@ -7,16 +7,16 @@ interface IStyled {
   align?: string;
   width?: string;
   error?: string;
+  p?: string;
   pl?: string;
   pr?: string;
   pb?: string;
   pt?: string;
-  p?: string;
+  m?: string;
   ml?: string;
   mr?: string;
   mb?: string;
   mt?: string;
-  m?: string;
 }
 
 export const Display1 = styled.Text<IStyled>`
@@ -142,17 +142,18 @@ export const H5 = styled.Text<IStyled>`
 `;
 
 export const H6 = styled.Text<IStyled>`
-  font-family: "Inter-Bold";
-  font-size: 16px;
-  line-height: 22px;
-  font-weight: ${(props) => props.weight || 700};
-  color: ${(props) => props.theme[props.color || "dark0"]};
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 900;
+  color: ${(props) => props.theme[props.color || "black"]};
   text-align: ${(props) => props.align || "left"};
-  width: ${(props) => props.width || "auto"};
+  width: auto;
+  padding: ${(props) => props.p || 0};
   padding-left: ${(props) => props.pl || 0};
   padding-right: ${(props) => props.pr || 0};
   padding-top: ${(props) => props.pt || 0};
   padding-bottom: ${(props) => props.pb || 0};
+  margin: ${(props) => props.m || 0};
   margin-left: ${(props) => props.ml || 0};
   margin-right: ${(props) => props.mr || 0};
   margin-top: ${(props) => props.mt || 0};
@@ -179,13 +180,12 @@ export const H7 = styled.Text<IStyled>`
 `;
 
 export const Body2 = styled.Text<IStyled>`
-  font-family: "Inter-Regular";
   font-size: 14px;
   line-height: 17px;
   font-weight: 400;
-  color: ${(props) => props.theme[props.color || "dark0"]};
+  color: ${(props) => props.theme[props.color || "black"]};
   text-align: ${(props) => props.align || "left"};
-  width: "auto";
+  width: auto;
   padding: ${(props) => props.p || 0};
   padding-left: ${(props) => props.pl || 0};
   padding-right: ${(props) => props.pr || 0};

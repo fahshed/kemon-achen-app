@@ -94,3 +94,79 @@ export const Overline = styled.Text<IStyled>`
   margin-top: ${(props) => props.mt || 0};
   margin-bottom: ${(props) => props.mb || 0};
 `;
+
+export const H4 = styled.Text<IStyled>`
+  font-size: 34px;
+  line-height: 40px;
+  font-weight: normal;
+  color: ${(props) => props.theme[props.color || "black"]};
+  text-align: ${(props) => props.align || "left"};
+  width: auto;
+  padding: ${(props) => props.p || 0};
+  padding-left: ${(props) => props.pl || 0};
+  padding-right: ${(props) => props.pr || 0};
+  padding-top: ${(props) => props.pt || 0};
+  padding-bottom: ${(props) => props.pb || 0};
+  margin: ${(props) => props.m || 0};
+  margin-left: ${(props) => props.ml || 0};
+  margin-right: ${(props) => props.mr || 0};
+  margin-top: ${(props) => props.mt || 0};
+  margin-bottom: ${(props) => props.mb || 0};
+`;
+
+export const CaptionBold = styled.Text<IStyled>`
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: bold;
+  color: ${(props) => props.theme[props.color || "black"]};
+  text-align: ${(props) => props.align || "left"};
+  width: auto;
+  padding: ${(props) => props.p || 0};
+  padding-left: ${(props) => props.pl || 0};
+  padding-right: ${(props) => props.pr || 0};
+  padding-top: ${(props) => props.pt || 0};
+  padding-bottom: ${(props) => props.pb || 0};
+  margin: ${(props) => props.m || 0};
+  margin-left: ${(props) => props.ml || 0};
+  margin-right: ${(props) => props.mr || 0};
+  margin-top: ${(props) => props.mt || 0};
+  margin-bottom: ${(props) => props.mb || 0};
+`;
+
+export const H5Bold = styled.Text<IStyled>`
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: bold;
+  color: ${(props) => props.theme[props.color || "black"]};
+  text-align: ${(props) => props.align || "left"};
+  width: auto;
+  padding: ${(props) => props.p || 0};
+  padding-left: ${(props) => props.pl || 0};
+  padding-right: ${(props) => props.pr || 0};
+  padding-top: ${(props) => props.pt || 0};
+  padding-bottom: ${(props) => props.pb || 0};
+  margin: ${(props) => props.m || 0};
+  margin-left: ${(props) => props.ml || 0};
+  margin-right: ${(props) => props.mr || 0};
+  margin-top: ${(props) => props.mt || 0};
+  margin-bottom: ${(props) => props.mb || 0};
+`;
+
+export const Body1Bold = styled.Text<IStyled>`
+  font-size: 16px;
+  line-height: 19px;
+  font-weight: bold;
+  color: ${(props) => props.theme[props.color || "black"]};
+  text-align: ${(props) => props.align || "left"};
+  width: auto;
+  padding: ${(props) => props.p || 0};
+  padding-left: ${(props) => props.pl || 0};
+  padding-right: ${(props) => props.pr || 0};
+  padding-top: ${(props) => props.pt || 0};
+  padding-bottom: ${(props) => props.pb || 0};
+  margin: ${(props) => props.m || 0};
+  margin-left: ${(props) => props.ml || 0};
+  margin-right: ${(props) => props.mr || 0};
+  margin-top: ${(props) => props.mt || 0};
+  margin-bottom: ${(props) => props.mb || 0};
+`;

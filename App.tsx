@@ -3,8 +3,8 @@ import React from "react";
 import { ThemeProvider } from "styled-components";
 import { StyleSheet, Text, View } from "react-native";
 
-import { theme } from "./config";
-import { Body2, H6Bold } from "./styles";
+import { theme } from "./app/config";
+import { Body2, H6Bold } from "./app/styles";
 
 export default function App() {
   return (

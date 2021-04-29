@@ -1,26 +1,11 @@
 module.exports = {
   root: true,
-  extends: "@react-native-community",
-  plugins: ["import", "simple-import-sort"],
+  extends: '@react-native-community',
   rules: {
-    "react-native/no-inline-styles": 0,
-    "prettier/prettier": 1,
-    "no-template-curly-in-string": 0,
-    "react/jsx-filename-extension": [
+    'prettier/prettier': 1,
+    'react/jsx-filename-extension': [
       1,
-      { extensions: [".js", ".jsx", ".ts", ".tsx"] },
+      { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
     ],
-    "import/prefer-default-export": 0,
-    "no-confusing-arrow": 0,
-    "react/jsx-props-no-spreading": 0,
-    "dot-notation": 0,
-    "no-console": 0,
-    "react/require-default-props": 0,
-    "no-param-reassign": 0,
-    "react/jsx-curly-newline": 0,
-    camelcase: 0,
-    "import/no-unresolved": 0,
-    radix: 0,
-    "react-hooks/exhaustive-deps": 0,
   },
 };

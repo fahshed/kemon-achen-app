@@ -1,13 +1,13 @@
-import React from "react";
+import React from 'react';
 
-import { ThemeProvider } from "styled-components";
-import { StyleSheet, Text, View } from "react-native";
+import { ThemeProvider } from 'styled-components';
+import { StyleSheet, View } from 'react-native';
 
-import { theme } from "./app/config";
-//import { Body2, H6Bold } from "./app/styles";
+import { theme } from './app/config';
+import { Body2, H6Bold } from './app/styles';
 
 export default function App() {
-  console.log("asfas");
+  console.log('asfas');
   return (
     <ThemeProvider theme={theme}>
       <View style={styles.container}>
@@ -26,8 +26,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

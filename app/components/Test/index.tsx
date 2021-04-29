@@ -1,5 +1,5 @@
 import React from "react";
-//import { View, Text, Pressable } from "react-native";
+import { View, Text, Pressable } from "react-native";
 
 export default function Test() {
   return (

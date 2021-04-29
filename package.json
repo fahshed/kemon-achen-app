@@ -8,11 +8,6 @@
     "eject": "expo eject",
     "lint": "eslint . --max-warnings=0 --fix"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn lint"
-    }
-  },
   "dependencies": {
     "expo": "~41.0.1",
     "expo-status-bar": "~1.0.4",
@@ -29,6 +24,11 @@
     "eslint": "^7.25.0",
     "husky": "^6.0.0",
     "typescript": "~4.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint"
+    }
   },
   "private": true
 }

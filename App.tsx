@@ -7,9 +7,6 @@ import { theme } from './app/config';
 import { Body2, H6Bold } from './app/styles';
 
 export default function App() {
-  const hello_asfaf = 'afaf';
-
-  console.log(hello_asfaf);
   return (
     <ThemeProvider theme={theme}>
       <View style={styles.container}>

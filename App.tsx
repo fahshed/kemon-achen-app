@@ -4,7 +4,7 @@ import { ThemeProvider } from "styled-components";
 import { StyleSheet, Text, View } from "react-native";
 
 import { theme } from "./app/config";
-import { Body2, H6Bold } from "./app/styles";
+//import { Body2, H6Bold } from "./app/styles";
 
 export default function App() {
   console.log("asfas");

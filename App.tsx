@@ -4,13 +4,13 @@ import { ThemeProvider } from "styled-components";
 import { StyleSheet, Text, View } from "react-native";
 
 import { theme } from "./config";
-import { Body2, H6 } from "./styles";
+import { Body2, H6Bold } from "./styles";
 
 export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <View style={styles.container}>
-        <H6 mb="8px">asaf</H6>
+        <H6Bold mb="8px">asaf</H6Bold>
         <Body2 color="yellow">
           When my phone rings, my anxiety shoots through the roof. I put my
           location on with my immediate family so they know when I’m at work and

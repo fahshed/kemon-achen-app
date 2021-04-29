@@ -1,8 +1,12 @@
 export {
-  H6Bold,
   Body1,
+  Body1Bold,
   Body2,
   Body2Bold,
-  Overline,
   Caption,
+  CaptionBold,
+  H4,
+  H5Bold,
+  H6Bold,
+  Overline,
 } from "./typography";

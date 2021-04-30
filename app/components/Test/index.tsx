@@ -3,11 +3,10 @@ import { StyleSheet, Pressable } from 'react-native';
 
 import { Body2, H6Bold } from '../../styles';
 
-export default function Test() {
+export default function Test({ style }) {
   return (
     <Pressable
-      style={styles.container}
-      android_ripple={{ radius: 0, color: '#eeeeee' }}
+      style={[styles.container, style]}
       onPress={() => console.log('Pressed')}
     >
       <H6Bold mb="8px">Title</H6Bold>
@@ -23,8 +22,6 @@ export default function Test() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'pink',
-    height: 30,
-    width: 100,
+    width: '100%',
   },
 });

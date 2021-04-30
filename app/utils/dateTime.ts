@@ -18,7 +18,7 @@ export const formatDate = (date) => {
   );
 };
 
-export const toString = (dateAndTime) => {
+export const dateToString = (dateAndTime) => {
   const dd = dateAndTime.getDate();
   const mm = dateAndTime.getMonth() + 1;
   const yyyy = String(dateAndTime.getFullYear()).slice(2);

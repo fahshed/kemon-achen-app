@@ -12,12 +12,14 @@ export const theme = {
   red: '#d32f2f',
   yellow: '#fbc02d',
 
-  grey0: '#bdbdbd',
-  grey1: '#9e9e9e',
-  grey2: '#757575',
+  //grey0: '#bdbdbd',
+  grey5: '#9e9e9e',
+  grey6: '#757575',
 
   lightGrey: '#f8f4f4',
   mediumGrey: '#6e6969',
   darkGrey: '#0c0c0c',
   danger: '#ff6347',
+
+  transparent: 'transparent',
 };

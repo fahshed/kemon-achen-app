@@ -15,6 +15,7 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-41.0.0.tar.gz",
+    "react-native-safe-area-context": "^3.2.0",
     "react-native-web": "~0.13.12",
     "styled-components": "^5.2.3"
   },
@@ -28,7 +29,8 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.23.2",
     "husky": "^4.3.8",
-    "typescript": "~4.0.0"
+    "typescript": "~4.0.0",
+    "typescript-plugin-styled-components": "^1.5.0"
   },
   "husky": {
     "hooks": {

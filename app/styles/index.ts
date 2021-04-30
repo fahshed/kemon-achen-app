@@ -9,4 +9,5 @@ export {
   H5Bold,
   H6Bold,
   Overline,
-} from './Typography';
+} from './typography';
+export { Container } from './container';

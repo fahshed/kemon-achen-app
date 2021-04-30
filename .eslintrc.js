@@ -3,6 +3,7 @@ module.exports = {
   extends: '@react-native-community',
   rules: {
     'react/jsx-filename-extension': [1, { extensions: ['.tsx'] }],
+    'react-native/no-inline-styles': 0,
     'react/require-default-props': 0,
     'react/jsx-curly-newline': 0,
     'import/no-unresolved': 0,

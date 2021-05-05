@@ -3,11 +3,7 @@ import { View } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { theme } from '../../config';
 
-function Icon({
-  name,
-  size = 40,
-  iconColor = theme.black,
-}) {
+function Icon({ name, size = 40, iconColor = theme.black }) {
   return (
     <View
       style={{
@@ -17,7 +13,7 @@ function Icon({
         alignItems: 'center',
       }}
     >
-      <MaterialCommunityIcons name={name} color={iconColor} size={size}/>
+      <MaterialCommunityIcons name={name} color={iconColor} size={size} />
     </View>
   );
 }

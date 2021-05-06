@@ -10,7 +10,9 @@ export default function Test({ style }) {
       onPress={() => console.log('Pressed')}
       kjgkjb
     >
-      <H6Bold mb="8px">Title</H6Bold>
+      <H6Bold mb="8px" asfa>
+        Title
+      </H6Bold>
       <Body2 color="yellow">
         When my phone rings, my anxiety shoots through the roof. I put my
         location on with my immediate family so they know when I’m at work and

@@ -14,6 +14,8 @@ function AppTextInput({ IconComponent = null, ...TextInputProps }) {
       direction="row"
       grow="1"
       justify="flex-start"
+      mt="8px"
+      mb="8px"
       width="auto"
     >
       {IconComponent}

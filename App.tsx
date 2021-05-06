@@ -4,15 +4,18 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { StyleSheet } from 'react-native';
 import { ThemeProvider } from 'styled-components';
 import { theme } from './app/config';
-
-import { HomeScreen } from './app/screens';
+import { NavigationContainer } from '@react-navigation/native';
+import { AppNavigator } from './app/navigation';
+import NavigationTheme from './app/navigation/NavigationTheme';
 
 export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <SafeAreaProvider>
         <SafeAreaView style={styles.container}>
-          <HomeScreen />
+          <NavigationContainer theme={NavigationTheme}>
+            <AppNavigator />
+          </NavigationContainer>
         </SafeAreaView>
       </SafeAreaProvider>
     </ThemeProvider>

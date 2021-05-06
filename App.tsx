@@ -5,9 +5,14 @@ import { StyleSheet } from 'react-native';
 
 import { ThemeProvider } from 'styled-components';
 import { theme } from './app/config';
-import BottomBar1 from './app/components/BottomBar1';
-import { BottomBar2 } from './app/components';
-import UserInfoBar1 from './app/components/UserInfoBar1';
+
+import {
+  AppButton,
+  AppTextInput,
+  BottomBar1,
+  BottomBar2,
+  UserInfobar1,
+} from './app/components';
 
 export default function App() {
   return (
@@ -17,11 +22,21 @@ export default function App() {
           <BottomBar1
             onLikePress={() => console.log('Like pressed')}
             onCommentPress={() => console.log('Comment pressed')}
-            onSharePress={() => console.log('Share pressed')} />
+            onSharePress={() => console.log('Share pressed')}
+          />
+          <AppButton
+            color={'secondary'}
+            title={'Login'}
+            onPress={() => console.log('hello button')}
+          />
           <BottomBar2
             onLikePress={() => console.log('reply Like pressed')}
-            onReplyPress={() => console.log('reply pressed')} />
-          <UserInfoBar1 />
+            onReplyPress={() => console.log('reply pressed')}
+          />
+          <UserInfobar1 />
+
+          <AppTextInput icon="email" placeholder="Enter your E-mail" />
+          <AppTextInput icon="lock" placeholder="Enter your Password" />
         </SafeAreaView>
       </SafeAreaProvider>
     </ThemeProvider>

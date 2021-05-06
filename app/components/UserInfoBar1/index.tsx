@@ -1,14 +1,17 @@
 import React from 'react';
 import { Image, StyleSheet, View } from 'react-native';
+import { Entypo, MaterialCommunityIcons } from '@expo/vector-icons';
+
 import { theme } from '../../config';
 import { Body1, Body1Bold, Caption } from '../../styles';
-import Icon from '../Icon';
-import { Entypo } from '@expo/vector-icons';
 
 function UserInfoBar1() {
   return (
-    <View style={styles.contair}>
-      <Image style={styles.image} source={require('../../assets/gitDp.jpg')} />
+    <View style={styles.container}>
+      <Image
+        style={styles.image}
+        source={{ uri: 'https://picsum.photos/200' }}
+      />
       <View style-={styles.detailsContainer}>
         <View style={styles.text}>
           <Body1>Community</Body1>
@@ -16,14 +19,16 @@ function UserInfoBar1() {
           <Body1Bold>PTSD</Body1Bold>
         </View>
         <View style={styles.text}>
-          <Caption>Posted By Ajwad Akil</Caption>
+          <Caption color="grey5">Posted By Ajwad Akil</Caption>
           <Entypo name="dot-single" size={16} />
-          <Caption color={'blue'}>8h</Caption>
+          <Caption>8h</Caption>
         </View>
       </View>
-      <View style={styles.icon}>
-        <Icon name="dots-horizontal" />
-      </View>
+      <MaterialCommunityIcons
+        style={styles.icon}
+        name="dots-horizontal"
+        size={24}
+      />
     </View>
   );
 }
@@ -31,7 +36,7 @@ function UserInfoBar1() {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    backgroundColor: theme.secondary,
+    backgroundColor: theme.lightGrey,
     flexDirection: 'row',
     height: 64,
     padding: 8,
@@ -51,7 +56,6 @@ const styles = StyleSheet.create({
     borderRadius: 24,
   },
   text: {
-    backgroundColor: theme.white,
     flex: 1,
     flexDirection: 'row',
     marginLeft: 8,

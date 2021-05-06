@@ -1,24 +1,44 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+
 import { theme } from '../../config';
 import { Body2 } from '../../styles';
-import Icon from '../Icon';
 
-function BottomBar1({onLikePress, onReplyPress}) {
+function BottomBar1({
+  onLikePress = null,
+  onReplyPress = null,
+  onMorePress = null,
+}) {
   return (
     <View style={styles.container}>
-          <View style={styles.iconWithText}>{ }</View>
       <View style={styles.iconWithText}>
-        <TouchableOpacity onPress={onReplyPress}>
-          <Icon name="reply-outline" size={24}/>
+        <TouchableOpacity onPress={onMorePress}>
+          <MaterialCommunityIcons
+            name="dots-vertical"
+            size={24}
+            color={theme.grey5}
+            style={{ marginRight: 24 }}
+          />
         </TouchableOpacity>
-        <Body2>Reply</Body2>
+        <TouchableOpacity onPress={onReplyPress}>
+          <MaterialCommunityIcons
+            name="reply-outline"
+            size={24}
+            color={theme.grey5}
+          />
+        </TouchableOpacity>
+        <Body2 color="grey5">Reply</Body2>
       </View>
       <View style={styles.iconWithText}>
         <TouchableOpacity onPress={onLikePress}>
-          <Icon name="arrow-up-bold-outline" size={24}/>
+          <MaterialCommunityIcons
+            name="arrow-up-bold-outline"
+            size={24}
+            color={theme.grey5}
+          />
         </TouchableOpacity>
-        <Body2>10</Body2>
+        <Body2 color="grey5">10</Body2>
       </View>
     </View>
   );
@@ -27,17 +47,17 @@ function BottomBar1({onLikePress, onReplyPress}) {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    backgroundColor: theme.primary,
+    backgroundColor: theme.lightGrey,
     flexDirection: 'row',
     height: 40,
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
     width: '100%',
   },
-  iconWithText:{
-    flex : 1,
+  iconWithText: {
     alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'center',
+    marginRight: 24,
   },
 });
 

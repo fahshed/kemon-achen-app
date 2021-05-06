@@ -9,7 +9,7 @@ function AppButton({ color = 'primary', title, onPress = null }) {
       <Container
         justify="center"
         bg={color}
-        corner="24px"
+        corner="8px"
         height="48px"
         mt="8px"
       >

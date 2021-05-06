@@ -1,37 +1,32 @@
 import React from 'react';
-import { TextInput, Platform } from 'react-native';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { TextInput } from 'react-native';
 
 import { theme } from '../../config';
 import { Container } from '../../styles';
 
-function AppTextInput({ icon, width = '100%', ...otherProps }) {
+function AppTextInput({ IconComponent = null, ...TextInputProps }) {
   return (
     <Container
+      border="1px"
+      bc="grey5"
       bg="lightGrey"
-      corner="24px"
+      corner="8px"
       direction="row"
-      height="48px"
+      grow="1"
       justify="flex-start"
-      mt="8px"
-      width={width}
+      width="auto"
     >
-      {icon && (
-        <MaterialCommunityIcons
-          color={theme.grey6}
-          name={icon}
-          size={24}
-          style={{ marginRight: 8, padding: 8 }}
-        />
-      )}
+      {IconComponent}
       <TextInput
         placeholderTextColor={theme.grey6}
         style={{
           color: theme.black,
           fontSize: 18,
-          fontFamily: Platform.OS === 'android' ? 'Roboto' : 'Avenir',
+          height: 48,
+          //fontFamily: Platform.OS === 'android' ? 'Roboto' : 'Avenir',
+          paddingLeft: !IconComponent ? 8 : 0,
         }}
-        {...otherProps}
+        {...TextInputProps}
       />
     </Container>
   );

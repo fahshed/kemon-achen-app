@@ -1,70 +1,48 @@
-import React from 'react';
-import { AntDesign, MaterialCommunityIcons } from '@expo/vector-icons';
+import React, { useState, useEffect } from 'react';
 import { View } from 'react-native';
 
-import {
-  BottomBar1,
-  AppButton,
-  BottomBar2,
-  UserInfobar1,
-  AppTextInput,
-  AddCommentBottomBar,
-  TopSearchBar1,
-} from '../../components';
-import { theme } from '../../config';
+import { Sample } from '../../components';
+import { Body2Bold } from '../../styles';
+import Api from '../../api';
 
 export default function HomeScreen() {
-  return (
-    <View>
-      <BottomBar1
-        onLikePress={() => console.log('Like pressed')}
-        onCommentPress={() => console.log('Comment pressed')}
-        onSharePress={() => console.log('Share pressed')}
-      />
-      <AppButton
-        color={'secondary'}
-        title={'Login'}
-        onPress={() => console.log('hello button')}
-      />
-      <BottomBar2
-        onLikePress={() => console.log('reply Like pressed')}
-        onReplyPress={() => console.log('reply pressed')}
-      />
-      <UserInfobar1 />
+  const [loading, setLoading] = useState(true);
+  const [userInfo, setUserInfo] = useState({ name: '', role: '' });
 
-      <AppTextInput
-        IconComponent={
-          <MaterialCommunityIcons
-            color={theme.grey6}
-            name="email"
-            size={24}
-            style={{ padding: 8 }}
-          />
-        }
-        placeholder="Enter your E-mail"
+  useEffect(() => {
+    (async function () {
+      try {
+        const credentials = {
+          email: 'as@gmail.com',
+          password: 'afsaf',
+        };
+        const response = await Api.loginUser(credentials);
+        setUserInfo({ name: response.name, role: response.role });
+        setLoading(false);
+        console.log('\nIn Home screen\n', response);
+      } catch (e) {
+        console.log('Error /loginUser', e);
+      }
+    })();
+  }, []);
+
+  return (
+    <View style={{ padding: 8 }}>
+      <Sample
+        status="resolved"
+        createdAt={new Date()}
+        ticketType="Rick and Morty"
+        description="I'm Mr Misix"
+        style={{ marginBottom: 16 }}
       />
-      <AppTextInput
-        IconComponent={
-          <MaterialCommunityIcons
-            color={theme.grey6}
-            name="lock"
-            size={24}
-            style={{ padding: 8 }}
-          />
-        }
-        placeholder="Enter your Password"
-      />
-      <AddCommentBottomBar />
-      <TopSearchBar1
-        IconComponent={
-          <AntDesign
-            color={theme.grey6}
-            name="search1"
-            size={24}
-            style={{ padding: 8 }}
-          />
-        }
-      />
+      {loading ? (
+        <Body2Bold>Loading...</Body2Bold>
+      ) : (
+        <>
+          <Body2Bold>Name: {userInfo.name}</Body2Bold>
+          <Body2Bold>Role: {userInfo.role}</Body2Bold>
+        </>
+      )}
     </View>
   );
 }

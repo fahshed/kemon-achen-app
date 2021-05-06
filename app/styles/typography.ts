@@ -1,5 +1,4 @@
-import styled from 'styled-components';
-
+import styled from 'styled-components/native';
 interface IStyled {
   fs?: string;
   weight?: string;

@@ -17,6 +17,9 @@ Software development project
 # Yup setup
 
 -- formik has support for yup
+
 `npm install yup --save`
 
-npm i jwt-decode
+#Jwt install
+
+-- npm i jwt-decode

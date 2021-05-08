@@ -20,6 +20,6 @@ Software development project
 
 `npm install yup --save`
 
-#Jwt install
+# Jwt install
 
--- npm i jwt-decode
+`npm i jwt-decode`

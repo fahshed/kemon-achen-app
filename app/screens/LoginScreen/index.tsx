@@ -21,9 +21,7 @@ function LoginScreen() {
   const handleSubmit = async ({ email, password }) => {
     try {
       const response = await Api.loginUser({ email, password });
-      setLoginFailed(false);
-      const token = response.jwt.split(' ')[1];
-      auth.logIn(token);
+      auth.logIn(response);
     } catch (error) {
       setLoginFailed(true);
     }

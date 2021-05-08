@@ -17,12 +17,12 @@ export default function App() {
   const restoreUser = async () => {
     const userFromAuthStorage = await AuthStorage.getUser();
     if (userFromAuthStorage) {
-      setUser(user);
+      setUser(userFromAuthStorage);
     }
   };
 
   // useEffect(() => {
-  //   restoreToken();
+  //   restoreUser();
   // }, []);
   //this is for removal of flickring of welcome screen in reload
   if (!isReady) {

@@ -13,13 +13,13 @@ export default function HomeScreen() {
     (async function () {
       try {
         const credentials = {
-          email: 'as@gmail.com',
-          password: 'afsaf',
+          email: 'akil@gmail.com',
+          password: '123456',
         };
         const response = await Api.loginUser(credentials);
         setUserInfo({ name: response.name, role: response.role });
         setLoading(false);
-        console.log('\nIn Home screen\n', response);
+        console.log('\nIn Home screen\n', response.jwt);
       } catch (e) {
         console.log('Error /loginUser', e);
       }

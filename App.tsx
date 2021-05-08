@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import { StyleSheet } from 'react-native';
+
 import AppLoading from 'expo-app-loading';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import { StyleSheet } from 'react-native';
 import { ThemeProvider } from 'styled-components';
+import { NavigationContainer } from '@react-navigation/native';
 
 import { theme } from './app/config';
-import { NavigationContainer } from '@react-navigation/native';
 import { AppNavigator, AuthNavigator } from './app/navigation';
 import NavigationTheme from './app/navigation/NavigationTheme';
 import { AuthContext, AuthStorage } from './app/authentication';

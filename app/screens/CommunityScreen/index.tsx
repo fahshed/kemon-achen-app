@@ -1,8 +1,8 @@
 import React from 'react';
 import { View } from 'react-native';
+
 import { AppButton } from '../../components';
 import { useAuth } from '../../hooks';
-
 import { Body2Bold, H5Bold } from '../../styles';
 
 function CommunityScreen() {

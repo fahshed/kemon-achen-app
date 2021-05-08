@@ -1,12 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Image, View } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import * as Yup from 'yup';
 
-import { AppButton, AppTextInput } from '../../components';
 import { theme } from '../../config';
-import { NavRoutes } from '../../navigation';
+import Api from '../../api';
+import { Form, FormField, SubmitButton } from '../../components/FormComponents';
+import ErrorMessage from '../../components/FormComponents/ErrorMessage';
+import { useAuth } from '../../hooks';
 
-function LoginScreen({ navigation }) {
+const validationSchema = Yup.object().shape({
+  email: Yup.string().required().email().label('Email'),
+  password: Yup.string().required().min(6).label('Password'),
+});
+
+function LoginScreen() {
+  const auth = useAuth();
+  const [loginFailed, setLoginFailed] = useState(false);
+
+  const handleSubmit = async ({ email, password }) => {
+    try {
+      const response = await Api.loginUser({ email, password });
+      setLoginFailed(false);
+      const token = response.jwt.split(' ')[1];
+      auth.logIn(token);
+    } catch (error) {
+      setLoginFailed(true);
+    }
+  };
   return (
     <View style={{ padding: 8 }}>
       <Image
@@ -14,42 +35,54 @@ function LoginScreen({ navigation }) {
           width: 80,
           height: 80,
           alignSelf: 'center',
-          marginTop: 100,
-          marginBottom: 0,
+          marginTop: 80,
+          marginBottom: 20,
         }}
         source={require('../../assets/logo-red.png')}
       />
-      <AppTextInput
-        IconComponent={
-          <MaterialCommunityIcons
-            color={theme.grey6}
-            name="email"
-            size={24}
-            style={{ padding: 8 }}
-          />
-        }
-        autoCapitalize="none"
-        autoCorrect={false}
-        keyboardType="email-address"
-        placeholder="Enter your E-mail"
-        textContentType="emailAddress"
-      />
-      <AppTextInput
-        IconComponent={
-          <MaterialCommunityIcons
-            color={theme.grey6}
-            name="lock"
-            size={24}
-            style={{ padding: 8 }}
-          />
-        }
-        placeholder="Enter your Password"
-        secureTextEntry
-      />
-      <AppButton
-        title="Login"
-        onPress={() => navigation.navigate(NavRoutes.HOME)}
-      />
+      <Form
+        initialValues={{ email: '', password: '' }}
+        onSubmit={handleSubmit}
+        validationSchema={validationSchema}
+      >
+        <FormField
+          autoCapitalize="none"
+          autoCorrect={false}
+          IconComponent={
+            <MaterialCommunityIcons
+              color={theme.grey6}
+              name="email"
+              size={24}
+              style={{ padding: 8 }}
+            />
+          }
+          keyboardType="email-address"
+          name="email"
+          placeholder="Enter your Email"
+          textContentType="emailAddress"
+        />
+        <FormField
+          autoCapitalize="none"
+          autoCorrect={false}
+          IconComponent={
+            <MaterialCommunityIcons
+              color={theme.grey6}
+              name="lock"
+              size={24}
+              style={{ padding: 8 }}
+            />
+          }
+          name="password"
+          placeholder="Password"
+          secureTextEntry
+          textContentType="password"
+        />
+        <ErrorMessage
+          error="Invalid Email or Password.Please try again."
+          visible={loginFailed}
+        />
+        <SubmitButton title="Login" />
+      </Form>
     </View>
   );
 }

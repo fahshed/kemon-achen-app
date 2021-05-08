@@ -2,14 +2,14 @@ import React from 'react';
 import { ImageBackground, StyleSheet, View, Image } from 'react-native';
 
 import { AppButton } from '../../components';
-import { NavRoutes } from '../../navigation';
+import NavRoutes from '../../navigation/NavRoutes';
 import { H6Bold } from '../../styles';
 
 function WelcomeScreen({ navigation }) {
   return (
     <ImageBackground
-      blurRadius={7}
-      source={{ uri: 'https://picsum.photos/200' }}
+      blurRadius={2}
+      source={require('../../assets/welcome.jpeg')}
       style={styles.background}
     >
       <View style={styles.logoContainer}>

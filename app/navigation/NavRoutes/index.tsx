@@ -3,7 +3,7 @@ export default Object.freeze({
   CREATE_POST: 'CreatePost',
   HOME: 'Home',
   LOGIN: 'Login',
-  NEARBY_PROFESSIONAL: 'Nearby Professional',
+  NEARBY_PROFESSIONAL: 'NearbyProfessional',
   NOTIFICATION: 'Notification',
   SIGNUP: 'Signup',
   WELCOME: 'Welcome',

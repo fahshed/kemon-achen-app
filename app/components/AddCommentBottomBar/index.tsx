@@ -1,5 +1,6 @@
 import React from 'react';
 import { Image } from 'react-native';
+
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import { Container } from '../../styles';

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {
   Fontisto,
@@ -6,6 +7,7 @@ import {
   MaterialIcons,
   MaterialCommunityIcons,
 } from '@expo/vector-icons';
+
 import {
   CommunityScreen,
   CreatePostScreen,
@@ -16,6 +18,7 @@ import {
 import CreatePostButton from '../CreatePostButton';
 
 const Tab = createBottomTabNavigator();
+
 const AppNavigator = () => (
   <Tab.Navigator tabBarOptions={{ showLabel: false }}>
     <Tab.Screen

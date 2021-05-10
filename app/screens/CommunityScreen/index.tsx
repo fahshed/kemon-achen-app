@@ -13,6 +13,7 @@ function CommunityScreen() {
     <View style={{ padding: 8 }}>
       <H5Bold>Dummy account screen</H5Bold>
       <Body2Bold>{'ID: ' + user._id}</Body2Bold>
+      <Body2Bold>{'Name: ' + user.name}</Body2Bold>
       <Body2Bold>{'role: ' + user.role}</Body2Bold>
       <Body2Bold>{'jwt: ' + user.jwt}</Body2Bold>
       <AppButton title="Logout" onPress={() => logOut()} />

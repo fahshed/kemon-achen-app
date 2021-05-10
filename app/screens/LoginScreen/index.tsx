@@ -22,6 +22,9 @@ function LoginScreen() {
   const handleSubmit = async ({ email, password }) => {
     try {
       const response = await Api.loginUser({ email, password });
+      //const { data: response, request: userLogin } = useApi(Api.loginUser);
+      //userLogin({ email, password });
+      console.log(response);
       auth.logIn(response);
     } catch (error) {
       setLoginFailed(true);
@@ -52,7 +55,7 @@ function LoginScreen() {
               color={theme.grey6}
               name="email"
               size={24}
-              style={{ padding: 8 }}
+              style={{ marginLeft: 8 }}
             />
           }
           keyboardType="email-address"
@@ -68,11 +71,11 @@ function LoginScreen() {
               color={theme.grey6}
               name="lock"
               size={24}
-              style={{ padding: 8 }}
+              style={{ marginLeft: 8 }}
             />
           }
           name="password"
-          placeholder="Password"
+          placeholder="Enter your Password"
           secureTextEntry
           textContentType="password"
         />

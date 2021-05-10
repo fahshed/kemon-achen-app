@@ -4,7 +4,7 @@ import { TextInput } from 'react-native';
 import { theme } from '../../config';
 import { Container } from '../../styles';
 
-function AppTextInput({ IconComponent = null, ...TextInputProps }) {
+function AppTextInput({ IconComponent = null, ...textInputProps }) {
   return (
     <Container
       border="1px"
@@ -22,13 +22,13 @@ function AppTextInput({ IconComponent = null, ...TextInputProps }) {
       <TextInput
         placeholderTextColor={theme.grey6}
         style={{
+          //backgroundColor: theme.secondary,
           color: theme.black,
-          fontSize: 18,
+          fontSize: 16,
           height: 48,
-          //fontFamily: Platform.OS === 'android' ? 'Roboto' : 'Avenir',
-          paddingLeft: !IconComponent ? 8 : 0,
+          padding: 8,
         }}
-        {...TextInputProps}
+        {...textInputProps}
       />
     </Container>
   );

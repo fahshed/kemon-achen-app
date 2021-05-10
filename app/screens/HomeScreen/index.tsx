@@ -19,9 +19,9 @@ export default function HomeScreen() {
         const response = await Api.loginUser(credentials);
         setUserInfo({ name: response.name, role: response.role });
         setLoading(false);
-        console.log('\nIn Home screen\n', response.jwt);
+        //console.log('\nIn Home screen\n', response.jwt);
       } catch (e) {
-        console.log('Error /loginUser', e);
+        //console.log('Error /loginUser', e);
       }
     })();
   }, []);

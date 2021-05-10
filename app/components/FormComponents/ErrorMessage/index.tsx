@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { CaptionBold } from '../../../styles';
 
 function ErrorMessage({ error, visible }) {

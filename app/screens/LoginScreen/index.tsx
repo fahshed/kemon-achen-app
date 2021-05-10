@@ -8,7 +8,7 @@ import { theme } from '../../config';
 import Api from '../../api';
 import { Form, FormField, SubmitButton } from '../../components/FormComponents';
 import ErrorMessage from '../../components/FormComponents/ErrorMessage';
-import { useAuth } from '../../hooks';
+import { useApi, useAuth } from '../../hooks';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label('Email'),
@@ -17,18 +17,24 @@ const validationSchema = Yup.object().shape({
 
 function LoginScreen() {
   const auth = useAuth();
+  const userApi = useApi(Api.loginUser);
   const [loginFailed, setLoginFailed] = useState(false);
 
   const handleSubmit = async ({ email, password }) => {
-    try {
-      const response = await Api.loginUser({ email, password });
-      //const { data: response, request: userLogin } = useApi(Api.loginUser);
-      //userLogin({ email, password });
-      console.log(response);
-      auth.logIn(response);
-    } catch (error) {
-      setLoginFailed(true);
-    }
+    // try {
+    //   const response = await Api.loginUser({ email, password });
+    //   //const { data: response, request: userLogin } = useApi(Api.loginUser);
+    //   //userLogin({ email, password });
+    //   console.log(response);
+    //   auth.logIn(response);
+    // } catch (error) {
+    //   setLoginFailed(true);
+    // }
+    userApi.request({ email, password });
+    console.log('param + ', { email, password });
+    console.log(userApi.data);
+    auth.logIn(userApi.data);
+    setLoginFailed(userApi.error);
   };
   return (
     <View style={{ padding: 8 }}>

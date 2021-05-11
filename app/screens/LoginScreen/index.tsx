@@ -8,7 +8,7 @@ import { theme } from '../../config';
 import Api from '../../api';
 import { Form, FormField, SubmitButton } from '../../components/FormComponents';
 import ErrorMessage from '../../components/FormComponents/ErrorMessage';
-import { useApi, useAuth } from '../../hooks';
+import { useAuth } from '../../hooks';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label('Email'),
@@ -17,7 +17,6 @@ const validationSchema = Yup.object().shape({
 
 function LoginScreen() {
   const auth = useAuth();
-  const userapi = useApi(Api.loginUser);
   const [loginFailed, setLoginFailed] = useState(false);
 
   const handleSubmit = async ({ email, password }) => {

@@ -1,19 +1,21 @@
 import { useState } from 'react';
 
 function useApi(apiFunction) {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState({});
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const request = async (...arg: any[]) => {
+  const request = async (...args) => {
     try {
       setLoading(true);
-      const response = await apiFunction(...arg);
-      console.log('in hook+ ' + response);
+      const response = await apiFunction(...args);
+      console.log('in hook res + ', response);
+
       setLoading(false);
-      setData(response);
+      setData({ response });
     } catch (e) {
       setError(true);
+      console.log('in hook errro+ ');
     }
   };
 

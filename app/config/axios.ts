@@ -8,7 +8,7 @@ const axios = Axios.create({
   },
 });
 
-//axios.defaults.headers.common['x-mock-response-code'] = '200';
+axios.defaults.headers.common['x-mock-response-code'] = '200';
 axios.interceptors.request.use(async (config) => {
   const user = await AuthStorage.getUser();
   const token = user.jwt;

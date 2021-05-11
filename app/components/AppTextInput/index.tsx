@@ -1,37 +1,30 @@
 import React from 'react';
-import { TextInput } from 'react-native';
+import { TextInput, StyleSheet, View } from 'react-native';
 
 import { theme } from '../../config';
-import { Container } from '../../styles';
+//import { Container } from '../../styles';
 
 function AppTextInput({ IconComponent = null, ...textInputProps }) {
   return (
-    <Container
-      border="1px"
-      bc="grey5"
-      bg="lightGrey"
-      corner="8px"
-      direction="row"
-      grow="1"
-      justify="flex-start"
-      mt="8px"
-      mb="8px"
-      width="auto"
-    >
+    <View style={styles.container}>
       {IconComponent}
-      <TextInput
-        placeholderTextColor={theme.grey6}
-        style={{
-          //backgroundColor: theme.secondary,
-          color: theme.black,
-          fontSize: 16,
-          height: 48,
-          padding: 8,
-        }}
-        {...textInputProps}
-      />
-    </Container>
+      <TextInput placeholderTextColor={theme.grey6} {...textInputProps} />
+    </View>
   );
 }
-
+const styles = StyleSheet.create({
+  container: {
+    //border: ,
+    borderWidth: 1,
+    borderColor: theme.grey5,
+    backgroundColor: theme.lightGrey,
+    borderRadius: 8,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    marginTop: 8,
+    marginBottom: 8,
+    width: 'auto',
+  },
+});
 export default AppTextInput;

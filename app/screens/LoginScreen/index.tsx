@@ -17,21 +17,16 @@ const validationSchema = Yup.object().shape({
 
 function LoginScreen() {
   const auth = useAuth();
-  //const userApi = useApi(Api.loginUser);
   const [loginFailed, setLoginFailed] = useState(false);
 
   const handleSubmit = async ({ email, password }) => {
     try {
       const response = await Api.loginUser({ email, password });
+      //await request({ email, password });
       auth.logIn(response);
-    } catch (e) {
+    } catch (error) {
       setLoginFailed(true);
     }
-    // userApi.request({ email: email, password: password });
-    // //console.log('param + ', { email: email, password: password });
-    // console.log('data ', userApi.data);
-    // auth.logIn(userApi.data);
-    // setLoginFailed(userApi.error);
   };
   return (
     <View style={{ padding: 8 }}>

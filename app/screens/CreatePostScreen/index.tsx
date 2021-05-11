@@ -2,9 +2,11 @@ import React from 'react';
 import { Platform, View } from 'react-native';
 
 import * as Yup from 'yup';
-import Api from '../../api';
 
+import { Client } from '../../api';
 import { Form, FormField, SubmitButton } from '../../components/FormComponents';
+import { useApi } from '../../hooks';
+import { Body1 } from '../../styles';
 
 const validationSchema = Yup.object().shape({
   communityName: Yup.string().required().label('Community'),
@@ -17,27 +19,26 @@ const postContentNumOfLines = 6;
 const postTitleNumOfLines = 3;
 
 function CreatePostScreen() {
+  const { data, error, loading, request: createPost } = useApi(
+    Client.prototype.createPost,
+  );
+
   const handleSubmit = async ({
     anonymous,
     communityName,
     postTitle,
     postContent,
   }) => {
-    try {
-      const response = await Api.createPost({
-        title: postTitle,
-        content: postContent,
-        asPseudo: anonymous,
-        community: {
-          name: communityName,
-        },
-      });
-      console.log('hello');
-      console.log(response);
-    } catch (error) {
-      console.log('error creating post');
-    }
+    await createPost({
+      title: postTitle,
+      content: postContent,
+      asPseudo: anonymous,
+      community: {
+        name: communityName,
+      },
+    });
   };
+
   return (
     <View style={{ padding: 8 }}>
       <Form
@@ -51,6 +52,7 @@ function CreatePostScreen() {
         onSubmit={handleSubmit}
       >
         <FormField name="communityName" placeholder="Choose a Community" />
+
         <FormField
           name="postTitle"
           numberOfLines={Platform.OS === 'ios' ? null : postTitleNumOfLines}
@@ -69,6 +71,7 @@ function CreatePostScreen() {
           placeholder="Enter title of your post"
           textAlignVertical="top"
         />
+
         <FormField
           name="postContent"
           numberOfLines={Platform.OS === 'ios' ? null : postContentNumOfLines}
@@ -86,7 +89,16 @@ function CreatePostScreen() {
           placeholder="Enter description of your post"
           textAlignVertical="top"
         />
-        <SubmitButton title="Post" />
+
+        {loading ? (
+          <Body1>Loading...</Body1>
+        ) : (
+          <View>
+            <SubmitButton title="Post" />
+            {error && <Body1 mt="24px">Error Occured</Body1>}
+            <Body1 mt="24px">{JSON.stringify(data)}</Body1>
+          </View>
+        )}
       </Form>
     </View>
   );

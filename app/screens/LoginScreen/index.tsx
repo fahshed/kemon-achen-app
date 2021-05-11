@@ -1,14 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Image, View } from 'react-native';
 
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import * as Yup from 'yup';
 
 import { theme } from '../../config';
-import Api from '../../api';
-import { Form, FormField, SubmitButton } from '../../components/FormComponents';
-import ErrorMessage from '../../components/FormComponents/ErrorMessage';
-import { useAuth } from '../../hooks';
+import { Client } from '../../api';
+import {
+  Form,
+  FormField,
+  SubmitButton,
+  ErrorMessage,
+} from '../../components/FormComponents';
+import { useAuth, useApi } from '../../hooks';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label('Email'),
@@ -17,17 +21,19 @@ const validationSchema = Yup.object().shape({
 
 function LoginScreen() {
   const auth = useAuth();
-  const [loginFailed, setLoginFailed] = useState(false);
+  const { data, error, loading, request: loginUser } = useApi(
+    Client.prototype.loginUser,
+  );
 
   const handleSubmit = async ({ email, password }) => {
-    try {
-      const response = await Api.loginUser({ email, password });
-      //await request({ email, password });
+    const response = await loginUser({ email, password });
+    if ('error' in response) {
+      console.log('LoginScreen', response.error);
+    } else {
       auth.logIn(response);
-    } catch (error) {
-      setLoginFailed(true);
     }
   };
+
   return (
     <View style={{ padding: 8 }}>
       <Image
@@ -40,6 +46,7 @@ function LoginScreen() {
         }}
         source={require('../../assets/logo-red.png')}
       />
+
       <Form
         initialValues={{ email: '', password: '' }}
         onSubmit={handleSubmit}
@@ -61,6 +68,7 @@ function LoginScreen() {
           placeholder="Enter your Email"
           textContentType="emailAddress"
         />
+
         <FormField
           autoCapitalize="none"
           autoCorrect={false}
@@ -77,11 +85,10 @@ function LoginScreen() {
           secureTextEntry
           textContentType="password"
         />
-        <ErrorMessage
-          error="Invalid Email or Password.Please try again."
-          visible={loginFailed}
-        />
-        <SubmitButton title="Login" />
+
+        <ErrorMessage error={JSON.stringify(data)} visible={error} />
+
+        {!loading && <SubmitButton title="Login" />}
       </Form>
     </View>
   );

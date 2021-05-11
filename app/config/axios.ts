@@ -1,4 +1,5 @@
 import Axios from 'axios';
+import { AuthStorage } from '../authentication';
 
 const axios = Axios.create({
   headers: {
@@ -8,9 +9,13 @@ const axios = Axios.create({
 });
 
 //axios.defaults.headers.common['x-mock-response-code'] = '200';
-axios.interceptors.request.use((config) => {
-  const token = 'some token';
-  config.headers.Authorization = token;
+axios.interceptors.request.use(async (config) => {
+  const user = await AuthStorage.getUser();
+  if (user) {
+    const token = user.jwt;
+    config.headers.Authorization = token;
+  }
+
   return config;
 });
 

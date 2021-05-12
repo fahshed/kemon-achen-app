@@ -8,23 +8,24 @@ function AppTextInput({ IconComponent = null, ...textInputProps }) {
   return (
     <View style={styles.container}>
       {IconComponent}
-      <TextInput placeholderTextColor={theme.grey6} {...textInputProps} />
+      <TextInput
+        placeholderTextColor={theme.grey6}
+        style={styles.inputStyle}
+        {...textInputProps}
+      />
     </View>
   );
 }
 const styles = StyleSheet.create({
   container: {
-    //border: ,
-    borderWidth: 1,
-    borderColor: theme.grey5,
-    backgroundColor: theme.lightGrey,
-    borderRadius: 8,
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    marginTop: 8,
-    marginBottom: 8,
-    width: 'auto',
+  },
+  inputStyle: {
+    padding: 8,
+    color: theme.black,
+    fontSize: 16,
   },
 });
 export default AppTextInput;

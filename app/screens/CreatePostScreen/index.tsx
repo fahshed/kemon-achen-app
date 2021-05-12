@@ -107,28 +107,24 @@ function CreatePostScreen({ navigation }) {
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        <View style={styles.container}>
-          <View style={styles.buttonCrossContainer}>
-            <TouchableOpacity onPress={() => navigation.goBack()}>
-              <Entypo
-                name="cross"
-                size={32}
-                color={theme.primary}
-                style={{ marginRight: 8 }}
-              />
-            </TouchableOpacity>
-            <H6Bold style={{ padding: 8, textAlign: 'center' }}>
-              Your Post
-            </H6Bold>
-            <SubmitButton
-              title="Post"
-              style={{
-                height: 24,
-                width: 48,
-                marginTop: 0,
-              }}
+        <View style={styles.buttonCrossContainer}>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Entypo
+              name="cross"
+              size={32}
+              color={theme.primary}
+              style={{ marginRight: 8 }}
             />
-          </View>
+          </TouchableOpacity>
+          <H6Bold style={{ padding: 8, textAlign: 'center' }}>Your Post</H6Bold>
+          <SubmitButton
+            title="Post"
+            style={{
+              height: 24,
+              width: 48,
+              marginTop: 0,
+            }}
+          />
         </View>
 
         <FormPicker
@@ -199,16 +195,10 @@ function CreatePostScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: theme.white,
-    padding: 8,
-    marginBottom: 8,
-    flexDirection: 'row',
-    width: '100%',
-  },
   detailsContainer: {
     alignItems: 'center',
     flexDirection: 'row',
+    marginBottom: 8,
   },
   separator: {
     backgroundColor: theme.grey5,
@@ -217,10 +207,10 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   buttonCrossContainer: {
-    flex: 1,
     alignItems: 'center',
-    justifyContent: 'space-between',
     flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 8,
   },
 });
 

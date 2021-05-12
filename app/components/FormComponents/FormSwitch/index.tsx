@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, View } from 'react-native';
+import { Platform, Switch, View } from 'react-native';
 
 import { useFormikContext } from 'formik';
 
@@ -12,9 +12,18 @@ function FormSwitch({ name }) {
       <Switch
         value={values[name]}
         onValueChange={(newValue) => setFieldValue(name, newValue)}
-        trackColor={{ false: theme.grey5, true: theme.grey5 }}
-        thumbColor={values[name] ? theme.primary : theme.white}
-        ios_backgroundColor={theme.grey5}
+        trackColor={{
+          false: theme.grey3,
+          true: Platform.OS === 'ios' ? theme.primary : theme.grey3,
+        }}
+        thumbColor={
+          values[name]
+            ? Platform.OS === 'android'
+              ? theme.primary
+              : theme.white
+            : theme.white
+        }
+        ios_backgroundColor={theme.grey3}
       />
     </View>
   );

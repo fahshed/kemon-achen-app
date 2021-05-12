@@ -13,6 +13,8 @@ export const theme = {
   yellow: '#fbc02d',
 
   //grey0: '#bdbdbd',
+  grey1: '#f5f5f5',
+  grey3: '#e0e0e0',
   grey5: '#9e9e9e',
   grey6: '#757575',
 

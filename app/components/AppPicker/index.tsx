@@ -5,8 +5,7 @@ import { AntDesign, SimpleLineIcons } from '@expo/vector-icons';
 import RBSheet from 'react-native-raw-bottom-sheet';
 
 import { theme } from '../../config';
-import { Body1 } from '../../styles';
-import AppButton from '../AppButton';
+import { Body1, Body1Bold } from '../../styles';
 import PickerItem from '../PickerItem';
 
 function AppPicker({
@@ -26,23 +25,18 @@ function AppPicker({
             name="people"
             size={24}
             color={theme.grey5}
-            style={{ marginRight: 8 }}
+            style={{ marginRight: 16 }}
           />
           {selectedItem ? (
-            <Body1 color="black" style={{ flex: 1 }}>
+            <Body1Bold color="primary" style={{ flex: 1 }}>
               {selectedItem}
-            </Body1>
+            </Body1Bold>
           ) : (
             <Body1 color="grey5" style={{ flex: 1 }}>
               {placeholder}
             </Body1>
           )}
-          <AntDesign
-            name="down"
-            size={16}
-            color={theme.grey5}
-            style={{ marginLeft: 8 }}
-          />
+          <AntDesign name="down" size={16} color={theme.grey6} />
         </View>
       </TouchableOpacity>
       <RBSheet
@@ -51,18 +45,19 @@ function AppPicker({
         closeOnPressMask={false}
         customStyles={{
           wrapper: {
-            backgroundColor: 'transparent',
+            //backgroundColor: 'transparent',
           },
           draggableIcon: {
             backgroundColor: theme.primary,
           },
         }}
       >
-        <AppButton
-          title="Close"
-          style={{ height: 32 }}
-          onPress={() => refRBSheet.current.close()}
-        />
+        <View style={{ padding: 8 }}>
+          <Body1Bold align="center" color="primary">
+            Community Names
+          </Body1Bold>
+        </View>
+
         <FlatList
           data={items}
           keyExtractor={(item) => item._id}
@@ -84,12 +79,12 @@ function AppPicker({
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: theme.lightGrey,
+    backgroundColor: theme.white,
     borderRadius: 8,
     flexDirection: 'row',
     alignItems: 'center',
     padding: 15,
-    marginVertical: 10,
+    marginVertical: 8,
   },
 });
 

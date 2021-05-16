@@ -6,7 +6,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { theme } from '../../config';
 import { Body2 } from '../../styles';
 
-function BottomBar1({
+function BottomBar2({
   onLikePress = null,
   onReplyPress = null,
   onMorePress = null,
@@ -62,4 +62,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default BottomBar1;
+export default BottomBar2;

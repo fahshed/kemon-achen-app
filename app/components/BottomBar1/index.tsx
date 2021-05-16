@@ -52,8 +52,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: theme.lightGrey,
     flexDirection: 'row',
-    height: 48,
     justifyContent: 'center',
+    padding: 8,
     width: '100%',
   },
   iconWithText: {

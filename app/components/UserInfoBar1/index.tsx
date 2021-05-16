@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, StyleSheet, View } from 'react-native';
+import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 
 import { Entypo, MaterialCommunityIcons } from '@expo/vector-icons';
 
@@ -25,11 +25,13 @@ function UserInfoBar1() {
           <Caption>8h</Caption>
         </View>
       </View>
-      <MaterialCommunityIcons
-        style={styles.icon}
-        name="dots-horizontal"
-        size={24}
-      />
+      <TouchableOpacity style={{ marginLeft: 'auto' }}>
+        <MaterialCommunityIcons
+          style={styles.icon}
+          name="dots-horizontal"
+          size={24}
+        />
+      </TouchableOpacity>
     </View>
   );
 }
@@ -39,7 +41,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: theme.lightGrey,
     flexDirection: 'row',
-    height: 64,
     padding: 8,
     width: '100%',
   },
@@ -55,6 +56,7 @@ const styles = StyleSheet.create({
     height: 48,
     width: 48,
     borderRadius: 24,
+    backgroundColor: theme.blue,
   },
   text: {
     flex: 1,

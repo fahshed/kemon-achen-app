@@ -26,34 +26,6 @@ const validationSchema = Yup.object().shape({
 const postContentNumOfLines = 7;
 const postTitleNumOfLines = 3;
 
-// const communities = [
-//   {
-//     _id: '1',
-//     name: 'PTSD',
-//     photo: 'a.jpg',
-//   },
-//   {
-//     _id: '2',
-//     name: 'Stress',
-//     photo: 'a.jpg',
-//   },
-//   {
-//     _id: '3',
-//     name: 'Anxiety',
-//     photo: 'a.jpg',
-//   },
-//   {
-//     _id: '4',
-//     name: 'OCD',
-//     photo: 'a.jpg',
-//   },
-// ];
-
-// const getComms = async (getCommsApi) => {
-//   const communities2 = await getCommsApi.request();
-//   return communities2.data;
-// };
-
 function CreatePostScreen({ navigation }) {
   const {
     data: postData,

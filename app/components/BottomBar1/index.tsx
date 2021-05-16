@@ -6,7 +6,11 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { theme } from '../../config';
 import { Body1 } from '../../styles';
 
-function BottomBar1({ onLikePress, onCommentPress, onSharePress }) {
+function BottomBar1({
+  onLikePress = null,
+  onCommentPress = null,
+  onSharePress = null,
+}) {
   return (
     <View style={styles.container}>
       <View style={styles.iconWithText}>

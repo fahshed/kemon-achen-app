@@ -62,9 +62,10 @@ function AppPicker({
           data={items}
           keyExtractor={(item) => item._id}
           numColumns={numberOfColumns}
-          renderItem={({ item }) => (
+          renderItem={({ item, index }) => (
             <PickerItem
               item={item}
+              index={index}
               onPress={() => {
                 onSelectItem(item);
                 refRBSheet.current.close();

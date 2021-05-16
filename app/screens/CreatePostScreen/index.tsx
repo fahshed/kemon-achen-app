@@ -1,12 +1,20 @@
-import React from 'react';
-import { Platform, View } from 'react-native';
+import React, { useEffect } from 'react';
+import { Platform, StyleSheet, TouchableOpacity, View } from 'react-native';
 
 import * as Yup from 'yup';
+import { Entypo } from '@expo/vector-icons';
 
 import { Client } from '../../api';
-import { Form, FormField, SubmitButton } from '../../components/FormComponents';
+import {
+  Form,
+  FormField,
+  FormPicker,
+  FormSwitch,
+  SubmitButton,
+} from '../../components/FormComponents';
 import { useApi } from '../../hooks';
-import { Body1 } from '../../styles';
+import { Body1, H6Bold } from '../../styles';
+import { theme } from '../../config';
 
 const validationSchema = Yup.object().shape({
   communityName: Yup.string().required().label('Community'),
@@ -15,20 +23,39 @@ const validationSchema = Yup.object().shape({
   postContent: Yup.string().required().label('Post Content'),
 });
 
-const postContentNumOfLines = 6;
+const postContentNumOfLines = 7;
 const postTitleNumOfLines = 3;
 
-function CreatePostScreen() {
-  const { data, error, loading, request: createPost } = useApi(
-    Client.prototype.createPost,
-  );
+function CreatePostScreen({ navigation }) {
+  const {
+    data: postData,
+    error: postError,
+    loading: postLoading,
+    request: createPost,
+  } = useApi(Client.prototype.createPost);
 
-  const handleSubmit = async ({
-    anonymous,
-    communityName,
-    postTitle,
-    postContent,
-  }) => {
+  const {
+    data: communities,
+    //loading: communityLoading,
+    request: getCommunities,
+  } = useApi(Client.prototype.getCommunities);
+
+  useEffect(() => {
+    (async function () {
+      const response = await getCommunities();
+      if ('error' in response) {
+        console.log('Community fetch error', response.error);
+      }
+    })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  //const communities2 = await getCommunitiesApi.request();
+
+  const handleSubmit = async (
+    { anonymous, communityName, postTitle, postContent },
+    { resetForm },
+  ) => {
     await createPost({
       title: postTitle,
       content: postContent,
@@ -37,6 +64,7 @@ function CreatePostScreen() {
         name: communityName,
       },
     });
+    resetForm();
   };
 
   return (
@@ -51,9 +79,42 @@ function CreatePostScreen() {
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        <FormField name="communityName" placeholder="Choose a Community" />
+        <View style={styles.buttonCrossContainer}>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Entypo
+              name="cross"
+              size={32}
+              color={theme.primary}
+              style={{ marginRight: 8 }}
+            />
+          </TouchableOpacity>
+          <H6Bold style={{ padding: 8, textAlign: 'center' }}>Your Post</H6Bold>
+          <SubmitButton
+            title="Post"
+            style={{
+              height: 24,
+              width: 48,
+              marginTop: 0,
+            }}
+          />
+        </View>
+
+        <FormPicker
+          items={communities}
+          name="communityName"
+          numberOfColumns={1}
+          placeholder="Choose a community"
+        />
+
+        <View style={styles.detailsContainer}>
+          <FormSwitch name="anonymous" />
+          <Body1>Post as anonymous</Body1>
+        </View>
+
+        <View style={styles.separator} />
 
         <FormField
+          border={0}
           name="postTitle"
           numberOfLines={Platform.OS === 'ios' ? null : postTitleNumOfLines}
           minHeight={
@@ -71,8 +132,10 @@ function CreatePostScreen() {
           placeholder="Enter title of your post"
           textAlignVertical="top"
         />
+        <View style={styles.separator} />
 
         <FormField
+          border={0}
           name="postContent"
           numberOfLines={Platform.OS === 'ios' ? null : postContentNumOfLines}
           minHeight={
@@ -90,18 +153,37 @@ function CreatePostScreen() {
           textAlignVertical="top"
         />
 
-        {loading ? (
+        {postLoading ? (
           <Body1>Loading...</Body1>
         ) : (
           <View>
-            <SubmitButton title="Post" />
-            {error && <Body1 mt="24px">Error Occured</Body1>}
-            <Body1 mt="24px">{JSON.stringify(data)}</Body1>
+            {postError && <Body1 mt="24px">Error Occured</Body1>}
+            <Body1 mt="24px">{JSON.stringify(postData)}</Body1>
           </View>
         )}
       </Form>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  detailsContainer: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    marginBottom: 8,
+  },
+  separator: {
+    backgroundColor: theme.grey5,
+    height: 1,
+    marginTop: 8,
+    marginBottom: 8,
+  },
+  buttonCrossContainer: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 8,
+  },
+});
 
 export default CreatePostScreen;

@@ -1,4 +1,5 @@
 import React from 'react';
+import { StyleSheet, View } from 'react-native';
 
 import { useFormikContext } from 'formik';
 
@@ -8,7 +9,7 @@ import { Body1Bold } from '../../../styles';
 import { capitalizeFirstLetter } from '../../../utils';
 import { theme } from '../../../config';
 
-function FormField({ name, width = '100%', ...textInputProps }) {
+function FormField({ name, border = 1, width = '100%', ...textInputProps }) {
   const {
     setFieldTouched,
     setFieldValue,
@@ -19,18 +20,32 @@ function FormField({ name, width = '100%', ...textInputProps }) {
 
   return (
     <>
-      <Body1Bold color="primary">{capitalizeFirstLetter(name)}</Body1Bold>
-      <AppTextInput
-        style={{ padding: 8, color: theme.black, fontSize: 16 }}
-        onBlur={() => setFieldTouched(name)}
-        onChangeText={(text) => setFieldValue(name, text)}
-        value={values[name]}
-        width={width}
-        {...textInputProps}
-      />
+      <Body1Bold color="primary" style={{ paddingLeft: 8 }}>
+        {capitalizeFirstLetter(name)}
+      </Body1Bold>
+      <View style={[styles.inputContainer, { borderWidth: border }]}>
+        <AppTextInput
+          onBlur={() => setFieldTouched(name)}
+          onChangeText={(text) => setFieldValue(name, text)}
+          value={values[name]}
+          width={width}
+          {...textInputProps}
+        />
+      </View>
       <ErrorMessage error={errors[name]} visible={touched[name]} />
     </>
   );
 }
+
+const styles = StyleSheet.create({
+  inputContainer: {
+    borderRadius: 8,
+    borderColor: theme.grey5,
+    backgroundColor: theme.white,
+    marginTop: 8,
+    marginBottom: 8,
+    width: 'auto',
+  },
+});
 
 export default FormField;

@@ -1,14 +1,9 @@
 import React from 'react';
-import { View } from 'react-native';
 
-import { Body2Bold } from '../../styles';
+import { Post } from '../../components';
 
 function NotificationScreen() {
-  return (
-    <View style={{ padding: 8 }}>
-      <Body2Bold>NotificationScreen</Body2Bold>
-    </View>
-  );
+  return <Post />;
 }
 
 export default NotificationScreen;

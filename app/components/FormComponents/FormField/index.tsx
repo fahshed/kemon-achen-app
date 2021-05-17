@@ -20,7 +20,7 @@ function FormField({ name, border = 1, width = '100%', ...textInputProps }) {
 
   return (
     <>
-      <Body1Bold color="primary" style={{ paddingLeft: 8 }}>
+      <Body1Bold color="primary" style={{ paddingLeft: 8, marginTop: 8 }}>
         {capitalizeFirstLetter(name)}
       </Body1Bold>
       <View style={[styles.inputContainer, { borderWidth: border }]}>

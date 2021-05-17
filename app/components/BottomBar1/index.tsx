@@ -10,6 +10,8 @@ function BottomBar1({
   onLikePress = null,
   onCommentPress = null,
   onSharePress = null,
+  likeCount,
+  commentCount,
 }) {
   return (
     <View style={styles.container}>
@@ -17,31 +19,37 @@ function BottomBar1({
         <TouchableOpacity onPress={onLikePress}>
           <MaterialCommunityIcons
             name="arrow-up-bold-outline"
-            size={32}
+            size={28}
             color={theme.grey5}
           />
         </TouchableOpacity>
-        <Body1 color="grey5">100</Body1>
+        <Body1 color="grey5" ml="4px">
+          {likeCount}
+        </Body1>
       </View>
       <View style={styles.iconWithText}>
         <TouchableOpacity onPress={onCommentPress}>
           <MaterialCommunityIcons
             name="comment-outline"
-            size={32}
+            size={28}
             color={theme.grey5}
           />
         </TouchableOpacity>
-        <Body1 color="grey5">100</Body1>
+        <Body1 color="grey5" ml="4px">
+          {commentCount}
+        </Body1>
       </View>
       <View style={styles.iconWithText}>
         <TouchableOpacity onPress={onSharePress}>
           <MaterialCommunityIcons
             name="share-outline"
-            size={32}
+            size={28}
             color={theme.grey5}
           />
         </TouchableOpacity>
-        <Body1 color="grey5">Share</Body1>
+        <Body1 color="grey5" ml="4px">
+          Share
+        </Body1>
       </View>
     </View>
   );
@@ -53,7 +61,7 @@ const styles = StyleSheet.create({
     backgroundColor: theme.lightGrey,
     flexDirection: 'row',
     justifyContent: 'center',
-    padding: 8,
+    padding: 4,
     width: '100%',
   },
   iconWithText: {

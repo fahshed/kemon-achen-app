@@ -6,7 +6,7 @@ import { Entypo, MaterialCommunityIcons } from '@expo/vector-icons';
 import { theme } from '../../config';
 import { Body1, Body1Bold, Caption } from '../../styles';
 
-function UserInfoBar1() {
+function UserInfoBar1({ username, communityName, postedAgo }) {
   return (
     <View style={styles.container}>
       <Image
@@ -17,12 +17,12 @@ function UserInfoBar1() {
         <View style={styles.text}>
           <Body1>Community</Body1>
           <Entypo name="dot-single" size={16} />
-          <Body1Bold>PTSD</Body1Bold>
+          <Body1Bold>{communityName}</Body1Bold>
         </View>
         <View style={styles.text}>
-          <Caption color="grey5">Posted By Ajwad Akil</Caption>
+          <Caption color="grey5">Posted By {username}</Caption>
           <Entypo name="dot-single" size={16} />
-          <Caption>8h</Caption>
+          <Caption>{postedAgo}</Caption>
         </View>
       </View>
       <TouchableOpacity style={{ marginLeft: 'auto' }}>
@@ -39,7 +39,7 @@ function UserInfoBar1() {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    backgroundColor: theme.lightGrey,
+    backgroundColor: theme.white,
     flexDirection: 'row',
     padding: 8,
     width: '100%',
@@ -62,6 +62,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     marginLeft: 8,
+    alignItems: 'center',
   },
 });
 

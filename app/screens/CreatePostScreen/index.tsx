@@ -15,6 +15,7 @@ import {
 import { useApi } from '../../hooks';
 import { Body1, H6Bold } from '../../styles';
 import { theme } from '../../config';
+import { ItemSeparator } from '../../components';
 
 const validationSchema = Yup.object().shape({
   communityName: Yup.string().required().label('Community'),
@@ -111,7 +112,7 @@ function CreatePostScreen({ navigation }) {
           <Body1>Post as anonymous</Body1>
         </View>
 
-        <View style={styles.separator} />
+        <ItemSeparator />
 
         <FormField
           border={0}
@@ -132,7 +133,7 @@ function CreatePostScreen({ navigation }) {
           placeholder="Enter title of your post"
           textAlignVertical="top"
         />
-        <View style={styles.separator} />
+        <ItemSeparator />
 
         <FormField
           border={0}
@@ -170,12 +171,6 @@ const styles = StyleSheet.create({
   detailsContainer: {
     alignItems: 'center',
     flexDirection: 'row',
-    marginBottom: 8,
-  },
-  separator: {
-    backgroundColor: theme.grey5,
-    height: 1,
-    marginTop: 8,
     marginBottom: 8,
   },
   buttonCrossContainer: {

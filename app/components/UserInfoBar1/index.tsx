@@ -39,7 +39,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: theme.lightGrey,
     flexDirection: 'row',
-    height: 64,
     padding: 8,
     width: '100%',
   },

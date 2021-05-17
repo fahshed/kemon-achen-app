@@ -42,7 +42,7 @@ export default function App() {
         <SafeAreaView style={styles.container}>
           <AuthContext.Provider value={{ user, setUser }}>
             <NavigationContainer theme={NavigationTheme}>
-              {user ? <AppNavigator /> : <AuthNavigator />}
+              {user ? <AppNavigator /> : <AppNavigator />}
             </NavigationContainer>
           </AuthContext.Provider>
         </SafeAreaView>

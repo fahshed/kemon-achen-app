@@ -1,18 +1,14 @@
 import React from 'react';
+
 import { StyleSheet, View } from 'react-native';
-
-import { Entypo, MaterialCommunityIcons } from '@expo/vector-icons';
-
 import { theme } from '../../config';
 import { CaptionBold } from '../../styles';
 
-function Tag({ badgeContent }) {
+function TagComponent({ badgeContent }) {
   return (
-    <View>
-      <View style={styles.container}>
-        <View style={styles.text}>
-          <CaptionBold color="white">{badgeContent}</CaptionBold>
-        </View>
+    <View style={styles.container}>
+      <View style={styles.text}>
+        <CaptionBold color="white">{badgeContent}</CaptionBold>
       </View>
     </View>
   );
@@ -23,11 +19,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: theme.primary,
     borderRadius: 16,
+    marginRight: 8,
   },
   text: {
     marginHorizontal: 8,
-    marginVertical: 1
+    marginVertical: 1,
   },
 });
 
-export default Tag;
+export default TagComponent;

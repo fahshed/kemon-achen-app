@@ -1,18 +1,19 @@
 import React from 'react';
 import { Image, StyleSheet, View } from 'react-native';
 
-import { Entypo, MaterialCommunityIcons } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
 
 import { theme } from '../../config';
 import { Body2Bold, Body2 } from '../../styles';
 
-function UserInfoBar3({ RankBadge = null }) {
+function UserInfoBar3({ RankBadgeComponent = null }) {
   return (
     <View
       style={[
         styles.container,
         {
-          backgroundColor: RankBadge === null ? theme.lightGrey : theme.primary,
+          backgroundColor:
+            RankBadgeComponent === null ? theme.lightGrey : theme.primary,
         },
       ]}
     >
@@ -20,12 +21,13 @@ function UserInfoBar3({ RankBadge = null }) {
         style={styles.image}
         source={{ uri: 'https://picsum.photos/200' }}
       />
-      {RankBadge}
-      <View style={styles.detailsContainer}>
-        <Body2Bold>Fahim Morshed</Body2Bold>
-        <Entypo name="dot-single" size={16} />
-        <Body2>2h</Body2>
-      </View>
+
+      {/* <View style={styles.detailsContainer}> */}
+      <Body2Bold>Fahim Morshed</Body2Bold>
+      {RankBadgeComponent}
+      <Entypo name="dot-single" size={16} />
+      <Body2>2h</Body2>
+      {/* </View> */}
     </View>
   );
 }
@@ -47,6 +49,7 @@ const styles = StyleSheet.create({
     height: 24,
     width: 24,
     borderRadius: 12,
+    marginRight: 8,
   },
 });
 

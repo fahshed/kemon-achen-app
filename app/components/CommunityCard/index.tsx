@@ -2,11 +2,9 @@ import React from 'react';
 import { Image, StyleSheet, View } from 'react-native';
 
 import { theme } from '../../config';
-import { Body1, Caption } from '../../styles';
-import RankBadgeComponent from '../RankBadgeComponent';
-import TagComponent from '../Tag';
+import { Body2Bold } from '../../styles';
 
-function ProfessionalCard() {
+function CommunityCard() {
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
@@ -16,18 +14,7 @@ function ProfessionalCard() {
         />
       </View>
       <View style={styles.detailsContainer}>
-        <View style={{ flexDirection: 'row', marginBottom: 8 }}>
-          <Body1>Dr. Sikandar Bakshiii</Body1>
-          <RankBadgeComponent rank="100" />
-        </View>
-        <View style={{ flexDirection: 'row', marginBottom: 8 }}>
-          <TagComponent badgeContent="PTSD" />
-          <TagComponent badgeContent="Anxiety" />
-          <TagComponent badgeContent="Stress" />
-        </View>
-        <Caption color="grey6" numberOfLines={3}>
-          Dhanmondi, panchalaish, Chattogram
-        </Caption>
+        <Body2Bold>Bipolar Disorder</Body2Bold>
       </View>
     </View>
   );
@@ -36,7 +23,7 @@ function ProfessionalCard() {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    backgroundColor: theme.orange,
+    backgroundColor: theme.blue,
     flexDirection: 'row',
     padding: 8,
     width: '100%',
@@ -58,4 +45,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ProfessionalCard;
+export default CommunityCard;

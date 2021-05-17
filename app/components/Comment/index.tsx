@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View } from 'react-native';
 
-import { theme } from '../../config';
+//import { theme } from '../../config';
 import BottomBar2 from '../../components/BottomBar2';
 import UserInfoBar3 from '../../components/UserInfoBar3';
 import { Body2 } from '../../styles';
@@ -17,11 +17,5 @@ function Comment({ commentBody, RankBadgeComponent = null }) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  textBody: {
-    backgroundColor: theme.lightGrey,
-  },
-});
 
 export default Comment;

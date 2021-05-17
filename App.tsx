@@ -7,7 +7,7 @@ import { ThemeProvider } from 'styled-components';
 import { NavigationContainer } from '@react-navigation/native';
 
 import { theme } from './app/config';
-import { AppNavigator, AuthNavigator } from './app/navigation';
+import { AppNavigator } from './app/navigation';
 import NavigationTheme from './app/navigation/NavigationTheme';
 import { AuthContext, AuthStorage } from './app/authentication';
 

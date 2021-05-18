@@ -1,44 +1,58 @@
-import React, { useEffect } from 'react';
-import { FlatList, View } from 'react-native';
-
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import React, { useEffect, useState } from 'react';
+import { FlatList } from 'react-native';
 
 import { Client } from '../../api';
-import { ItemSeparator, Post, TopSearchBar1 } from '../../components';
+import { ItemSeparator, Post, TopSearchBar2 } from '../../components';
 import { theme } from '../../config';
 import { useApi } from '../../hooks';
 
-export default function HomeScreen({ navigation }) {
+export default function HomeScreen() {
+  const [isRefreshing, setIsRefreshing] = useState(false);
+
   const { data: posts, request: getFeed } = useApi(Client.prototype.getFeed);
+
+  const getHomeFeed = async () => {
+    console.log('hey');
+    const response = await getFeed();
+    if ('error' in response) {
+      console.log('Feed fetch error', response.error);
+    }
+    setIsRefreshing(false);
+  };
+
+  const renderItem = ({ item }) => (
+    <Post
+      content={item.content}
+      comentCount={item.commentCount}
+      communityName={item.community.name}
+      postedAgo={item.createdAt}
+      title={item.title}
+      username={item.postedBy.name}
+      voteCount={item.voteCount}
+    />
+  );
+
   useEffect(() => {
-    (async function () {
-      const response = await getFeed();
-      if ('error' in response) {
-        console.log('Feed fetch error', response.error);
-      }
-    })();
+    getHomeFeed();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [navigation]);
+  }, []);
 
   return (
-    <View style={{ padding: 8 }}>
-      <TopSearchBar1
-        IconComponent={
-          <MaterialCommunityIcons
-            color={theme.grey6}
-            name="search-web"
-            size={24}
-          />
-        }
-      />
+    <>
+      <TopSearchBar2 />
       <FlatList
         data={posts}
         ItemSeparatorComponent={() => (
-          <ItemSeparator height={4} color={theme.lemon} />
+          <ItemSeparator height={8} color={theme.grey1} />
         )}
         keyExtractor={(post) => post._id}
-        renderItem={({ item }) => <Post postObj={item} />}
+        refreshing={isRefreshing}
+        onRefresh={() => {
+          getHomeFeed();
+          setIsRefreshing(true);
+        }}
+        renderItem={renderItem}
       />
-    </View>
+    </>
   );
 }

@@ -60,7 +60,7 @@ function LoginScreen() {
               color={theme.grey6}
               name="email"
               size={24}
-              style={{ marginLeft: 8 }}
+              style={{ marginLeft: 8, marginRight: 8 }}
             />
           }
           keyboardType="email-address"
@@ -77,7 +77,7 @@ function LoginScreen() {
               color={theme.grey6}
               name="lock"
               size={24}
-              style={{ marginLeft: 8 }}
+              style={{ marginLeft: 8, marginRight: 8 }}
             />
           }
           name="password"

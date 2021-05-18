@@ -10,7 +10,7 @@ function BottomBar1({
   onLikePress = null,
   onCommentPress = null,
   onSharePress = null,
-  likeCount,
+  voteCount,
   commentCount,
 }) {
   return (
@@ -24,7 +24,7 @@ function BottomBar1({
           />
         </TouchableOpacity>
         <Body1 color="grey5" ml="4px">
-          {likeCount}
+          {voteCount}
         </Body1>
       </View>
       <View style={styles.iconWithText}>
@@ -58,7 +58,6 @@ function BottomBar1({
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    backgroundColor: theme.lightGrey,
     flexDirection: 'row',
     justifyContent: 'center',
     padding: 4,

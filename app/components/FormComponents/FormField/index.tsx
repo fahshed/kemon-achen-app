@@ -3,11 +3,11 @@ import { StyleSheet, View } from 'react-native';
 
 import { useFormikContext } from 'formik';
 
-import { AppTextInput } from '../..';
 import ErrorMessage from '../ErrorMessage';
 import { Body1Bold } from '../../../styles';
 import { capitalizeFirstLetter } from '../../../utils';
 import { theme } from '../../../config';
+import CustomTextInput from '../../CustomTextInput';
 
 function FormField({ name, border = 1, width = '100%', ...textInputProps }) {
   const {
@@ -24,7 +24,7 @@ function FormField({ name, border = 1, width = '100%', ...textInputProps }) {
         {capitalizeFirstLetter(name)}
       </Body1Bold>
       <View style={[styles.inputContainer, { borderWidth: border }]}>
-        <AppTextInput
+        <CustomTextInput
           onBlur={() => setFieldTouched(name)}
           onChangeText={(text) => setFieldValue(name, text)}
           value={values[name]}
@@ -41,10 +41,8 @@ const styles = StyleSheet.create({
   inputContainer: {
     borderRadius: 8,
     borderColor: theme.grey5,
-    backgroundColor: theme.white,
     marginTop: 8,
     marginBottom: 8,
-    width: 'auto',
   },
 });
 

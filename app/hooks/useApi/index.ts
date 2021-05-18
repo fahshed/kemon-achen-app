@@ -8,6 +8,7 @@ export default function useApi(apiFunction) {
   const [loading, setLoading] = useState(false);
 
   const request = async (...args) => {
+    console.log('request got');
     setError(false);
     setLoading(true);
 

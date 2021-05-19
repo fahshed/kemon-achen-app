@@ -9,7 +9,7 @@ import TagComponent from '../../components/Tag';
 import RankBadgeComponent from '../../components/RankBadgeComponent';
 import NotificationCard from '../../components/NotificationCard';
 import ProfessionalCard from '../../components/ProfessionalCard';
-import CommunityCard from '../../components/CommunityCard';
+//import CommunityCard from '../../components/CommunityCard';
 import UserProfileCommentCard from '../../components/UserProfileCommentCard';
 
 function NotificationScreen() {

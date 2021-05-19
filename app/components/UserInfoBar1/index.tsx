@@ -13,7 +13,7 @@ function UserInfoBar1({ username, communityName, postedAgo }) {
         style={styles.image}
         source={{ uri: 'https://picsum.photos/200' }}
       />
-      <View style-={styles.detailsContainer}>
+      <View style={styles.detailsContainer}>
         <View style={styles.text}>
           <Body1>Community</Body1>
           <Entypo name="dot-single" size={16} />

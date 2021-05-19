@@ -5,11 +5,25 @@ import { Client } from '../../api';
 import { ItemSeparator, Post, TopSearchBar2 } from '../../components';
 import { theme } from '../../config';
 import { useApi } from '../../hooks';
+import NavRoutes from '../../navigation/NavRoutes';
+import { H5Bold } from '../../styles';
 
-export default function HomeScreen() {
+export default function HomeScreen({ navigation }) {
   const [isRefreshing, setIsRefreshing] = useState(false);
 
-  const { data: posts, request: getFeed } = useApi(Client.prototype.getFeed);
+  const { data: posts, loading: feedLoading, request: getFeed } = useApi(
+    Client.prototype.getFeed,
+  );
+
+  const { request: pressLike } = useApi(Client.prototype.likePost);
+
+  const handleLikePress = async (postId) => {
+    //console.log('post id', postId);
+    const response = await pressLike(postId);
+    if ('error' in response) {
+      console.log('Like error', response.error);
+    }
+  };
 
   const getHomeFeed = async () => {
     console.log('hey');
@@ -23,12 +37,14 @@ export default function HomeScreen() {
   const renderItem = ({ item }) => (
     <Post
       content={item.content}
-      comentCount={item.commentCount}
+      commentCount={item.commentCount}
       communityName={item.community.name}
       postedAgo={item.createdAt}
       title={item.title}
       username={item.postedBy.name}
       voteCount={item.voteCount}
+      onLikePress={() => handleLikePress(item._id)}
+      onPress={() => navigation.navigate(NavRoutes.POST_DETAILS, item)}
     />
   );
 
@@ -40,6 +56,11 @@ export default function HomeScreen() {
   return (
     <>
       <TopSearchBar2 />
+      {feedLoading && (
+        <H5Bold align="center" color="grey5" mt="8px" mb="8px">
+          Feed Loading........
+        </H5Bold>
+      )}
       <FlatList
         data={posts}
         ItemSeparatorComponent={() => (

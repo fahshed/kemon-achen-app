@@ -10,7 +10,7 @@ function AddCommentBottomBar() {
   return (
     <View style={styles.container}>
       <Image
-        style={{ height: 40, width: 40, borderRadius: 20, marginRight: 8 }}
+        style={styles.image}
         source={{ uri: 'https://picsum.photos/200' }}
       />
       <View style={{ flex: 1 }}>
@@ -34,6 +34,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: theme.grey1,
     marginTop: 8,
+    position: 'absolute',
+    bottom: 0,
+  },
+  image: {
+    height: 36,
+    width: 36,
+    borderRadius: 18,
+    marginLeft: 8,
+    marginRight: 8,
   },
 });
 

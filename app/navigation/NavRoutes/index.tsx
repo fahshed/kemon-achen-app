@@ -5,6 +5,7 @@ export default Object.freeze({
   LOGIN: 'Login',
   NEARBY_PROFESSIONAL: 'NearbyProfessional',
   NOTIFICATION: 'Notification',
+  POST_DETAILS: 'PostDetails',
   SIGNUP: 'Signup',
   WELCOME: 'Welcome',
 });

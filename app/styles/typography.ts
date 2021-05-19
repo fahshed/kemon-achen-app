@@ -20,7 +20,6 @@ interface IStyled {
 
 export const Body1 = styled.Text<IStyled>`
   font-size: 16px;
-  line-height: 18px;
   font-weight: normal;
   color: ${(props) => props.theme[props.color || 'black']};
   text-align: ${(props) => props.align || 'left'};

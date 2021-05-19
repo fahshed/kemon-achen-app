@@ -13,15 +13,15 @@ function BottomBar2({
 }) {
   return (
     <View style={styles.container}>
+      <TouchableOpacity onPress={onMorePress}>
+        <MaterialCommunityIcons
+          name="dots-vertical"
+          size={24}
+          color={theme.grey5}
+          style={{ marginRight: 24 }}
+        />
+      </TouchableOpacity>
       <View style={styles.iconWithText}>
-        <TouchableOpacity onPress={onMorePress}>
-          <MaterialCommunityIcons
-            name="dots-vertical"
-            size={24}
-            color={theme.grey5}
-            style={{ marginRight: 24 }}
-          />
-        </TouchableOpacity>
         <TouchableOpacity onPress={onReplyPress}>
           <MaterialCommunityIcons
             name="reply-outline"
@@ -50,8 +50,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: theme.lightGrey,
     flexDirection: 'row',
-    height: 40,
     justifyContent: 'flex-end',
+    padding: 8,
     width: '100%',
   },
   iconWithText: {

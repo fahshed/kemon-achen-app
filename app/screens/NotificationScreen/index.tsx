@@ -1,6 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 
+
 //import { Body2Bold } from '../../styles';
 import { UserInfobar1 } from '../../components';
 import Comment from '../../components/Comment';
@@ -11,6 +12,15 @@ import NotificationCard from '../../components/NotificationCard';
 import ProfessionalCard from '../../components/ProfessionalCard';
 //import CommunityCard from '../../components/CommunityCard';
 import UserProfileCommentCard from '../../components/UserProfileCommentCard';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+
+import {
+  AddCommentBottomBar,
+  CustomTextInput,
+  TopSearchBar2,
+} from '../../components';
+import { theme } from '../../config';
+import { Body2Bold } from '../../styles';
 
 function NotificationScreen() {
   return (
@@ -54,6 +64,20 @@ function NotificationScreen() {
         another doctor who recognized the ailment and rapidly cured her.'
         time="2h"
       />
+      <Body2Bold mb="20px">Component test screen</Body2Bold>
+      <CustomTextInput
+        IconComponent={
+          <MaterialCommunityIcons
+            color={theme.grey6}
+            name="lock"
+            size={24}
+            style={{ paddingRight: 8 }}
+          />
+        }
+      />
+      <CustomTextInput />
+      <AddCommentBottomBar />
+      <TopSearchBar2 />
     </View>
   );
 }

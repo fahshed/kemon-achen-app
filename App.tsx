@@ -7,7 +7,7 @@ import { ThemeProvider } from 'styled-components';
 import { NavigationContainer } from '@react-navigation/native';
 
 import { theme } from './app/config';
-import { AppNavigator, AuthNavigator } from './app/navigation';
+import { AppNavigator } from './app/navigation';
 import NavigationTheme from './app/navigation/NavigationTheme';
 import { AuthContext, AuthStorage } from './app/authentication';
 
@@ -42,7 +42,7 @@ export default function App() {
         <SafeAreaView style={styles.container}>
           <AuthContext.Provider value={{ user, setUser }}>
             <NavigationContainer theme={NavigationTheme}>
-              {user ? <AppNavigator /> : <AuthNavigator />}
+              {user ? <AppNavigator /> : <AppNavigator />}
             </NavigationContainer>
           </AuthContext.Provider>
         </SafeAreaView>

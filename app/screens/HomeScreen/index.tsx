@@ -50,7 +50,6 @@ export default function HomeScreen({ navigation }) {
 
   useEffect(() => {
     getHomeFeed();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

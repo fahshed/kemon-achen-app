@@ -6,6 +6,7 @@ module.exports = {
     'react-native/no-inline-styles': 0,
     'react/require-default-props': 0,
     'react/jsx-curly-newline': 0,
+    'react-hooks/exhaustive-deps': 0,
     'import/no-unresolved': 0,
     'import/prefer-default-export': 0,
     'prettier/prettier': 0,

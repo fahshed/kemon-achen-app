@@ -5,32 +5,23 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import * as Yup from 'yup';
 
 import { theme } from '../../config';
-import { Client } from '../../api';
 import {
   Form,
   FormField,
   SubmitButton,
-  ErrorMessage,
+  // ErrorMessage,
 } from '../../components/FormComponents';
-import { useAuth, useApi } from '../../hooks';
-
-const validationSchema = Yup.object().shape({
-  email: Yup.string().required().email().label('Email'),
-  password: Yup.string().required().min(6).label('Password'),
-});
+// import { useAuth, useApi } from '../../hooks';
+import { useAppDispatch } from '../../store';
+import { login } from '../../store/reducers';
 
 function LoginScreen() {
-  const auth = useAuth();
-  const { data, error, loading, request: loginUser } = useApi(
-    Client.prototype.loginUser,
-  );
+  const dispatch = useAppDispatch();
 
   const handleSubmit = async ({ email, password }) => {
-    const response = await loginUser({ email, password });
+    const response = await dispatch(login({ email, password }));
     if ('error' in response) {
       console.log('LoginScreen', response.error);
-    } else {
-      auth.logIn(response);
     }
   };
 
@@ -86,12 +77,17 @@ function LoginScreen() {
           textContentType="password"
         />
 
-        <ErrorMessage error={JSON.stringify(data)} visible={error} />
+        {/* <ErrorMessage error={JSON.stringify(data)} visible={error} /> */}
 
-        {!loading && <SubmitButton title="Login" />}
+        <SubmitButton title="Login" />
       </Form>
     </View>
   );
 }
 
 export default LoginScreen;
+
+const validationSchema = Yup.object().shape({
+  email: Yup.string().required().email().label('Email'),
+  password: Yup.string().required().min(6).label('Password'),
+});

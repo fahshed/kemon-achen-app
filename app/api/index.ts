@@ -1,8 +1,30 @@
+import Axios from 'axios';
+
 import { KAApiClent } from './KAApiClient';
+import App from '../config';
+import { store } from '../store';
 
-import App, { axios } from '../config';
+const axios = Axios.create({
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+  },
+});
 
-const api = new KAApiClent(undefined, App.BASE_URL, axios);
+//axios.defaults.headers.common['x-mock-response-code'] = '200';
+axios.interceptors.request.use((config) => {
+  const state = store.getState();
 
-export default api;
-export { KAApiClent as Client };
+  if (state.User.isAuthenticated) {
+    const token = state.User.user.jwt;
+    config.headers.Authorization = token;
+  }
+
+  return config;
+});
+
+const Api = new KAApiClent(undefined, App.BASE_URL, axios);
+
+export default Api;
+export * from './KAApiClient';
+export { KAApiClent as Client } from './KAApiClient';

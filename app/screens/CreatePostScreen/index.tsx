@@ -48,7 +48,6 @@ function CreatePostScreen({ navigation }) {
         console.log('Community fetch error', response.error);
       }
     })();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   //const communities2 = await getCommunitiesApi.request();

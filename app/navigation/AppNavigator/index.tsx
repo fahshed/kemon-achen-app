@@ -11,19 +11,24 @@ import {
 import {
   CommunityScreen,
   CreatePostScreen,
-  HomeScreen,
   NearbyProfessionalScreen,
   NotificationScreen,
 } from '../../screens';
 import CreatePostButton from '../CreatePostButton';
+import NavRoutes from '../NavRoutes';
+import FeedNavigator from '../FeedNavigator';
 
 const Tab = createBottomTabNavigator();
 
 const AppNavigator = () => (
-  <Tab.Navigator tabBarOptions={{ showLabel: false }}>
+  <Tab.Navigator
+    tabBarOptions={{
+      showLabel: false,
+    }}
+  >
     <Tab.Screen
       name="Home"
-      component={HomeScreen}
+      component={FeedNavigator}
       options={{
         tabBarIcon: ({ color }) => (
           <MaterialCommunityIcons name="home" size={32} color={color} />
@@ -44,7 +49,9 @@ const AppNavigator = () => (
       component={CreatePostScreen}
       options={({ navigation }) => ({
         tabBarButton: () => (
-          <CreatePostButton onPress={() => navigation.navigate('CreatePost')} />
+          <CreatePostButton
+            onPress={() => navigation.navigate(NavRoutes.CREATE_POST)}
+          />
         ),
       })}
     />

@@ -1,37 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList } from 'react-native';
 
-import { Client } from '../../api';
 import { ItemSeparator, Post, TopSearchBar2 } from '../../components';
 import { theme } from '../../config';
-import { useApi } from '../../hooks';
 import NavRoutes from '../../navigation/NavRoutes';
-import { H5Bold } from '../../styles';
+// import { H5Bold } from '../../styles';
+
+import { fetchPosts, likePost } from '../../store/reducers';
+import { useAppDispatch, useAppSelector } from '../../store';
 
 export default function HomeScreen({ navigation }) {
   const [isRefreshing, setIsRefreshing] = useState(false);
+  const dispatch = useAppDispatch();
 
-  const { data: posts, loading: feedLoading, request: getFeed } = useApi(
-    Client.prototype.getFeed,
-  );
+  const { entities } = useAppSelector((state) => state.Post);
 
-  const { request: pressLike } = useApi(Client.prototype.likePost);
+  const posts = Object.values(entities);
 
   const handleLikePress = async (postId) => {
-    //console.log('post id', postId);
-    const response = await pressLike(postId);
-    if ('error' in response) {
-      console.log('Like error', response.error);
-    }
-  };
-
-  const getHomeFeed = async () => {
-    console.log('hey');
-    const response = await getFeed();
-    if ('error' in response) {
-      console.log('Feed fetch error', response.error);
-    }
-    setIsRefreshing(false);
+    dispatch(likePost({ postId, likeOption: 'like' }));
   };
 
   const renderItem = ({ item }) => (
@@ -48,6 +35,14 @@ export default function HomeScreen({ navigation }) {
     />
   );
 
+  const getHomeFeed = async () => {
+    const response = await dispatch(fetchPosts());
+    if ('error' in response) {
+      console.log('Feed fetch error', response.error);
+    }
+    setIsRefreshing(false);
+  };
+
   useEffect(() => {
     getHomeFeed();
   }, []);
@@ -55,11 +50,12 @@ export default function HomeScreen({ navigation }) {
   return (
     <>
       <TopSearchBar2 />
-      {feedLoading && (
+      {/* {feedLoading && (
         <H5Bold align="center" color="grey5" mt="8px" mb="8px">
           Feed Loading........
         </H5Bold>
-      )}
+      )} */}
+
       <FlatList
         data={posts}
         ItemSeparatorComponent={() => (

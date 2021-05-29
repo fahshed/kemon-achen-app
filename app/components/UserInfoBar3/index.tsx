@@ -22,12 +22,10 @@ function UserInfoBar3({ RankBadgeComponent = null }) {
         source={{ uri: 'https://picsum.photos/200' }}
       />
 
-      {/* <View style={styles.detailsContainer}> */}
       <Body2Bold>Fahim Morshed</Body2Bold>
       {RankBadgeComponent}
       <Entypo name="dot-single" size={16} />
       <Body2>2h</Body2>
-      {/* </View> */}
     </View>
   );
 }
@@ -38,11 +36,6 @@ const styles = StyleSheet.create({
     backgroundColor: theme.lightGrey,
     flexDirection: 'row',
     height: 32,
-    padding: 8,
-  },
-  detailsContainer: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
     padding: 8,
   },
   image: {

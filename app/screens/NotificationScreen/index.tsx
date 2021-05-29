@@ -2,28 +2,44 @@ import React from 'react';
 import { View } from 'react-native';
 
 //import { Body2Bold } from '../../styles';
-import UserInfoBar2 from '../../components/UserInfoBar2';
+//import UserInfoBar2 from '../../components/UserInfoBar2';
 import Comment from '../../components/Comment';
 import UserInfoBar3 from '../../components/UserInfoBar3';
 import TagComponent from '../../components/Tag';
 import RankBadgeComponent from '../../components/RankBadgeComponent';
+import { theme } from '../../config';
 import NotificationCard from '../../components/NotificationCard';
-import ProfessionalCard from '../../components/ProfessionalCard';
+//import ProfessionalCard from '../../components/ProfessionalCard';
 //import CommunityCard from '../../components/CommunityCard';
 import UserProfileCommentCard from '../../components/UserProfileCommentCard';
-import UserProfilePost from '../../components/UserProfilePost';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+// import UserProfilePost from '../../components/UserProfilePost';
+// import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-import {
-  AddCommentBottomBar,
-  CustomTextInput,
-  TopSearchBar2,
-} from '../../components';
-import { theme } from '../../config';
+// import {
+//   AddCommentBottomBar,
+//   CustomTextInput,
+//   TopSearchBar2,
+// } from '../../components';
+// import { theme } from '../../config';
 import { Body2Bold } from '../../styles';
 import ImageHeader from '../../components/ImageHeader';
+import RegularProfileInfoBar from '../../components/RegularProfileInfoBar';
+import ProfessionalProfileInfoBar from '../../components/ProfessionalProfileInfoBar';
+import ProfileTestBadgeComponent from '../../components/ProfileTestBadgeComponent';
+import TestInfoComponent from '../../components/TestInfoComponent';
+import MetricBarComponent from '../../components/MetricBarComponent';
 
 function NotificationScreen() {
+  const badges = [
+    {
+      name: 'PTSD',
+      id: '12345',
+    },
+    {
+      name: 'Anxiety',
+      id: '56789',
+    },
+  ];
   return (
     <View style={{ padding: 8 }}>
       {/* <UserInfobar1 /> */}
@@ -47,7 +63,7 @@ function NotificationScreen() {
         RankBadgeComponent={<RankBadgeComponent rank="100" />}
       />
       <View style={{ padding: 8 }} />
-      <NotificationCard
+      {/* <NotificationCard
         notificationTitle="Fahim gave feedback on your post"
         notificationBody="Welcome to your life There's no turning back Even while we sleep We
         will find you Acting on your best Welcome to your life There's no
@@ -56,15 +72,15 @@ function NotificationScreen() {
         will find you Acting on your best Welcome to your life There's no
         turning back Even while we sleep We will find you Acting on your best"
         time="2h"
-      />
+      /> */}
       {/* <ProfessionalCard /> */}
-      <UserProfileCommentCard
+      {/* <UserProfileCommentCard
         postTitle="Anyone else feels something is not right?"
         commentBody='My grandmother went to an "OK" doctor. We were told she was going to
         die. There was nothing that can be done. My mother brought her to
         another doctor who recognized the ailment and rapidly cured her.'
         time="2h"
-      />
+      /> */}
       <Body2Bold mb="20px">Component test screen</Body2Bold>
       {/* <CustomTextInput
         IconComponent={
@@ -90,6 +106,33 @@ function NotificationScreen() {
         voteCount={100}
       /> */}
       <ImageHeader />
+      <RegularProfileInfoBar
+        userName="Ajwad Akil"
+        profileDescription="Me likey Pizza and sex"
+      />
+      <ProfessionalProfileInfoBar
+        userName="Ajwad Akil"
+        RankBadgeComponent={<RankBadgeComponent rank="100" />}
+        badges={badges}
+      />
+
+      <TestInfoComponent
+        score="12"
+        color="red"
+        testName="PTSD"
+        numericInfo="1h"
+      />
+
+      <TestInfoComponent
+        score=""
+        color="red"
+        testName="PTSD"
+        numericInfo="100 People took this test"
+      />
+
+      <View style={{ marginTop: 8 }}>
+        <MetricBarComponent score="30%" color="red" />
+      </View>
     </View>
   );
 }

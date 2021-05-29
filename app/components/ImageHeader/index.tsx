@@ -1,5 +1,6 @@
 import React from 'react';
 import { Image, StyleSheet, View } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import { theme } from '../../config';
 
 function ImageHeader() {
@@ -7,10 +8,12 @@ function ImageHeader() {
     <View style={styles.container}>
       <View style={styles.backgroundBanner}>
         <View style={styles.imageContainer}>
-          <Image
-            style={styles.image}
-            source={{ uri: 'https://picsum.photos/200' }}
-          />
+          <TouchableOpacity>
+            <Image
+              style={styles.image}
+              source={{ uri: 'https://picsum.photos/200' }}
+            />
+          </TouchableOpacity>
         </View>
       </View>
     </View>
@@ -26,7 +29,7 @@ const styles = StyleSheet.create({
   },
   container: {
     justifyContent: 'center',
-    backgroundColor: theme.white,
+    backgroundColor: theme.red,
     flexDirection: 'row',
     width: '100%',
     height: 107,
@@ -38,7 +41,7 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     justifyContent: 'center',
-    marginTop: 42,
+    marginTop: 32,
   },
   header: {
     flexDirection: 'row',

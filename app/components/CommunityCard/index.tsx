@@ -1,29 +1,33 @@
+import { ThemeProvider } from '@react-navigation/native';
 import React from 'react';
-import { Image, StyleSheet, View } from 'react-native';
+import { Image, StyleSheet, Touchable, View } from 'react-native';
+import { TouchableHighlight } from 'react-native-gesture-handler';
 
 import { theme } from '../../config';
 import { Body2Bold } from '../../styles';
 
-function CommunityCard() {
+function CommunityCard({ communityName, onPress }) {
   return (
-    <View style={styles.container}>
-      <View style={styles.imageContainer}>
-        <Image
-          style={styles.image}
-          source={{ uri: 'https://picsum.photos/200' }}
-        />
+    <TouchableHighlight underlayColor={theme.grey6} onPress={onPress}>
+      <View style={styles.container}>
+        <View style={styles.imageContainer}>
+          <Image
+            style={styles.image}
+            source={{ uri: 'https://picsum.photos/200' }}
+          />
+        </View>
+        <View style={styles.detailsContainer}>
+          <Body2Bold> {communityName} </Body2Bold>
+        </View>
       </View>
-      <View style={styles.detailsContainer}>
-        <Body2Bold>Bipolar Disorder</Body2Bold>
-      </View>
-    </View>
+    </TouchableHighlight>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    backgroundColor: theme.blue,
+    backgroundColor: theme.white,
     flexDirection: 'row',
     padding: 8,
     width: '100%',

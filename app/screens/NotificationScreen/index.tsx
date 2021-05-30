@@ -21,15 +21,22 @@ import RankBadgeComponent from '../../components/RankBadgeComponent';
 //   TopSearchBar2,
 // } from '../../components';
 // import { theme } from '../../config';
-import { Body2Bold } from '../../styles';
+import { Body2Bold, H5Bold } from '../../styles';
 import ImageHeader from '../../components/ImageHeader';
 import RegularProfileInfoBar from '../../components/RegularProfileInfoBar';
 import ProfessionalProfileInfoBar from '../../components/ProfessionalProfileInfoBar';
 //import ProfileTestBadgeComponent from '../../components/ProfileTestBadgeComponent';
 import TestInfoComponent from '../../components/TestInfoComponent';
 import MetricBarComponent from '../../components/MetricBarComponent';
+import ScreenTitleComponent from '../../components/ScreenTitleComponent';
+import { AppButton } from '../../components';
 
+import { useAppDispatch, useAppSelector } from '../../store';
+import { logout } from '../../store/reducers';
 function NotificationScreen() {
+  const dispatch = useAppDispatch();
+  const { user } = useAppSelector((state) => state.User);
+
   const badges = [
     {
       name: 'PTSD',
@@ -45,8 +52,6 @@ function NotificationScreen() {
       {/* <UserInfobar1 /> */}
       <View style={{ padding: 8 }} />
       <UserInfoBar3 />
-      <View style={{ padding: 8 }} />
-      <UserInfoBar3 />
       <View
         style={{
           padding: 8,
@@ -59,9 +64,17 @@ function NotificationScreen() {
         <RankBadgeComponent rank="100" />
       </View>
       <Comment
-        commentBody="discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, Lorem ipsum dolor sit amet"
+        commentBody="m Ipsum, Lorem ipsum dolor sit amet"
         RankBadgeComponent={<RankBadgeComponent rank="100" />}
       />
+
+      <View style={{ padding: 8 }}>
+        <H5Bold>Dummy account screen</H5Bold>
+        <Body2Bold>{'ID: ' + user._id}</Body2Bold>
+        <Body2Bold>{'Name: ' + user.name}</Body2Bold>
+        <Body2Bold>{'role: ' + user.role}</Body2Bold>
+        <AppButton title="Logout" onPress={() => dispatch(logout())} />
+      </View>
       <View style={{ padding: 8 }} />
       {/* <NotificationCard
         notificationTitle="Fahim gave feedback on your post"
@@ -105,7 +118,7 @@ function NotificationScreen() {
         commentCount={100}
         voteCount={100}
       /> */}
-      <ImageHeader />
+      {/* <ImageHeader /> */}
       <RegularProfileInfoBar
         userName="Ajwad Akil"
         profileDescription="Me likey Pizza and sex"
@@ -130,9 +143,10 @@ function NotificationScreen() {
         numericInfo="100 People took this test"
       />
 
-      <View style={{ marginTop: 8 }}>
+      {/* <View style={{ marginTop: 8 }}>
         <MetricBarComponent score="30%" color="red" />
-      </View>
+      </View> */}
+      <ScreenTitleComponent screenName="Notification Screen" />
     </View>
   );
 }

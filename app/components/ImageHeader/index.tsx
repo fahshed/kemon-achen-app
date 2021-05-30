@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     justifyContent: 'center',
-    marginTop: 32,
+    marginTop: 40,
   },
   header: {
     flexDirection: 'row',

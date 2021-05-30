@@ -1,10 +1,10 @@
 import React from 'react';
-import { Image, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import { Entypo } from '@expo/vector-icons';
 
 import { theme } from '../../config';
-import { Body2Bold, Body2 } from '../../styles';
+import { Body2 } from '../../styles';
 import ProfileTestBadgeComponent from '../ProfileTestBadgeComponent';
 
 function TestInfoComponent({ score, color, testName, numericInfo }) {

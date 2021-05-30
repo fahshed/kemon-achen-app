@@ -7,11 +7,11 @@ import Comment from '../../components/Comment';
 import UserInfoBar3 from '../../components/UserInfoBar3';
 import TagComponent from '../../components/Tag';
 import RankBadgeComponent from '../../components/RankBadgeComponent';
-import { theme } from '../../config';
-import NotificationCard from '../../components/NotificationCard';
+//import { theme } from '../../config';
+//import NotificationCard from '../../components/NotificationCard';
 //import ProfessionalCard from '../../components/ProfessionalCard';
 //import CommunityCard from '../../components/CommunityCard';
-import UserProfileCommentCard from '../../components/UserProfileCommentCard';
+//import UserProfileCommentCard from '../../components/UserProfileCommentCard';
 // import UserProfilePost from '../../components/UserProfilePost';
 // import { MaterialCommunityIcons } from '@expo/vector-icons';
 
@@ -25,7 +25,7 @@ import { Body2Bold } from '../../styles';
 import ImageHeader from '../../components/ImageHeader';
 import RegularProfileInfoBar from '../../components/RegularProfileInfoBar';
 import ProfessionalProfileInfoBar from '../../components/ProfessionalProfileInfoBar';
-import ProfileTestBadgeComponent from '../../components/ProfileTestBadgeComponent';
+//import ProfileTestBadgeComponent from '../../components/ProfileTestBadgeComponent';
 import TestInfoComponent from '../../components/TestInfoComponent';
 import MetricBarComponent from '../../components/MetricBarComponent';
 

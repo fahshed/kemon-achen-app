@@ -7,6 +7,7 @@ import { theme } from '../../config';
 import { Body1 } from '../../styles';
 
 function BottomBar1({
+  isPostLiked,
   onLikePress = null,
   onCommentPress = null,
   onSharePress = null,
@@ -20,7 +21,7 @@ function BottomBar1({
           <MaterialCommunityIcons
             name="arrow-up-bold-outline"
             size={28}
-            color={theme.grey5}
+            color={isPostLiked ? theme.primary : theme.grey5}
           />
         </TouchableOpacity>
         <Body1 color="grey5" ml="4px">

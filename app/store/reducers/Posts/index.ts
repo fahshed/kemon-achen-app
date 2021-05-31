@@ -24,6 +24,20 @@ export const fetchPosts = createAsyncThunk(
   },
 );
 
+export const fetchPostDetails = createAsyncThunk(
+  'post/fetchPostDetails',
+  async (postId: string, thunkApi) => {
+    try {
+      //const post = entities[postID];
+      const response = await Api.getPostById(postId);
+      return { postId, comments: response.comments };
+    } catch (e) {
+      console.log('post/fetchPostDetails', e);
+      return thunkApi.rejectWithValue(e);
+    }
+  },
+);
+
 export const likePost = createAsyncThunk(
   'post/likePost',
   async (
@@ -60,9 +74,14 @@ const PostSlice = createSlice({
     builder.addCase(likePost.fulfilled, (state, { payload }) => {
       if (payload.likeOption === 'like') {
         state.entities[payload.postId].voteCount++;
+        state.entities[payload.postId].isLikedByCurrentUser = true;
       } else if (payload.likeOption === 'unlike') {
         state.entities[payload.postId].voteCount--;
+        state.entities[payload.postId].isLikedByCurrentUser = false;
       }
+    });
+    builder.addCase(fetchPostDetails.fulfilled, (state, { payload }) => {
+      state.entities[payload.postId].comments = payload.comments;
     });
   },
 });

@@ -8,13 +8,14 @@ import UserInfoBar1 from '../UserInfoBar1';
 interface PostProps {
   username: string;
   communityName: string;
-  postedAgo: string;
+  postedAgo: any;
   title: string;
   content: string;
   voteCount: Number;
   commentCount: Number;
   onLikePress: Function;
   onPress: (event: GestureResponderEvent) => void;
+  isPostLiked: boolean;
 }
 
 class Post extends PureComponent<PostProps> {
@@ -34,6 +35,7 @@ class Post extends PureComponent<PostProps> {
             {this.props.content}
           </Body2>
           <BottomBar1
+            isPostLiked={this.props.isPostLiked}
             voteCount={this.props.voteCount}
             commentCount={this.props.commentCount}
             onLikePress={this.props.onLikePress}

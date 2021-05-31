@@ -8,7 +8,7 @@ import rootReducer, { RootState } from './rootReducer';
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  whitelist: ['User'],
+  whitelist: ['User', 'Post'],
   // blacklist: [],
 };
 

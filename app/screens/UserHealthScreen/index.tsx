@@ -172,7 +172,7 @@ export default function UserHealthScreen() {
           </TouchableOpacity>
         </View>
         <FlatList
-          data={testInfo}
+          data={suggestedtestInfo}
           ItemSeparatorComponent={() => (
             <ItemSeparator height={8} color={theme.white} />
           )}

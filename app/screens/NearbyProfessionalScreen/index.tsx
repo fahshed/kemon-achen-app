@@ -1,22 +1,12 @@
-import { View } from 'react-native';
 import React from 'react';
 import { FlatList } from 'react-native';
 
-import { ItemSeparator, Post, TopSearchBar2 } from '../../components';
-
-import { AppButton } from '../../components';
-import { Body2Bold, H5Bold } from '../../styles';
-
-import { useAppDispatch, useAppSelector } from '../../store';
-import { logout } from '../../store/reducers';
 import ProfessionalCard from '../../components/ProfessionalCard';
 import ScreenTitleComponent from '../../components/ScreenTitleComponent';
 import { theme } from '../../config';
+import { ItemSeparator } from '../../components';
 
 function NearbyProfessionalScreen() {
-  const dispatch = useAppDispatch();
-  const { user } = useAppSelector((state) => state.User);
-
   const suggestedProfessionals = [
     {
       userName: 'Mr Bilkis Rahman',

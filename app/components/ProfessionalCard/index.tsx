@@ -1,8 +1,9 @@
 import React from 'react';
 import { Image, StyleSheet, View } from 'react-native';
 import { FlatList, TouchableHighlight } from 'react-native-gesture-handler';
+
 import { theme } from '../../config';
-import { Body1, Caption, Body2Bold } from '../../styles';
+import { Caption, Body2Bold } from '../../styles';
 import RankBadgeComponent from '../RankBadgeComponent';
 import TagComponent from '../Tag';
 

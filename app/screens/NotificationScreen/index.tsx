@@ -9,7 +9,7 @@ import TagComponent from '../../components/Tag';
 import RankBadgeComponent from '../../components/RankBadgeComponent';
 //import { theme } from '../../config';
 //import NotificationCard from '../../components/NotificationCard';
-import ProfessionalCard from '../../components/ProfessionalCard';
+// import ProfessionalCard from '../../components/ProfessionalCard';
 //import CommunityCard from '../../components/CommunityCard';
 //import UserProfileCommentCard from '../../components/UserProfileCommentCard';
 // import UserProfilePost from '../../components/UserProfilePost';
@@ -28,7 +28,7 @@ import ProfessionalProfileInfoBar from '../../components/ProfessionalProfileInfo
 //import ProfileTestBadgeComponent from '../../components/ProfileTestBadgeComponent';
 import TestInfoComponent from '../../components/TestInfoComponent';
 
-import ScreenTitleComponent from '../../components/ScreenTitleComponent';
+// import ScreenTitleComponent from '../../components/ScreenTitleComponent';
 import { AppButton } from '../../components';
 
 import { useAppDispatch, useAppSelector } from '../../store';

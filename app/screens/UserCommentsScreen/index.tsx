@@ -1,9 +1,7 @@
-import React, { useEffect } from 'react';
-import { FlatList, View, StyleSheet } from 'react-native';
+import React from 'react';
+import { FlatList } from 'react-native';
 
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-
-import { ItemSeparator, TopSearchBar2 } from '../../components';
+import { ItemSeparator } from '../../components';
 import UserProfileCommentCard from '../../components/UserProfileCommentCard';
 
 import { theme } from '../../config';

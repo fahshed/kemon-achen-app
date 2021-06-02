@@ -1,58 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { FlatList, View, StyleSheet } from 'react-native';
 
-import { ItemSeparator, Post, TopSearchBar2 } from '../../components';
+import { ItemSeparator, TopSearchBar2 } from '../../components';
 import { theme } from '../../config';
-import NavRoutes from '../../navigation/NavRoutes';
-import { Body2Bold, H5Bold } from '../../styles';
+//import NavRoutes from '../../navigation/NavRoutes';
+//import { Body2Bold, H5Bold } from '../../styles';
 
 import { useAppDispatch, useAppSelector } from '../../store';
 import { fetchCommunities } from '../../store/reducers';
 import ScreenTitleComponent from '../../components/ScreenTitleComponent';
 import CommunityCard from '../../components/CommunityCard';
+import NavRoutes from '../../navigation/NavRoutes';
 
-function CommunityScreen() {
+function CommunityScreen({ navigation }) {
   const dispatch = useAppDispatch();
   const { communities } = useAppSelector((state) => state.Community);
-
-  // const community = [
-  //   {
-  //     _id: '123344',
-  //     name: 'PTSD',
-  //   },
-  //   {
-  //     _id: '1233443',
-  //     name: 'Anxiety',
-  //   },
-  //   {
-  //     _id: '12334aa4',
-  //     name: 'Eating Disorder',
-  //   },
-  //   {
-  //     _id: '12334aa4',
-  //     name: 'Eating Disorder',
-  //   },
-  //   {
-  //     _id: '12334aa4',
-  //     name: 'Eating Disorder',
-  //   },
-  //   {
-  //     _id: '12334aa4',
-  //     name: 'Eating Disorder',
-  //   },
-  //   {
-  //     _id: '12334aa4',
-  //     name: 'Eating Disorder',
-  //   },
-  //   {
-  //     _id: '12334aa4',
-  //     name: 'Eating Disorder',
-  //   },
-  //   {
-  //     _id: '12334aa4',
-  //     name: 'Eating Disorder',
-  //   },
-  // ];
 
   const renderItem = ({ item }) => (
     <CommunityCard
@@ -74,7 +36,11 @@ function CommunityScreen() {
 
   return (
     <>
-      <TopSearchBar2 />
+      <TopSearchBar2
+        navigateToProfileScreen={() =>
+          navigation.navigate(NavRoutes.USER_PROFILE)
+        }
+      />
       <View style={styles.communityListContainer}>
         <ScreenTitleComponent screenName="Communities" />
 

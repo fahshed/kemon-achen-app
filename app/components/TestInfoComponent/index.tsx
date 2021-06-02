@@ -21,15 +21,11 @@ function TestInfoComponent({ score, color, testName, numericInfo }) {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    backgroundColor: theme.lightGrey,
+    backgroundColor: theme.white,
     flexDirection: 'row',
     height: 32,
     padding: 8,
-  },
-  detailsContainer: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    padding: 8,
+    marginLeft: 8,
   },
 });
 

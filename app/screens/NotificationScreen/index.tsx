@@ -9,7 +9,7 @@ import TagComponent from '../../components/Tag';
 import RankBadgeComponent from '../../components/RankBadgeComponent';
 //import { theme } from '../../config';
 //import NotificationCard from '../../components/NotificationCard';
-//import ProfessionalCard from '../../components/ProfessionalCard';
+import ProfessionalCard from '../../components/ProfessionalCard';
 //import CommunityCard from '../../components/CommunityCard';
 //import UserProfileCommentCard from '../../components/UserProfileCommentCard';
 // import UserProfilePost from '../../components/UserProfilePost';
@@ -22,12 +22,12 @@ import RankBadgeComponent from '../../components/RankBadgeComponent';
 // } from '../../components';
 // import { theme } from '../../config';
 import { Body2Bold, H5Bold } from '../../styles';
-import ImageHeader from '../../components/ImageHeader';
+//import ImageHeader from '../../components/ImageHeader';
 import RegularProfileInfoBar from '../../components/RegularProfileInfoBar';
 import ProfessionalProfileInfoBar from '../../components/ProfessionalProfileInfoBar';
 //import ProfileTestBadgeComponent from '../../components/ProfileTestBadgeComponent';
 import TestInfoComponent from '../../components/TestInfoComponent';
-import MetricBarComponent from '../../components/MetricBarComponent';
+
 import ScreenTitleComponent from '../../components/ScreenTitleComponent';
 import { AppButton } from '../../components';
 
@@ -146,7 +146,12 @@ function NotificationScreen() {
       {/* <View style={{ marginTop: 8 }}>
         <MetricBarComponent score="30%" color="red" />
       </View> */}
-      <ScreenTitleComponent screenName="Notification Screen" />
+      {/* <ProfessionalCard
+        userName="Ajwad Akil"
+        badges={badges}
+        rank="100"
+        location="Dhanmondi, Panchlaish, Dhaka"
+      /> */}
     </View>
   );
 }

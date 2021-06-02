@@ -8,7 +8,7 @@ import { Body2Bold, Body2 } from '../../styles';
 
 function UserProfileCommentCard({ postTitle, commentBody, time }) {
   return (
-    <View style={{ flexDirection: 'column', backgroundColor: theme.red }}>
+    <View style={{ flexDirection: 'column', backgroundColor: theme.white }}>
       <View style={styles.header}>
         <Body2Bold>{postTitle}</Body2Bold>
         <Entypo name="dot-single" size={16} />
@@ -24,7 +24,7 @@ function UserProfileCommentCard({ postTitle, commentBody, time }) {
 const styles = StyleSheet.create({
   header: {
     alignItems: 'center',
-    backgroundColor: theme.red,
+    backgroundColor: theme.white,
     flexDirection: 'row',
     height: 32,
     padding: 8,

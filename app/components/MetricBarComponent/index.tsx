@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { StyleSheet, View } from 'react-native';
+
 import { theme } from '../../config';
 import { Caption } from '../../styles';
 
@@ -36,8 +37,10 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: theme.red,
     borderRadius: 16,
-    marginRight: 8,
-    width: 299,
+    marginRight: 24,
+    marginLeft: 'auto',
+    marginTop: 4,
+    width: '64%',
     height: 16,
   },
   fillerContainer: {

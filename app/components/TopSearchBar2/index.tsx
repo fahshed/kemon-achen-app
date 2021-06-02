@@ -5,14 +5,17 @@ import { Ionicons } from '@expo/vector-icons';
 
 import { theme } from '../../config';
 import CustomTextInput from '../CustomTextInput';
+import { TouchableHighlight } from 'react-native-gesture-handler';
 
-function TopSearchBar2() {
+function TopSearchBar2({ navigateToProfileScreen }) {
   return (
     <View style={styles.container}>
-      <Image
-        style={{ height: 40, width: 40, borderRadius: 20 }}
-        source={{ uri: 'https://picsum.photos/200' }}
-      />
+      <TouchableHighlight onPress={navigateToProfileScreen}>
+        <Image
+          style={{ height: 40, width: 40, borderRadius: 20 }}
+          source={{ uri: 'https://picsum.photos/200' }}
+        />
+      </TouchableHighlight>
       <View style={{ flex: 1 }}>
         <CustomTextInput
           IconComponent={

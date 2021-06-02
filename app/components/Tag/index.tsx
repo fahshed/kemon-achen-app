@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
     backgroundColor: theme.primary,
     borderRadius: 16,
     marginRight: 8,
+    marginBottom: 4,
   },
   text: {
     marginHorizontal: 8,

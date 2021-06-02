@@ -8,4 +8,5 @@ export default Object.freeze({
   POST_DETAILS: 'PostDetails',
   SIGNUP: 'Signup',
   WELCOME: 'Welcome',
+  USER_PROFILE: 'UserProfile',
 });

@@ -1,11 +1,8 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { Entypo } from '@expo/vector-icons';
-
 import { theme } from '../../config';
 import { H6Bold } from '../../styles';
-import ProfileTestBadgeComponent from '../ProfileTestBadgeComponent';
 
 function ScreenTitleComponent({ screenName }) {
   return (

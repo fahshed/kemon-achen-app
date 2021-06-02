@@ -11,7 +11,7 @@ function RegularProfileInfoBar({ userName, profileDescription }) {
         <Body2Bold>{userName}</Body2Bold>
         <Caption>{profileDescription}</Caption>
       </View>
-      <TouchableOpacity style={{ marginLeft: 'auto' }}>
+      <TouchableOpacity style={{ marginLeft: 'auto', marginRight: 16 }}>
         <Caption color="red">Edit</Caption>
       </TouchableOpacity>
     </View>
@@ -21,7 +21,7 @@ function RegularProfileInfoBar({ userName, profileDescription }) {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'flex-start',
-    backgroundColor: theme.grey5,
+    backgroundColor: theme.white,
     flexDirection: 'row',
     padding: 8,
     width: '100%',

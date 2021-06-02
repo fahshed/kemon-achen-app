@@ -1,6 +1,5 @@
-import { ThemeProvider } from '@react-navigation/native';
 import React from 'react';
-import { Image, StyleSheet, Touchable, View } from 'react-native';
+import { Image, StyleSheet, View } from 'react-native';
 import { TouchableHighlight } from 'react-native-gesture-handler';
 
 import { theme } from '../../config';

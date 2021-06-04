@@ -27,9 +27,24 @@ export const logout = createAsyncThunk('auth/logout', async (_, thunkApi) => {
   }
 });
 
+export const fetchUserCommentsById = createAsyncThunk(
+  'user/comments',
+  async (userId: string, thunkApi) => {
+    try {
+      const response = await Api.getCommentsByUserId(userId);
+      console.log('\n\nuser/comments', response);
+      return response;
+    } catch (e) {
+      console.log('user/comments', e);
+      return thunkApi.rejectWithValue(e);
+    }
+  },
+);
+
 interface State {
   isAuthenticated: boolean;
   user: AuthResponse;
+  userComments: any;
 }
 
 const initialState: State = {
@@ -42,6 +57,7 @@ const initialState: State = {
     role: '',
     image: '',
   },
+  userComments: [],
 };
 
 const UserSlice = createSlice({
@@ -57,6 +73,10 @@ const UserSlice = createSlice({
         state.user = payload;
       }
       console.log('\n\nIn case', state);
+    });
+
+    builder.addCase(fetchUserCommentsById.fulfilled, (state, { payload }) => {
+      state.userComments = payload;
     });
   },
 });

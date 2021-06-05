@@ -2,13 +2,14 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 import { UserLoginCredentials, AuthResponse } from '../../../api';
 import Api from '../../../api';
+import { resetCommunities } from '../Communities';
 
 export const login = createAsyncThunk(
   'auth/login',
   async (data: UserLoginCredentials, thunkApi) => {
     try {
       const response = await Api.loginUser(data);
-      console.log('\n\nauth/login', response);
+      //console.log('\n\nauth/login', response);
       return response;
     } catch (e) {
       console.log('auth/login', e);
@@ -21,6 +22,7 @@ export const logout = createAsyncThunk('auth/logout', async (_, thunkApi) => {
   try {
     const { dispatch } = thunkApi;
     dispatch(resetUser());
+    dispatch(resetCommunities());
   } catch (e) {
     console.log('auth/logout', e);
     return thunkApi.rejectWithValue(e);
@@ -56,7 +58,7 @@ const UserSlice = createSlice({
         state.isAuthenticated = true;
         state.user = payload;
       }
-      console.log('\n\nIn case', state);
+      //console.log('\n\nIn case', state);
     });
   },
 });

@@ -10,6 +10,7 @@ function BottomBar2({
   onLikePress = null,
   onReplyPress = null,
   onMorePress = null,
+  commentLikeCount,
 }) {
   return (
     <View style={styles.container}>
@@ -39,7 +40,7 @@ function BottomBar2({
             color={theme.grey5}
           />
         </TouchableOpacity>
-        <Body2 color="grey5">10</Body2>
+        <Body2 color="grey5">{commentLikeCount}</Body2>
       </View>
     </View>
   );
@@ -48,7 +49,7 @@ function BottomBar2({
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    backgroundColor: theme.lightGrey,
+    backgroundColor: theme.white,
     flexDirection: 'row',
     justifyContent: 'flex-end',
     padding: 8,

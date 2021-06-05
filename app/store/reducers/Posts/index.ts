@@ -54,6 +54,39 @@ export const likePost = createAsyncThunk(
   },
 );
 
+export const createPost = createAsyncThunk(
+  'post/createPost',
+  async (
+    {
+      title,
+      content,
+      asPseudo,
+      community: { name },
+    }: {
+      title: string;
+      content: string;
+      asPseudo: boolean;
+      community: {
+        name: string;
+      };
+    },
+    thunkApi,
+  ) => {
+    try {
+      const response = Api.createPost({
+        title,
+        content,
+        asPseudo,
+        community: { name },
+      });
+      return response;
+    } catch (e) {
+      console.log('post/createPost', e);
+      return thunkApi.rejectWithValue(e);
+    }
+  },
+);
+
 const postAdapter = createEntityAdapter({
   selectId: (post: Post) => post._id,
 });
@@ -74,6 +107,7 @@ const PostSlice = createSlice({
     builder.addCase(likePost.fulfilled, (state, { payload }) => {
       if (payload.likeOption === 'like') {
         state.entities[payload.postId].voteCount++;
+        //state.entities[payload.postId].likedByUsersId.includes()
         state.entities[payload.postId].isLikedByCurrentUser = true;
       } else if (payload.likeOption === 'unlike') {
         state.entities[payload.postId].voteCount--;
@@ -82,6 +116,9 @@ const PostSlice = createSlice({
     });
     builder.addCase(fetchPostDetails.fulfilled, (state, { payload }) => {
       state.entities[payload.postId].comments = payload.comments;
+    });
+    builder.addCase(createPost.fulfilled, (state, { payload }) => {
+      console.log(payload.message);
     });
   },
 });

@@ -49,7 +49,7 @@ function BottomBar2({
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    backgroundColor: theme.lightGrey,
+    backgroundColor: theme.white,
     flexDirection: 'row',
     justifyContent: 'flex-end',
     padding: 8,

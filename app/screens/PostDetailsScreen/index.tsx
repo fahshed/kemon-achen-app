@@ -54,6 +54,7 @@ function PostDetailsScreen({ route }) {
   return (
     <>
       <Post
+        touchDisabled={true}
         content={post.content}
         commentCount={post.commentCount}
         communityName={post.community.name}
@@ -66,7 +67,7 @@ function PostDetailsScreen({ route }) {
         onPress={null}
       />
 
-      <ItemSeparator height={8} color={theme.green} />
+      <ItemSeparator height={8} color={theme.grey3} />
       <FlatList
         data={post.comments}
         ItemSeparatorComponent={() => (
@@ -76,7 +77,7 @@ function PostDetailsScreen({ route }) {
         renderItem={renderItem}
       />
 
-      <AddCommentBottomBar />
+      <AddCommentBottomBar onPress={null} />
     </>
   );
 }

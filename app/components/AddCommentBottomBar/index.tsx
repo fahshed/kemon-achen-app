@@ -6,15 +6,16 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { theme } from '../../config';
 import CustomTextInput from '../CustomTextInput';
 
-function AddCommentBottomBar() {
+function AddCommentBottomBar({ onPress }) {
   return (
     <View style={styles.container}>
       <Image
         style={styles.image}
         source={{ uri: 'https://picsum.photos/200' }}
       />
+
       <View style={{ flex: 1 }}>
-        <CustomTextInput placeholder="Add a comment" />
+        <CustomTextInput placeholder="Add a comment" onFocus={onPress} />
       </View>
 
       <TouchableOpacity>

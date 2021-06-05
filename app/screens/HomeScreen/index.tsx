@@ -28,6 +28,7 @@ export default function HomeScreen({ navigation }) {
 
   const renderItem = ({ item }) => (
     <Post
+      touchDisabled={false}
       content={item.content}
       commentCount={item.commentCount}
       communityName={item.community.name}
@@ -73,8 +74,8 @@ export default function HomeScreen({ navigation }) {
         keyExtractor={(post) => post._id}
         refreshing={isRefreshing}
         onRefresh={() => {
-          getHomeFeed();
           setIsRefreshing(true);
+          getHomeFeed();
         }}
         renderItem={renderItem}
       />

@@ -37,7 +37,7 @@ function UserInfoBar3({
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    backgroundColor: theme.lightGrey,
+    backgroundColor: theme.white,
     flexDirection: 'row',
     height: 32,
     padding: 8,

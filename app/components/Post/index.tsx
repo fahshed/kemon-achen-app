@@ -15,13 +15,17 @@ interface PostProps {
   commentCount: Number;
   onLikePress: Function;
   onPress: (event: GestureResponderEvent) => void;
+  touchDisabled: boolean;
   isPostLiked: boolean;
 }
 
 class Post extends PureComponent<PostProps> {
   render() {
     return (
-      <TouchableOpacity onPress={this.props.onPress}>
+      <TouchableOpacity
+        onPress={this.props.onPress}
+        disabled={this.props.touchDisabled}
+      >
         <>
           <UserInfoBar1
             username={this.props.username}

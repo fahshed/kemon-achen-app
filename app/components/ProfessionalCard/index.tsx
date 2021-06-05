@@ -1,42 +1,58 @@
 import React from 'react';
 import { Image, StyleSheet, View } from 'react-native';
+import { FlatList, TouchableHighlight } from 'react-native-gesture-handler';
 
 import { theme } from '../../config';
-import { Body1, Caption } from '../../styles';
+import { Caption, Body2Bold } from '../../styles';
 import RankBadgeComponent from '../RankBadgeComponent';
 import TagComponent from '../Tag';
 
-function ProfessionalCard() {
+function ProfessionalCard({
+  userName,
+  badges,
+  rank,
+  location,
+  handleNavigation,
+}) {
+  const renderItem = ({ item }) => <TagComponent badgeContent={item.name} />;
   return (
-    <View style={styles.container}>
-      <View style={styles.imageContainer}>
-        <Image
-          style={styles.image}
-          source={{ uri: 'https://picsum.photos/200' }}
-        />
-      </View>
-      <View style={styles.detailsContainer}>
-        <View style={{ flexDirection: 'row', marginBottom: 8 }}>
-          <Body1>Dr. Sikandar Bakshiii</Body1>
-          <RankBadgeComponent rank="100" />
+    <TouchableHighlight underlayColor={theme.grey6} onPress={handleNavigation}>
+      <View style={styles.container}>
+        <View style={styles.imageContainer}>
+          <Image
+            style={styles.image}
+            source={{ uri: 'https://picsum.photos/200' }}
+          />
         </View>
-        <View style={{ flexDirection: 'row', marginBottom: 8 }}>
-          <TagComponent badgeContent="PTSD" />
-          <TagComponent badgeContent="Anxiety" />
-          <TagComponent badgeContent="Stress" />
+        <View style={styles.detailsContainer}>
+          <View style={{ flexDirection: 'row', marginBottom: 4 }}>
+            <Body2Bold>{userName}</Body2Bold>
+            <RankBadgeComponent rank={rank} />
+          </View>
+          <View>
+            {/* <TagComponent badgeContent="PTSD" />
+            <TagComponent badgeContent="Anxiety" />
+            <TagComponent badgeContent="Stress" /> */}
+            <FlatList
+              data={badges}
+              keyExtractor={(badge) => badge.id}
+              horizontal={true}
+              renderItem={renderItem}
+            />
+          </View>
+          <Caption color="grey6" numberOfLines={3}>
+            {location}
+          </Caption>
         </View>
-        <Caption color="grey6" numberOfLines={3}>
-          Dhanmondi, panchalaish, Chattogram
-        </Caption>
       </View>
-    </View>
+    </TouchableHighlight>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    backgroundColor: theme.orange,
+    backgroundColor: theme.white,
     flexDirection: 'row',
     padding: 8,
     width: '100%',

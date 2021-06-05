@@ -42,11 +42,6 @@ const styles = StyleSheet.create({
     height: 32,
     padding: 8,
   },
-  detailsContainer: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    padding: 8,
-  },
   image: {
     height: 24,
     width: 24,

@@ -51,8 +51,8 @@ function NotificationScreen() {
     <View style={{ padding: 8 }}>
       {/* <UserInfobar1 /> */}
       <View style={{ padding: 8 }} />
-      <UserInfoBar3 />
-      <View
+      {/* <UserInfoBar3 /> */}
+      {/* <View
         style={{
           padding: 8,
           flexDirection: 'row',
@@ -62,11 +62,11 @@ function NotificationScreen() {
         <TagComponent badgeContent="Anxiety" />
         <TagComponent badgeContent="PTSD" />
         <RankBadgeComponent rank="100" />
-      </View>
-      <Comment
+      </View> */}
+      {/* <Comment
         commentBody="m Ipsum, Lorem ipsum dolor sit amet"
         RankBadgeComponent={<RankBadgeComponent rank="100" />}
-      />
+      /> */}
 
       <View style={{ padding: 8 }}>
         <H5Bold>Dummy account screen</H5Bold>
@@ -119,7 +119,7 @@ function NotificationScreen() {
         voteCount={100}
       /> */}
       {/* <ImageHeader /> */}
-      <RegularProfileInfoBar
+      {/* <RegularProfileInfoBar
         userName="Ajwad Akil"
         profileDescription="Me likey Pizza and sex"
       />
@@ -141,7 +141,7 @@ function NotificationScreen() {
         color="red"
         testName="PTSD"
         numericInfo="100 People took this test"
-      />
+      /> */}
 
       {/* <View style={{ marginTop: 8 }}>
         <MetricBarComponent score="30%" color="red" />

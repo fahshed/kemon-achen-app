@@ -6,7 +6,11 @@ import { Entypo } from '@expo/vector-icons';
 import { theme } from '../../config';
 import { Body2Bold, Body2 } from '../../styles';
 
-function UserInfoBar3({ RankBadgeComponent = null }) {
+function UserInfoBar3({
+  commenterName,
+  commentedAgo,
+  RankBadgeComponent = null,
+}) {
   return (
     <View
       style={[
@@ -22,10 +26,10 @@ function UserInfoBar3({ RankBadgeComponent = null }) {
         source={{ uri: 'https://picsum.photos/200' }}
       />
 
-      <Body2Bold>Fahim Morshed</Body2Bold>
+      <Body2Bold>{commenterName}</Body2Bold>
       {RankBadgeComponent}
       <Entypo name="dot-single" size={16} />
-      <Body2>2h</Body2>
+      <Body2>{commentedAgo}</Body2>
     </View>
   );
 }
@@ -33,7 +37,7 @@ function UserInfoBar3({ RankBadgeComponent = null }) {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    backgroundColor: theme.lightGrey,
+    backgroundColor: theme.white,
     flexDirection: 'row',
     height: 32,
     padding: 8,

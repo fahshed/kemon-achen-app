@@ -4,7 +4,6 @@ import { Platform, StyleSheet, TouchableOpacity, View } from 'react-native';
 import * as Yup from 'yup';
 import { Entypo } from '@expo/vector-icons';
 
-import { Client } from '../../api';
 import {
   Form,
   FormField,
@@ -12,10 +11,12 @@ import {
   FormSwitch,
   SubmitButton,
 } from '../../components/FormComponents';
-import { useApi } from '../../hooks';
 import { Body1, H6Bold } from '../../styles';
 import { theme } from '../../config';
 import { ItemSeparator } from '../../components';
+import { useAppDispatch, useAppSelector } from '../../store';
+import { fetchCommunities } from '../../store/reducers';
+import { createPost } from '../../store/reducers/Posts';
 
 const validationSchema = Yup.object().shape({
   communityName: Yup.string().required().label('Community'),
@@ -24,46 +25,35 @@ const validationSchema = Yup.object().shape({
   postContent: Yup.string().required().label('Post Content'),
 });
 
-const postContentNumOfLines = 7;
+const postContentNumOfLines = 12;
 const postTitleNumOfLines = 3;
 
 function CreatePostScreen({ navigation }) {
-  const {
-    data: postData,
-    error: postError,
-    loading: postLoading,
-    request: createPost,
-  } = useApi(Client.prototype.createPost);
+  const dispatch = useAppDispatch();
+  const { communities } = useAppSelector((state) => state.Community);
 
-  const {
-    data: communities,
-    //loading: communityLoading,
-    request: getCommunities,
-  } = useApi(Client.prototype.getCommunities);
+  const getCommunitiesOfUser = async () => {
+    await dispatch(fetchCommunities());
+  };
 
   useEffect(() => {
-    (async function () {
-      const response = await getCommunities();
-      if ('error' in response) {
-        console.log('Community fetch error', response.error);
-      }
-    })();
+    getCommunitiesOfUser();
   }, []);
-
-  //const communities2 = await getCommunitiesApi.request();
 
   const handleSubmit = async (
     { anonymous, communityName, postTitle, postContent },
     { resetForm },
   ) => {
-    await createPost({
-      title: postTitle,
-      content: postContent,
-      asPseudo: anonymous,
-      community: {
-        name: communityName,
-      },
-    });
+    await dispatch(
+      createPost({
+        title: postTitle,
+        content: postContent,
+        asPseudo: anonymous,
+        community: {
+          name: communityName,
+        },
+      }),
+    );
     resetForm();
   };
 
@@ -153,14 +143,14 @@ function CreatePostScreen({ navigation }) {
           textAlignVertical="top"
         />
 
-        {postLoading ? (
+        {/* {postLoading ? (
           <Body1>Loading...</Body1>
         ) : (
           <View>
             {postError && <Body1 mt="24px">Error Occured</Body1>}
             <Body1 mt="24px">{JSON.stringify(postData)}</Body1>
           </View>
-        )}
+        )} */}
       </Form>
     </View>
   );

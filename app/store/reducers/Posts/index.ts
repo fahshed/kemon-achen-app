@@ -24,6 +24,20 @@ export const fetchPosts = createAsyncThunk(
   },
 );
 
+export const fetchPostDetails = createAsyncThunk(
+  'post/fetchPostDetails',
+  async (postId: string, thunkApi) => {
+    try {
+      //const post = entities[postID];
+      const response = await Api.getPostById(postId);
+      return { postId, comments: response.comments };
+    } catch (e) {
+      console.log('post/fetchPostDetails', e);
+      return thunkApi.rejectWithValue(e);
+    }
+  },
+);
+
 export const likePost = createAsyncThunk(
   'post/likePost',
   async (
@@ -35,6 +49,39 @@ export const likePost = createAsyncThunk(
       return { postId, likeOption };
     } catch (e) {
       console.log('post/likePost', e);
+      return thunkApi.rejectWithValue(e);
+    }
+  },
+);
+
+export const createPost = createAsyncThunk(
+  'post/createPost',
+  async (
+    {
+      title,
+      content,
+      asPseudo,
+      community: { name },
+    }: {
+      title: string;
+      content: string;
+      asPseudo: boolean;
+      community: {
+        name: string;
+      };
+    },
+    thunkApi,
+  ) => {
+    try {
+      const response = Api.createPost({
+        title,
+        content,
+        asPseudo,
+        community: { name },
+      });
+      return response;
+    } catch (e) {
+      console.log('post/createPost', e);
       return thunkApi.rejectWithValue(e);
     }
   },
@@ -60,9 +107,18 @@ const PostSlice = createSlice({
     builder.addCase(likePost.fulfilled, (state, { payload }) => {
       if (payload.likeOption === 'like') {
         state.entities[payload.postId].voteCount++;
+        //state.entities[payload.postId].likedByUsersId.includes()
+        state.entities[payload.postId].isLikedByCurrentUser = true;
       } else if (payload.likeOption === 'unlike') {
         state.entities[payload.postId].voteCount--;
+        state.entities[payload.postId].isLikedByCurrentUser = false;
       }
+    });
+    builder.addCase(fetchPostDetails.fulfilled, (state, { payload }) => {
+      state.entities[payload.postId].comments = payload.comments;
+    });
+    builder.addCase(createPost.fulfilled, (state, { payload }) => {
+      console.log(payload.message);
     });
   },
 });

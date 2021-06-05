@@ -4,10 +4,10 @@ import { FlatList } from 'react-native';
 import { ItemSeparator, Post, TopSearchBar2 } from '../../components';
 import { theme } from '../../config';
 import NavRoutes from '../../navigation/NavRoutes';
-// import { H5Bold } from '../../styles';
 
 import { fetchPosts, likePost } from '../../store/reducers';
 import { useAppDispatch, useAppSelector } from '../../store';
+import { H5Bold } from '../../styles';
 
 export default function HomeScreen({ navigation }) {
   const [isRefreshing, setIsRefreshing] = useState(false);
@@ -18,11 +18,17 @@ export default function HomeScreen({ navigation }) {
   const posts = Object.values(entities);
 
   const handleLikePress = async (postId) => {
-    dispatch(likePost({ postId, likeOption: 'like' }));
+    dispatch(
+      likePost({
+        postId,
+        likeOption: !entities[postId].isLikedByCurrentUser ? 'like' : 'unlike',
+      }),
+    );
   };
 
   const renderItem = ({ item }) => (
     <Post
+      touchDisabled={false}
       content={item.content}
       commentCount={item.commentCount}
       communityName={item.community.name}
@@ -31,7 +37,10 @@ export default function HomeScreen({ navigation }) {
       username={item.postedBy.name}
       voteCount={item.voteCount}
       onLikePress={() => handleLikePress(item._id)}
-      onPress={() => navigation.navigate(NavRoutes.POST_DETAILS, item)}
+      isPostLiked={entities[item._id].isLikedByCurrentUser}
+      onPress={() => {
+        navigation.navigate(NavRoutes.POST_DETAILS, item._id);
+      }}
     />
   );
 
@@ -40,6 +49,7 @@ export default function HomeScreen({ navigation }) {
     if ('error' in response) {
       console.log('Feed fetch error', response.error);
     }
+
     setIsRefreshing(false);
   };
 
@@ -54,11 +64,11 @@ export default function HomeScreen({ navigation }) {
           navigation.navigate(NavRoutes.USER_PROFILE)
         }
       />
-      {/* {feedLoading && (
+      {isRefreshing && (
         <H5Bold align="center" color="grey5" mt="8px" mb="8px">
           Feed Loading........
         </H5Bold>
-      )} */}
+      )}
 
       <FlatList
         data={posts}
@@ -68,8 +78,8 @@ export default function HomeScreen({ navigation }) {
         keyExtractor={(post) => post._id}
         refreshing={isRefreshing}
         onRefresh={() => {
-          getHomeFeed();
           setIsRefreshing(true);
+          getHomeFeed();
         }}
         renderItem={renderItem}
       />

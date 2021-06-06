@@ -3,10 +3,10 @@ import { View } from 'react-native';
 
 //import { Body2Bold } from '../../styles';
 //import UserInfoBar2 from '../../components/UserInfoBar2';
-import Comment from '../../components/Comment';
-import UserInfoBar3 from '../../components/UserInfoBar3';
-import TagComponent from '../../components/Tag';
-import RankBadgeComponent from '../../components/RankBadgeComponent';
+// import Comment from '../../components/Comment';
+// import UserInfoBar3 from '../../components/UserInfoBar3';
+// import TagComponent from '../../components/Tag';
+// import RankBadgeComponent from '../../components/RankBadgeComponent';
 //import { theme } from '../../config';
 //import NotificationCard from '../../components/NotificationCard';
 // import ProfessionalCard from '../../components/ProfessionalCard';
@@ -23,10 +23,10 @@ import RankBadgeComponent from '../../components/RankBadgeComponent';
 // import { theme } from '../../config';
 import { Body2Bold, H5Bold } from '../../styles';
 //import ImageHeader from '../../components/ImageHeader';
-import RegularProfileInfoBar from '../../components/RegularProfileInfoBar';
-import ProfessionalProfileInfoBar from '../../components/ProfessionalProfileInfoBar';
+// import RegularProfileInfoBar from '../../components/RegularProfileInfoBar';
+// import ProfessionalProfileInfoBar from '../../components/ProfessionalProfileInfoBar';
 //import ProfileTestBadgeComponent from '../../components/ProfileTestBadgeComponent';
-import TestInfoComponent from '../../components/TestInfoComponent';
+// import TestInfoComponent from '../../components/TestInfoComponent';
 
 // import ScreenTitleComponent from '../../components/ScreenTitleComponent';
 import { AppButton } from '../../components';
@@ -37,16 +37,16 @@ function NotificationScreen() {
   const dispatch = useAppDispatch();
   const { user } = useAppSelector((state) => state.User);
 
-  const badges = [
-    {
-      name: 'PTSD',
-      id: '12345',
-    },
-    {
-      name: 'Anxiety',
-      id: '56789',
-    },
-  ];
+  // const badges = [
+  //   {
+  //     name: 'PTSD',
+  //     id: '12345',
+  //   },
+  //   {
+  //     name: 'Anxiety',
+  //     id: '56789',
+  //   },
+  // ];
   return (
     <View style={{ padding: 8 }}>
       {/* <UserInfobar1 /> */}
@@ -95,63 +95,6 @@ function NotificationScreen() {
         time="2h"
       /> */}
       <Body2Bold mb="20px">Component test screen</Body2Bold>
-      {/* <CustomTextInput
-        IconComponent={
-          <MaterialCommunityIcons
-            color={theme.grey6}
-            name="lock"
-            size={24}
-            style={{ paddingRight: 8 }}
-          />
-        }
-      />
-      <CustomTextInput />
-      <AddCommentBottomBar />
-      <TopSearchBar2 /> */}
-      {/* <UserInfoBar2 communityName="PTSD" postedAgo="2h" /> */}
-
-      {/* <UserProfilePost
-        communityName="Anxiety"
-        postedAgo="10h"
-        title="Ths is a test post"
-        content="Sex is goodaasASasASas sASas asAS as AS Sex is goodaasASasASas sASas asAS as AS Sex is goodaasASasASas sASas asAS as AS"
-        commentCount={100}
-        voteCount={100}
-      /> */}
-      {/* <ImageHeader /> */}
-      {/* <RegularProfileInfoBar
-        userName="Ajwad Akil"
-        profileDescription="Me likey Pizza and sex"
-      />
-      <ProfessionalProfileInfoBar
-        userName="Ajwad Akil"
-        RankBadgeComponent={<RankBadgeComponent rank="100" />}
-        badges={badges}
-      />
-
-      <TestInfoComponent
-        score="12"
-        color="red"
-        testName="PTSD"
-        numericInfo="1h"
-      />
-
-      <TestInfoComponent
-        score=""
-        color="red"
-        testName="PTSD"
-        numericInfo="100 People took this test"
-      /> */}
-
-      {/* <View style={{ marginTop: 8 }}>
-        <MetricBarComponent score="30%" color="red" />
-      </View> */}
-      {/* <ProfessionalCard
-        userName="Ajwad Akil"
-        badges={badges}
-        rank="100"
-        location="Dhanmondi, Panchlaish, Dhaka"
-      /> */}
     </View>
   );
 }

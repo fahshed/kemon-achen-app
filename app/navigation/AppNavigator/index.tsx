@@ -9,11 +9,11 @@ import {
 } from '@expo/vector-icons';
 
 import {
-  CommunityScreen,
   CreatePostScreen,
   NearbyProfessionalScreen,
   NotificationScreen,
 } from '../../screens';
+import CommunityListScreen from '../../screens/CommunityListScreen';
 import CreatePostButton from '../CreatePostButton';
 import NavRoutes from '../NavRoutes';
 import FeedNavigator from '../FeedNavigator';
@@ -36,8 +36,8 @@ const AppNavigator = () => (
       }}
     />
     <Tab.Screen
-      name="Community"
-      component={CommunityScreen}
+      name="CommunityList"
+      component={CommunityListScreen}
       options={{
         tabBarIcon: ({ color }) => (
           <MaterialIcons name="people-alt" size={32} color={color} />

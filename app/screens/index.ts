@@ -1,4 +1,4 @@
-export { default as CommunityScreen } from './CommunityScreen';
+export { default as CommunityScreen } from './CommunityListScreen';
 export { default as CreatePostScreen } from './CreatePostScreen';
 export { default as HomeScreen } from './HomeScreen';
 export { default as LoginScreen } from './LoginScreen';

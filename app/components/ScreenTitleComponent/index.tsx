@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     backgroundColor: theme.white,
     flexDirection: 'row',
     height: 64,
-    padding: 8,
+    padding: 16,
   },
 });
 

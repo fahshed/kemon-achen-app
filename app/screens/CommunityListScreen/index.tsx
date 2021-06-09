@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { FlatList, View, StyleSheet } from 'react-native';
+import { FlatList, View, StyleSheet, ScrollView } from 'react-native';
 
 import { ItemSeparator, TopSearchBar2 } from '../../components';
 import { theme } from '../../config';
@@ -12,7 +12,7 @@ import ScreenTitleComponent from '../../components/ScreenTitleComponent';
 import CommunityCard from '../../components/CommunityCard';
 import NavRoutes from '../../navigation/NavRoutes';
 
-function CommunityScreen({ navigation }) {
+function CommunityListScreen({ navigation }) {
   const dispatch = useAppDispatch();
   const { communities } = useAppSelector((state) => state.Community);
 
@@ -36,35 +36,37 @@ function CommunityScreen({ navigation }) {
 
   return (
     <>
-      <TopSearchBar2
-        navigateToProfileScreen={() =>
-          navigation.navigate(NavRoutes.USER_PROFILE)
-        }
-      />
-      <View style={styles.communityListContainer}>
-        <ScreenTitleComponent screenName="Communities" />
-
-        <FlatList
-          data={communities}
-          ItemSeparatorComponent={() => (
-            <ItemSeparator height={8} color={theme.grey1} />
-          )}
-          keyExtractor={(community) => community._id}
-          renderItem={renderItem}
+      <ScrollView>
+        <TopSearchBar2
+          navigateToProfileScreen={() =>
+            navigation.navigate(NavRoutes.USER_PROFILE)
+          }
         />
-      </View>
-      <View style={styles.suggestedCommunityListContainer}>
-        <ScreenTitleComponent screenName="Suggested Communities" />
+        <View style={styles.communityListContainer}>
+          <ScreenTitleComponent screenName="Communities" />
 
-        <FlatList
-          data={communities}
-          ItemSeparatorComponent={() => (
-            <ItemSeparator height={8} color={theme.grey1} />
-          )}
-          keyExtractor={(community) => community._id}
-          renderItem={renderItem}
-        />
-      </View>
+          <FlatList
+            data={communities}
+            ItemSeparatorComponent={() => (
+              <ItemSeparator height={8} color={theme.grey1} />
+            )}
+            keyExtractor={(community) => community._id}
+            renderItem={renderItem}
+          />
+        </View>
+        <View style={styles.suggestedCommunityListContainer}>
+          <ScreenTitleComponent screenName="Suggested Communities" />
+
+          <FlatList
+            data={communities}
+            ItemSeparatorComponent={() => (
+              <ItemSeparator height={8} color={theme.grey1} />
+            )}
+            keyExtractor={(community) => community._id}
+            renderItem={renderItem}
+          />
+        </View>
+      </ScrollView>
     </>
   );
 }
@@ -80,4 +82,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CommunityScreen;
+export default CommunityListScreen;

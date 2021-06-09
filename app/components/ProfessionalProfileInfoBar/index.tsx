@@ -6,8 +6,9 @@ import { theme } from '../../config';
 import { Body2Bold, Caption } from '../../styles';
 
 import TagComponent from '../../components/Tag';
+import RankBadgeComponent from '../../components/RankBadgeComponent';
 
-function ProfessionalProfileInfoBar({ userName, RankBadgeComponent, badges }) {
+function ProfessionalProfileInfoBar({ userName, badges, rank }) {
   const renderItem = ({ item }) => <TagComponent badgeContent={item.name} />;
   return (
     <View style={styles.container}>
@@ -15,9 +16,9 @@ function ProfessionalProfileInfoBar({ userName, RankBadgeComponent, badges }) {
         <View style={styles.infoContainer}>
           <Body2Bold>{userName}</Body2Bold>
           <Caption ml="8px" mt="1px">
-            Rank:{' '}
+            Rank:{''}
           </Caption>
-          {RankBadgeComponent}
+          <RankBadgeComponent rank={rank} />
         </View>
         <FlatList
           data={badges}
@@ -36,7 +37,7 @@ function ProfessionalProfileInfoBar({ userName, RankBadgeComponent, badges }) {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'flex-start',
-    backgroundColor: theme.blue,
+    backgroundColor: theme.white,
     flexDirection: 'row',
     padding: 8,
     width: '100%',

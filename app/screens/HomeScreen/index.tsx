@@ -61,7 +61,7 @@ export default function HomeScreen({ navigation }) {
     <>
       <TopSearchBar2
         navigateToProfileScreen={() =>
-          navigation.navigate(NavRoutes.USER_PROFILE)
+          navigation.navigate(NavRoutes.PROFESSIONAL_USER_PROFILE)
         }
       />
       {isRefreshing && (

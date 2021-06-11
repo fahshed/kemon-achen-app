@@ -1,7 +1,6 @@
 import React from 'react';
 
 import ImageHeader from '../../components/ImageHeader';
-import RegularProfileInfoBar from '../../components/RegularProfileInfoBar';
 import ProfessionalProfileTabNavigator from '../../navigation/ProfessionalProfileTabNavigator';
 import ChamberScreen from '../ChamberScreen';
 import ProfessionalPostsScreen from '../ProfessionalPostsScreen';

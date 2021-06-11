@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, FlatList } from 'react-native';
+import { View, FlatList } from 'react-native';
 import { theme } from '../../config';
 import { ItemSeparator, NotificationCard } from '../../components';
 
@@ -36,6 +36,8 @@ import { AppButton } from '../../components';
 
 import { useAppDispatch, useAppSelector } from '../../store';
 import { logout } from '../../store/reducers';
+import CommunityPostHeader from '../../components/CommunityPostHeader';
+import CommunityDescription from '../../components/CommunityDescription';
 function NotificationScreen() {
   const dispatch = useAppDispatch();
   const { user } = useAppSelector((state) => state.User);
@@ -110,6 +112,12 @@ function NotificationScreen() {
     <NotificationCard notificationTitle={item.title} time={item.time} />
   );
 
+  const badges = [
+    { name: 'PTSD', id: '1' },
+    { name: 'Anxiety', id: '2' },
+    { name: 'Stress', id: '3' },
+  ];
+
   return (
     // <View style={{ padding: 8 }}>
     //   {/* <UserInfobar1 /> */}
@@ -141,6 +149,14 @@ function NotificationScreen() {
     //   <Body2Bold mb="20px">Component test screen</Body2Bold>
     // </View>
     <>
+      <CommunityPostHeader postedBy="Akil" time="2h" />
+      <CommunityDescription
+        communityName="Anxiety"
+        badges={badges}
+        description="Some description about communities"
+        hasJoined={true}
+        members="5000"
+      />
       <View style={{ padding: 8 }}>
         <H5Bold>Dummy account screen</H5Bold>
         <Body2Bold>{'ID: ' + user._id}</Body2Bold>

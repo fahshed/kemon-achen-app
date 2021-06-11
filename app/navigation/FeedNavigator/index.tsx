@@ -4,7 +4,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import { HomeScreen, PostDetailsScreen } from '../../screens';
 
-import UserProfileScreen from '../../screens/UserProfileScreen';
 import ProfessionalProfileScreen from '../../screens/ProfessionalProfileScreen';
 
 const Stack = createStackNavigator();

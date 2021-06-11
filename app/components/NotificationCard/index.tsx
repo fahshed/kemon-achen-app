@@ -4,7 +4,7 @@ import { Image, StyleSheet, View } from 'react-native';
 // import { Entypo } from '@expo/vector-icons';
 
 import { theme } from '../../config';
-import { Body2, Caption } from '../../styles';
+import { Body2 } from '../../styles';
 
 function NotificationCard({ notificationTitle, time }) {
   return (

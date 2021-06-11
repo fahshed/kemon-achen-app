@@ -1,15 +1,10 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Body1, Body1Bold, H6Bold } from '../../styles';
 
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { theme } from '../../config';
-
-//import { ItemSeparator } from '../../components';
-//import UserProfileCommentCard from '../../components/UserProfileCommentCard';
-
-//import { theme } from '../../config';
 
 export default function ChamberScreen() {
   const qualifications = ['MBBS', 'MCPS(Psychiatry)', 'FCPS(Psychiatry)'];

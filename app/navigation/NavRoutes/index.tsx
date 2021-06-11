@@ -10,4 +10,5 @@ export default Object.freeze({
   WELCOME: 'Welcome',
   USER_PROFILE: 'UserProfile',
   PROFESSIONAL_USER_PROFILE: 'ProfessionalProfile',
+  COMMUNITY_DETAILS: 'CommunityDetails',
 });

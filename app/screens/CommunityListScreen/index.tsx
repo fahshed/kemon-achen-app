@@ -19,12 +19,13 @@ function CommunityListScreen({ navigation }) {
   const renderItem = ({ item }) => (
     <CommunityCard
       communityName={item.name}
-      onPress={() => console.log('Pressed!')}
+      onPress={() => navigation.navigate(NavRoutes.COMMUNITY_DETAILS, item._id)}
     />
   );
 
   const getCommunitiesOfUser = async () => {
     const response = await dispatch(fetchCommunities());
+    console.log(response);
     if ('error' in response) {
       console.log('Community List fetch error', response.error);
     }

@@ -6,7 +6,7 @@ import { Body1, Body1Bold, H6Bold } from '../../styles';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { theme } from '../../config';
 
-export default function ChamberScreen() {
+export default function ChamberScreen({ userId }) {
   const qualifications = ['MBBS', 'MCPS(Psychiatry)', 'FCPS(Psychiatry)'];
 
   return (

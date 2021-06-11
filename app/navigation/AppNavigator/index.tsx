@@ -17,6 +17,8 @@ import CommunityListScreen from '../../screens/CommunityListScreen';
 import CreatePostButton from '../CreatePostButton';
 import NavRoutes from '../NavRoutes';
 import FeedNavigator from '../FeedNavigator';
+import CommunityListNavigator from '../CommunityListNavigator';
+import ProfessionalListNavigator from '../ProfessionalListNavigator';
 
 const Tab = createBottomTabNavigator();
 
@@ -37,7 +39,7 @@ const AppNavigator = () => (
     />
     <Tab.Screen
       name="CommunityList"
-      component={CommunityListScreen}
+      component={CommunityListNavigator}
       options={{
         tabBarIcon: ({ color }) => (
           <MaterialIcons name="people-alt" size={32} color={color} />
@@ -56,8 +58,8 @@ const AppNavigator = () => (
       })}
     />
     <Tab.Screen
-      name="NearbyProfessional"
-      component={NearbyProfessionalScreen}
+      name="Professional To Aid you"
+      component={ProfessionalListNavigator}
       options={{
         tabBarIcon: ({ color }) => (
           <Fontisto name="stethoscope" size={32} color={color} />

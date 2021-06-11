@@ -4,7 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import { HomeScreen, PostDetailsScreen } from '../../screens';
 
-import ProfessionalProfileScreen from '../../screens/ProfessionalProfileScreen';
+import UserProfileScreen from '../../screens/UserProfileScreen';
 
 const Stack = createStackNavigator();
 
@@ -20,10 +20,7 @@ const FeedNavigator = () => (
       component={PostDetailsScreen}
       options={{ headerTitle: 'Post' }}
     />
-    <Stack.Screen
-      name="ProfessionalProfile"
-      component={ProfessionalProfileScreen}
-    />
+    <Stack.Screen name="UserProfile" component={UserProfileScreen} />
   </Stack.Navigator>
 );
 

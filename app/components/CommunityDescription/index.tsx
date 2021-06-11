@@ -1,9 +1,8 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
-import { FlatList } from 'react-native-gesture-handler';
+import { StyleSheet, View } from 'react-native';
 
 import { theme } from '../../config';
-import { CaptionBold, Caption, H6Bold, Body2 } from '../../styles';
+import { Caption, H6Bold, Body2 } from '../../styles';
 
 import TagComponent from '../../components/Tag';
 import JoinBadge from '../JoinBadge';

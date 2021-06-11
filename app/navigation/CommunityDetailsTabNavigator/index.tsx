@@ -6,13 +6,10 @@ import { theme } from '../../config';
 
 const Tab = createMaterialTopTabNavigator();
 
-export default function ProfessionalProfileTabNavigator({
+export default function CommunityDetailsTabNavigator({
   FirstTabScreen,
   SecondTabScreen,
-  ThirdTabScreen,
-  firstTabName,
-  firstScreenName,
-  userId,
+  communityId,
 }) {
   return (
     <>
@@ -32,19 +29,14 @@ export default function ProfessionalProfileTabNavigator({
         }}
       >
         <Tab.Screen
-          name={firstScreenName}
-          children={() => <FirstTabScreen userId={userId} />}
-          options={{ title: firstTabName }}
-        />
-        <Tab.Screen
-          name="ProfessionalPosts"
-          component={SecondTabScreen}
+          name="CommunityPosts"
+          children={() => <FirstTabScreen communityId={communityId} />}
           options={{ title: 'Posts' }}
         />
         <Tab.Screen
-          name="ProfessionalFeedbacks"
-          component={ThirdTabScreen}
-          options={{ title: 'Feedbacks' }}
+          name="CommunityAboutScreen"
+          children={() => <SecondTabScreen communityId={communityId} />}
+          options={{ title: 'About' }}
         />
       </Tab.Navigator>
     </>

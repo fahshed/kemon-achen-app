@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, FlatList } from 'react-native';
 import { theme } from '../../config';
-import { ItemSeparator, NotificationCard } from '../../components';
+import { ItemSeparator, NotificationCard, Post } from '../../components';
 
 //import { Body2Bold } from '../../styles';
 //import UserInfoBar2 from '../../components/UserInfoBar2';
@@ -36,7 +36,6 @@ import { AppButton } from '../../components';
 
 import { useAppDispatch, useAppSelector } from '../../store';
 import { logout } from '../../store/reducers';
-import CommunityPostHeader from '../../components/CommunityPostHeader';
 import CommunityDescription from '../../components/CommunityDescription';
 function NotificationScreen() {
   const dispatch = useAppDispatch();
@@ -149,14 +148,25 @@ function NotificationScreen() {
     //   <Body2Bold mb="20px">Component test screen</Body2Bold>
     // </View>
     <>
-      <CommunityPostHeader postedBy="Akil" time="2h" />
-      <CommunityDescription
-        communityName="Anxiety"
-        badges={badges}
-        description="Some description about communities"
-        hasJoined={true}
-        members="5000"
+      <Post
+        touchDisabled={false}
+        content={'Just testing for community feed'}
+        commentCount={2}
+        communityName={'Anxiety'}
+        postedAgo={'2h'}
+        title={
+          'Anyone else feel like something horrible happened every time the phone rings?'
+        }
+        username={'Ajwad Akil Labib'}
+        voteCount={2}
+        onLikePress={() => console.log('just testing')}
+        isPostLiked={true}
+        onPress={() => {
+          console.log('tesing');
+        }}
+        isCommunityFeed={true}
       />
+
       <View style={{ padding: 8 }}>
         <H5Bold>Dummy account screen</H5Bold>
         <Body2Bold>{'ID: ' + user._id}</Body2Bold>

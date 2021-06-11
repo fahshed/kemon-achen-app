@@ -7,7 +7,7 @@ import ProfessionalPostsScreen from '../ProfessionalPostsScreen';
 import ProfessionalFeedbackScreen from '../ProfessionalFeedbackScreen';
 import ProfessionalProfileInfoBar from '../../components/ProfessionalProfileInfoBar';
 
-export default function UserProfileScreen() {
+export default function ProfessionalProfileScreen() {
   const badges = [
     { name: 'PTSD', id: '1' },
     { name: 'Anxiety', id: '2' },
@@ -28,6 +28,7 @@ export default function UserProfileScreen() {
         ThirdTabScreen={ProfessionalFeedbackScreen}
         firstScreenName="ChamberScreen"
         firstTabName="Chamber"
+        userId="1"
       />
     </>
   );

@@ -169,6 +169,24 @@ export const H5Bold = styled.Text<IStyled>`
   margin-bottom: ${(props) => props.mb || 0};
 `;
 
+export const H6 = styled.Text<IStyled>`
+  font-size: 20px;
+  font-weight: normal;
+  color: ${(props) => props.theme[props.color || 'black']};
+  text-align: ${(props) => props.align || 'left'};
+  width: auto;
+  padding: ${(props) => props.p || 0};
+  padding-left: ${(props) => props.pl || 0};
+  padding-right: ${(props) => props.pr || 0};
+  padding-top: ${(props) => props.pt || 0};
+  padding-bottom: ${(props) => props.pb || 0};
+  margin: ${(props) => props.m || 0};
+  margin-left: ${(props) => props.ml || 0};
+  margin-right: ${(props) => props.mr || 0};
+  margin-top: ${(props) => props.mt || 0};
+  margin-bottom: ${(props) => props.mb || 0};
+`;
+
 export const H6Bold = styled.Text<IStyled>`
   font-size: 20px;
   line-height: 24px;

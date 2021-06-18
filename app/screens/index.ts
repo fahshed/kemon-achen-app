@@ -7,3 +7,5 @@ export { default as NotificationScreen } from './NotificationScreen';
 export { default as PostDetailsScreen } from './PostDetailsScreen';
 export { default as SignupScreen } from './SignupScreen';
 export { default as WelcomeScreen } from './WelcomeScreen';
+export { default as TestScreen } from './TestScreen';
+export { default as UserProfileScreen } from './UserProfileScreen';

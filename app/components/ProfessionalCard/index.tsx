@@ -1,20 +1,19 @@
 import React from 'react';
 import { Image, StyleSheet, View } from 'react-native';
-import { FlatList, TouchableHighlight } from 'react-native-gesture-handler';
+import { TouchableHighlight } from 'react-native-gesture-handler';
 
 import { theme } from '../../config';
 import { Caption, Body2Bold } from '../../styles';
 import RankBadgeComponent from '../RankBadgeComponent';
-import TagComponent from '../Tag';
+// import TagComponent from '../Tag';
 
 function ProfessionalCard({
   userName,
-  badges,
+  // badges,
   rank,
   location,
   handleNavigation,
 }) {
-  const renderItem = ({ item }) => <TagComponent badgeContent={item.name} />;
   return (
     <TouchableHighlight underlayColor={theme.grey6} onPress={handleNavigation}>
       <View style={styles.container}>
@@ -28,17 +27,6 @@ function ProfessionalCard({
           <View style={{ flexDirection: 'row', marginBottom: 4 }}>
             <Body2Bold>{userName}</Body2Bold>
             <RankBadgeComponent rank={rank} />
-          </View>
-          <View>
-            {/* <TagComponent badgeContent="PTSD" />
-            <TagComponent badgeContent="Anxiety" />
-            <TagComponent badgeContent="Stress" /> */}
-            <FlatList
-              data={badges}
-              keyExtractor={(badge) => badge.id}
-              horizontal={true}
-              renderItem={renderItem}
-            />
           </View>
           <Caption color="grey6" numberOfLines={3}>
             {location}

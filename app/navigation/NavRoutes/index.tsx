@@ -11,4 +11,5 @@ export default Object.freeze({
   USER_PROFILE: 'UserProfile',
   PROFESSIONAL_USER_PROFILE: 'ProfessionalProfile',
   COMMUNITY_DETAILS: 'CommunityDetails',
+  TEST: 'Test',
 });

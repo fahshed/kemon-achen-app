@@ -60,11 +60,7 @@ export default function HomeScreen({ navigation }) {
 
   return (
     <>
-      <TopSearchBar2
-        navigateToProfileScreen={() =>
-          navigation.navigate(NavRoutes.USER_PROFILE)
-        }
-      />
+      <TopSearchBar2 />
       {isRefreshing && (
         <H5Bold align="center" color="grey5" mt="8px" mb="8px">
           Feed Loading........

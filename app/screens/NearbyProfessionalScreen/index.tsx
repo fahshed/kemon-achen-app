@@ -2,7 +2,6 @@ import React from 'react';
 import { FlatList } from 'react-native';
 
 import ProfessionalCard from '../../components/ProfessionalCard';
-import ScreenTitleComponent from '../../components/ScreenTitleComponent';
 import { theme } from '../../config';
 import { ItemSeparator } from '../../components';
 import NavRoutes from '../../navigation/NavRoutes';
@@ -185,7 +184,6 @@ function NearbyProfessionalScreen({ navigation }) {
 
   return (
     <>
-      <ScreenTitleComponent screenName="Suggested Professionals" />
       <FlatList
         data={suggestedProfessionals}
         ItemSeparatorComponent={() => (

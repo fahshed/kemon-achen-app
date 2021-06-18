@@ -9,4 +9,5 @@ export default Object.freeze({
   SIGNUP: 'Signup',
   WELCOME: 'Welcome',
   USER_PROFILE: 'UserProfile',
+  TEST: 'Test',
 });

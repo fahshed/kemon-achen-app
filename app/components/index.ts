@@ -17,3 +17,4 @@ export { default as UserInfoBar3 } from './UserInfoBar3';
 export { default as UserProfileCommentCard } from './UserProfileCommentCard';
 export { default as Test } from './Test';
 export { default as Sample } from './Sample';
+export { default as TestQuestion } from './TestQuestion';

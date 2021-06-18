@@ -2,15 +2,21 @@ import React from 'react';
 import { Image, View, StyleSheet } from 'react-native';
 
 import { Ionicons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 import { theme } from '../../config';
 import CustomTextInput from '../CustomTextInput';
 import { TouchableHighlight } from 'react-native-gesture-handler';
+import NavRoutes from '../../navigation/NavRoutes';
 
-function TopSearchBar2({ navigateToProfileScreen }) {
+function TopSearchBar2() {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
-      <TouchableHighlight onPress={navigateToProfileScreen}>
+      <TouchableHighlight
+        onPress={() => navigation.navigate(NavRoutes.USER_PROFILE)}
+      >
         <Image
           style={{ height: 40, width: 40, borderRadius: 20 }}
           source={{ uri: 'https://picsum.photos/200' }}
@@ -38,7 +44,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: theme.grey1,
-    marginTop: 8,
     padding: 8,
   },
 });

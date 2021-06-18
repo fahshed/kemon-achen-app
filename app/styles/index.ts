@@ -7,6 +7,7 @@ export {
   CaptionBold,
   H4,
   H5Bold,
+  H6,
   H6Bold,
   Overline,
 } from './typography';

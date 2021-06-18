@@ -1,79 +1,35 @@
 import React from 'react';
 
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import {
-  Fontisto,
-  Ionicons,
-  MaterialIcons,
-  MaterialCommunityIcons,
-} from '@expo/vector-icons';
+import { createStackNavigator } from '@react-navigation/stack';
 
+import BottomTabNavigator from '../BottomTabNavigator';
 import {
-  CommunityScreen,
-  CreatePostScreen,
-  NearbyProfessionalScreen,
-  NotificationScreen,
+  PostDetailsScreen,
+  UserProfileScreen,
+  TestScreen,
 } from '../../screens';
-import CreatePostButton from '../CreatePostButton';
-import NavRoutes from '../NavRoutes';
-import FeedNavigator from '../FeedNavigator';
 
-const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
 const AppNavigator = () => (
-  <Tab.Navigator
-    tabBarOptions={{
-      showLabel: false,
-    }}
-  >
-    <Tab.Screen
-      name="Home"
-      component={FeedNavigator}
-      options={{
-        tabBarIcon: ({ color }) => (
-          <MaterialCommunityIcons name="home" size={32} color={color} />
-        ),
-      }}
+  <Stack.Navigator mode="card">
+    <Stack.Screen
+      name="Root"
+      component={BottomTabNavigator}
+      options={{ headerShown: false }}
     />
-    <Tab.Screen
-      name="Community"
-      component={CommunityScreen}
-      options={{
-        tabBarIcon: ({ color }) => (
-          <MaterialIcons name="people-alt" size={32} color={color} />
-        ),
-      }}
+    <Stack.Screen
+      name="PostDetails"
+      component={PostDetailsScreen}
+      options={{ headerTitle: 'Post' }}
     />
-    <Tab.Screen
-      name="CreatePost"
-      component={CreatePostScreen}
-      options={({ navigation }) => ({
-        tabBarButton: () => (
-          <CreatePostButton
-            onPress={() => navigation.navigate(NavRoutes.CREATE_POST)}
-          />
-        ),
-      })}
+    <Stack.Screen name="UserProfile" component={UserProfileScreen} />
+    <Stack.Screen
+      name="Test"
+      component={TestScreen}
+      options={{ headerTitle: 'Test' }}
     />
-    <Tab.Screen
-      name="NearbyProfessional"
-      component={NearbyProfessionalScreen}
-      options={{
-        tabBarIcon: ({ color }) => (
-          <Fontisto name="stethoscope" size={32} color={color} />
-        ),
-      }}
-    />
-    <Tab.Screen
-      name="Notification"
-      component={NotificationScreen}
-      options={{
-        tabBarIcon: ({ color }) => (
-          <Ionicons name="notifications-sharp" size={32} color={color} />
-        ),
-      }}
-    />
-  </Tab.Navigator>
+  </Stack.Navigator>
 );
 
 export default AppNavigator;

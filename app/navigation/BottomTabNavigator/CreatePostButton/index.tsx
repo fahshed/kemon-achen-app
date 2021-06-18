@@ -3,7 +3,7 @@ import { StyleSheet, View, TouchableOpacity } from 'react-native';
 
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-import { theme } from '../../config';
+import { theme } from '../../../config';
 
 function CreatePostButton({ onPress }) {
   return (

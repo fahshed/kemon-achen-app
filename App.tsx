@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StatusBar, StyleSheet } from 'react-native';
 
 // import AppLoading from 'expo-app-loading';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
@@ -42,6 +42,7 @@ export default function App() {
         <ThemeProvider theme={theme}>
           <SafeAreaProvider>
             <SafeAreaView style={styles.container}>
+              <StatusBar backgroundColor="#fff" barStyle="dark-content" />
               <Navigation />
             </SafeAreaView>
           </SafeAreaProvider>

@@ -15,7 +15,7 @@ export default function CommunityPostsScreen({ communityId }) {
         alignItems: 'center',
       }}
     >
-      <Text>This is a dummy screen for now</Text>
+      <Text>This is a dummy screen for {communityId}</Text>
     </View>
   );
 }

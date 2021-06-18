@@ -8,12 +8,7 @@ import {
   MaterialCommunityIcons,
 } from '@expo/vector-icons';
 
-import {
-  CreatePostScreen,
-  NearbyProfessionalScreen,
-  NotificationScreen,
-} from '../../screens';
-import CommunityListScreen from '../../screens/CommunityListScreen';
+import { CreatePostScreen, NotificationScreen } from '../../screens';
 import CreatePostButton from '../CreatePostButton';
 import NavRoutes from '../NavRoutes';
 import FeedNavigator from '../FeedNavigator';

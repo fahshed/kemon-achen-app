@@ -5,7 +5,10 @@ import CommunityAboutScreen from '../../screens/CommunityDetailsSubScreens/Commu
 import CommunityPostsScreen from '../../screens/CommunityDetailsSubScreens/CommunityPostsScreen';
 import CommunityDescription from '../../components/CommunityDescription';
 import CommunityDetailsTabNavigator from '../../navigation/CommunityDetailsTabNavigator';
+import { useAppDispatch, useAppSelector } from '../../store';
+
 export default function CommunityScreen({ route }) {
+  const dispatch = useAppDispatch();
   const communityId = route.params;
   const badges = [
     { name: 'PTSD', id: '1' },

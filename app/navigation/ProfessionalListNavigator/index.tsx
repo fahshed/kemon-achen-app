@@ -2,13 +2,9 @@ import React from 'react';
 
 import { createStackNavigator } from '@react-navigation/stack';
 
-import CommunityListScreen from '../../screens/CommunityListScreen';
-import CommunityScreen from '../../screens/CommunityScreen';
 import ProfessionalProfileScreen from '../../screens/ProfessionalProfileScreen';
 import {
-  CreatePostScreen,
   NearbyProfessionalScreen,
-  NotificationScreen,
 } from '../../screens';
 
 const Stack = createStackNavigator();

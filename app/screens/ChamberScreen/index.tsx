@@ -8,7 +8,7 @@ import { theme } from '../../config';
 
 export default function ChamberScreen({ userId }) {
   const qualifications = ['MBBS', 'MCPS(Psychiatry)', 'FCPS(Psychiatry)'];
-
+  console.log(userId);
   return (
     <ScrollView>
       <View style={styles.container}>

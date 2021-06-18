@@ -36,7 +36,6 @@ import { AppButton } from '../../components';
 
 import { useAppDispatch, useAppSelector } from '../../store';
 import { logout } from '../../store/reducers';
-import CommunityDescription from '../../components/CommunityDescription';
 function NotificationScreen() {
   const dispatch = useAppDispatch();
   const { user } = useAppSelector((state) => state.User);
@@ -111,11 +110,11 @@ function NotificationScreen() {
     <NotificationCard notificationTitle={item.title} time={item.time} />
   );
 
-  const badges = [
-    { name: 'PTSD', id: '1' },
-    { name: 'Anxiety', id: '2' },
-    { name: 'Stress', id: '3' },
-  ];
+  // const badges = [
+  //   { name: 'PTSD', id: '1' },
+  //   { name: 'Anxiety', id: '2' },
+  //   { name: 'Stress', id: '3' },
+  // ];
 
   return (
     // <View style={{ padding: 8 }}>

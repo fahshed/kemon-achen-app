@@ -10,12 +10,12 @@ import {
 } from '@expo/vector-icons';
 
 import {
-  CommunityScreen,
   CreatePostScreen,
   HomeScreen,
   NearbyProfessionalScreen,
   NotificationScreen,
 } from '../../screens';
+import CommunityListScreen from '../../screens/CommunityListScreen';
 import CreatePostButton from './CreatePostButton';
 import NavRoutes from '../NavRoutes';
 
@@ -101,7 +101,7 @@ function TabTwoNavigator() {
     <TabTwoStack.Navigator>
       <TabTwoStack.Screen
         name="Community"
-        component={CommunityScreen}
+        component={CommunityListScreen}
         options={{
           headerTitle: 'Community',
         }}

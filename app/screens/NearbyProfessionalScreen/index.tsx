@@ -4,8 +4,9 @@ import { FlatList } from 'react-native';
 import ProfessionalCard from '../../components/ProfessionalCard';
 import { theme } from '../../config';
 import { ItemSeparator } from '../../components';
+import NavRoutes from '../../navigation/NavRoutes';
 
-function NearbyProfessionalScreen() {
+function NearbyProfessionalScreen({ navigation }) {
   const suggestedProfessionals = [
     {
       userName: 'Mr Bilkis Rahman',
@@ -172,10 +173,12 @@ function NearbyProfessionalScreen() {
   const renderItem = ({ item }) => (
     <ProfessionalCard
       userName={item.userName}
-      badges={item.badges}
+      // badges={item.badges}
       rank={item.rank}
       location={item.location}
-      handleNavigation={() => console.log('Pressed!')}
+      handleNavigation={() =>
+        navigation.navigate(NavRoutes.PROFESSIONAL_USER_PROFILE)
+      }
     />
   );
 

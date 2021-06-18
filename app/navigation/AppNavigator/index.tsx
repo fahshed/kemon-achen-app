@@ -7,6 +7,8 @@ import {
   PostDetailsScreen,
   UserProfileScreen,
   TestScreen,
+  ProfessionalProfileScreen,
+  CommunityScreen,
 } from '../../screens';
 
 const Stack = createStackNavigator();
@@ -28,6 +30,18 @@ const AppNavigator = () => (
       name="Test"
       component={TestScreen}
       options={{ headerTitle: 'Test' }}
+    />
+
+    <Stack.Screen
+      name="CommunityDetails"
+      component={CommunityScreen}
+      options={{ headerTitle: '' }}
+    />
+
+    <Stack.Screen
+      name="ProfessionalProfile"
+      component={ProfessionalProfileScreen}
+      options={{ headerTitle: '' }}
     />
   </Stack.Navigator>
 );

@@ -41,6 +41,7 @@ export default function HomeScreen({ navigation }) {
       onPress={() => {
         navigation.navigate(NavRoutes.POST_DETAILS, item._id);
       }}
+      isCommunityFeed={false}
     />
   );
 

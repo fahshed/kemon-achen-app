@@ -1,5 +1,5 @@
 export default Object.freeze({
-  COMMUNITY: 'Community',
+  COMMUNITY_LIST: 'CommunityList',
   CREATE_POST: 'CreatePost',
   HOME: 'Home',
   LOGIN: 'Login',
@@ -9,5 +9,7 @@ export default Object.freeze({
   SIGNUP: 'Signup',
   WELCOME: 'Welcome',
   USER_PROFILE: 'UserProfile',
+  PROFESSIONAL_USER_PROFILE: 'ProfessionalProfile',
+  COMMUNITY_DETAILS: 'CommunityDetails',
   TEST: 'Test',
 });

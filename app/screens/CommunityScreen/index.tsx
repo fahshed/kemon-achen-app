@@ -1,78 +1,50 @@
-import React, { useEffect } from 'react';
-import { FlatList, View, StyleSheet } from 'react-native';
+import React, { useEffect, useState } from 'react';
 
-import { ItemSeparator, TopSearchBar2 } from '../../components';
-import { theme } from '../../config';
-//import NavRoutes from '../../navigation/NavRoutes';
-//import { Body2Bold, H5Bold } from '../../styles';
+import ImageHeader from '../../components/ImageHeader';
+import CommunityAboutScreen from '../../screens/CommunityDetailsSubScreens/CommunityAboutScreen';
+import CommunityPostsScreen from '../../screens/CommunityDetailsSubScreens/CommunityPostsScreen';
+import CommunityDescription from '../../components/CommunityDescription';
+import CommunityDetailsTabNavigator from '../../navigation/CommunityDetailsTabNavigator';
+import Api from '../../api';
 
-import { useAppDispatch, useAppSelector } from '../../store';
-import { fetchCommunities } from '../../store/reducers';
-import ScreenTitleComponent from '../../components/ScreenTitleComponent';
-import CommunityCard from '../../components/CommunityCard';
+export default function CommunityScreen({ route }) {
+  const communityId = route.params;
+  const [commDesc, setCommDesc] = useState(null);
 
-function CommunityScreen() {
-  const dispatch = useAppDispatch();
-  const { communities } = useAppSelector((state) => state.Community);
-
-  const renderItem = ({ item }) => (
-    <CommunityCard
-      communityName={item.name}
-      onPress={() => console.log('Pressed!')}
-    />
-  );
-
-  const getCommunitiesOfUser = async () => {
-    const response = await dispatch(fetchCommunities());
-    if ('error' in response) {
-      console.log('Community List fetch error', response.error);
-    }
+  const getCommunityInfo = async () => {
+    const response = await Api.getCommunityInfo(communityId);
+    setCommDesc(response);
   };
 
   useEffect(() => {
-    getCommunitiesOfUser();
+    getCommunityInfo();
   }, []);
 
+  //console.log(commDesc.tags);
+
+  // const badges = [
+  //   { name: 'PTSD', id: '1' },
+  //   { name: 'Anxiety', id: '2' },
+  //   { name: 'Stress', id: '3' },
+  // ];
   return (
     <>
-      <TopSearchBar2 />
-      <View style={styles.communityListContainer}>
-        <ScreenTitleComponent screenName="Communities" />
-
-        <FlatList
-          data={communities}
-          ItemSeparatorComponent={() => (
-            <ItemSeparator height={8} color={theme.grey1} />
-          )}
-          keyExtractor={(community) => community._id}
-          renderItem={renderItem}
+      <ImageHeader />
+      {commDesc && (
+        <CommunityDescription
+          communityName={commDesc.name}
+          badges={commDesc.tags}
+          description={commDesc.description}
+          hasJoined={commDesc.hasJoined}
+          members={commDesc.members + ' members'}
         />
-      </View>
-      <View style={styles.suggestedCommunityListContainer}>
-        <ScreenTitleComponent screenName="Suggested Communities" />
+      )}
 
-        <FlatList
-          data={communities}
-          ItemSeparatorComponent={() => (
-            <ItemSeparator height={8} color={theme.grey1} />
-          )}
-          keyExtractor={(community) => community._id}
-          renderItem={renderItem}
-        />
-      </View>
+      <CommunityDetailsTabNavigator
+        FirstTabScreen={CommunityPostsScreen}
+        SecondTabScreen={CommunityAboutScreen}
+        communityId={communityId}
+      />
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  communityListContainer: {
-    height: '50%',
-    backgroundColor: theme.white,
-  },
-  suggestedCommunityListContainer: {
-    backgroundColor: theme.white,
-    height: '40%',
-  },
-});
-
-export default CommunityScreen;

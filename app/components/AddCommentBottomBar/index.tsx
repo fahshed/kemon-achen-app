@@ -6,7 +6,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { theme } from '../../config';
 import CustomTextInput from '../CustomTextInput';
 
-function AddCommentBottomBar({ onPress }) {
+function AddCommentBottomBar({ onPress, onChangeText }) {
   return (
     <View style={styles.container}>
       <Image
@@ -15,10 +15,13 @@ function AddCommentBottomBar({ onPress }) {
       />
 
       <View style={{ flex: 1 }}>
-        <CustomTextInput placeholder="Add a comment" onFocus={onPress} />
+        <CustomTextInput
+          onChangeText={onChangeText}
+          placeholder="Add a comment"
+        />
       </View>
 
-      <TouchableOpacity>
+      <TouchableOpacity onPress={onPress}>
         <MaterialCommunityIcons
           name={'chevron-double-down'}
           size={40}

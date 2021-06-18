@@ -3,10 +3,7 @@ import { View } from 'react-native';
 
 //import { Body2Bold } from '../../styles';
 //import UserInfoBar2 from '../../components/UserInfoBar2';
-import Comment from '../../components/Comment';
-import UserInfoBar3 from '../../components/UserInfoBar3';
-import TagComponent from '../../components/Tag';
-import RankBadgeComponent from '../../components/RankBadgeComponent';
+
 //import { theme } from '../../config';
 //import NotificationCard from '../../components/NotificationCard';
 // import ProfessionalCard from '../../components/ProfessionalCard';
@@ -23,10 +20,6 @@ import RankBadgeComponent from '../../components/RankBadgeComponent';
 // import { theme } from '../../config';
 import { Body2Bold, H5Bold } from '../../styles';
 //import ImageHeader from '../../components/ImageHeader';
-import RegularProfileInfoBar from '../../components/RegularProfileInfoBar';
-import ProfessionalProfileInfoBar from '../../components/ProfessionalProfileInfoBar';
-//import ProfileTestBadgeComponent from '../../components/ProfileTestBadgeComponent';
-import TestInfoComponent from '../../components/TestInfoComponent';
 
 // import ScreenTitleComponent from '../../components/ScreenTitleComponent';
 import { AppButton } from '../../components';
@@ -37,16 +30,6 @@ function NotificationScreen() {
   const dispatch = useAppDispatch();
   const { user } = useAppSelector((state) => state.User);
 
-  const badges = [
-    {
-      name: 'PTSD',
-      id: '12345',
-    },
-    {
-      name: 'Anxiety',
-      id: '56789',
-    },
-  ];
   return (
     <View style={{ padding: 8 }}>
       {/* <UserInfobar1 /> */}

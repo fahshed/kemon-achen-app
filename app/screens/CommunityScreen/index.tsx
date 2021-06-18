@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { FlatList, View, StyleSheet } from 'react-native';
+import { FlatList, StyleSheet, ScrollView } from 'react-native';
 
 import { ItemSeparator, TopSearchBar2 } from '../../components';
 import { theme } from '../../config';
@@ -41,9 +41,8 @@ function CommunityScreen({ navigation }) {
           navigation.navigate(NavRoutes.USER_PROFILE)
         }
       />
-      <View style={styles.communityListContainer}>
+      <ScrollView style={styles.communityListContainer}>
         <ScreenTitleComponent screenName="Communities" />
-
         <FlatList
           data={communities}
           ItemSeparatorComponent={() => (
@@ -52,8 +51,8 @@ function CommunityScreen({ navigation }) {
           keyExtractor={(community) => community._id}
           renderItem={renderItem}
         />
-      </View>
-      <View style={styles.suggestedCommunityListContainer}>
+
+        {/* <View style={styles.suggestedCommunityListContainer}> */}
         <ScreenTitleComponent screenName="Suggested Communities" />
 
         <FlatList
@@ -64,7 +63,7 @@ function CommunityScreen({ navigation }) {
           keyExtractor={(community) => community._id}
           renderItem={renderItem}
         />
-      </View>
+      </ScrollView>
     </>
   );
 }

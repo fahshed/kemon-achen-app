@@ -10,9 +10,9 @@ import TestInfoComponent from '../../components/TestInfoComponent';
 
 export default function UserHealthScreen() {
   const metricData = [
-    { id: '123452', name: 'Depression', score: '60%' },
-    { id: '123435', name: 'Anxiety', score: '80%' },
-    { id: '12345f', name: 'Stress', score: '40%' },
+    { id: '123452', name: 'Depression', score: '60%', color: 'blue' },
+    { id: '123435', name: 'Anxiety', score: '80%', color: 'green' },
+    { id: '12345f', name: 'Stress', score: '40%', color: 'orange' },
   ];
 
   const testInfo = [
@@ -106,7 +106,7 @@ export default function UserHealthScreen() {
   ];
 
   const renderMetricItem = ({ item }) => (
-    <MetricComponent name={item.name} score={item.score} color="red" />
+    <MetricComponent name={item.name} score={item.score} color={item.color} />
   );
 
   const renderTestBadge = ({ item }) => (

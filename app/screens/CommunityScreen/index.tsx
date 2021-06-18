@@ -10,9 +10,8 @@ import { useAppDispatch, useAppSelector } from '../../store';
 import { fetchCommunities } from '../../store/reducers';
 import ScreenTitleComponent from '../../components/ScreenTitleComponent';
 import CommunityCard from '../../components/CommunityCard';
-import NavRoutes from '../../navigation/NavRoutes';
 
-function CommunityScreen({ navigation }) {
+function CommunityScreen() {
   const dispatch = useAppDispatch();
   const { communities } = useAppSelector((state) => state.Community);
 
@@ -36,11 +35,7 @@ function CommunityScreen({ navigation }) {
 
   return (
     <>
-      <TopSearchBar2
-        navigateToProfileScreen={() =>
-          navigation.navigate(NavRoutes.USER_PROFILE)
-        }
-      />
+      <TopSearchBar2 />
       <View style={styles.communityListContainer}>
         <ScreenTitleComponent screenName="Communities" />
 

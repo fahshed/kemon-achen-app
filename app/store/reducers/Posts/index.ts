@@ -117,9 +117,6 @@ const PostSlice = createSlice({
     builder.addCase(fetchPostDetails.fulfilled, (state, { payload }) => {
       state.entities[payload.postId].comments = payload.comments;
     });
-    builder.addCase(createPost.fulfilled, (state, { payload }) => {
-      console.log(payload.message);
-    });
   },
 });
 

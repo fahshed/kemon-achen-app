@@ -38,11 +38,7 @@ function CommunityListScreen({ navigation }) {
   return (
     <>
       <ScrollView>
-        <TopSearchBar2
-          navigateToProfileScreen={() =>
-            navigation.navigate(NavRoutes.USER_PROFILE)
-          }
-        />
+        <TopSearchBar2 />
         <View style={styles.communityListContainer}>
           <ScreenTitleComponent screenName="Communities" />
 

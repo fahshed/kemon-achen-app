@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
+
 import { Body1, Body1Bold, H6Bold } from '../../styles';
 
 import { MaterialCommunityIcons } from '@expo/vector-icons';

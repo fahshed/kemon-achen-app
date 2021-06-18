@@ -23,11 +23,11 @@ function CommunityDescription({
           handleJoining={() => console.log('Not implemented yet')}
         />
       </View>
-      <Caption mb="8px">{members} members</Caption>
+      <Caption mb="8px">{members}</Caption>
       <Body2 mb="8px">{description}</Body2>
       <View style={{ flexDirection: 'row' }}>
-        {badges.map((badge) => (
-          <TagComponent badgeContent={badge.name} />
+        {badges.map((tag) => (
+          <TagComponent badgeContent={tag} />
         ))}
       </View>
     </View>

@@ -173,7 +173,7 @@ function NearbyProfessionalScreen({ navigation }) {
   const renderItem = ({ item }) => (
     <ProfessionalCard
       userName={item.userName}
-      badges={item.badges}
+      // badges={item.badges}
       rank={item.rank}
       location={item.location}
       handleNavigation={() =>

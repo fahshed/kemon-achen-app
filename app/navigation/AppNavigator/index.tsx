@@ -27,7 +27,7 @@ const AppNavigator = () => (
     <Stack.Screen
       name="Test"
       component={TestScreen}
-      options={{ headerTitle: 'Test' }}
+      options={{ headerTitle: 'Test', headerShown: false }}
     />
   </Stack.Navigator>
 );

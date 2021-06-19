@@ -2,6 +2,8 @@ export const theme = {
   primary: '#b388ff',
   secondary: '#ef5350',
 
+  primaryLight: '#EBDFFF',
+
   black: '#000',
   white: '#fff',
 

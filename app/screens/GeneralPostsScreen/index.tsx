@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-import { ItemSeparator, Post } from '../../../components';
-import { theme } from '../../../config';
-import NavRoutes from '../../../navigation/NavRoutes';
+import { ItemSeparator, Post } from '../../components';
+import { theme } from '../../config';
+import NavRoutes from '../../navigation/NavRoutes';
 
-import { H5Bold } from '../../../styles';
-import Api from '../../../api';
+import { H5Bold } from '../../styles';
+import Api from '../../api';
 
-export default function CommunityPostsScreen({ communityId }) {
+export default function GeneralPostsScreen({ userId, isCommunityFeed, isProfileFeed }) {
   const [posts, setPosts] = useState(null);
   const [isRefreshing, setIsRefreshing] = useState(false);
   const navigation = useNavigation();
@@ -23,29 +23,30 @@ export default function CommunityPostsScreen({ communityId }) {
       touchDisabled={false}
       content={item.content}
       commentCount={item.commentCount}
-      communityName=""
+      communityName={item.community.name}
       postedAgo={item.createdAt}
       title={item.title}
-      username={item.postedBy.name}
+      username=""
       voteCount={item.voteCount}
       onLikePress={() => handleLikePress(item._id, item.isPostLiked)}
       isPostLiked={item.isLikedByCurrentUser}
       onPress={() => {
         navigation.navigate(NavRoutes.POST_DETAILS, item._id);
       }}
-      isCommunityFeed={true}
-      isProfileFeed={false}
+      isCommunityFeed={isCommunityFeed}
+      isProfileFeed={isProfileFeed}
     />
   );
 
-  const getCommunityFeed = async () => {
-    const response = await Api.getCommunityFeed(communityId);
+  const getProfessionalPosts = async () => {
+    const response = await Api.getPostsByUserId(userId);
+    console.log(response);
     setPosts(response);
     setIsRefreshing(false);
   };
 
   useEffect(() => {
-    getCommunityFeed();
+    getProfessionalPosts();
   }, []);
 
   return (
@@ -65,7 +66,7 @@ export default function CommunityPostsScreen({ communityId }) {
         refreshing={isRefreshing}
         onRefresh={() => {
           setIsRefreshing(true);
-          getCommunityFeed();
+          getProfessionalPosts();
         }}
         renderItem={renderItem}
       />

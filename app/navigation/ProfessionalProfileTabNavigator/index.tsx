@@ -38,12 +38,12 @@ export default function ProfessionalProfileTabNavigator({
         />
         <Tab.Screen
           name="ProfessionalPosts"
-          component={SecondTabScreen}
+          children={() => <SecondTabScreen userId={userId} />}
           options={{ title: 'Posts' }}
         />
         <Tab.Screen
           name="ProfessionalFeedbacks"
-          component={ThirdTabScreen}
+          children={() => <ThirdTabScreen userId={userId} />}
           options={{ title: 'Feedbacks' }}
         />
       </Tab.Navigator>

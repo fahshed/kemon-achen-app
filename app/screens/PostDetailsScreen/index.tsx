@@ -60,12 +60,13 @@ function PostDetailsScreen({ route }) {
         communityName={post.community.name}
         postedAgo={post.createdAt}
         title={post.title}
-        username={post.postedBy.username}
+        username={post.postedBy.name}
         voteCount={post.voteCount}
         onLikePress={() => handleLikePress(postID)}
         isPostLiked={post.isLikedByCurrentUser}
         onPress={null}
         isCommunityFeed={false}
+        isProfileFeed={false}
       />
 
       <ItemSeparator height={8} color={theme.grey3} />

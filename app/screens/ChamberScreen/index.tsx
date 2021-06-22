@@ -1,42 +1,54 @@
-import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import React, {useState, useEffect} from 'react';
+import { View, StyleSheet,  Linking } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 
 import { Body1, Body1Bold, H6Bold } from '../../styles';
 
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { theme } from '../../config';
+import Api from '../../api';
 
 export default function ChamberScreen({ userId }) {
-  const qualifications = ['MBBS', 'MCPS(Psychiatry)', 'FCPS(Psychiatry)'];
-  console.log(userId);
+
+
+  const [chamber, setChamber] = useState(null);
+
+  //const userId = "60830ac18fc20123c40f10c0";
+
+  const getProfessionalChamber = async () => {
+    const response = await Api.getProfessionalChamber(userId);
+    //console.log(response);
+    setChamber(response);
+  };
+
+  useEffect(() => {
+    getProfessionalChamber();
+  }, []);
+
   return (
     <ScrollView>
       <View style={styles.container}>
         <H6Bold mb="4px">Qualifications</H6Bold>
-        {qualifications.map((q) => (
+        {chamber && chamber.qualification.map((q) => (
           <Body1>{q}</Body1>
         ))}
         <H6Bold mt="16px" mb="4px">
           Practice
         </H6Bold>
         <Body1>
-          I am currently practicing in Emerald Hospital as an assistant
-          professor and also in National memorial Hospital in weekdays. I
-          specialize in treating patients with sever PTSD and borderline
-          disorders.{' '}
+          {chamber && chamber.about}
         </Body1>
         <H6Bold mt="16px" mb="4px">
           Identification Number
         </H6Bold>
         <View style={{ flexDirection: 'row' }}>
           <Body1Bold>License No: </Body1Bold>
-          <Body1>1615089889</Body1>
+          <Body1>{chamber && chamber.license}</Body1>
         </View>
 
         <View style={{ flexDirection: 'row' }}>
           <Body1Bold>Issued At: </Body1Bold>
-          <Body1>12/12/2012</Body1>
+          <Body1>{chamber && new Date(chamber.licenseIssued).toLocaleDateString()}</Body1>
         </View>
 
         <H6Bold mt="16px" mb="4px">
@@ -48,7 +60,7 @@ export default function ChamberScreen({ userId }) {
             size={24}
             color={theme.secondary}
           />
-          <Body1 ml="8px">rishidibegushi@gmail.com</Body1>
+          <Body1 ml="8px" mb="8px" onPress={() => Linking.openURL(`mailto:${chamber.email}`) }>{chamber && chamber.email}</Body1>
         </View>
 
         <View style={{ flexDirection: 'row' }}>
@@ -57,19 +69,15 @@ export default function ChamberScreen({ userId }) {
             size={24}
             color={theme.secondary}
           />
-          <Body1 ml="8px">+8801759099000</Body1>
+          {chamber && <Body1 ml="8px" color="darkGrey" onPress={()=>{Linking.openURL(`tel:${chamber.phone}`);}}>{chamber.phone}</Body1>}
         </View>
 
         <H6Bold mt="16px" mb="4px">
           Address
         </H6Bold>
         <View style={{ flexDirection: 'row' }}>
-          <Body1Bold>Chamber : </Body1Bold>
-          <Body1>Mindwell Consultation Center</Body1>
-        </View>
-        <View style={{ flexDirection: 'row' }}>
           <Body1Bold>Location : </Body1Bold>
-          <Body1>East Shewrapara, Mirpur, Dhaka</Body1>
+          <Body1>{chamber && chamber.address}</Body1>
         </View>
       </View>
     </ScrollView>

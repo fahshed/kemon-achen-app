@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 
 import ImageHeader from '../../components/ImageHeader';
 import ProfessionalProfileTabNavigator from '../../navigation/ProfessionalProfileTabNavigator';
@@ -7,20 +7,40 @@ import ProfessionalPostsScreen from '../ProfessionalPostsScreen';
 import ProfessionalFeedbackScreen from '../ProfessionalFeedbackScreen';
 import ProfessionalProfileInfoBar from '../../components/ProfessionalProfileInfoBar';
 
+import Api from '../../api';
+
 export default function ProfessionalProfileScreen() {
-  const badges = [
-    { name: 'PTSD', id: '1' },
-    { name: 'Anxiety', id: '2' },
-    { name: 'Stress', id: '3' },
-  ];
+
+  //const { user } = useAppSelector((state) => state.User);
+
+  const [profileInfo, setProfileInfo] = useState(null);
+
+  const userId = "60830ac18fc20123c40f10c0";
+
+  const getProfessionalInfo = async () => {
+    const response = await Api.getProfessionalInfo(userId);
+    console.log(response);
+    setProfileInfo(response);
+  };  
+
+  useEffect(() => {
+    getProfessionalInfo();
+  }, []);
+
+  //console.log(profileInfo);
+
   return (
     <>
       <ImageHeader />
-      <ProfessionalProfileInfoBar
-        userName="Dr. Rishov Paul"
-        badges={badges}
-        rank="100"
-      />
+      {
+        profileInfo && (
+          <ProfessionalProfileInfoBar
+          userName={profileInfo.name}
+          badges={profileInfo.specialization}
+          rank={profileInfo.rank}
+          />
+        )
+      }
 
       <ProfessionalProfileTabNavigator
         FirstTabScreen={ChamberScreen}
@@ -28,7 +48,7 @@ export default function ProfessionalProfileScreen() {
         ThirdTabScreen={ProfessionalFeedbackScreen}
         firstScreenName="ChamberScreen"
         firstTabName="Chamber"
-        userId="1"
+        userId={userId}
       />
     </>
   );

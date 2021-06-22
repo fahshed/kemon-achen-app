@@ -1,10 +1,9 @@
 import React from 'react';
 
 import { NavigationContainer } from '@react-navigation/native';
-
-import AppNavigator from './AppNavigator';
 import AuthNavigator from './AuthNavigator';
 import NavigationTheme from './NavigationTheme';
+import DrawerNavigator from './DrawerNavigator';
 
 import { useAppSelector } from '../store';
 
@@ -13,7 +12,7 @@ export default function Navigation() {
 
   return (
     <NavigationContainer theme={NavigationTheme}>
-      {isAuthenticated ? <AppNavigator /> : <AuthNavigator />}
+      {isAuthenticated ? <DrawerNavigator /> : <AuthNavigator />}
     </NavigationContainer>
   );
 }

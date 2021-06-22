@@ -3,7 +3,6 @@ import { View, ScrollView, StyleSheet, Linking } from 'react-native';
 
 import { Body1, H6Bold } from '../../../styles';
 import Api from '../../../api';
-import { theme } from '../../../config';
 
 //import { ItemSeparator } from '../../components';
 //import UserProfileCommentCard from '../../components/UserProfileCommentCard';
@@ -22,7 +21,7 @@ export default function CommunityAboutScreen({ communityId }) {
     getCommunityAbout();
   }, []);
 
-  console.log(communityAbout);
+  //console.log(communityAbout);
 
   return (
     <ScrollView>

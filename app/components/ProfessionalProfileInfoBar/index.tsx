@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
-import { FlatList } from 'react-native-gesture-handler';
 
 import { theme } from '../../config';
 import { Body2Bold, Caption } from '../../styles';
@@ -9,7 +8,6 @@ import TagComponent from '../../components/Tag';
 import RankBadgeComponent from '../../components/RankBadgeComponent';
 
 function ProfessionalProfileInfoBar({ userName, badges, rank }) {
-  const renderItem = ({ item }) => <TagComponent badgeContent={item.name} />;
   return (
     <View style={styles.container}>
       <View style={styles.detailsContainer}>
@@ -20,15 +18,14 @@ function ProfessionalProfileInfoBar({ userName, badges, rank }) {
           </Caption>
           <RankBadgeComponent rank={rank} />
         </View>
-        <FlatList
-          data={badges}
-          keyExtractor={(badge) => badge.id}
-          horizontal={true}
-          renderItem={renderItem}
-        />
+        <View style={{ flexDirection: 'row' }}>
+        {badges.map((tag) => (
+          <TagComponent badgeContent={tag} />
+        ))}
       </View>
-      <TouchableOpacity style={{ marginLeft: 'auto' }}>
-        <Caption color="red">Edit</Caption>
+      </View>
+      <TouchableOpacity style={{ marginLeft: 160 }}>
+        <Caption color="primary">Edit</Caption>
       </TouchableOpacity>
     </View>
   );

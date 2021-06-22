@@ -42,6 +42,7 @@ export default function HomeScreen({ navigation }) {
         navigation.navigate(NavRoutes.POST_DETAILS, item._id);
       }}
       isCommunityFeed={false}
+      isProfileFeed={false}
     />
   );
 

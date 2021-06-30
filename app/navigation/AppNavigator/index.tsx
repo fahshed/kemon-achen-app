@@ -8,6 +8,7 @@ import {
   UserProfileScreen,
   TestScreen,
   ScoreScreen,
+  AdviceScreen,
 } from '../../screens';
 
 const Stack = createStackNavigator();
@@ -33,7 +34,12 @@ const AppNavigator = () => (
     <Stack.Screen
       name="Score"
       component={ScoreScreen}
-      options={{ headerTitle: 'Score' }}
+      options={{ headerTitle: 'Score', headerShown: false }}
+    />
+    <Stack.Screen
+      name="Advice"
+      component={AdviceScreen}
+      options={{ headerTitle: 'Advice', headerShown: false }}
     />
   </Stack.Navigator>
 );

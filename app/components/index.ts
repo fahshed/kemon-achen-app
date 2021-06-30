@@ -18,3 +18,5 @@ export { default as UserProfileCommentCard } from './UserProfileCommentCard';
 export { default as Test } from './Test';
 export { default as Sample } from './Sample';
 export { default as TestQuestion } from './TestQuestion';
+export { default as AnimatedBar } from './AnimatedBar';
+export { default as DoubleBar } from './DoubleBar';

@@ -1,43 +1,75 @@
-import React, { useEffect } from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
+import React from 'react';
+import { ScrollView } from 'react-native';
 
-import { BarChart } from 'react-native-animated-charts';
+import { useNavigation } from '@react-navigation/native';
 
-import { Container, H5Bold } from '../../styles';
-// import Api from '../../api';
+import { AppButton, DoubleBar } from '../../components';
+import { Container, H5Bold, Body2 } from '../../styles';
+import { theme } from '../../config';
+import NavRoutes from '../../navigation/NavRoutes';
+
+const FULL = 200;
+const FULL_SCORE = 20;
 
 export default function ScoreScreen({ route }) {
-  useEffect(() => {
-    (async () => {
-      console.log(route.params.testId);
-      console.log(route.params.score);
-    })();
-  }, []);
+  const navigation = useNavigation();
+
+  const { score, testId } = route.params;
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
-      <Container p="8px">
-        <H5Bold align="center">Score</H5Bold>
-        <BarChart
-          labels={['10k', '2k', '1.2k', '4.5k', '3k']}
-          dataY={[10, 2, 1.2, 4.5, 3]}
-          color={'#a7bd4f'}
-          height={300}
-          containerStyles={styles.barChart}
+      <H5Bold align="center" mt="32px" mb="24px">
+        Your Mental Problem Levels
+      </H5Bold>
+      <Container
+        justify="space-around"
+        align="flex-end"
+        direction="row"
+        height="270px"
+      >
+        <Container height="100%" width="35%">
+          <DoubleBar
+            FULL={FULL}
+            FULL_SCORE={FULL_SCORE}
+            color={theme.orange}
+            value={score.anxiety}
+            label="Anxiety"
+            delay={0}
+          />
+        </Container>
+        <Container height="100%" width="35%">
+          <DoubleBar
+            FULL={FULL}
+            FULL_SCORE={FULL_SCORE}
+            color={theme.lemon}
+            value={score.stress}
+            label="Stress"
+            delay={500}
+          />
+        </Container>
+        <Container height="100%" width="35%">
+          <DoubleBar
+            FULL={FULL}
+            FULL_SCORE={FULL_SCORE}
+            color={theme.blue}
+            value={score.depression}
+            label="Depression"
+            delay={1000}
+          />
+        </Container>
+      </Container>
+      <Container p="8px" mt="24px">
+        <Body2 align="center" mb="24px">
+          Your Depression, Anxiety, Stress levels vs normal levels. The range of
+          0-7 can be considered to be a sign of good mental health.
+        </Body2>
+        <AppButton
+          title="Get Our Advice"
+          onPress={() =>
+            navigation.navigate(NavRoutes.ADVICE, { score, testId })
+          }
         />
       </Container>
     </ScrollView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-  },
-  barChart: {
-    backgroundColor: 'transparent',
-    height: 500,
-    width: 400,
-    marginTop: 20,
-  },
-});

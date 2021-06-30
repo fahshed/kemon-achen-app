@@ -11,4 +11,5 @@ export default Object.freeze({
   USER_PROFILE: 'UserProfile',
   TEST: 'Test',
   SCORE: 'Score',
+  ADVICE: 'Advice',
 });

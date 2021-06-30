@@ -24,8 +24,7 @@ export default function QuestionSet({
 }) {
   const handleProceed = () => {
     if (!questions.some((q) => q.selectedOption === null)) {
-      console.log('completed a step');
-      console.log(questions.reduce((a, b) => a + b.selectedOption, 0));
+      // console.log(questions.reduce((a, b) => a + b.selectedOption, 0));
       setStep((prev) => prev + 1);
       if (scrollRef !== undefined) {
         setTimeout(() => {

@@ -26,7 +26,6 @@ export default function TestScreen() {
   const [depressionQuestions, setDepressionQuestions] = useState([]);
 
   const submitTest = () => {
-    console.log('submit');
     const score = {
       anxiety: anxietyQuestions.reduce((a, b) => a + b.selectedOption, 0),
       stress: stressQuestions.reduce((a, b) => a + b.selectedOption, 0),
@@ -34,8 +33,6 @@ export default function TestScreen() {
     };
     console.log(score);
     navigation.navigate(NavRoutes.SCORE, { testId, score });
-    // const response = await Api.submitTest(testId, score);
-    // console.log(response);
   };
 
   useEffect(() => {

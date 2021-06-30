@@ -24,6 +24,7 @@ function WelcomeScreen({ navigation }) {
       <View style={styles.buttonContainer}>
         <AppButton
           title="Login"
+          mb={8}
           onPress={() => navigation.navigate(NavRoutes.LOGIN)}
         />
         <AppButton

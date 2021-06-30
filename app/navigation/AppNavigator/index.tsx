@@ -7,6 +7,7 @@ import {
   PostDetailsScreen,
   UserProfileScreen,
   TestScreen,
+  ScoreScreen,
 } from '../../screens';
 
 const Stack = createStackNavigator();
@@ -28,6 +29,11 @@ const AppNavigator = () => (
       name="Test"
       component={TestScreen}
       options={{ headerTitle: 'Test', headerShown: false }}
+    />
+    <Stack.Screen
+      name="Score"
+      component={ScoreScreen}
+      options={{ headerTitle: 'Score' }}
     />
   </Stack.Navigator>
 );

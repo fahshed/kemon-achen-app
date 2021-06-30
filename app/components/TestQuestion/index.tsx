@@ -3,7 +3,7 @@ import { TouchableOpacity } from 'react-native';
 
 import { Container, H5Customized, Body2, Shadow } from '../../styles';
 
-const optionLabels = ['Always', 'Often', 'Sometimes', 'Rarely', 'Never'];
+const optionLabels = ['Never', 'Rarely', 'Sometimes', 'Often', 'Always'];
 
 export default function TestQuestion({
   question,
@@ -39,7 +39,7 @@ export default function TestQuestion({
 function OptionButton({ label, selected, onSelect }) {
   return (
     <TouchableOpacity activeOpacity={0.2} onPress={onSelect}>
-      <Container bg={selected ? 'secondary' : 'white'} p="10px" corner="16px">
+      <Container bg={selected ? 'secondary' : 'white'} p="7px" corner="16px">
         <Body2 color={selected ? 'white' : 'black'}>{label}</Body2>
       </Container>
     </TouchableOpacity>

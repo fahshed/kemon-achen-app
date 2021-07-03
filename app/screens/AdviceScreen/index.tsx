@@ -6,7 +6,6 @@ import * as Animatable from 'react-native-animatable';
 
 import { AppButton, AdviceCard } from '../../components';
 import { Container, H5Bold } from '../../styles';
-import NavRoutes from '../../navigation/NavRoutes';
 
 import Api from '../../api';
 
@@ -92,7 +91,7 @@ export default function AdviceScreen({ route }) {
           >
             <AppButton
               title="Go to Home"
-              onPress={() => navigation.navigate(NavRoutes.HOME)}
+              onPress={() => navigation.navigate('Root')}
             />
           </Animatable.View>
         </Container>

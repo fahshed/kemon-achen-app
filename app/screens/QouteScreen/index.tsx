@@ -27,7 +27,7 @@ export default function QouteScreen() {
               <AppButton
                 title="No, I'm good"
                 color="secondary"
-                onPress={() => navigation.navigate(NavRoutes.HOME)}
+                onPress={() => navigation.navigate('Root')}
               />
             </Container>
           </Container>

@@ -32,6 +32,10 @@ export default function NotificationScreen() {
         title="Go to Score Screen"
         onPress={() => navigation.navigate(NavRoutes.SCORE)}
       />
+      <Button
+        title="Go to Qoute Screen"
+        onPress={() => navigation.navigate(NavRoutes.QOUTE)}
+      />
     </View>
   );
 }

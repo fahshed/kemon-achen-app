@@ -67,7 +67,7 @@ export default function TestScreen() {
         <H5Bold align="center">Loading</H5Bold>
       ) : (
         <Container p="8px">
-          <H5Bold align="center" mb="16px">
+          <H5Bold align="center" mt="24px" mb="24px">
             {testName}
           </H5Bold>
           {step === 0 && (

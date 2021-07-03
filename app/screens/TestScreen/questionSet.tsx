@@ -41,7 +41,9 @@ export default function QuestionSet({
 
   return (
     <Container align="flex-start">
-      <H5Bold mb="32px">{heading}</H5Bold>
+      <Container>
+        <H5Bold mb="16px">{heading} Related Questions</H5Bold>
+      </Container>
 
       <Container align="center">
         {questions.map((q, index) => (

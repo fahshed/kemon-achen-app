@@ -12,4 +12,5 @@ export default Object.freeze({
   TEST: 'Test',
   SCORE: 'Score',
   ADVICE: 'Advice',
+  QOUTE: 'Qoute',
 });

@@ -23,7 +23,7 @@ export default function DoubleBar({
           corner="16px"
           mr="10px"
         >
-          <Body1Bold mb="2px">{value}</Body1Bold>
+          <Body1Bold mb="2px">{value * 5}</Body1Bold>
           <AnimatedBar
             value={FULL * (value / FULL_SCORE)}
             delay={delay}
@@ -39,7 +39,7 @@ export default function DoubleBar({
           bg="grey1"
           corner="16px"
         >
-          <Body1Bold mb="2px">7</Body1Bold>
+          <Body1Bold mb="2px">{7 * 5}</Body1Bold>
           <AnimatedBar
             value={FULL * (7 / FULL_SCORE)}
             delay={delay}

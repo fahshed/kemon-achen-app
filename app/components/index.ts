@@ -20,3 +20,4 @@ export { default as Sample } from './Sample';
 export { default as TestQuestion } from './TestQuestion';
 export { default as AnimatedBar } from './AnimatedBar';
 export { default as DoubleBar } from './DoubleBar';
+export { default as AdviceCard } from './AdviceCard';

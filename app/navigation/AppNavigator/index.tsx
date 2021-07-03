@@ -9,12 +9,18 @@ import {
   TestScreen,
   ScoreScreen,
   AdviceScreen,
+  QouteScreen,
 } from '../../screens';
 
 const Stack = createStackNavigator();
 
 const AppNavigator = () => (
   <Stack.Navigator mode="card">
+    <Stack.Screen
+      name="Qoute"
+      component={QouteScreen}
+      options={{ headerTitle: 'Qoute', headerShown: false }}
+    />
     <Stack.Screen
       name="Root"
       component={BottomTabNavigator}

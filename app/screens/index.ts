@@ -11,3 +11,4 @@ export { default as TestScreen } from './TestScreen';
 export { default as UserProfileScreen } from './UserProfileScreen';
 export { default as ScoreScreen } from './ScoreScreen';
 export { default as AdviceScreen } from './AdviceScreen';
+export { default as QouteScreen } from './QouteScreen';

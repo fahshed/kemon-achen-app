@@ -25,5 +25,9 @@ export const theme = {
   darkGrey: '#0c0c0c',
   danger: '#ff6347',
 
+  lightBlue: '#B0D5F2',
+  lightLemon: '#B0EAB3',
+  lightOrange: '#FFD495',
+
   transparent: 'transparent',
 };

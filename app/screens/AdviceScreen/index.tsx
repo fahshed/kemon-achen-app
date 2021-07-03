@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { ScrollView } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
+import * as Animatable from 'react-native-animatable';
 
-import { AppButton } from '../../components';
-import { Container, H5Bold, Body2, H6, Body1 } from '../../styles';
+import { AppButton, AdviceCard } from '../../components';
+import { Container, H5Bold } from '../../styles';
 import NavRoutes from '../../navigation/NavRoutes';
 
 import Api from '../../api';
@@ -36,66 +37,64 @@ export default function AdviceScreen({ route }) {
           Loading...
         </H5Bold>
       ) : (
-        <Container p="8px" align="flex-start">
-          <H5Bold align="center" mt="32px" mb="24px">
-            Advice Here
-          </H5Bold>
-          <H5Bold align="center" mb="24px">
-            {JSON.stringify(score)}
+        <Container p="8px" grow="1">
+          <H5Bold align="center" mt="24px" mb="24px">
+            Advices
           </H5Bold>
 
-          <Container
-            align="flex-start"
-            p="8px"
-            border="1px"
-            corner="16px"
-            bc="black"
-            mb="16px"
+          <Animatable.View
+            animation="slideInUp"
+            duration={1000}
+            delay={0}
+            style={{ width: '100%' }}
           >
-            <H5Bold align="center">Anxiety</H5Bold>
-            <Body1>{anxiety.messages[0]}</Body1>
-            <H6>Try these:</H6>
-            {anxiety.advice.map((advice, index) => (
-              <Body2 key={index}>{advice}</Body2>
-            ))}
-          </Container>
+            <AdviceCard
+              title="Anxiety"
+              score={score.anxiety * 5}
+              message={anxiety.messages[0]}
+              advices={anxiety.advice}
+            />
+          </Animatable.View>
 
-          <Container
-            align="flex-start"
-            p="8px"
-            border="1px"
-            corner="16px"
-            bc="black"
-            mb="16px"
+          <Animatable.View
+            animation="slideInUp"
+            duration={1000}
+            delay={0}
+            style={{ width: '100%' }}
           >
-            <H5Bold align="center">Stress</H5Bold>
-            <Body1>{stress.messages[0]}</Body1>
-            <H6>Try these:</H6>
-            {stress.advice.map((advice, index) => (
-              <Body2 key={index}>{advice}</Body2>
-            ))}
-          </Container>
+            <AdviceCard
+              title="Stress"
+              score={score.stress * 5}
+              message={stress.messages[0]}
+              advices={stress.advice}
+            />
+          </Animatable.View>
 
-          <Container
-            align="flex-start"
-            p="8px"
-            border="1px"
-            corner="16px"
-            bc="black"
-            mb="16px"
+          <Animatable.View
+            animation="slideInUp"
+            duration={1000}
+            delay={0}
+            style={{ width: '100%' }}
           >
-            <H5Bold align="center">Depression</H5Bold>
-            <Body1>{depression.messages[0]}</Body1>
-            <H6>Try these:</H6>
-            {depression.advice.map((advice, index) => (
-              <Body2 key={index}>{advice}</Body2>
-            ))}
-          </Container>
+            <AdviceCard
+              title="Depression"
+              score={score.depression * 5}
+              message={depression.messages[0]}
+              advices={depression.advice}
+            />
+          </Animatable.View>
 
-          <AppButton
-            title="Go to Home"
-            onPress={() => navigation.navigate(NavRoutes.HOME)}
-          />
+          <Animatable.View
+            animation="slideInUp"
+            duration={1000}
+            delay={0}
+            style={{ width: '100%' }}
+          >
+            <AppButton
+              title="Go to Home"
+              onPress={() => navigation.navigate(NavRoutes.HOME)}
+            />
+          </Animatable.View>
         </Container>
       )}
     </ScrollView>

@@ -21,3 +21,5 @@ export { default as TestQuestion } from './TestQuestion';
 export { default as AnimatedBar } from './AnimatedBar';
 export { default as DoubleBar } from './DoubleBar';
 export { default as AdviceCard } from './AdviceCard';
+export { default as UserInfoBar2 } from './UserInfoBar2';
+export { default as CommunityPostHeader } from './CommunityPostHeader';

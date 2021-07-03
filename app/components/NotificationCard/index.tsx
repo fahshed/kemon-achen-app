@@ -1,12 +1,12 @@
 import React from 'react';
 import { Image, StyleSheet, View } from 'react-native';
 
-import { Entypo } from '@expo/vector-icons';
+// import { Entypo } from '@expo/vector-icons';
 
 import { theme } from '../../config';
-import { Body2, Caption } from '../../styles';
+import { Body2 } from '../../styles';
 
-function NotificationCard({ notificationTitle, notificationBody, time }) {
+function NotificationCard({ notificationTitle, time }) {
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
@@ -16,14 +16,9 @@ function NotificationCard({ notificationTitle, notificationBody, time }) {
         />
       </View>
       <View style={styles.detailsContainer}>
-        <View style={styles.header}>
-          <Body2>{notificationTitle}</Body2>
-          <Entypo name="dot-single" size={16} />
-          <Body2>{time}</Body2>
-        </View>
-        <Caption color="grey6" numberOfLines={3}>
-          {notificationBody}
-        </Caption>
+        <Body2>{notificationTitle}</Body2>
+
+        <Body2>{time}</Body2>
       </View>
     </View>
   );
@@ -32,7 +27,7 @@ function NotificationCard({ notificationTitle, notificationBody, time }) {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'flex-start',
-    backgroundColor: theme.lemon,
+    backgroundColor: theme.white,
     flexDirection: 'row',
     padding: 8,
     width: '100%',
@@ -55,7 +50,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: '15%',
   },
-  header: {
+  timer: {
     flexDirection: 'row',
   },
 });

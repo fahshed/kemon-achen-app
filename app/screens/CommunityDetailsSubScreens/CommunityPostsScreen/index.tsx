@@ -1,29 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-import { ItemSeparator, Post, TopSearchBar2 } from '../../components';
-import { theme } from '../../config';
-import NavRoutes from '../../navigation/NavRoutes';
+import { ItemSeparator, Post } from '../../../components';
+import { theme } from '../../../config';
+import NavRoutes from '../../../navigation/NavRoutes';
 
-import { fetchPosts, likePost } from '../../store/reducers';
-import { useAppDispatch, useAppSelector } from '../../store';
-import { H5Bold } from '../../styles';
+import { H5Bold } from '../../../styles';
+import Api from '../../../api';
 
-export default function HomeScreen({ navigation }) {
+export default function CommunityPostsScreen({ communityId }) {
+  const [posts, setPosts] = useState(null);
   const [isRefreshing, setIsRefreshing] = useState(false);
-  const dispatch = useAppDispatch();
+  const navigation = useNavigation();
 
-  const { entities } = useAppSelector((state) => state.Post);
-
-  const posts = Object.values(entities);
-
-  const handleLikePress = async (postId) => {
-    dispatch(
-      likePost({
-        postId,
-        likeOption: !entities[postId].isLikedByCurrentUser ? 'like' : 'unlike',
-      }),
-    );
+  const handleLikePress = async (postId, isLiked) => {
+    Api.likePost(postId, isLiked ? 'like' : 'unlike');
   };
 
   const renderItem = ({ item }) => (
@@ -31,37 +23,33 @@ export default function HomeScreen({ navigation }) {
       touchDisabled={false}
       content={item.content}
       commentCount={item.commentCount}
-      communityName={item.community.name}
+      communityName=""
       postedAgo={item.createdAt}
       title={item.title}
       username={item.postedBy.name}
       voteCount={item.voteCount}
-      onLikePress={() => handleLikePress(item._id)}
-      isPostLiked={entities[item._id].isLikedByCurrentUser}
+      onLikePress={() => handleLikePress(item._id, item.isPostLiked)}
+      isPostLiked={item.isLikedByCurrentUser}
       onPress={() => {
         navigation.navigate(NavRoutes.POST_DETAILS, item._id);
       }}
-      isCommunityFeed={false}
+      isCommunityFeed={true}
       isProfileFeed={false}
     />
   );
 
-  const getHomeFeed = async () => {
-    const response = await dispatch(fetchPosts());
-    if ('error' in response) {
-      console.log('Feed fetch error', response.error);
-    }
-
+  const getCommunityFeed = async () => {
+    const response = await Api.getCommunityFeed(communityId);
+    setPosts(response);
     setIsRefreshing(false);
   };
 
   useEffect(() => {
-    getHomeFeed();
+    getCommunityFeed();
   }, []);
 
   return (
     <>
-      <TopSearchBar2 />
       {isRefreshing && (
         <H5Bold align="center" color="grey5" mt="8px" mb="8px">
           Feed Loading........
@@ -77,7 +65,7 @@ export default function HomeScreen({ navigation }) {
         refreshing={isRefreshing}
         onRefresh={() => {
           setIsRefreshing(true);
-          getHomeFeed();
+          getCommunityFeed();
         }}
         renderItem={renderItem}
       />

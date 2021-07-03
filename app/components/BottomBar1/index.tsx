@@ -10,7 +10,6 @@ function BottomBar1({
   isPostLiked,
   onLikePress = null,
   onCommentPress = null,
-  onSharePress = null,
   voteCount,
   commentCount,
 }) {
@@ -38,18 +37,6 @@ function BottomBar1({
         </TouchableOpacity>
         <Body1 color="grey5" ml="4px">
           {commentCount}
-        </Body1>
-      </View>
-      <View style={styles.iconWithText}>
-        <TouchableOpacity onPress={onSharePress}>
-          <MaterialCommunityIcons
-            name="share-outline"
-            size={28}
-            color={theme.grey5}
-          />
-        </TouchableOpacity>
-        <Body1 color="grey5" ml="4px">
-          Share
         </Body1>
       </View>
     </View>

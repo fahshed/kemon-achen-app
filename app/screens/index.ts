@@ -1,4 +1,4 @@
-export { default as CommunityScreen } from './CommunityScreen';
+export { default as CommunityListScreen } from './CommunityListScreen';
 export { default as CreatePostScreen } from './CreatePostScreen';
 export { default as HomeScreen } from './HomeScreen';
 export { default as LoginScreen } from './LoginScreen';
@@ -12,3 +12,7 @@ export { default as UserProfileScreen } from './UserProfileScreen';
 export { default as ScoreScreen } from './ScoreScreen';
 export { default as AdviceScreen } from './AdviceScreen';
 export { default as QouteScreen } from './QouteScreen';
+export { default as ProfessionalProfileScreen } from './ProfessionalProfileScreen';
+export { default as CommunityScreen } from './CommunityScreen';
+export { default as GeneralPostsScreen } from './GeneralPostsScreen';
+export { default as SavedPosts } from './SavedPosts';

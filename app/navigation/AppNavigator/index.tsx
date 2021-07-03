@@ -10,6 +10,8 @@ import {
   ScoreScreen,
   AdviceScreen,
   QouteScreen,
+  ProfessionalProfileScreen,
+  CommunityScreen,
 } from '../../screens';
 
 const Stack = createStackNavigator();
@@ -46,6 +48,18 @@ const AppNavigator = () => (
       name="Advice"
       component={AdviceScreen}
       options={{ headerTitle: 'Advice', headerShown: false }}
+    />
+
+    <Stack.Screen
+      name="CommunityDetails"
+      component={CommunityScreen}
+      options={{ headerTitle: '' }}
+    />
+
+    <Stack.Screen
+      name="ProfessionalProfile"
+      component={ProfessionalProfileScreen}
+      options={{ headerTitle: '' }}
     />
   </Stack.Navigator>
 );

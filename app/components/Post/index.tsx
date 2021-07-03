@@ -3,7 +3,9 @@ import { GestureResponderEvent, TouchableOpacity } from 'react-native';
 
 import { Body2, H6Bold } from '../../styles';
 import BottomBar1 from '../BottomBar1';
-import {UserInfobar1, UserInfoBar2, CommunityPostHeader} from '../../components';
+import UserInfobar1 from '../UserInfoBar1';
+import UserInfoBar2 from '../UserInfoBar2';
+import CommunityPostHeader from '../CommunityPostHeader';
 
 interface PostProps {
   username: string;
@@ -34,17 +36,18 @@ class Post extends PureComponent<PostProps> {
               postedBy={this.props.username}
               time={this.props.postedAgo}
             />
-          ) : this.props.isProfileFeed ?
-          (
+          ) : this.props.isProfileFeed ? (
             <UserInfoBar2
               communityName={this.props.communityName}
               postedAgo={this.props.postedAgo}
             />
-          ) : (<UserInfobar1
-            username={this.props.username}
-            communityName={this.props.communityName}
-            postedAgo={this.props.postedAgo}
-          />)}
+          ) : (
+            <UserInfobar1
+              username={this.props.username}
+              communityName={this.props.communityName}
+              postedAgo={this.props.postedAgo}
+            />
+          )}
 
           <H6Bold pb="8px" pl="8px" pr="8px" pt="8px">
             {this.props.title}

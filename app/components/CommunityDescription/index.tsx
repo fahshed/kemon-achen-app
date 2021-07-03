@@ -26,8 +26,8 @@ function CommunityDescription({
       <Caption mb="8px">{members}</Caption>
       <Body2 mb="8px">{description}</Body2>
       <View style={{ flexDirection: 'row' }}>
-        {badges.map((tag) => (
-          <TagComponent badgeContent={tag} />
+        {badges.map((tag, index) => (
+          <TagComponent key={index} badgeContent={tag} />
         ))}
       </View>
     </View>

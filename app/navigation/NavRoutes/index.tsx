@@ -12,5 +12,8 @@ export default Object.freeze({
   PROFESSIONAL_USER_PROFILE: 'ProfessionalProfile',
   COMMUNITY_DETAILS: 'CommunityDetails',
   TEST: 'Test',
-  SAVED_POSTS: 'Saved Posts'
+  SCORE: 'Score',
+  ADVICE: 'Advice',
+  QOUTE: 'Qoute',
+  SAVED_POSTS: 'Saved Posts',
 });

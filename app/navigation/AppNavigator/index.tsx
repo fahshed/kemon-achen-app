@@ -7,6 +7,9 @@ import {
   PostDetailsScreen,
   UserProfileScreen,
   TestScreen,
+  ScoreScreen,
+  AdviceScreen,
+  QouteScreen,
   ProfessionalProfileScreen,
   CommunityScreen,
 } from '../../screens';
@@ -15,6 +18,11 @@ const Stack = createStackNavigator();
 
 const AppNavigator = () => (
   <Stack.Navigator mode="card">
+    <Stack.Screen
+      name="Qoute"
+      component={QouteScreen}
+      options={{ headerTitle: 'Qoute', headerShown: false }}
+    />
     <Stack.Screen
       name="Root"
       component={BottomTabNavigator}
@@ -29,7 +37,17 @@ const AppNavigator = () => (
     <Stack.Screen
       name="Test"
       component={TestScreen}
-      options={{ headerTitle: 'Test' }}
+      options={{ headerTitle: 'Test', headerShown: false }}
+    />
+    <Stack.Screen
+      name="Score"
+      component={ScoreScreen}
+      options={{ headerTitle: 'Score', headerShown: false }}
+    />
+    <Stack.Screen
+      name="Advice"
+      component={AdviceScreen}
+      options={{ headerTitle: 'Advice', headerShown: false }}
     />
 
     <Stack.Screen

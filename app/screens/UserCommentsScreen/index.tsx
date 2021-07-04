@@ -19,7 +19,6 @@ export default function UserCommentsScreen() {
 
   const getCommentssOfUser = async () => {
     const response = await dispatch(fetchUserCommentsById(user._id));
-    console.log('calling you!');
     if ('error' in response) {
       console.log('Community List fetch error', response.error);
     }

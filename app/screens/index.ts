@@ -9,8 +9,10 @@ export { default as SignupScreen } from './SignupScreen';
 export { default as WelcomeScreen } from './WelcomeScreen';
 export { default as TestScreen } from './TestScreen';
 export { default as UserProfileScreen } from './UserProfileScreen';
+export { default as ScoreScreen } from './ScoreScreen';
+export { default as AdviceScreen } from './AdviceScreen';
+export { default as QouteScreen } from './QouteScreen';
 export { default as ProfessionalProfileScreen } from './ProfessionalProfileScreen';
 export { default as CommunityScreen } from './CommunityScreen';
 export { default as GeneralPostsScreen } from './GeneralPostsScreen';
-export { default as SavedPosts} from './SavedPosts';
-
+export { default as SavedPosts } from './SavedPosts';

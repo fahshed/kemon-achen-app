@@ -21,12 +21,20 @@ export default function NotificationScreen() {
         <Body2Bold>{'ID: ' + user._id}</Body2Bold>
         <Body2Bold>{'Name: ' + user.name}</Body2Bold>
         <Body2Bold>{'role: ' + user.role}</Body2Bold>
-        {/* <AppButton title="Logout" onPress={() => dispatch(logout())} /> */}
+        <AppButton title="Logout" onPress={() => dispatch(logout())} />
       </View>
 
       <Button
         title="Go to Test Screen"
         onPress={() => navigation.navigate(NavRoutes.TEST)}
+      />
+      <Button
+        title="Go to Score Screen"
+        onPress={() => navigation.navigate(NavRoutes.SCORE)}
+      />
+      <Button
+        title="Go to Qoute Screen"
+        onPress={() => navigation.navigate(NavRoutes.QOUTE)}
       />
     </View>
   );

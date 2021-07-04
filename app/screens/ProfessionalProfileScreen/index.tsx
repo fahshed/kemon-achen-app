@@ -15,13 +15,13 @@ export default function ProfessionalProfileScreen() {
 
   const [profileInfo, setProfileInfo] = useState(null);
 
-  const userId = "60830ac18fc20123c40f10c0";
+  const userId = '60830ac18fc20123c40f10c0';
 
   const getProfessionalInfo = async () => {
     const response = await Api.getProfessionalInfo(userId);
     console.log(response);
     setProfileInfo(response);
-  };  
+  };
 
   useEffect(() => {
     getProfessionalInfo();

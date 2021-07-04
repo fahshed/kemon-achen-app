@@ -9,7 +9,11 @@ import NavRoutes from '../../navigation/NavRoutes';
 import { H5Bold } from '../../styles';
 import Api from '../../api';
 
-export default function GeneralPostsScreen({ userId, isCommunityFeed, isProfileFeed }) {
+export default function GeneralPostsScreen({
+  userId,
+  isCommunityFeed,
+  isProfileFeed,
+}) {
   const [posts, setPosts] = useState(null);
   const [isRefreshing, setIsRefreshing] = useState(false);
   const navigation = useNavigation();
@@ -40,7 +44,6 @@ export default function GeneralPostsScreen({ userId, isCommunityFeed, isProfileF
 
   const getProfessionalPosts = async () => {
     const response = await Api.getPostsByUserId(userId);
-    console.log(response);
     setPosts(response);
     setIsRefreshing(false);
   };

@@ -1,127 +1,39 @@
-import * as React from 'react';
-import { View, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
-import { FlatList } from 'react-native-gesture-handler';
+import React, { useEffect } from 'react';
+import {
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  ScrollView,
+  FlatList,
+} from 'react-native';
 
 import { Body1Bold, Caption } from '../../styles';
 import { ItemSeparator } from '../../components';
 import { theme } from '../../config';
 import MetricComponent from '../../components/MetricComponent';
 import TestInfoComponent from '../../components/TestInfoComponent';
+// import { timeAgo } from '../../utils';
+
+// import Api from '../../api';
 
 export default function UserHealthScreen() {
-  const metricData = [
-    { id: '123452', name: 'Depression', score: '60%' },
-    { id: '123435', name: 'Anxiety', score: '80%' },
-    { id: '12345f', name: 'Stress', score: '40%' },
-  ];
+  // const [testHistory, setTestHistory] = useState(null);
 
-  const testInfo = [
-    {
-      _id: '1234',
-      score: '12',
-      color: 'red',
-      testName: 'Anxiety',
-      numericInfo: '1h',
-    },
-    {
-      _id: '12342',
-      score: '40',
-      color: 'green',
-      testName: 'Bipolar Disorder',
-      numericInfo: '1h',
-    },
-    {
-      _id: '12343',
-      score: '20',
-      color: 'blue',
-      testName: 'Suicidal Tendency',
-      numericInfo: '1h',
-    },
-    {
-      _id: '12344d',
-      score: '50',
-      color: 'yellow',
-      testName: 'PTSD',
-      numericInfo: '1h',
-    },
-    {
-      _id: '1234d',
-      score: '12',
-      color: 'red',
-      testName: 'Anxiety',
-      numericInfo: '1h',
-    },
-    {
-      _id: '12342d',
-      score: '40',
-      color: 'green',
-      testName: 'Bipolar Disorder',
-      numericInfo: '1h',
-    },
-    {
-      _id: '12343d',
-      score: '20',
-      color: 'blue',
-      testName: 'Suicidal Tendency',
-      numericInfo: '1h',
-    },
-    {
-      _id: '123442d',
-      score: '50',
-      color: 'yellow',
-      testName: 'PTSD',
-      numericInfo: '1h',
-    },
-  ];
-
-  const suggestedtestInfo = [
-    {
-      _id: '1234',
-      score: '12',
-      color: 'red',
-      testName: 'Schrizophrenia',
-      numericInfo: '100 people took this test',
-    },
-    {
-      _id: '12342',
-      score: '40',
-      color: 'green',
-      testName: 'PTSD',
-      numericInfo: '40 people took this test',
-    },
-    {
-      _id: '12343',
-      score: '20',
-      color: 'blue',
-      testName: 'Anxiety',
-      numericInfo: '1h',
-    },
-    {
-      _id: '12344',
-      score: '50',
-      color: 'yellow',
-      testName: 'Eating Disorder',
-      numericInfo: '1h',
-    },
-  ];
+  useEffect(() => {
+    (async () => {
+      // const response = await Api.getUserTestsHistory();
+      // setTestHistory(response);
+      // console.log(response);
+    })();
+  }, []);
 
   const renderMetricItem = ({ item }) => (
     <MetricComponent name={item.name} score={item.score} color="red" />
   );
 
-  const renderTestBadge = ({ item }) => (
-    <TestInfoComponent
-      score={item.score}
-      color={item.color}
-      testName={item.testName}
-      numericInfo={item.numericInfo}
-    />
-  );
-
   const renderSuggestedTestBadge = ({ item }) => (
     <TestInfoComponent
       score=""
-      color={item.color}
       testName={item.testName}
       numericInfo={item.numericInfo}
     />
@@ -142,6 +54,7 @@ export default function UserHealthScreen() {
           keyExtractor={(metric) => metric._id}
           renderItem={renderMetricItem}
         />
+
         <View style={styles.header}>
           <Body1Bold ml="16px" mt="32px" mb="16px">
             Test
@@ -152,14 +65,15 @@ export default function UserHealthScreen() {
             <Caption color="red">See All</Caption>
           </TouchableOpacity>
         </View>
-        <FlatList
-          data={testInfo}
-          ItemSeparatorComponent={() => (
-            <ItemSeparator height={8} color={theme.white} />
-          )}
-          keyExtractor={(test) => test._id}
-          renderItem={renderTestBadge}
-        />
+
+        {/* {testHistory?.map((history, index) => (
+          <TestInfoComponent
+            key={index}
+            score={history.status}
+            testName={history.testname}
+            numericInfo={timeAgo(history.createdAt)}
+          />
+        ))} */}
 
         <View style={styles.header}>
           <Body1Bold ml="16px" mt="32px" mb="16px">
@@ -194,3 +108,99 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
 });
+
+const metricData = [
+  { id: '123452', name: 'Depression', score: '60%' },
+  { id: '123435', name: 'Anxiety', score: '80%' },
+  { id: '12345f', name: 'Stress', score: '40%' },
+];
+
+// const testInfo = [
+//   {
+//     _id: '1234',
+//     score: '12',
+//     color: 'red',
+//     testName: 'Anxiety',
+//     numericInfo: '1h',
+//   },
+//   {
+//     _id: '12342',
+//     score: '40',
+//     color: 'green',
+//     testName: 'Bipolar Disorder',
+//     numericInfo: '1h',
+//   },
+//   {
+//     _id: '12343',
+//     score: '20',
+//     color: 'blue',
+//     testName: 'Suicidal Tendency',
+//     numericInfo: '1h',
+//   },
+//   {
+//     _id: '12344d',
+//     score: '50',
+//     color: 'yellow',
+//     testName: 'PTSD',
+//     numericInfo: '1h',
+//   },
+//   {
+//     _id: '1234d',
+//     score: '12',
+//     color: 'red',
+//     testName: 'Anxiety',
+//     numericInfo: '1h',
+//   },
+//   {
+//     _id: '12342d',
+//     score: '40',
+//     color: 'green',
+//     testName: 'Bipolar Disorder',
+//     numericInfo: '1h',
+//   },
+//   {
+//     _id: '12343d',
+//     score: '20',
+//     color: 'blue',
+//     testName: 'Suicidal Tendency',
+//     numericInfo: '1h',
+//   },
+//   {
+//     _id: '123442d',
+//     score: '50',
+//     color: 'yellow',
+//     testName: 'PTSD',
+//     numericInfo: '1h',
+//   },
+// ];
+
+const suggestedtestInfo = [
+  {
+    _id: '1234',
+    score: '12',
+    color: 'red',
+    testName: 'Schrizophrenia',
+    numericInfo: '100 people took this test',
+  },
+  {
+    _id: '12342',
+    score: '40',
+    color: 'green',
+    testName: 'PTSD',
+    numericInfo: '40 people took this test',
+  },
+  {
+    _id: '12343',
+    score: '20',
+    color: 'blue',
+    testName: 'Anxiety',
+    numericInfo: '1h',
+  },
+  {
+    _id: '12344',
+    score: '50',
+    color: 'yellow',
+    testName: 'Eating Disorder',
+    numericInfo: '1h',
+  },
+];

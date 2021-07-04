@@ -7,10 +7,17 @@ import { theme } from '../../config';
 import { Body2 } from '../../styles';
 import ProfileTestBadgeComponent from '../ProfileTestBadgeComponent';
 
-function TestInfoComponent({ score, color, testName, numericInfo }) {
+const colors = {
+  excellent: 'green',
+  good: 'blue',
+  bad: 'orange',
+  concerning: 'red',
+};
+
+function TestInfoComponent({ score, testName, numericInfo }) {
   return (
     <View style={styles.container}>
-      <ProfileTestBadgeComponent score={score} color={color} />
+      <ProfileTestBadgeComponent score={score} color={colors[score]} />
       <Body2>{testName} Test</Body2>
       <Entypo name="dot-single" size={16} />
       <Body2>{numericInfo}</Body2>

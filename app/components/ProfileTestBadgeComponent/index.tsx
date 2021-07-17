@@ -14,9 +14,7 @@ function ProfileTestBadgeComponent({ score, color }) {
         },
       ]}
     >
-      <View style={styles.text}>
-        <Caption color="white">{score}</Caption>
-      </View>
+      <Caption color="white">{score}</Caption>
     </View>
   );
 }
@@ -26,14 +24,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     backgroundColor: theme.grey6,
-    borderRadius: 16,
+    borderRadius: 8,
     marginRight: 8,
     width: 70,
-    padding: 2,
-  },
-  text: {
-    marginHorizontal: 8,
-    marginVertical: 1,
+    padding: 3,
   },
 });
 

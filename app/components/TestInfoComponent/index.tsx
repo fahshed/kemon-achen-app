@@ -8,19 +8,19 @@ import { Body2 } from '../../styles';
 import ProfileTestBadgeComponent from '../ProfileTestBadgeComponent';
 
 const colors = {
-  excellent: 'green',
+  excellent: 'lemon',
   good: 'blue',
   bad: 'orange',
   concerning: 'red',
 };
 
-function TestInfoComponent({ score, testName, numericInfo }) {
+function TestInfoComponent({ score, testName, createdAgo }) {
   return (
     <View style={styles.container}>
       <ProfileTestBadgeComponent score={score} color={colors[score]} />
       <Body2>{testName} Test</Body2>
       <Entypo name="dot-single" size={16} />
-      <Body2>{numericInfo}</Body2>
+      <Body2>{createdAgo}</Body2>
     </View>
   );
 }
@@ -30,8 +30,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: theme.white,
     flexDirection: 'row',
-    height: 32,
-    padding: 8,
+    marginRight: 8,
+    marginBottom: 8,
     marginLeft: 8,
   },
 });

@@ -34,7 +34,7 @@ export const fetchUserCommentsById = createAsyncThunk(
   async (userId: string, thunkApi) => {
     try {
       const response = await Api.getCommentsByUserId(userId);
-      console.log('\n\nuser/comments', response);
+      //console.log('\n\nuser/comments', response);
       return response;
     } catch (e) {
       console.log('user/comments', e);

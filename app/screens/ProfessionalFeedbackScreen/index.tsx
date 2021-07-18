@@ -14,9 +14,6 @@ export default function ProfessionalFeedbackScreen({ userId }) {
   //const { user } = useAppSelector((state) => state.User);
   const { userComments } = useAppSelector((state) => state.User);
 
-  // console.log(user._id);
-  // console.log(userComments);
-
   const getCommentssOfUser = async () => {
     const response = await dispatch(fetchUserCommentsById(userId));
     //console.log('calling you!');

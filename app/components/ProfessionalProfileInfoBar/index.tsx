@@ -19,10 +19,10 @@ function ProfessionalProfileInfoBar({ userName, badges, rank }) {
           <RankBadgeComponent rank={rank} />
         </View>
         <View style={{ flexDirection: 'row' }}>
-        {badges.map((tag) => (
-          <TagComponent badgeContent={tag} />
-        ))}
-      </View>
+          {badges.map((tag) => (
+            <TagComponent badgeContent={tag} />
+          ))}
+        </View>
       </View>
       <TouchableOpacity style={{ marginLeft: 160 }}>
         <Caption color="primary">Edit</Caption>

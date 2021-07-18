@@ -4,11 +4,6 @@ import { View, ScrollView, StyleSheet, Linking } from 'react-native';
 import { Body1, H6Bold } from '../../../styles';
 import Api from '../../../api';
 
-//import { ItemSeparator } from '../../components';
-//import UserProfileCommentCard from '../../components/UserProfileCommentCard';
-
-//import { theme } from '../../config';
-
 export default function CommunityAboutScreen({ communityId }) {
   const [communityAbout, setcommunityAbout] = useState(null);
 
@@ -35,15 +30,15 @@ export default function CommunityAboutScreen({ communityId }) {
           <H6Bold mt="16px" mb="4px">
             Symptoms
           </H6Bold>
-          {communityAbout.about.symptoms.map((symptom) => (
-            <Body1>{symptom}</Body1>
+          {communityAbout.about.symptoms.map((symptom, index) => (
+            <Body1 key={index}>{symptom}</Body1>
           ))}
 
           <H6Bold mt="16px" mb="4px">
             What To Do
           </H6Bold>
-          {communityAbout.about.toDo.map((todo) => (
-            <Body1>{todo}</Body1>
+          {communityAbout.about.toDo.map((todo, index) => (
+            <Body1 key={index}>{todo}</Body1>
           ))}
 
           <H6Bold mt="16px" mb="4px">
@@ -51,6 +46,7 @@ export default function CommunityAboutScreen({ communityId }) {
           </H6Bold>
           {communityAbout.about.links.map((linkElement) => (
             <Body1
+              key={linkElement._id}
               color="primary"
               onPress={() => Linking.openURL(linkElement.link)}
             >

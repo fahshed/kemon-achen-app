@@ -9,7 +9,7 @@ import NavRoutes from '../../navigation/NavRoutes';
 function NearbyProfessionalScreen({ navigation }) {
   const suggestedProfessionals = [
     {
-      userName: 'Mr Bilkis Rahman',
+      userName: 'Dr Bilkis Rahman',
       userId: '1234',
       badges: [
         {
@@ -25,11 +25,11 @@ function NearbyProfessionalScreen({ navigation }) {
       location: '24/B Baker Street',
     },
     {
-      userName: 'Mr Bilkis Rahman',
+      userName: 'Dr Anisur Rahman',
       userId: '1234d4',
       badges: [
         {
-          name: 'PTSD',
+          name: 'Stress',
           id: '12345',
         },
         {
@@ -41,7 +41,7 @@ function NearbyProfessionalScreen({ navigation }) {
       location: '24/B Baker Street',
     },
     {
-      userName: 'Mr Bilkis Rahman',
+      userName: 'Dr Shahana',
       userId: '1234sasasas4',
       badges: [
         {
@@ -57,7 +57,7 @@ function NearbyProfessionalScreen({ navigation }) {
       location: '24/B Baker Street',
     },
     {
-      userName: 'Mr Bilkis Rahman',
+      userName: 'Dr Neil Armstrong',
       userId: '12346',
       badges: [
         {
@@ -73,7 +73,7 @@ function NearbyProfessionalScreen({ navigation }) {
       location: '24/B Baker Street',
     },
     {
-      userName: 'Mr Bilkis Rahman',
+      userName: 'Dr Rakin Rahman',
       userId: '12347',
       badges: [
         {
@@ -107,54 +107,6 @@ function NearbyProfessionalScreen({ navigation }) {
     {
       userName: 'Mr Bilkis Rahman',
       userId: '12348t',
-      badges: [
-        {
-          name: 'PTSD',
-          id: '12345',
-        },
-        {
-          name: 'Anxiety',
-          id: '56789',
-        },
-      ],
-      rank: '100',
-      location: '24/B Baker Street',
-    },
-    {
-      userName: 'Mr Bilkis Rahman',
-      userId: '12348r',
-      badges: [
-        {
-          name: 'PTSD',
-          id: '12345',
-        },
-        {
-          name: 'Anxiety',
-          id: '56789',
-        },
-      ],
-      rank: '100',
-      location: '24/B Baker Street',
-    },
-    {
-      userName: 'Mr Bilkis Rahman',
-      userId: '12348e',
-      badges: [
-        {
-          name: 'PTSD',
-          id: '12345',
-        },
-        {
-          name: 'Anxiety',
-          id: '56789',
-        },
-      ],
-      rank: '100',
-      location: '24/B Baker Street',
-    },
-    {
-      userName: 'Mr Bilkis Rahman',
-      userId: '12348w',
       badges: [
         {
           name: 'PTSD',

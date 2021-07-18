@@ -4,13 +4,6 @@ import { View, ScrollView, StyleSheet, Linking } from 'react-native';
 import { Body1, H6Bold } from '../../../styles';
 import Api from '../../../api';
 
-import { v4 as uuidv4 } from 'uuid';
-
-//import { ItemSeparator } from '../../components';
-//import UserProfileCommentCard from '../../components/UserProfileCommentCard';
-
-//import { theme } from '../../config';
-
 export default function CommunityAboutScreen({ communityId }) {
   const [communityAbout, setcommunityAbout] = useState(null);
 
@@ -23,7 +16,7 @@ export default function CommunityAboutScreen({ communityId }) {
     getCommunityAbout();
   }, []);
 
-  console.log(communityAbout);
+  //console.log(communityAbout);
 
   return (
     <ScrollView>

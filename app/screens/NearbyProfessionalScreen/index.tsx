@@ -1,12 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { FlatList } from 'react-native';
 
 import ProfessionalCard from '../../components/ProfessionalCard';
 import { theme } from '../../config';
 import { ItemSeparator } from '../../components';
 import NavRoutes from '../../navigation/NavRoutes';
+import Api from '../../api';
 
 function NearbyProfessionalScreen({ navigation }) {
+  const [professionalList, setProfessionalList] = useState(null);
+
+  const getProfessionalList = async () => {
+    const response = await Api.getSuggestedProfessionals();
+    setProfessionalList(response);
+  };
+
+  useEffect(() => {
+    getProfessionalList();
+  }, []);
+
+  //console.log(professionalList);
+
   const suggestedProfessionals = [
     {
       userName: 'Dr Bilkis Rahman',

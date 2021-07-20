@@ -16,4 +16,5 @@ export default Object.freeze({
   ADVICE: 'Advice',
   QOUTE: 'Qoute',
   SAVED_POSTS: 'Saved Posts',
+  LATEST_ADVICE: 'Latest Advice',
 });

@@ -25,7 +25,7 @@ function CommunityListScreen({ navigation }) {
 
   const getCommunitiesOfUser = async () => {
     const response = await dispatch(fetchCommunities());
-    console.log(response);
+    //console.log(response);
     if ('error' in response) {
       console.log('Community List fetch error', response.error);
     }

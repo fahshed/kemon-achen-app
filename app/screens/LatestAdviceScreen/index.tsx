@@ -47,7 +47,7 @@ export default function LatestAdviceScreen() {
           >
             <AdviceCard
               title="Anxiety"
-              score={15 * 5}
+              //score={15 * 5}
               message={anxiety.messages[0]}
               advices={anxiety.advice}
             />
@@ -61,7 +61,7 @@ export default function LatestAdviceScreen() {
           >
             <AdviceCard
               title="Stress"
-              score={15 * 5} //score should be removed
+              //score={15 * 5} //score should be removed
               message={stress.messages[0]}
               advices={stress.advice}
             />
@@ -75,7 +75,7 @@ export default function LatestAdviceScreen() {
           >
             <AdviceCard
               title="Depression"
-              score={15 * 5}
+              //score={15 * 5}
               message={depression.messages[0]}
               advices={depression.advice}
             />

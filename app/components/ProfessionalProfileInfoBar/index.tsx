@@ -6,8 +6,10 @@ import { Body2Bold, Caption } from '../../styles';
 
 import TagComponent from '../../components/Tag';
 import RankBadgeComponent from '../../components/RankBadgeComponent';
+import { useAppSelector } from '../../store';
 
 function ProfessionalProfileInfoBar({ userName, badges, rank }) {
+  const { user } = useAppSelector((state) => state.User);
   return (
     <View style={styles.container}>
       <View style={styles.detailsContainer}>
@@ -19,14 +21,16 @@ function ProfessionalProfileInfoBar({ userName, badges, rank }) {
           <RankBadgeComponent rank={rank} />
         </View>
         <View style={{ flexDirection: 'row' }}>
-          {badges.map((tag) => (
-            <TagComponent badgeContent={tag} />
+          {badges.map((tag, index) => (
+            <TagComponent badgeContent={tag} key={index} />
           ))}
         </View>
       </View>
-      <TouchableOpacity style={{ marginLeft: 160 }}>
-        <Caption color="primary">Edit</Caption>
-      </TouchableOpacity>
+      {user.role === 'professional' ? (
+        <TouchableOpacity style={{ marginLeft: 160 }}>
+          <Caption color="primary">Edit</Caption>
+        </TouchableOpacity>
+      ) : null}
     </View>
   );
 }

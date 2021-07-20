@@ -12,6 +12,7 @@ import {
   QouteScreen,
   ProfessionalProfileScreen,
   CommunityScreen,
+  LatestAdviceScreen,
 } from '../../screens';
 
 const Stack = createStackNavigator();
@@ -59,6 +60,12 @@ const AppNavigator = () => (
     <Stack.Screen
       name="ProfessionalProfile"
       component={ProfessionalProfileScreen}
+      options={{ headerTitle: '' }}
+    />
+
+    <Stack.Screen
+      name="Latest Advice"
+      component={LatestAdviceScreen}
       options={{ headerTitle: '' }}
     />
   </Stack.Navigator>

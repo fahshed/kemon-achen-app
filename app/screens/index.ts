@@ -16,3 +16,4 @@ export { default as ProfessionalProfileScreen } from './ProfessionalProfileScree
 export { default as CommunityScreen } from './CommunityScreen';
 export { default as GeneralPostsScreen } from './GeneralPostsScreen';
 export { default as SavedPosts } from './SavedPosts';
+export { default as LatestAdviceScreen } from './LatestAdviceScreen';

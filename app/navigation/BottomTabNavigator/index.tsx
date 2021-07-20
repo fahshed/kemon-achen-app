@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -18,10 +18,90 @@ import {
 import CommunityListScreen from '../../screens/CommunityListScreen';
 import CreatePostButton from './CreatePostButton';
 import NavRoutes from '../NavRoutes';
+import Constants from 'expo-constants';
+import { useNavigation } from '@react-navigation/core';
+import * as Notifications from 'expo-notifications';
+import Api from '../../api';
+import { Platform } from 'react-native';
+
+// import { useNotifications } from '../../hooks';
 
 const Tab = createBottomTabNavigator();
 
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: true,
+    shouldSetBadge: false,
+  }),
+});
+
 export default function BottomTabNavigator() {
+  const navigation = useNavigation();
+  //useNotifications(null);
+  const notificationListener = useRef(null);
+  const responseListener = useRef(null);
+
+  useEffect(() => {
+    registerForPushNotificationsAsync();
+
+    notificationListener.current = Notifications.addNotificationReceivedListener(
+      null,
+    );
+
+    responseListener.current = Notifications.addNotificationResponseReceivedListener(
+      (response) => {
+        const data = response.notification.request.content.data.adviceIds;
+
+        navigation.navigate(NavRoutes.LATEST_ADVICE, { data });
+      },
+    );
+
+    return () => {
+      Notifications.removeNotificationSubscription(
+        notificationListener.current,
+      );
+      Notifications.removeNotificationSubscription(responseListener.current);
+    };
+  }, []);
+
+  const registerForPushNotificationsAsync = async () => {
+    let token;
+    if (Constants.isDevice) {
+      const {
+        status: existingStatus,
+      } = await Notifications.getPermissionsAsync();
+      let finalStatus = existingStatus;
+      if (existingStatus !== 'granted') {
+        const { status } = await Notifications.requestPermissionsAsync();
+        finalStatus = status;
+      }
+      if (finalStatus !== 'granted') {
+        // eslint-disable-next-line no-alert
+        alert('Failed to get push token for push notification!');
+        return;
+      }
+      token = (await Notifications.getExpoPushTokenAsync()).data;
+      //setExpoPushToken(token);
+      Api.registerPushNotificationToken({ pushToken: token });
+
+      console.log(token);
+    } else {
+      // eslint-disable-next-line no-alert
+      alert('Must use physical device for Push Notifications');
+    }
+
+    if (Platform.OS === 'android') {
+      Notifications.setNotificationChannelAsync('default', {
+        name: 'default',
+        importance: Notifications.AndroidImportance.MAX,
+        vibrationPattern: [0, 250, 250, 250],
+        lightColor: '#FF231F7C',
+      });
+    }
+    return token;
+  };
+
   return (
     <Tab.Navigator
       tabBarOptions={{
@@ -49,7 +129,7 @@ export default function BottomTabNavigator() {
       <Tab.Screen
         name="CreatePost"
         component={TabThreeNavigator}
-        options={({ navigation }) => ({
+        options={() => ({
           tabBarButton: () => (
             <CreatePostButton
               onPress={() => navigation.navigate(NavRoutes.CREATE_POST)}

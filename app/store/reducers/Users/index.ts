@@ -23,6 +23,7 @@ export const logout = createAsyncThunk('auth/logout', async (_, thunkApi) => {
     const { dispatch } = thunkApi;
     dispatch(resetUser());
     dispatch(resetCommunities());
+    await Api.logOutUser();
   } catch (e) {
     console.log('auth/logout', e);
     return thunkApi.rejectWithValue(e);

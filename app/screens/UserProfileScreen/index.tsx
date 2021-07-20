@@ -6,16 +6,17 @@ import UserHealthScreen from '../../screens/UserHealthScreen';
 import UserPostsScreen from '../../screens/UserPostsScreen';
 import UserCommentsScreen from '../../screens/UserCommentsScreen';
 import UserProfileTabNavigator from '../../navigation/UserProfileTabNavigator';
+import { useAppSelector } from '../../store';
 
 export default function UserProfileScreen() {
+  const { user } = useAppSelector((state) => state.User);
   return (
     <>
       <ImageHeader />
       <RegularProfileInfoBar
-        userName="Akil"
-        profileDescription="A Curious Pessimist"
+        userName={user.name}
+        profileDescription={user.message}
       />
-
       <UserProfileTabNavigator
         FirstTabScreen={UserHealthScreen}
         SecondTabScreen={UserPostsScreen}

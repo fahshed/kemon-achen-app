@@ -17,7 +17,7 @@ export default function ProfessionalProfileScreen({ route }) {
 
   const getProfessionalInfo = async () => {
     const response = await Api.getProfessionalInfo(userId);
-    console.log(response);
+    //console.log(response);
     setProfileInfo(response);
   };
 

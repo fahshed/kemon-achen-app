@@ -1,27 +1,29 @@
-import React from 'react';
-import { Image, View, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { View, StyleSheet } from 'react-native';
 
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
 import { theme } from '../../config';
 import CustomTextInput from '../CustomTextInput';
-import { TouchableHighlight } from 'react-native-gesture-handler';
 import NavRoutes from '../../navigation/NavRoutes';
 
 function TopSearchBar2() {
   const navigation = useNavigation();
+  const [searchQuery, setSearchQuery] = useState('');
+
+  //console.log(textInput);
 
   return (
     <View style={styles.container}>
-      <TouchableHighlight
+      {/* <TouchableHighlight
         onPress={() => navigation.navigate(NavRoutes.USER_PROFILE)}
       >
         <Image
           style={{ height: 40, width: 40, borderRadius: 20 }}
           source={{ uri: 'https://picsum.photos/200' }}
         />
-      </TouchableHighlight>
+      </TouchableHighlight> */}
       <View style={{ flex: 1 }}>
         <CustomTextInput
           IconComponent={
@@ -33,6 +35,13 @@ function TopSearchBar2() {
             />
           }
           placeholder="Search"
+          onChangeText={(text) => setSearchQuery(text)}
+          onSubmitEditing={() => {
+            navigation.navigate(NavRoutes.COMMUNITY_SEARCH_DETAILS, {
+              searchQuery,
+            });
+          }}
+          returnKeyType="search"
         />
       </View>
     </View>

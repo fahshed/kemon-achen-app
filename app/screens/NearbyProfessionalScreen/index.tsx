@@ -16,7 +16,7 @@ function NearbyProfessionalScreen({ navigation }) {
     getProfessionalList();
   }, []);
 
-  console.log(professionalList);
+  //console.log(professionalList);
 
   return (
     <>

@@ -36,6 +36,10 @@ export default function NotificationScreen() {
         title="Go to Qoute Screen"
         onPress={() => navigation.navigate(NavRoutes.QOUTE)}
       />
+      <Button
+        title="Go to Signup Screen"
+        onPress={() => navigation.navigate(NavRoutes.SIGNUP)}
+      />
     </View>
   );
 }

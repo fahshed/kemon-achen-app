@@ -12,6 +12,8 @@ import {
   QouteScreen,
   ProfessionalProfileScreen,
   CommunityScreen,
+  SignupScreen,
+  RegularSignupScreen,
 } from '../../screens';
 
 const Stack = createStackNavigator();
@@ -49,17 +51,25 @@ const AppNavigator = () => (
       component={AdviceScreen}
       options={{ headerTitle: 'Advice', headerShown: false }}
     />
-
     <Stack.Screen
       name="CommunityDetails"
       component={CommunityScreen}
       options={{ headerTitle: '' }}
     />
-
     <Stack.Screen
       name="ProfessionalProfile"
       component={ProfessionalProfileScreen}
       options={{ headerTitle: '' }}
+    />
+    <Stack.Screen
+      name="Signup"
+      component={SignupScreen}
+      options={{ headerShown: false }}
+    />
+    <Stack.Screen
+      name="RegularSignup"
+      component={RegularSignupScreen}
+      options={{ headerShown: false }}
     />
   </Stack.Navigator>
 );

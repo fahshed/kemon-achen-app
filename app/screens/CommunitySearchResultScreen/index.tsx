@@ -12,7 +12,7 @@ import NavRoutes from '../../navigation/NavRoutes';
 
 import Api from '../../api';
 
-const searchOptionLabels = ['General', 'Q/A', 'help', 'recommendations'];
+const searchOptionLabels = ['All', 'Q/A', 'help', 'recommendations'];
 let posts = [];
 
 function CommunitySearchResultScreen({ route }) {
@@ -22,7 +22,7 @@ function CommunitySearchResultScreen({ route }) {
   const [selectedOption, setSelectedOption] = useState(0);
   const [postsState, setPosts] = useState(null);
 
-  //console.log(searchQuery);
+  console.log(postsState);
 
   const handleLikePress = async (postId, isLiked) => {
     Api.likePost(postId, isLiked ? 'like' : 'unlike');
@@ -33,7 +33,7 @@ function CommunitySearchResultScreen({ route }) {
   };
 
   const filterList = (index) => {
-    let type = 'General';
+    let type = 'All';
     if (index === 1) {
       type = 'Q/A';
     } else if (index === 2) {

@@ -8,7 +8,7 @@ import {
 import AppNavigator from '../AppNavigator';
 import { useAppDispatch } from '../../store';
 import { logout } from '../../store/reducers';
-import { SavedPosts, UserProfileScreen } from '../../screens';
+import { UserProfileScreen } from '../../screens';
 
 const Drawer = createDrawerNavigator();
 

@@ -18,10 +18,7 @@ function CommunityDescription({
     <View style={styles.container}>
       <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
         <H6Bold>{communityName}</H6Bold>
-        <JoinBadge
-          hasJoined={hasJoined}
-          handleJoining={() => console.log('Not implemented yet')}
-        />
+        <JoinBadge hasJoined={hasJoined} handleJoining={() => {}} />
       </View>
       <Caption mb="8px">{members}</Caption>
       <Body2 mb="8px">{description}</Body2>

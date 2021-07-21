@@ -31,7 +31,7 @@ export default function TestScreen() {
       stress: stressQuestions.reduce((a, b) => a + b.selectedOption, 0),
       depression: depressionQuestions.reduce((a, b) => a + b.selectedOption, 0),
     };
-    console.log(score);
+    //console.log(score);
     navigation.navigate(NavRoutes.SCORE, { testId, score });
   };
 

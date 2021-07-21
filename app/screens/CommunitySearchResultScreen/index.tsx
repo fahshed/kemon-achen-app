@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { theme } from '../../config';
 //import NavRoutes from '../../navigation/NavRoutes';
@@ -12,58 +12,17 @@ import NavRoutes from '../../navigation/NavRoutes';
 
 import Api from '../../api';
 
-const searchOptionLabels = ['All', 'Q/A', 'Suggestions'];
-let posts = [
-  {
-    content: 'sample 1',
-    commentCount: 12,
-    communityName: '',
-    createdAt: '2h',
-    title: 'Sample Post 1',
-    username: 'Rishov Paul',
-    voteCount: 12,
-    isLikedByCurrentUser: true,
-    _id: '60831dd413c6a219a8465725',
-    postType: 'Q/A',
-    postedBy: { name: 'AKil' },
-    isPostLiked: true,
-  },
-  {
-    content: 'sample 2',
-    commentCount: 12,
-    communityName: '',
-    createdAt: '2h',
-    title: 'Sample Post 2',
-    voteCount: 12,
-    isLikedByCurrentUser: true,
-    _id: '60831dd413c6a219a8465725s',
-    postType: 'Suggestions',
-    postedBy: { name: 'Rishov' },
-    isPostLiked: true,
-  },
-  {
-    content: 'sample 3',
-    commentCount: 12,
-    communityName: '',
-    createdAt: '2h',
-    title: 'Sample Post 3',
-    voteCount: 12,
-    isLikedByCurrentUser: true,
-    _id: '60831dd413c6a219a8465725v',
-    postType: 'All',
-    postedBy: { name: 'Fahim' },
-    isPostLiked: true,
-  },
-];
+const searchOptionLabels = ['General', 'Q/A', 'help', 'recommendations'];
+let posts = [];
 
 function CommunitySearchResultScreen({ route }) {
-  const searchQuery = route.params;
+  const { searchQuery, communityId } = route.params;
   const navigation = useNavigation();
   //   const [searchResults, setSearchResults] = useState(null);
   const [selectedOption, setSelectedOption] = useState(0);
-  const [postsState, setPosts] = useState(posts);
+  const [postsState, setPosts] = useState(null);
 
-  console.log(searchQuery);
+  //console.log(searchQuery);
 
   const handleLikePress = async (postId, isLiked) => {
     Api.likePost(postId, isLiked ? 'like' : 'unlike');
@@ -74,11 +33,13 @@ function CommunitySearchResultScreen({ route }) {
   };
 
   const filterList = (index) => {
-    let type = 'All';
+    let type = 'General';
     if (index === 1) {
       type = 'Q/A';
     } else if (index === 2) {
-      type = 'Suggestions';
+      type = 'help';
+    } else if (index === 3) {
+      type = 'recommendations';
     } else {
       return setPosts(posts);
     }
@@ -88,9 +49,9 @@ function CommunitySearchResultScreen({ route }) {
   //console.log(searchQuery);
 
   const getSearchResult = async () => {
-    //const response = await Api.getProfessionalChamber(searchQuery);
-    //console.log(response);
-    //setSearchResults(response);
+    const response = await Api.searchCommunityPosts(communityId, searchQuery);
+    posts = response;
+    setPosts(response);
   };
 
   useEffect(() => {
@@ -120,28 +81,29 @@ function CommunitySearchResultScreen({ route }) {
         </Container>
 
         <ItemSeparator height={8} color={theme.grey3} />
-        <View>
-          {postsState.map((item) => (
-            <Post
-              touchDisabled={false}
-              content={item.content}
-              commentCount={item.commentCount}
-              communityName=""
-              postedAgo={item.createdAt}
-              title={item.title}
-              username={item.postedBy.name}
-              voteCount={item.voteCount}
-              onLikePress={() => handleLikePress(item._id, item.isPostLiked)}
-              isPostLiked={item.isLikedByCurrentUser}
-              onPress={() => {
-                navigation.navigate(NavRoutes.POST_DETAILS, item._id);
-              }}
-              isCommunityFeed={true}
-              isProfileFeed={false}
-              key={item._id}
-            />
-          ))}
-        </View>
+        <ScrollView>
+          {postsState &&
+            postsState.map((item) => (
+              <Post
+                touchDisabled={false}
+                content={item.content}
+                commentCount={item.commentCount}
+                communityName=""
+                postedAgo={item.createdAt}
+                title={item.title}
+                username={item.postedBy.name}
+                voteCount={item.voteCount}
+                onLikePress={() => handleLikePress(item._id, item.isPostLiked)}
+                isPostLiked={item.isLikedByCurrentUser}
+                onPress={() => {
+                  navigation.navigate(NavRoutes.POST_DETAILS, item._id);
+                }}
+                isCommunityFeed={true}
+                isProfileFeed={false}
+                key={item._id}
+              />
+            ))}
+        </ScrollView>
       </View>
     </>
   );

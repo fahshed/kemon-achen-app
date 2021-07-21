@@ -8,7 +8,7 @@ import {
 import AppNavigator from '../AppNavigator';
 import { useAppDispatch } from '../../store';
 import { logout } from '../../store/reducers';
-import { SavedPosts } from '../../screens';
+import { SavedPosts, UserProfileScreen } from '../../screens';
 
 const Drawer = createDrawerNavigator();
 
@@ -28,7 +28,8 @@ export default function DrawerNavigator() {
       drawerContent={(props) => <CustomDrawerContent {...props} />}
     >
       <Drawer.Screen name="Feed" component={AppNavigator} />
-      <Drawer.Screen name="Saved Posts" component={SavedPosts} />
+      <Drawer.Screen name="Profile" component={UserProfileScreen} />
+      {/* <Drawer.Screen name="Saved Posts" component={SavedPosts} /> */}
     </Drawer.Navigator>
   );
 }

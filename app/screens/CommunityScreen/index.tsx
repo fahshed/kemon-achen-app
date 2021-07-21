@@ -23,7 +23,7 @@ export default function CommunityScreen({ route }) {
 
   return (
     <>
-      <TopSearchBar2 />
+      <TopSearchBar2 communityId={communityId} />
       <ImageHeader />
       {commDesc && (
         <CommunityDescription

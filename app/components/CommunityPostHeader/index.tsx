@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { Entypo, MaterialCommunityIcons } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
 
 import { theme } from '../../config';
 import { CaptionBold } from '../../styles';
@@ -13,11 +13,11 @@ function CommunityPostHeader({ postedBy, time }) {
       <Entypo name="dot-single" size={16} />
       <CaptionBold>{time}</CaptionBold>
 
-      <MaterialCommunityIcons
+      {/* <MaterialCommunityIcons
         style={styles.icon}
         name="dots-horizontal"
         size={24}
-      />
+      /> */}
     </View>
   );
 }

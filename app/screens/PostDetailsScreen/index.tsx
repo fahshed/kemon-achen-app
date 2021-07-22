@@ -74,6 +74,8 @@ function PostDetailsScreen({ route }) {
         onLikePress={() => handleLikePress(postID)}
         isPostLiked={post.isLikedByCurrentUser}
         onPress={null}
+        isCommunityFeed={false}
+        isProfileFeed={false}
       />
 
       <ItemSeparator height={8} color={theme.grey3} />

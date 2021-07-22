@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
 
-import { TopSearchBar2 } from '../../components';
+// import { TopSearchBar2 } from '../../components';
 import { theme } from '../../config';
 //import NavRoutes from '../../navigation/NavRoutes';
 //import { Body2Bold, H5Bold } from '../../styles';
@@ -30,7 +30,7 @@ function CommunityListScreen({ navigation }) {
   return (
     <>
       <ScrollView>
-        <TopSearchBar2 />
+        {/* <TopSearchBar2 /> */}
         <View style={styles.communityListContainer}>
           {communities.map((item) => (
             <CommunityCard

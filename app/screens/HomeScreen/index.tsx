@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList } from 'react-native';
 
-import { ItemSeparator, Post, TopSearchBar2 } from '../../components';
+import { ItemSeparator, Post } from '../../components';
 import { theme } from '../../config';
 import NavRoutes from '../../navigation/NavRoutes';
 
@@ -60,7 +60,7 @@ export default function HomeScreen({ navigation }) {
 
   return (
     <>
-      <TopSearchBar2 />
+      {/* <TopSearchBar2 /> */}
       {isRefreshing && (
         <H5Bold align="center" color="grey5" mt="8px" mb="8px">
           Feed Loading........

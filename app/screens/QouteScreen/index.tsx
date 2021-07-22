@@ -35,8 +35,8 @@ export default function QouteScreen() {
       ) : (
         <Animatable.View
           animation="fadeOut"
-          duration={2000}
-          delay={4000}
+          duration={1000}
+          delay={1000}
           onAnimationEnd={() => setShowPromt(true)}
           style={{ width: '100%' }}
         >

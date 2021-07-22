@@ -12,6 +12,7 @@ import {
   QouteScreen,
   ProfessionalProfileScreen,
   CommunityScreen,
+  CommunitySearchResultScreen,
   LatestAdviceScreen,
 } from '../../screens';
 import { useAppSelector } from '../../store';
@@ -94,6 +95,11 @@ function App() {
       <Stack.Screen
         name="Latest Advice"
         component={LatestAdviceScreen}
+        options={{ headerTitle: '' }}
+      />
+      <Stack.Screen
+        name="CommunitySearchResult"
+        component={CommunitySearchResultScreen}
         options={{ headerTitle: '' }}
       />
     </Stack.Navigator>

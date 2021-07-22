@@ -7,7 +7,13 @@
 //----------------------
 // ReSharper disable InconsistentNaming
 
-import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse, CancelToken } from 'axios';
+import axios, {
+  AxiosError,
+  AxiosInstance,
+  AxiosRequestConfig,
+  AxiosResponse,
+  CancelToken,
+} from 'axios';
 
 export class AuthorizedApiBase {
   protected accessToken: string;
@@ -19,7 +25,7 @@ export class AuthorizedApiBase {
   }
 
   protected transformOptions = (
-    options: AxiosRequestConfig
+    options: AxiosRequestConfig,
   ): Promise<AxiosRequestConfig> => {
     options.headers = {
       ...options.headers,
@@ -34,2506 +40,3183 @@ export class AuthorizedApiBase {
 }
 
 export interface IKAApiClent {
-    /**
-     * Create a regular user
-     * @param body (optional)
-     * @return OK
-     */
-    signupRegularUser(body?: RegularUserCredentials | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void, onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<AuthResponse>;
-    /**
-     * Create a professional user
-     * @param body (optional)
-     * @return OK
-     */
-    signupProfessionalUser(body?: ProfessionalUserCredentials | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void, onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<AuthResponse>;
-    /**
-     * Logs in a user
-     * @param body (optional)
-     * @return OK
-     */
-    loginUser(body?: UserLoginCredentials | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void, onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<AuthResponse>;
-    /**
-     * Logs outs a user
-     * @return OK
-     */
-    logOutUser(cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void, onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<ErrorMessage>;
-    /**
-     * Get communities of a user
-     * @return OK
-     */
-    getCommunities(cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<CommunityListElement[]>;
-    /**
-     * Get suggested communities of a user
-     * @return OK
-     */
-    getSuggestedCommunities(cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<CommunityListElement[]>;
-    /**
-     * Get posts by UserId
-     * @return OK
-     */
-    getPostsByUserId(userId: string, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Post[]>;
-    /**
-     * Get comments by UserId
-     * @return OK
-     */
-    getCommentsByUserId(userId: string, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Comment[]>;
-    /**
-     * Get tests by UserId
-     * @return OK
-     */
-    getUserTestsHistory(cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<TestHistory[]>;
-    /**
-     * Join a user to a community
-     * @return OK
-     */
-    joinCommunity(communityId: string, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<JoinCommunityMessage>;
-    /**
-     * Get saved posts of an user
-     * @return OK
-     */
-    getSavedPosts(cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Post[]>;
-    /**
-     * Get general information of a professional
-     * @return OK
-     */
-    getProfessionalInfo(userId: string, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<ProfessionalUserInfo>;
-    /**
-     * Get detailed information of a professional
-     * @return OK
-     */
-    getProfessionalChamber(userId: string, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<ProfessionalUserInfo>;
-    /**
-     * Get latest advice of an user from test info
-     * @return OK
-     */
-    getLatestAdvice(cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<SubmitTestResponse>;
-    /**
-     * Register a push notification
-     * @param body (optional)
-     * @return OK
-     */
-    registerPushNotificationToken(body?: PushToken | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void, onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<PushToken>;
-    /**
-     * get notifications
-     * @return OK
-     */
-    getNotifications(cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Notification[]>;
-    /**
-     * Get suggested professionals
-     * @param professionalSortedBy (optional)
-     * @return OK
-     */
-    getSuggestedProfessionals(professionalSortedBy?: ProfessionalSortedBy | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<ProfessionalUserInfo[]>;
-    /**
-     * Save a post by user
-     * @param saveOptions (optional)
-     * @return OK
-     */
-    savePost(postId: string, saveOptions?: SaveOptions | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<SavePostMessage>;
-    /**
-     * Like a post by user
-     * @return OK
-     */
-    likePost(postId: string, likeOptions: LikeOptions, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<LikePostMessage>;
-    /**
-     * Create a post
-     * @param body (optional)
-     * @return OK
-     */
-    createPost(body?: Post | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void, onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Post>;
-    /**
-     * Create a comment
-     * @param body (optional)
-     * @return OK
-     */
-    createComment(postId: string, body?: Comment | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void, onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Comment>;
-    /**
-     * Create a reply
-     * @param body (optional)
-     * @return OK
-     */
-    createReply(postId: string, commentId: string, body?: Comment | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void, onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Comment>;
-    /**
-     * Get replies of a comment
-     * @return OK
-     */
-    getRepliesofComment(postId: string, commentId: string, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Comment[]>;
-    /**
-     * Get feed of an user
-     * @param feedSortedBy (optional)
-     * @return OK
-     */
-    getFeed(page: number, limit: number, feedSortedBy?: FeedSortedBy | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Post[]>;
-    /**
-     * Get post by Id
-     * @param commentsSortedBy (optional)
-     * @return OK
-     */
-    getPostById(postId: string, commentsSortedBy?: CommentsSortedBy | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Post>;
-    /**
-     * Get community information
-     * @return OK
-     */
-    getCommunityInfo(communityId: string, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<CommunityInfo>;
-    /**
-     * Get feed of a community
-     * @param feedSortedBy (optional)
-     * @return OK
-     */
-    getCommunityFeed(communityId: string, feedSortedBy?: FeedSortedBy | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Post[]>;
-    /**
-     * Get detailed community information
-     * @return OK
-     */
-    getCommunityAbout(communityId: string, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<CommunityAbout>;
-    /**
-     * Get community posts by searching
-     * @param searchKeyword (optional)
-     * @return OK
-     */
-    searchCommunityPosts(communityId: string, searchKeyword?: string | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Post[]>;
-    /**
-     * Create a Test
-     * @param body (optional)
-     * @return OK
-     */
-    createTest(body?: any | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void, onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Test>;
-    /**
-     * Get a Test
-     * @return OK
-     */
-    getTestById(testId: string, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Test>;
-    /**
-     * Get a random Test
-     * @return OK
-     */
-    getTestRandomly(cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Test>;
-    /**
-     * Submit a test
-     * @param body (optional)
-     * @return OK
-     */
-    submitTest(testId: string, body?: any | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void, onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<SubmitTestResponse>;
-    /**
-     * Get suggested commmunities
-     * @return OK
-     */
-    getCommunitiesByScore(cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<CommunityInfo>;
-    /**
-     * Create an advice
-     * @param body (optional)
-     * @return OK
-     */
-    createAdvice(body?: any | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void, onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Advice>;
+  /**
+   * Create a regular user
+   * @param body (optional)
+   * @return OK
+   */
+  signupRegularUser(
+    body?: RegularUserCredentials | undefined,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+    onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<AuthResponse>;
+  /**
+   * Create a professional user
+   * @param body (optional)
+   * @return OK
+   */
+  signupProfessionalUser(
+    body?: ProfessionalUserCredentials | undefined,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+    onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<AuthResponse>;
+  /**
+   * Logs in a user
+   * @param body (optional)
+   * @return OK
+   */
+  loginUser(
+    body?: UserLoginCredentials | undefined,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+    onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<AuthResponse>;
+  /**
+   * Logs outs a user
+   * @return OK
+   */
+  logOutUser(
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+    onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<ErrorMessage>;
+  /**
+   * Get communities of a user
+   * @return OK
+   */
+  getCommunities(
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<CommunityListElement[]>;
+  /**
+   * Get suggested communities of a user
+   * @return OK
+   */
+  getSuggestedCommunities(
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<CommunityListElement[]>;
+  /**
+   * Get posts by UserId
+   * @return OK
+   */
+  getPostsByUserId(
+    userId: string,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<Post[]>;
+  /**
+   * Get comments by UserId
+   * @return OK
+   */
+  getCommentsByUserId(
+    userId: string,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<Comment[]>;
+  /**
+   * Get tests by UserId
+   * @return OK
+   */
+  getUserTestsHistory(
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<TestHistory[]>;
+  /**
+   * Join a user to a community
+   * @return OK
+   */
+  joinCommunity(
+    communityId: string,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<JoinCommunityMessage>;
+  /**
+   * Get saved posts of an user
+   * @return OK
+   */
+  getSavedPosts(
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<Post[]>;
+  /**
+   * Get general information of a professional
+   * @return OK
+   */
+  getProfessionalInfo(
+    userId: string,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<ProfessionalUserInfo>;
+  /**
+   * Get detailed information of a professional
+   * @return OK
+   */
+  getProfessionalChamber(
+    userId: string,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<ProfessionalUserInfo>;
+  /**
+   * Get latest advice of an user from test info
+   * @return OK
+   */
+  getLatestAdvice(
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<SubmitTestResponse>;
+  /**
+   * Register a push notification
+   * @param body (optional)
+   * @return OK
+   */
+  registerPushNotificationToken(
+    body?: PushToken | undefined,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+    onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<PushToken>;
+  /**
+   * get notifications
+   * @return OK
+   */
+  getNotifications(
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<Notification[]>;
+  /**
+   * Get suggested professionals
+   * @param professionalSortedBy (optional)
+   * @return OK
+   */
+  getSuggestedProfessionals(
+    professionalSortedBy?: ProfessionalSortedBy | undefined,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<ProfessionalUserInfo[]>;
+  /**
+   * Save a post by user
+   * @param saveOptions (optional)
+   * @return OK
+   */
+  savePost(
+    postId: string,
+    saveOptions?: SaveOptions | undefined,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<SavePostMessage>;
+  /**
+   * Like a post by user
+   * @return OK
+   */
+  likePost(
+    postId: string,
+    likeOptions: LikeOptions,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<LikePostMessage>;
+  /**
+   * Create a post
+   * @param body (optional)
+   * @return OK
+   */
+  createPost(
+    body?: Post | undefined,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+    onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<Post>;
+  /**
+   * Create a comment
+   * @param body (optional)
+   * @return OK
+   */
+  createComment(
+    postId: string,
+    body?: Comment | undefined,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+    onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<Comment>;
+  /**
+   * Create a reply
+   * @param body (optional)
+   * @return OK
+   */
+  createReply(
+    postId: string,
+    commentId: string,
+    body?: Comment | undefined,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+    onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<Comment>;
+  /**
+   * Get replies of a comment
+   * @return OK
+   */
+  getRepliesofComment(
+    postId: string,
+    commentId: string,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<Comment[]>;
+  /**
+   * Get feed of an user
+   * @param feedSortedBy (optional)
+   * @return OK
+   */
+  getFeed(
+    page: number,
+    limit: number,
+    feedSortedBy?: FeedSortedBy | undefined,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<Post[]>;
+  /**
+   * Get post by Id
+   * @param commentsSortedBy (optional)
+   * @return OK
+   */
+  getPostById(
+    postId: string,
+    commentsSortedBy?: CommentsSortedBy | undefined,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<Post>;
+  /**
+   * Get community information
+   * @return OK
+   */
+  getCommunityInfo(
+    communityId: string,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<CommunityInfo>;
+  /**
+   * Get feed of a community
+   * @param feedSortedBy (optional)
+   * @return OK
+   */
+  getCommunityFeed(
+    communityId: string,
+    feedSortedBy?: FeedSortedBy | undefined,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<Post[]>;
+  /**
+   * Get detailed community information
+   * @return OK
+   */
+  getCommunityAbout(
+    communityId: string,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<CommunityAbout>;
+  /**
+   * Get community posts by searching
+   * @param searchKeyword (optional)
+   * @return OK
+   */
+  searchCommunityPosts(
+    communityId: string,
+    searchKeyword?: string | undefined,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<Post[]>;
+  /**
+   * Create a Test
+   * @param body (optional)
+   * @return OK
+   */
+  createTest(
+    body?: any | undefined,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+    onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<Test>;
+  /**
+   * Get a Test
+   * @return OK
+   */
+  getTestById(
+    testId: string,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<Test>;
+  /**
+   * Get a random Test
+   * @return OK
+   */
+  getTestRandomly(
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<Test>;
+  /**
+   * Submit a test
+   * @param body (optional)
+   * @return OK
+   */
+  submitTest(
+    testId: string,
+    body?: any | undefined,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+    onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<SubmitTestResponse>;
+  /**
+   * Get suggested commmunities
+   * @return OK
+   */
+  getCommunitiesByScore(
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<CommunityInfo>;
+  /**
+   * Create an advice
+   * @param body (optional)
+   * @return OK
+   */
+  createAdvice(
+    body?: any | undefined,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+    onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<Advice>;
 }
 
 export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
-    private instance: AxiosInstance;
-    private baseUrl: string;
-    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+  private instance: AxiosInstance;
+  private baseUrl: string;
+  protected jsonParseReviver:
+    | ((key: string, value: any) => any)
+    | undefined = undefined;
 
-    constructor(configuration: IConfig, baseUrl?: string, instance?: AxiosInstance) {
-        super(configuration);
-        this.instance = instance ? instance : axios.create();
-        this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : 'http://localhost:9000/api/v1';
-    }
+  constructor(
+    configuration: IConfig,
+    baseUrl?: string,
+    instance?: AxiosInstance,
+  ) {
+    super(configuration);
+    this.instance = instance ? instance : axios.create();
+    this.baseUrl =
+      baseUrl !== undefined && baseUrl !== null
+        ? baseUrl
+        : 'http://localhost:9000/api/v1';
+  }
 
-    /**
-     * Create a regular user
-     * @param body (optional)
-     * @return OK
-     */
-    signupRegularUser(body?: RegularUserCredentials | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void, onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<AuthResponse> {
-        let url_ = this.baseUrl + '/user/regular/signup';
-        url_ = url_.replace(/[?&]$/, '');
+  /**
+   * Create a regular user
+   * @param body (optional)
+   * @return OK
+   */
+  signupRegularUser(
+    body?: RegularUserCredentials | undefined,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+    onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<AuthResponse> {
+    let url_ = this.baseUrl + '/user/regular/signup';
+    url_ = url_.replace(/[?&]$/, '');
 
-        const content_ = JSON.stringify(body);
+    const content_ = JSON.stringify(body);
 
-        let options_ = <AxiosRequestConfig>{
-            data: content_,
-            method: 'POST',
-            url: url_,
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-            },
-            cancelToken,
-            onDownloadProgress,
-            onUploadProgress,
-        };
+    let options_ = <AxiosRequestConfig>{
+      data: content_,
+      method: 'POST',
+      url: url_,
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      cancelToken,
+      onDownloadProgress,
+      onUploadProgress,
+    };
 
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.instance.request(transformedOptions_);
-        }).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.processSignupRegularUser(_response);
-        });
-    }
-
-    protected processSignupRegularUser(response: AxiosResponse): Promise<AuthResponse> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
-        }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = resultData200;
-            return result200;
+    return this.transformOptions(options_)
+      .then((transformedOptions_) => {
+        return this.instance.request(transformedOptions_);
+      })
+      .catch((_error: any) => {
+        if (isAxiosError(_error) && _error.response) {
+          return _error.response;
         } else {
-            const _responseText = response.data;
-            let resultdefault: any = null;
-            let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+          throw _error;
         }
-    }
+      })
+      .then((_response: AxiosResponse) => {
+        return this.processSignupRegularUser(_response);
+      });
+  }
 
-    /**
-     * Create a professional user
-     * @param body (optional)
-     * @return OK
-     */
-    signupProfessionalUser(body?: ProfessionalUserCredentials | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void, onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<AuthResponse> {
-        let url_ = this.baseUrl + '/user/professional/signup';
-        url_ = url_.replace(/[?&]$/, '');
-
-        const content_ = JSON.stringify(body);
-
-        let options_ = <AxiosRequestConfig>{
-            data: content_,
-            method: 'POST',
-            url: url_,
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-            },
-            cancelToken,
-            onDownloadProgress,
-            onUploadProgress,
-        };
-
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.instance.request(transformedOptions_);
-        }).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.processSignupProfessionalUser(_response);
-        });
-    }
-
-    protected processSignupProfessionalUser(response: AxiosResponse): Promise<AuthResponse> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
+  protected processSignupRegularUser(
+    response: AxiosResponse,
+  ): Promise<AuthResponse> {
+    const status = response.status;
+    let _headers: any = {};
+    if (response.headers && typeof response.headers === 'object') {
+      for (let k in response.headers) {
+        if (response.headers.hasOwnProperty(k)) {
+          _headers[k] = response.headers[k];
         }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = resultData200;
-            return result200;
+      }
+    }
+    if (status === 200) {
+      const _responseText = response.data;
+      let result200: any = null;
+      let resultData200 = _responseText;
+      result200 = resultData200;
+      return result200;
+    } else {
+      const _responseText = response.data;
+      let resultdefault: any = null;
+      let resultDatadefault = _responseText;
+      resultdefault = resultDatadefault;
+      return throwException(
+        'Bad Request',
+        status,
+        _responseText,
+        _headers,
+        resultdefault,
+      );
+    }
+  }
+
+  /**
+   * Create a professional user
+   * @param body (optional)
+   * @return OK
+   */
+  signupProfessionalUser(
+    body?: ProfessionalUserCredentials | undefined,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+    onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<AuthResponse> {
+    let url_ = this.baseUrl + '/user/professional/signup';
+    url_ = url_.replace(/[?&]$/, '');
+
+    const content_ = JSON.stringify(body);
+
+    let options_ = <AxiosRequestConfig>{
+      data: content_,
+      method: 'POST',
+      url: url_,
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      cancelToken,
+      onDownloadProgress,
+      onUploadProgress,
+    };
+
+    return this.transformOptions(options_)
+      .then((transformedOptions_) => {
+        return this.instance.request(transformedOptions_);
+      })
+      .catch((_error: any) => {
+        if (isAxiosError(_error) && _error.response) {
+          return _error.response;
         } else {
-            const _responseText = response.data;
-            let resultdefault: any = null;
-            let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+          throw _error;
         }
-    }
+      })
+      .then((_response: AxiosResponse) => {
+        return this.processSignupProfessionalUser(_response);
+      });
+  }
 
-    /**
-     * Logs in a user
-     * @param body (optional)
-     * @return OK
-     */
-    loginUser(body?: UserLoginCredentials | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void, onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<AuthResponse> {
-        let url_ = this.baseUrl + '/user/login';
-        url_ = url_.replace(/[?&]$/, '');
-
-        const content_ = JSON.stringify(body);
-
-        let options_ = <AxiosRequestConfig>{
-            data: content_,
-            method: 'POST',
-            url: url_,
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-            },
-            cancelToken,
-            onDownloadProgress,
-            onUploadProgress,
-        };
-
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.instance.request(transformedOptions_);
-        }).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.processLoginUser(_response);
-        });
-    }
-
-    protected processLoginUser(response: AxiosResponse): Promise<AuthResponse> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
+  protected processSignupProfessionalUser(
+    response: AxiosResponse,
+  ): Promise<AuthResponse> {
+    const status = response.status;
+    let _headers: any = {};
+    if (response.headers && typeof response.headers === 'object') {
+      for (let k in response.headers) {
+        if (response.headers.hasOwnProperty(k)) {
+          _headers[k] = response.headers[k];
         }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = resultData200;
-            return result200;
+      }
+    }
+    if (status === 200) {
+      const _responseText = response.data;
+      let result200: any = null;
+      let resultData200 = _responseText;
+      result200 = resultData200;
+      return result200;
+    } else {
+      const _responseText = response.data;
+      let resultdefault: any = null;
+      let resultDatadefault = _responseText;
+      resultdefault = resultDatadefault;
+      return throwException(
+        'Bad Request',
+        status,
+        _responseText,
+        _headers,
+        resultdefault,
+      );
+    }
+  }
+
+  /**
+   * Logs in a user
+   * @param body (optional)
+   * @return OK
+   */
+  loginUser(
+    body?: UserLoginCredentials | undefined,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+    onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<AuthResponse> {
+    let url_ = this.baseUrl + '/user/login';
+    url_ = url_.replace(/[?&]$/, '');
+
+    const content_ = JSON.stringify(body);
+
+    let options_ = <AxiosRequestConfig>{
+      data: content_,
+      method: 'POST',
+      url: url_,
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      cancelToken,
+      onDownloadProgress,
+      onUploadProgress,
+    };
+
+    return this.transformOptions(options_)
+      .then((transformedOptions_) => {
+        return this.instance.request(transformedOptions_);
+      })
+      .catch((_error: any) => {
+        if (isAxiosError(_error) && _error.response) {
+          return _error.response;
         } else {
-            const _responseText = response.data;
-            let resultdefault: any = null;
-            let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+          throw _error;
         }
-    }
+      })
+      .then((_response: AxiosResponse) => {
+        return this.processLoginUser(_response);
+      });
+  }
 
-    /**
-     * Logs outs a user
-     * @return OK
-     */
-    logOutUser(cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void, onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<ErrorMessage> {
-        let url_ = this.baseUrl + '/user/logout';
-        url_ = url_.replace(/[?&]$/, '');
-
-        let options_ = <AxiosRequestConfig>{
-            method: 'POST',
-            url: url_,
-            headers: {
-                'Accept': 'application/json',
-            },
-            cancelToken,
-            onDownloadProgress,
-            onUploadProgress,
-        };
-
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.instance.request(transformedOptions_);
-        }).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.processLogOutUser(_response);
-        });
-    }
-
-    protected processLogOutUser(response: AxiosResponse): Promise<ErrorMessage> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
+  protected processLoginUser(response: AxiosResponse): Promise<AuthResponse> {
+    const status = response.status;
+    let _headers: any = {};
+    if (response.headers && typeof response.headers === 'object') {
+      for (let k in response.headers) {
+        if (response.headers.hasOwnProperty(k)) {
+          _headers[k] = response.headers[k];
         }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = resultData200;
-            return result200;
+      }
+    }
+    if (status === 200) {
+      const _responseText = response.data;
+      let result200: any = null;
+      let resultData200 = _responseText;
+      result200 = resultData200;
+      return result200;
+    } else {
+      const _responseText = response.data;
+      let resultdefault: any = null;
+      let resultDatadefault = _responseText;
+      resultdefault = resultDatadefault;
+      return throwException(
+        'Bad Request',
+        status,
+        _responseText,
+        _headers,
+        resultdefault,
+      );
+    }
+  }
+
+  /**
+   * Logs outs a user
+   * @return OK
+   */
+  logOutUser(
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+    onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<ErrorMessage> {
+    let url_ = this.baseUrl + '/user/logout';
+    url_ = url_.replace(/[?&]$/, '');
+
+    let options_ = <AxiosRequestConfig>{
+      method: 'POST',
+      url: url_,
+      headers: {
+        Accept: 'application/json',
+      },
+      cancelToken,
+      onDownloadProgress,
+      onUploadProgress,
+    };
+
+    return this.transformOptions(options_)
+      .then((transformedOptions_) => {
+        return this.instance.request(transformedOptions_);
+      })
+      .catch((_error: any) => {
+        if (isAxiosError(_error) && _error.response) {
+          return _error.response;
         } else {
-            const _responseText = response.data;
-            let resultdefault: any = null;
-            let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+          throw _error;
         }
-    }
+      })
+      .then((_response: AxiosResponse) => {
+        return this.processLogOutUser(_response);
+      });
+  }
 
-    /**
-     * Get communities of a user
-     * @return OK
-     */
-    getCommunities(cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<CommunityListElement[]> {
-        let url_ = this.baseUrl + '/user/communities';
-        url_ = url_.replace(/[?&]$/, '');
-
-        let options_ = <AxiosRequestConfig>{
-            method: 'GET',
-            url: url_,
-            headers: {
-                'Accept': 'application/json',
-            },
-            cancelToken,
-            onDownloadProgress,
-        };
-
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.instance.request(transformedOptions_);
-        }).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.processGetCommunities(_response);
-        });
-    }
-
-    protected processGetCommunities(response: AxiosResponse): Promise<CommunityListElement[]> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
+  protected processLogOutUser(response: AxiosResponse): Promise<ErrorMessage> {
+    const status = response.status;
+    let _headers: any = {};
+    if (response.headers && typeof response.headers === 'object') {
+      for (let k in response.headers) {
+        if (response.headers.hasOwnProperty(k)) {
+          _headers[k] = response.headers[k];
         }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = resultData200;
-            return result200;
+      }
+    }
+    if (status === 200) {
+      const _responseText = response.data;
+      let result200: any = null;
+      let resultData200 = _responseText;
+      result200 = resultData200;
+      return result200;
+    } else {
+      const _responseText = response.data;
+      let resultdefault: any = null;
+      let resultDatadefault = _responseText;
+      resultdefault = resultDatadefault;
+      return throwException(
+        'Bad Request',
+        status,
+        _responseText,
+        _headers,
+        resultdefault,
+      );
+    }
+  }
+
+  /**
+   * Get communities of a user
+   * @return OK
+   */
+  getCommunities(
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<CommunityListElement[]> {
+    let url_ = this.baseUrl + '/user/communities';
+    url_ = url_.replace(/[?&]$/, '');
+
+    let options_ = <AxiosRequestConfig>{
+      method: 'GET',
+      url: url_,
+      headers: {
+        Accept: 'application/json',
+      },
+      cancelToken,
+      onDownloadProgress,
+    };
+
+    return this.transformOptions(options_)
+      .then((transformedOptions_) => {
+        return this.instance.request(transformedOptions_);
+      })
+      .catch((_error: any) => {
+        if (isAxiosError(_error) && _error.response) {
+          return _error.response;
         } else {
-            const _responseText = response.data;
-            let resultdefault: any = null;
-            let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+          throw _error;
         }
-    }
+      })
+      .then((_response: AxiosResponse) => {
+        return this.processGetCommunities(_response);
+      });
+  }
 
-    /**
-     * Get suggested communities of a user
-     * @return OK
-     */
-    getSuggestedCommunities(cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<CommunityListElement[]> {
-        let url_ = this.baseUrl + '/user/communities/suggested';
-        url_ = url_.replace(/[?&]$/, '');
-
-        let options_ = <AxiosRequestConfig>{
-            method: 'GET',
-            url: url_,
-            headers: {
-                'Accept': 'application/json',
-            },
-            cancelToken,
-            onDownloadProgress,
-        };
-
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.instance.request(transformedOptions_);
-        }).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.processGetSuggestedCommunities(_response);
-        });
-    }
-
-    protected processGetSuggestedCommunities(response: AxiosResponse): Promise<CommunityListElement[]> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
+  protected processGetCommunities(
+    response: AxiosResponse,
+  ): Promise<CommunityListElement[]> {
+    const status = response.status;
+    let _headers: any = {};
+    if (response.headers && typeof response.headers === 'object') {
+      for (let k in response.headers) {
+        if (response.headers.hasOwnProperty(k)) {
+          _headers[k] = response.headers[k];
         }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = resultData200;
-            return result200;
+      }
+    }
+    if (status === 200) {
+      const _responseText = response.data;
+      let result200: any = null;
+      let resultData200 = _responseText;
+      result200 = resultData200;
+      return result200;
+    } else {
+      const _responseText = response.data;
+      let resultdefault: any = null;
+      let resultDatadefault = _responseText;
+      resultdefault = resultDatadefault;
+      return throwException(
+        'Bad Request',
+        status,
+        _responseText,
+        _headers,
+        resultdefault,
+      );
+    }
+  }
+
+  /**
+   * Get suggested communities of a user
+   * @return OK
+   */
+  getSuggestedCommunities(
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<CommunityListElement[]> {
+    let url_ = this.baseUrl + '/user/communities/suggested';
+    url_ = url_.replace(/[?&]$/, '');
+
+    let options_ = <AxiosRequestConfig>{
+      method: 'GET',
+      url: url_,
+      headers: {
+        Accept: 'application/json',
+      },
+      cancelToken,
+      onDownloadProgress,
+    };
+
+    return this.transformOptions(options_)
+      .then((transformedOptions_) => {
+        return this.instance.request(transformedOptions_);
+      })
+      .catch((_error: any) => {
+        if (isAxiosError(_error) && _error.response) {
+          return _error.response;
         } else {
-            const _responseText = response.data;
-            let resultdefault: any = null;
-            let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+          throw _error;
         }
-    }
+      })
+      .then((_response: AxiosResponse) => {
+        return this.processGetSuggestedCommunities(_response);
+      });
+  }
 
-    /**
-     * Get posts by UserId
-     * @return OK
-     */
-    getPostsByUserId(userId: string, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Post[]> {
-        let url_ = this.baseUrl + '/user/{userId}/posts';
-        if (userId === undefined || userId === null)
-            {throw new Error("The parameter 'userId' must be defined.");}
-        url_ = url_.replace('{userId}', encodeURIComponent('' + userId));
-        url_ = url_.replace(/[?&]$/, '');
-
-        let options_ = <AxiosRequestConfig>{
-            method: 'GET',
-            url: url_,
-            headers: {
-                'Accept': 'application/json',
-            },
-            cancelToken,
-            onDownloadProgress,
-        };
-
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.instance.request(transformedOptions_);
-        }).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.processGetPostsByUserId(_response);
-        });
-    }
-
-    protected processGetPostsByUserId(response: AxiosResponse): Promise<Post[]> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
+  protected processGetSuggestedCommunities(
+    response: AxiosResponse,
+  ): Promise<CommunityListElement[]> {
+    const status = response.status;
+    let _headers: any = {};
+    if (response.headers && typeof response.headers === 'object') {
+      for (let k in response.headers) {
+        if (response.headers.hasOwnProperty(k)) {
+          _headers[k] = response.headers[k];
         }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = resultData200;
-            return result200;
+      }
+    }
+    if (status === 200) {
+      const _responseText = response.data;
+      let result200: any = null;
+      let resultData200 = _responseText;
+      result200 = resultData200;
+      return result200;
+    } else {
+      const _responseText = response.data;
+      let resultdefault: any = null;
+      let resultDatadefault = _responseText;
+      resultdefault = resultDatadefault;
+      return throwException(
+        'Bad Request',
+        status,
+        _responseText,
+        _headers,
+        resultdefault,
+      );
+    }
+  }
+
+  /**
+   * Get posts by UserId
+   * @return OK
+   */
+  getPostsByUserId(
+    userId: string,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<Post[]> {
+    let url_ = this.baseUrl + '/user/{userId}/posts';
+    if (userId === undefined || userId === null)
+      throw new Error("The parameter 'userId' must be defined.");
+    url_ = url_.replace('{userId}', encodeURIComponent('' + userId));
+    url_ = url_.replace(/[?&]$/, '');
+
+    let options_ = <AxiosRequestConfig>{
+      method: 'GET',
+      url: url_,
+      headers: {
+        Accept: 'application/json',
+      },
+      cancelToken,
+      onDownloadProgress,
+    };
+
+    return this.transformOptions(options_)
+      .then((transformedOptions_) => {
+        return this.instance.request(transformedOptions_);
+      })
+      .catch((_error: any) => {
+        if (isAxiosError(_error) && _error.response) {
+          return _error.response;
         } else {
-            const _responseText = response.data;
-            let resultdefault: any = null;
-            let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+          throw _error;
         }
-    }
+      })
+      .then((_response: AxiosResponse) => {
+        return this.processGetPostsByUserId(_response);
+      });
+  }
 
-    /**
-     * Get comments by UserId
-     * @return OK
-     */
-    getCommentsByUserId(userId: string, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Comment[]> {
-        let url_ = this.baseUrl + '/user/{userId}/comments';
-        if (userId === undefined || userId === null)
-            {throw new Error("The parameter 'userId' must be defined.");}
-        url_ = url_.replace('{userId}', encodeURIComponent('' + userId));
-        url_ = url_.replace(/[?&]$/, '');
-
-        let options_ = <AxiosRequestConfig>{
-            method: 'GET',
-            url: url_,
-            headers: {
-                'Accept': 'application/json',
-            },
-            cancelToken,
-            onDownloadProgress,
-        };
-
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.instance.request(transformedOptions_);
-        }).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.processGetCommentsByUserId(_response);
-        });
-    }
-
-    protected processGetCommentsByUserId(response: AxiosResponse): Promise<Comment[]> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
+  protected processGetPostsByUserId(response: AxiosResponse): Promise<Post[]> {
+    const status = response.status;
+    let _headers: any = {};
+    if (response.headers && typeof response.headers === 'object') {
+      for (let k in response.headers) {
+        if (response.headers.hasOwnProperty(k)) {
+          _headers[k] = response.headers[k];
         }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = resultData200;
-            return result200;
+      }
+    }
+    if (status === 200) {
+      const _responseText = response.data;
+      let result200: any = null;
+      let resultData200 = _responseText;
+      result200 = resultData200;
+      return result200;
+    } else {
+      const _responseText = response.data;
+      let resultdefault: any = null;
+      let resultDatadefault = _responseText;
+      resultdefault = resultDatadefault;
+      return throwException(
+        'Bad Request',
+        status,
+        _responseText,
+        _headers,
+        resultdefault,
+      );
+    }
+  }
+
+  /**
+   * Get comments by UserId
+   * @return OK
+   */
+  getCommentsByUserId(
+    userId: string,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<Comment[]> {
+    let url_ = this.baseUrl + '/user/{userId}/comments';
+    if (userId === undefined || userId === null)
+      throw new Error("The parameter 'userId' must be defined.");
+    url_ = url_.replace('{userId}', encodeURIComponent('' + userId));
+    url_ = url_.replace(/[?&]$/, '');
+
+    let options_ = <AxiosRequestConfig>{
+      method: 'GET',
+      url: url_,
+      headers: {
+        Accept: 'application/json',
+      },
+      cancelToken,
+      onDownloadProgress,
+    };
+
+    return this.transformOptions(options_)
+      .then((transformedOptions_) => {
+        return this.instance.request(transformedOptions_);
+      })
+      .catch((_error: any) => {
+        if (isAxiosError(_error) && _error.response) {
+          return _error.response;
         } else {
-            const _responseText = response.data;
-            let resultdefault: any = null;
-            let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+          throw _error;
         }
-    }
+      })
+      .then((_response: AxiosResponse) => {
+        return this.processGetCommentsByUserId(_response);
+      });
+  }
 
-    /**
-     * Get tests by UserId
-     * @return OK
-     */
-    getUserTestsHistory(cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<TestHistory[]> {
-        let url_ = this.baseUrl + '/user/tests/history';
-        url_ = url_.replace(/[?&]$/, '');
-
-        let options_ = <AxiosRequestConfig>{
-            method: 'GET',
-            url: url_,
-            headers: {
-                'Accept': 'application/json',
-            },
-            cancelToken,
-            onDownloadProgress,
-        };
-
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.instance.request(transformedOptions_);
-        }).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.processGetUserTestsHistory(_response);
-        });
-    }
-
-    protected processGetUserTestsHistory(response: AxiosResponse): Promise<TestHistory[]> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
+  protected processGetCommentsByUserId(
+    response: AxiosResponse,
+  ): Promise<Comment[]> {
+    const status = response.status;
+    let _headers: any = {};
+    if (response.headers && typeof response.headers === 'object') {
+      for (let k in response.headers) {
+        if (response.headers.hasOwnProperty(k)) {
+          _headers[k] = response.headers[k];
         }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = resultData200;
-            return result200;
+      }
+    }
+    if (status === 200) {
+      const _responseText = response.data;
+      let result200: any = null;
+      let resultData200 = _responseText;
+      result200 = resultData200;
+      return result200;
+    } else {
+      const _responseText = response.data;
+      let resultdefault: any = null;
+      let resultDatadefault = _responseText;
+      resultdefault = resultDatadefault;
+      return throwException(
+        'Bad Request',
+        status,
+        _responseText,
+        _headers,
+        resultdefault,
+      );
+    }
+  }
+
+  /**
+   * Get tests by UserId
+   * @return OK
+   */
+  getUserTestsHistory(
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<TestHistory[]> {
+    let url_ = this.baseUrl + '/user/tests/history';
+    url_ = url_.replace(/[?&]$/, '');
+
+    let options_ = <AxiosRequestConfig>{
+      method: 'GET',
+      url: url_,
+      headers: {
+        Accept: 'application/json',
+      },
+      cancelToken,
+      onDownloadProgress,
+    };
+
+    return this.transformOptions(options_)
+      .then((transformedOptions_) => {
+        return this.instance.request(transformedOptions_);
+      })
+      .catch((_error: any) => {
+        if (isAxiosError(_error) && _error.response) {
+          return _error.response;
         } else {
-            const _responseText = response.data;
-            let resultdefault: any = null;
-            let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+          throw _error;
         }
-    }
+      })
+      .then((_response: AxiosResponse) => {
+        return this.processGetUserTestsHistory(_response);
+      });
+  }
 
-    /**
-     * Join a user to a community
-     * @return OK
-     */
-    joinCommunity(communityId: string, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<JoinCommunityMessage> {
-        let url_ = this.baseUrl + '/user/community/{communityId}/join';
-        if (communityId === undefined || communityId === null)
-            {throw new Error("The parameter 'communityId' must be defined.");}
-        url_ = url_.replace('{communityId}', encodeURIComponent('' + communityId));
-        url_ = url_.replace(/[?&]$/, '');
-
-        let options_ = <AxiosRequestConfig>{
-            method: 'GET',
-            url: url_,
-            headers: {
-                'Accept': 'application/json',
-            },
-            cancelToken,
-            onDownloadProgress,
-        };
-
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.instance.request(transformedOptions_);
-        }).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.processJoinCommunity(_response);
-        });
-    }
-
-    protected processJoinCommunity(response: AxiosResponse): Promise<JoinCommunityMessage> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
+  protected processGetUserTestsHistory(
+    response: AxiosResponse,
+  ): Promise<TestHistory[]> {
+    const status = response.status;
+    let _headers: any = {};
+    if (response.headers && typeof response.headers === 'object') {
+      for (let k in response.headers) {
+        if (response.headers.hasOwnProperty(k)) {
+          _headers[k] = response.headers[k];
         }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = resultData200;
-            return result200;
+      }
+    }
+    if (status === 200) {
+      const _responseText = response.data;
+      let result200: any = null;
+      let resultData200 = _responseText;
+      result200 = resultData200;
+      return result200;
+    } else {
+      const _responseText = response.data;
+      let resultdefault: any = null;
+      let resultDatadefault = _responseText;
+      resultdefault = resultDatadefault;
+      return throwException(
+        'Bad Request',
+        status,
+        _responseText,
+        _headers,
+        resultdefault,
+      );
+    }
+  }
+
+  /**
+   * Join a user to a community
+   * @return OK
+   */
+  joinCommunity(
+    communityId: string,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<JoinCommunityMessage> {
+    let url_ = this.baseUrl + '/user/community/{communityId}/join';
+    if (communityId === undefined || communityId === null)
+      throw new Error("The parameter 'communityId' must be defined.");
+    url_ = url_.replace('{communityId}', encodeURIComponent('' + communityId));
+    url_ = url_.replace(/[?&]$/, '');
+
+    let options_ = <AxiosRequestConfig>{
+      method: 'GET',
+      url: url_,
+      headers: {
+        Accept: 'application/json',
+      },
+      cancelToken,
+      onDownloadProgress,
+    };
+
+    return this.transformOptions(options_)
+      .then((transformedOptions_) => {
+        return this.instance.request(transformedOptions_);
+      })
+      .catch((_error: any) => {
+        if (isAxiosError(_error) && _error.response) {
+          return _error.response;
         } else {
-            const _responseText = response.data;
-            let resultdefault: any = null;
-            let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+          throw _error;
         }
-    }
+      })
+      .then((_response: AxiosResponse) => {
+        return this.processJoinCommunity(_response);
+      });
+  }
 
-    /**
-     * Get saved posts of an user
-     * @return OK
-     */
-    getSavedPosts(cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Post[]> {
-        let url_ = this.baseUrl + '/user/savedPosts';
-        url_ = url_.replace(/[?&]$/, '');
-
-        let options_ = <AxiosRequestConfig>{
-            method: 'GET',
-            url: url_,
-            headers: {
-                'Accept': 'application/json',
-            },
-            cancelToken,
-            onDownloadProgress,
-        };
-
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.instance.request(transformedOptions_);
-        }).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.processGetSavedPosts(_response);
-        });
-    }
-
-    protected processGetSavedPosts(response: AxiosResponse): Promise<Post[]> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
+  protected processJoinCommunity(
+    response: AxiosResponse,
+  ): Promise<JoinCommunityMessage> {
+    const status = response.status;
+    let _headers: any = {};
+    if (response.headers && typeof response.headers === 'object') {
+      for (let k in response.headers) {
+        if (response.headers.hasOwnProperty(k)) {
+          _headers[k] = response.headers[k];
         }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = resultData200;
-            return result200;
+      }
+    }
+    if (status === 200) {
+      const _responseText = response.data;
+      let result200: any = null;
+      let resultData200 = _responseText;
+      result200 = resultData200;
+      return result200;
+    } else {
+      const _responseText = response.data;
+      let resultdefault: any = null;
+      let resultDatadefault = _responseText;
+      resultdefault = resultDatadefault;
+      return throwException(
+        'Bad Request',
+        status,
+        _responseText,
+        _headers,
+        resultdefault,
+      );
+    }
+  }
+
+  /**
+   * Get saved posts of an user
+   * @return OK
+   */
+  getSavedPosts(
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<Post[]> {
+    let url_ = this.baseUrl + '/user/savedPosts';
+    url_ = url_.replace(/[?&]$/, '');
+
+    let options_ = <AxiosRequestConfig>{
+      method: 'GET',
+      url: url_,
+      headers: {
+        Accept: 'application/json',
+      },
+      cancelToken,
+      onDownloadProgress,
+    };
+
+    return this.transformOptions(options_)
+      .then((transformedOptions_) => {
+        return this.instance.request(transformedOptions_);
+      })
+      .catch((_error: any) => {
+        if (isAxiosError(_error) && _error.response) {
+          return _error.response;
         } else {
-            const _responseText = response.data;
-            let resultdefault: any = null;
-            let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+          throw _error;
         }
-    }
+      })
+      .then((_response: AxiosResponse) => {
+        return this.processGetSavedPosts(_response);
+      });
+  }
 
-    /**
-     * Get general information of a professional
-     * @return OK
-     */
-    getProfessionalInfo(userId: string, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<ProfessionalUserInfo> {
-        let url_ = this.baseUrl + '/user/professional/{userId}/info';
-        if (userId === undefined || userId === null)
-            {throw new Error("The parameter 'userId' must be defined.");}
-        url_ = url_.replace('{userId}', encodeURIComponent('' + userId));
-        url_ = url_.replace(/[?&]$/, '');
-
-        let options_ = <AxiosRequestConfig>{
-            method: 'GET',
-            url: url_,
-            headers: {
-                'Accept': 'application/json',
-            },
-            cancelToken,
-            onDownloadProgress,
-        };
-
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.instance.request(transformedOptions_);
-        }).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.processGetProfessionalInfo(_response);
-        });
-    }
-
-    protected processGetProfessionalInfo(response: AxiosResponse): Promise<ProfessionalUserInfo> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
+  protected processGetSavedPosts(response: AxiosResponse): Promise<Post[]> {
+    const status = response.status;
+    let _headers: any = {};
+    if (response.headers && typeof response.headers === 'object') {
+      for (let k in response.headers) {
+        if (response.headers.hasOwnProperty(k)) {
+          _headers[k] = response.headers[k];
         }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = resultData200;
-            return result200;
+      }
+    }
+    if (status === 200) {
+      const _responseText = response.data;
+      let result200: any = null;
+      let resultData200 = _responseText;
+      result200 = resultData200;
+      return result200;
+    } else {
+      const _responseText = response.data;
+      let resultdefault: any = null;
+      let resultDatadefault = _responseText;
+      resultdefault = resultDatadefault;
+      return throwException(
+        'Bad Request',
+        status,
+        _responseText,
+        _headers,
+        resultdefault,
+      );
+    }
+  }
+
+  /**
+   * Get general information of a professional
+   * @return OK
+   */
+  getProfessionalInfo(
+    userId: string,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<ProfessionalUserInfo> {
+    let url_ = this.baseUrl + '/user/professional/{userId}/info';
+    if (userId === undefined || userId === null)
+      throw new Error("The parameter 'userId' must be defined.");
+    url_ = url_.replace('{userId}', encodeURIComponent('' + userId));
+    url_ = url_.replace(/[?&]$/, '');
+
+    let options_ = <AxiosRequestConfig>{
+      method: 'GET',
+      url: url_,
+      headers: {
+        Accept: 'application/json',
+      },
+      cancelToken,
+      onDownloadProgress,
+    };
+
+    return this.transformOptions(options_)
+      .then((transformedOptions_) => {
+        return this.instance.request(transformedOptions_);
+      })
+      .catch((_error: any) => {
+        if (isAxiosError(_error) && _error.response) {
+          return _error.response;
         } else {
-            const _responseText = response.data;
-            let resultdefault: any = null;
-            let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+          throw _error;
         }
-    }
+      })
+      .then((_response: AxiosResponse) => {
+        return this.processGetProfessionalInfo(_response);
+      });
+  }
 
-    /**
-     * Get detailed information of a professional
-     * @return OK
-     */
-    getProfessionalChamber(userId: string, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<ProfessionalUserInfo> {
-        let url_ = this.baseUrl + '/user/professional/{userId}/chamber';
-        if (userId === undefined || userId === null)
-            {throw new Error("The parameter 'userId' must be defined.");}
-        url_ = url_.replace('{userId}', encodeURIComponent('' + userId));
-        url_ = url_.replace(/[?&]$/, '');
-
-        let options_ = <AxiosRequestConfig>{
-            method: 'GET',
-            url: url_,
-            headers: {
-                'Accept': 'application/json',
-            },
-            cancelToken,
-            onDownloadProgress,
-        };
-
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.instance.request(transformedOptions_);
-        }).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.processGetProfessionalChamber(_response);
-        });
-    }
-
-    protected processGetProfessionalChamber(response: AxiosResponse): Promise<ProfessionalUserInfo> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
+  protected processGetProfessionalInfo(
+    response: AxiosResponse,
+  ): Promise<ProfessionalUserInfo> {
+    const status = response.status;
+    let _headers: any = {};
+    if (response.headers && typeof response.headers === 'object') {
+      for (let k in response.headers) {
+        if (response.headers.hasOwnProperty(k)) {
+          _headers[k] = response.headers[k];
         }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = resultData200;
-            return result200;
+      }
+    }
+    if (status === 200) {
+      const _responseText = response.data;
+      let result200: any = null;
+      let resultData200 = _responseText;
+      result200 = resultData200;
+      return result200;
+    } else {
+      const _responseText = response.data;
+      let resultdefault: any = null;
+      let resultDatadefault = _responseText;
+      resultdefault = resultDatadefault;
+      return throwException(
+        'Bad Request',
+        status,
+        _responseText,
+        _headers,
+        resultdefault,
+      );
+    }
+  }
+
+  /**
+   * Get detailed information of a professional
+   * @return OK
+   */
+  getProfessionalChamber(
+    userId: string,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<ProfessionalUserInfo> {
+    let url_ = this.baseUrl + '/user/professional/{userId}/chamber';
+    if (userId === undefined || userId === null)
+      throw new Error("The parameter 'userId' must be defined.");
+    url_ = url_.replace('{userId}', encodeURIComponent('' + userId));
+    url_ = url_.replace(/[?&]$/, '');
+
+    let options_ = <AxiosRequestConfig>{
+      method: 'GET',
+      url: url_,
+      headers: {
+        Accept: 'application/json',
+      },
+      cancelToken,
+      onDownloadProgress,
+    };
+
+    return this.transformOptions(options_)
+      .then((transformedOptions_) => {
+        return this.instance.request(transformedOptions_);
+      })
+      .catch((_error: any) => {
+        if (isAxiosError(_error) && _error.response) {
+          return _error.response;
         } else {
-            const _responseText = response.data;
-            let resultdefault: any = null;
-            let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+          throw _error;
         }
-    }
+      })
+      .then((_response: AxiosResponse) => {
+        return this.processGetProfessionalChamber(_response);
+      });
+  }
 
-    /**
-     * Get latest advice of an user from test info
-     * @return OK
-     */
-    getLatestAdvice(cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<SubmitTestResponse> {
-        let url_ = this.baseUrl + '/user/advice/latest';
-        url_ = url_.replace(/[?&]$/, '');
-
-        let options_ = <AxiosRequestConfig>{
-            method: 'GET',
-            url: url_,
-            headers: {
-                'Accept': 'application/json',
-            },
-            cancelToken,
-            onDownloadProgress,
-        };
-
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.instance.request(transformedOptions_);
-        }).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.processGetLatestAdvice(_response);
-        });
-    }
-
-    protected processGetLatestAdvice(response: AxiosResponse): Promise<SubmitTestResponse> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
+  protected processGetProfessionalChamber(
+    response: AxiosResponse,
+  ): Promise<ProfessionalUserInfo> {
+    const status = response.status;
+    let _headers: any = {};
+    if (response.headers && typeof response.headers === 'object') {
+      for (let k in response.headers) {
+        if (response.headers.hasOwnProperty(k)) {
+          _headers[k] = response.headers[k];
         }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = resultData200;
-            return result200;
+      }
+    }
+    if (status === 200) {
+      const _responseText = response.data;
+      let result200: any = null;
+      let resultData200 = _responseText;
+      result200 = resultData200;
+      return result200;
+    } else {
+      const _responseText = response.data;
+      let resultdefault: any = null;
+      let resultDatadefault = _responseText;
+      resultdefault = resultDatadefault;
+      return throwException(
+        'Bad Request',
+        status,
+        _responseText,
+        _headers,
+        resultdefault,
+      );
+    }
+  }
+
+  /**
+   * Get latest advice of an user from test info
+   * @return OK
+   */
+  getLatestAdvice(
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<SubmitTestResponse> {
+    let url_ = this.baseUrl + '/user/advice/latest';
+    url_ = url_.replace(/[?&]$/, '');
+
+    let options_ = <AxiosRequestConfig>{
+      method: 'GET',
+      url: url_,
+      headers: {
+        Accept: 'application/json',
+      },
+      cancelToken,
+      onDownloadProgress,
+    };
+
+    return this.transformOptions(options_)
+      .then((transformedOptions_) => {
+        return this.instance.request(transformedOptions_);
+      })
+      .catch((_error: any) => {
+        if (isAxiosError(_error) && _error.response) {
+          return _error.response;
         } else {
-            const _responseText = response.data;
-            let resultdefault: any = null;
-            let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+          throw _error;
         }
-    }
+      })
+      .then((_response: AxiosResponse) => {
+        return this.processGetLatestAdvice(_response);
+      });
+  }
 
-    /**
-     * Register a push notification
-     * @param body (optional)
-     * @return OK
-     */
-    registerPushNotificationToken(body?: PushToken | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void, onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<PushToken> {
-        let url_ = this.baseUrl + '/user/pushToken/register';
-        url_ = url_.replace(/[?&]$/, '');
-
-        const content_ = JSON.stringify(body);
-
-        let options_ = <AxiosRequestConfig>{
-            data: content_,
-            method: 'POST',
-            url: url_,
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-            },
-            cancelToken,
-            onDownloadProgress,
-            onUploadProgress,
-        };
-
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.instance.request(transformedOptions_);
-        }).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.processRegisterPushNotificationToken(_response);
-        });
-    }
-
-    protected processRegisterPushNotificationToken(response: AxiosResponse): Promise<PushToken> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
+  protected processGetLatestAdvice(
+    response: AxiosResponse,
+  ): Promise<SubmitTestResponse> {
+    const status = response.status;
+    let _headers: any = {};
+    if (response.headers && typeof response.headers === 'object') {
+      for (let k in response.headers) {
+        if (response.headers.hasOwnProperty(k)) {
+          _headers[k] = response.headers[k];
         }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = resultData200;
-            return result200;
+      }
+    }
+    if (status === 200) {
+      const _responseText = response.data;
+      let result200: any = null;
+      let resultData200 = _responseText;
+      result200 = resultData200;
+      return result200;
+    } else {
+      const _responseText = response.data;
+      let resultdefault: any = null;
+      let resultDatadefault = _responseText;
+      resultdefault = resultDatadefault;
+      return throwException(
+        'Bad Request',
+        status,
+        _responseText,
+        _headers,
+        resultdefault,
+      );
+    }
+  }
+
+  /**
+   * Register a push notification
+   * @param body (optional)
+   * @return OK
+   */
+  registerPushNotificationToken(
+    body?: PushToken | undefined,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+    onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<PushToken> {
+    let url_ = this.baseUrl + '/user/pushToken/register';
+    url_ = url_.replace(/[?&]$/, '');
+
+    const content_ = JSON.stringify(body);
+
+    let options_ = <AxiosRequestConfig>{
+      data: content_,
+      method: 'POST',
+      url: url_,
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      cancelToken,
+      onDownloadProgress,
+      onUploadProgress,
+    };
+
+    return this.transformOptions(options_)
+      .then((transformedOptions_) => {
+        return this.instance.request(transformedOptions_);
+      })
+      .catch((_error: any) => {
+        if (isAxiosError(_error) && _error.response) {
+          return _error.response;
         } else {
-            const _responseText = response.data;
-            let resultdefault: any = null;
-            let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+          throw _error;
         }
-    }
+      })
+      .then((_response: AxiosResponse) => {
+        return this.processRegisterPushNotificationToken(_response);
+      });
+  }
 
-    /**
-     * get notifications
-     * @return OK
-     */
-    getNotifications(cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Notification[]> {
-        let url_ = this.baseUrl + '/user/notifications';
-        url_ = url_.replace(/[?&]$/, '');
-
-        let options_ = <AxiosRequestConfig>{
-            method: 'GET',
-            url: url_,
-            headers: {
-                'Accept': 'application/json',
-            },
-            cancelToken,
-            onDownloadProgress,
-        };
-
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.instance.request(transformedOptions_);
-        }).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.processGetNotifications(_response);
-        });
-    }
-
-    protected processGetNotifications(response: AxiosResponse): Promise<Notification[]> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
+  protected processRegisterPushNotificationToken(
+    response: AxiosResponse,
+  ): Promise<PushToken> {
+    const status = response.status;
+    let _headers: any = {};
+    if (response.headers && typeof response.headers === 'object') {
+      for (let k in response.headers) {
+        if (response.headers.hasOwnProperty(k)) {
+          _headers[k] = response.headers[k];
         }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = resultData200;
-            return result200;
+      }
+    }
+    if (status === 200) {
+      const _responseText = response.data;
+      let result200: any = null;
+      let resultData200 = _responseText;
+      result200 = resultData200;
+      return result200;
+    } else {
+      const _responseText = response.data;
+      let resultdefault: any = null;
+      let resultDatadefault = _responseText;
+      resultdefault = resultDatadefault;
+      return throwException(
+        'Bad Request',
+        status,
+        _responseText,
+        _headers,
+        resultdefault,
+      );
+    }
+  }
+
+  /**
+   * get notifications
+   * @return OK
+   */
+  getNotifications(
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<Notification[]> {
+    let url_ = this.baseUrl + '/user/notifications';
+    url_ = url_.replace(/[?&]$/, '');
+
+    let options_ = <AxiosRequestConfig>{
+      method: 'GET',
+      url: url_,
+      headers: {
+        Accept: 'application/json',
+      },
+      cancelToken,
+      onDownloadProgress,
+    };
+
+    return this.transformOptions(options_)
+      .then((transformedOptions_) => {
+        return this.instance.request(transformedOptions_);
+      })
+      .catch((_error: any) => {
+        if (isAxiosError(_error) && _error.response) {
+          return _error.response;
         } else {
-            const _responseText = response.data;
-            let resultdefault: any = null;
-            let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+          throw _error;
         }
-    }
+      })
+      .then((_response: AxiosResponse) => {
+        return this.processGetNotifications(_response);
+      });
+  }
 
-    /**
-     * Get suggested professionals
-     * @param professionalSortedBy (optional)
-     * @return OK
-     */
-    getSuggestedProfessionals(professionalSortedBy?: ProfessionalSortedBy | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<ProfessionalUserInfo[]> {
-        let url_ = this.baseUrl + '/user/suggesetedProfessionals?';
-        if (professionalSortedBy === null)
-            {throw new Error("The parameter 'professionalSortedBy' cannot be null.");}
-        else if (professionalSortedBy !== undefined)
-            {url_ += 'professionalSortedBy=' + encodeURIComponent('' + professionalSortedBy) + '&';}
-        url_ = url_.replace(/[?&]$/, '');
-
-        let options_ = <AxiosRequestConfig>{
-            method: 'GET',
-            url: url_,
-            headers: {
-                'Accept': 'application/json',
-            },
-            cancelToken,
-            onDownloadProgress,
-        };
-
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.instance.request(transformedOptions_);
-        }).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.processGetSuggestedProfessionals(_response);
-        });
-    }
-
-    protected processGetSuggestedProfessionals(response: AxiosResponse): Promise<ProfessionalUserInfo[]> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
+  protected processGetNotifications(
+    response: AxiosResponse,
+  ): Promise<Notification[]> {
+    const status = response.status;
+    let _headers: any = {};
+    if (response.headers && typeof response.headers === 'object') {
+      for (let k in response.headers) {
+        if (response.headers.hasOwnProperty(k)) {
+          _headers[k] = response.headers[k];
         }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = resultData200;
-            return result200;
+      }
+    }
+    if (status === 200) {
+      const _responseText = response.data;
+      let result200: any = null;
+      let resultData200 = _responseText;
+      result200 = resultData200;
+      return result200;
+    } else {
+      const _responseText = response.data;
+      let resultdefault: any = null;
+      let resultDatadefault = _responseText;
+      resultdefault = resultDatadefault;
+      return throwException(
+        'Bad Request',
+        status,
+        _responseText,
+        _headers,
+        resultdefault,
+      );
+    }
+  }
+
+  /**
+   * Get suggested professionals
+   * @param professionalSortedBy (optional)
+   * @return OK
+   */
+  getSuggestedProfessionals(
+    professionalSortedBy?: ProfessionalSortedBy | undefined,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<ProfessionalUserInfo[]> {
+    let url_ = this.baseUrl + '/user/suggesetedProfessionals?';
+    if (professionalSortedBy === null)
+      throw new Error("The parameter 'professionalSortedBy' cannot be null.");
+    else if (professionalSortedBy !== undefined)
+      url_ +=
+        'professionalSortedBy=' +
+        encodeURIComponent('' + professionalSortedBy) +
+        '&';
+    url_ = url_.replace(/[?&]$/, '');
+
+    let options_ = <AxiosRequestConfig>{
+      method: 'GET',
+      url: url_,
+      headers: {
+        Accept: 'application/json',
+      },
+      cancelToken,
+      onDownloadProgress,
+    };
+
+    return this.transformOptions(options_)
+      .then((transformedOptions_) => {
+        return this.instance.request(transformedOptions_);
+      })
+      .catch((_error: any) => {
+        if (isAxiosError(_error) && _error.response) {
+          return _error.response;
         } else {
-            const _responseText = response.data;
-            let resultdefault: any = null;
-            let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+          throw _error;
         }
-    }
+      })
+      .then((_response: AxiosResponse) => {
+        return this.processGetSuggestedProfessionals(_response);
+      });
+  }
 
-    /**
-     * Save a post by user
-     * @param saveOptions (optional)
-     * @return OK
-     */
-    savePost(postId: string, saveOptions?: SaveOptions | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<SavePostMessage> {
-        let url_ = this.baseUrl + '/post/{postId}/save?';
-        if (postId === undefined || postId === null)
-            {throw new Error("The parameter 'postId' must be defined.");}
-        url_ = url_.replace('{postId}', encodeURIComponent('' + postId));
-        if (saveOptions === null)
-            {throw new Error("The parameter 'saveOptions' cannot be null.");}
-        else if (saveOptions !== undefined)
-            {url_ += 'saveOptions=' + encodeURIComponent('' + saveOptions) + '&';}
-        url_ = url_.replace(/[?&]$/, '');
-
-        let options_ = <AxiosRequestConfig>{
-            method: 'GET',
-            url: url_,
-            headers: {
-                'Accept': 'application/json',
-            },
-            cancelToken,
-            onDownloadProgress,
-        };
-
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.instance.request(transformedOptions_);
-        }).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.processSavePost(_response);
-        });
-    }
-
-    protected processSavePost(response: AxiosResponse): Promise<SavePostMessage> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
+  protected processGetSuggestedProfessionals(
+    response: AxiosResponse,
+  ): Promise<ProfessionalUserInfo[]> {
+    const status = response.status;
+    let _headers: any = {};
+    if (response.headers && typeof response.headers === 'object') {
+      for (let k in response.headers) {
+        if (response.headers.hasOwnProperty(k)) {
+          _headers[k] = response.headers[k];
         }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = resultData200;
-            return result200;
+      }
+    }
+    if (status === 200) {
+      const _responseText = response.data;
+      let result200: any = null;
+      let resultData200 = _responseText;
+      result200 = resultData200;
+      return result200;
+    } else {
+      const _responseText = response.data;
+      let resultdefault: any = null;
+      let resultDatadefault = _responseText;
+      resultdefault = resultDatadefault;
+      return throwException(
+        'Bad Request',
+        status,
+        _responseText,
+        _headers,
+        resultdefault,
+      );
+    }
+  }
+
+  /**
+   * Save a post by user
+   * @param saveOptions (optional)
+   * @return OK
+   */
+  savePost(
+    postId: string,
+    saveOptions?: SaveOptions | undefined,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<SavePostMessage> {
+    let url_ = this.baseUrl + '/post/{postId}/save?';
+    if (postId === undefined || postId === null)
+      throw new Error("The parameter 'postId' must be defined.");
+    url_ = url_.replace('{postId}', encodeURIComponent('' + postId));
+    if (saveOptions === null)
+      throw new Error("The parameter 'saveOptions' cannot be null.");
+    else if (saveOptions !== undefined)
+      url_ += 'saveOptions=' + encodeURIComponent('' + saveOptions) + '&';
+    url_ = url_.replace(/[?&]$/, '');
+
+    let options_ = <AxiosRequestConfig>{
+      method: 'GET',
+      url: url_,
+      headers: {
+        Accept: 'application/json',
+      },
+      cancelToken,
+      onDownloadProgress,
+    };
+
+    return this.transformOptions(options_)
+      .then((transformedOptions_) => {
+        return this.instance.request(transformedOptions_);
+      })
+      .catch((_error: any) => {
+        if (isAxiosError(_error) && _error.response) {
+          return _error.response;
         } else {
-            const _responseText = response.data;
-            let resultdefault: any = null;
-            let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+          throw _error;
         }
-    }
+      })
+      .then((_response: AxiosResponse) => {
+        return this.processSavePost(_response);
+      });
+  }
 
-    /**
-     * Like a post by user
-     * @return OK
-     */
-    likePost(postId: string, likeOptions: LikeOptions, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<LikePostMessage> {
-        let url_ = this.baseUrl + '/post/{postId}/like?';
-        if (postId === undefined || postId === null)
-            {throw new Error("The parameter 'postId' must be defined.");}
-        url_ = url_.replace('{postId}', encodeURIComponent('' + postId));
-        if (likeOptions === undefined || likeOptions === null)
-            {throw new Error("The parameter 'likeOptions' must be defined and cannot be null.");}
-        else
-            {url_ += 'likeOptions=' + encodeURIComponent('' + likeOptions) + '&';}
-        url_ = url_.replace(/[?&]$/, '');
-
-        let options_ = <AxiosRequestConfig>{
-            method: 'GET',
-            url: url_,
-            headers: {
-                'Accept': 'application/json',
-            },
-            cancelToken,
-            onDownloadProgress,
-        };
-
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.instance.request(transformedOptions_);
-        }).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.processLikePost(_response);
-        });
-    }
-
-    protected processLikePost(response: AxiosResponse): Promise<LikePostMessage> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
+  protected processSavePost(response: AxiosResponse): Promise<SavePostMessage> {
+    const status = response.status;
+    let _headers: any = {};
+    if (response.headers && typeof response.headers === 'object') {
+      for (let k in response.headers) {
+        if (response.headers.hasOwnProperty(k)) {
+          _headers[k] = response.headers[k];
         }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = resultData200;
-            return result200;
+      }
+    }
+    if (status === 200) {
+      const _responseText = response.data;
+      let result200: any = null;
+      let resultData200 = _responseText;
+      result200 = resultData200;
+      return result200;
+    } else {
+      const _responseText = response.data;
+      let resultdefault: any = null;
+      let resultDatadefault = _responseText;
+      resultdefault = resultDatadefault;
+      return throwException(
+        'Bad Request',
+        status,
+        _responseText,
+        _headers,
+        resultdefault,
+      );
+    }
+  }
+
+  /**
+   * Like a post by user
+   * @return OK
+   */
+  likePost(
+    postId: string,
+    likeOptions: LikeOptions,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<LikePostMessage> {
+    let url_ = this.baseUrl + '/post/{postId}/like?';
+    if (postId === undefined || postId === null)
+      throw new Error("The parameter 'postId' must be defined.");
+    url_ = url_.replace('{postId}', encodeURIComponent('' + postId));
+    if (likeOptions === undefined || likeOptions === null)
+      throw new Error(
+        "The parameter 'likeOptions' must be defined and cannot be null.",
+      );
+    else url_ += 'likeOptions=' + encodeURIComponent('' + likeOptions) + '&';
+    url_ = url_.replace(/[?&]$/, '');
+
+    let options_ = <AxiosRequestConfig>{
+      method: 'GET',
+      url: url_,
+      headers: {
+        Accept: 'application/json',
+      },
+      cancelToken,
+      onDownloadProgress,
+    };
+
+    return this.transformOptions(options_)
+      .then((transformedOptions_) => {
+        return this.instance.request(transformedOptions_);
+      })
+      .catch((_error: any) => {
+        if (isAxiosError(_error) && _error.response) {
+          return _error.response;
         } else {
-            const _responseText = response.data;
-            let resultdefault: any = null;
-            let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+          throw _error;
         }
-    }
+      })
+      .then((_response: AxiosResponse) => {
+        return this.processLikePost(_response);
+      });
+  }
 
-    /**
-     * Create a post
-     * @param body (optional)
-     * @return OK
-     */
-    createPost(body?: Post | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void, onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Post> {
-        let url_ = this.baseUrl + '/post/create';
-        url_ = url_.replace(/[?&]$/, '');
-
-        const content_ = JSON.stringify(body);
-
-        let options_ = <AxiosRequestConfig>{
-            data: content_,
-            method: 'POST',
-            url: url_,
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-            },
-            cancelToken,
-            onDownloadProgress,
-            onUploadProgress,
-        };
-
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.instance.request(transformedOptions_);
-        }).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.processCreatePost(_response);
-        });
-    }
-
-    protected processCreatePost(response: AxiosResponse): Promise<Post> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
+  protected processLikePost(response: AxiosResponse): Promise<LikePostMessage> {
+    const status = response.status;
+    let _headers: any = {};
+    if (response.headers && typeof response.headers === 'object') {
+      for (let k in response.headers) {
+        if (response.headers.hasOwnProperty(k)) {
+          _headers[k] = response.headers[k];
         }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = resultData200;
-            return result200;
+      }
+    }
+    if (status === 200) {
+      const _responseText = response.data;
+      let result200: any = null;
+      let resultData200 = _responseText;
+      result200 = resultData200;
+      return result200;
+    } else {
+      const _responseText = response.data;
+      let resultdefault: any = null;
+      let resultDatadefault = _responseText;
+      resultdefault = resultDatadefault;
+      return throwException(
+        'Bad Request',
+        status,
+        _responseText,
+        _headers,
+        resultdefault,
+      );
+    }
+  }
+
+  /**
+   * Create a post
+   * @param body (optional)
+   * @return OK
+   */
+  createPost(
+    body?: Post | undefined,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+    onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<Post> {
+    let url_ = this.baseUrl + '/post/create';
+    url_ = url_.replace(/[?&]$/, '');
+
+    const content_ = JSON.stringify(body);
+
+    let options_ = <AxiosRequestConfig>{
+      data: content_,
+      method: 'POST',
+      url: url_,
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      cancelToken,
+      onDownloadProgress,
+      onUploadProgress,
+    };
+
+    return this.transformOptions(options_)
+      .then((transformedOptions_) => {
+        return this.instance.request(transformedOptions_);
+      })
+      .catch((_error: any) => {
+        if (isAxiosError(_error) && _error.response) {
+          return _error.response;
         } else {
-            const _responseText = response.data;
-            let resultdefault: any = null;
-            let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+          throw _error;
         }
-    }
+      })
+      .then((_response: AxiosResponse) => {
+        return this.processCreatePost(_response);
+      });
+  }
 
-    /**
-     * Create a comment
-     * @param body (optional)
-     * @return OK
-     */
-    createComment(postId: string, body?: Comment | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void, onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Comment> {
-        let url_ = this.baseUrl + '/post/{postId}/comment/create';
-        if (postId === undefined || postId === null)
-            {throw new Error("The parameter 'postId' must be defined.");}
-        url_ = url_.replace('{postId}', encodeURIComponent('' + postId));
-        url_ = url_.replace(/[?&]$/, '');
-
-        const content_ = JSON.stringify(body);
-
-        let options_ = <AxiosRequestConfig>{
-            data: content_,
-            method: 'POST',
-            url: url_,
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-            },
-            cancelToken,
-            onDownloadProgress,
-            onUploadProgress,
-        };
-
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.instance.request(transformedOptions_);
-        }).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.processCreateComment(_response);
-        });
-    }
-
-    protected processCreateComment(response: AxiosResponse): Promise<Comment> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
+  protected processCreatePost(response: AxiosResponse): Promise<Post> {
+    const status = response.status;
+    let _headers: any = {};
+    if (response.headers && typeof response.headers === 'object') {
+      for (let k in response.headers) {
+        if (response.headers.hasOwnProperty(k)) {
+          _headers[k] = response.headers[k];
         }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = resultData200;
-            return result200;
+      }
+    }
+    if (status === 200) {
+      const _responseText = response.data;
+      let result200: any = null;
+      let resultData200 = _responseText;
+      result200 = resultData200;
+      return result200;
+    } else {
+      const _responseText = response.data;
+      let resultdefault: any = null;
+      let resultDatadefault = _responseText;
+      resultdefault = resultDatadefault;
+      return throwException(
+        'Bad Request',
+        status,
+        _responseText,
+        _headers,
+        resultdefault,
+      );
+    }
+  }
+
+  /**
+   * Create a comment
+   * @param body (optional)
+   * @return OK
+   */
+  createComment(
+    postId: string,
+    body?: Comment | undefined,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+    onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<Comment> {
+    let url_ = this.baseUrl + '/post/{postId}/comment/create';
+    if (postId === undefined || postId === null)
+      throw new Error("The parameter 'postId' must be defined.");
+    url_ = url_.replace('{postId}', encodeURIComponent('' + postId));
+    url_ = url_.replace(/[?&]$/, '');
+
+    const content_ = JSON.stringify(body);
+
+    let options_ = <AxiosRequestConfig>{
+      data: content_,
+      method: 'POST',
+      url: url_,
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      cancelToken,
+      onDownloadProgress,
+      onUploadProgress,
+    };
+
+    return this.transformOptions(options_)
+      .then((transformedOptions_) => {
+        return this.instance.request(transformedOptions_);
+      })
+      .catch((_error: any) => {
+        if (isAxiosError(_error) && _error.response) {
+          return _error.response;
         } else {
-            const _responseText = response.data;
-            let resultdefault: any = null;
-            let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+          throw _error;
         }
-    }
+      })
+      .then((_response: AxiosResponse) => {
+        return this.processCreateComment(_response);
+      });
+  }
 
-    /**
-     * Create a reply
-     * @param body (optional)
-     * @return OK
-     */
-    createReply(postId: string, commentId: string, body?: Comment | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void, onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Comment> {
-        let url_ = this.baseUrl + '/post/{postId}/comment/{commentId}/reply/create';
-        if (postId === undefined || postId === null)
-            {throw new Error("The parameter 'postId' must be defined.");}
-        url_ = url_.replace('{postId}', encodeURIComponent('' + postId));
-        if (commentId === undefined || commentId === null)
-            {throw new Error("The parameter 'commentId' must be defined.");}
-        url_ = url_.replace('{commentId}', encodeURIComponent('' + commentId));
-        url_ = url_.replace(/[?&]$/, '');
-
-        const content_ = JSON.stringify(body);
-
-        let options_ = <AxiosRequestConfig>{
-            data: content_,
-            method: 'POST',
-            url: url_,
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-            },
-            cancelToken,
-            onDownloadProgress,
-            onUploadProgress,
-        };
-
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.instance.request(transformedOptions_);
-        }).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.processCreateReply(_response);
-        });
-    }
-
-    protected processCreateReply(response: AxiosResponse): Promise<Comment> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
+  protected processCreateComment(response: AxiosResponse): Promise<Comment> {
+    const status = response.status;
+    let _headers: any = {};
+    if (response.headers && typeof response.headers === 'object') {
+      for (let k in response.headers) {
+        if (response.headers.hasOwnProperty(k)) {
+          _headers[k] = response.headers[k];
         }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = resultData200;
-            return result200;
+      }
+    }
+    if (status === 200) {
+      const _responseText = response.data;
+      let result200: any = null;
+      let resultData200 = _responseText;
+      result200 = resultData200;
+      return result200;
+    } else {
+      const _responseText = response.data;
+      let resultdefault: any = null;
+      let resultDatadefault = _responseText;
+      resultdefault = resultDatadefault;
+      return throwException(
+        'Bad Request',
+        status,
+        _responseText,
+        _headers,
+        resultdefault,
+      );
+    }
+  }
+
+  /**
+   * Create a reply
+   * @param body (optional)
+   * @return OK
+   */
+  createReply(
+    postId: string,
+    commentId: string,
+    body?: Comment | undefined,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+    onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<Comment> {
+    let url_ = this.baseUrl + '/post/{postId}/comment/{commentId}/reply/create';
+    if (postId === undefined || postId === null)
+      throw new Error("The parameter 'postId' must be defined.");
+    url_ = url_.replace('{postId}', encodeURIComponent('' + postId));
+    if (commentId === undefined || commentId === null)
+      throw new Error("The parameter 'commentId' must be defined.");
+    url_ = url_.replace('{commentId}', encodeURIComponent('' + commentId));
+    url_ = url_.replace(/[?&]$/, '');
+
+    const content_ = JSON.stringify(body);
+
+    let options_ = <AxiosRequestConfig>{
+      data: content_,
+      method: 'POST',
+      url: url_,
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      cancelToken,
+      onDownloadProgress,
+      onUploadProgress,
+    };
+
+    return this.transformOptions(options_)
+      .then((transformedOptions_) => {
+        return this.instance.request(transformedOptions_);
+      })
+      .catch((_error: any) => {
+        if (isAxiosError(_error) && _error.response) {
+          return _error.response;
         } else {
-            const _responseText = response.data;
-            let resultdefault: any = null;
-            let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+          throw _error;
         }
-    }
+      })
+      .then((_response: AxiosResponse) => {
+        return this.processCreateReply(_response);
+      });
+  }
 
-    /**
-     * Get replies of a comment
-     * @return OK
-     */
-    getRepliesofComment(postId: string, commentId: string, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Comment[]> {
-        let url_ = this.baseUrl + '/post/{postId}/comment/{commentId}/replies';
-        if (postId === undefined || postId === null)
-            {throw new Error("The parameter 'postId' must be defined.");}
-        url_ = url_.replace('{postId}', encodeURIComponent('' + postId));
-        if (commentId === undefined || commentId === null)
-            {throw new Error("The parameter 'commentId' must be defined.");}
-        url_ = url_.replace('{commentId}', encodeURIComponent('' + commentId));
-        url_ = url_.replace(/[?&]$/, '');
-
-        let options_ = <AxiosRequestConfig>{
-            method: 'GET',
-            url: url_,
-            headers: {
-                'Accept': 'application/json',
-            },
-            cancelToken,
-            onDownloadProgress,
-        };
-
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.instance.request(transformedOptions_);
-        }).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.processGetRepliesofComment(_response);
-        });
-    }
-
-    protected processGetRepliesofComment(response: AxiosResponse): Promise<Comment[]> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
+  protected processCreateReply(response: AxiosResponse): Promise<Comment> {
+    const status = response.status;
+    let _headers: any = {};
+    if (response.headers && typeof response.headers === 'object') {
+      for (let k in response.headers) {
+        if (response.headers.hasOwnProperty(k)) {
+          _headers[k] = response.headers[k];
         }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = resultData200;
-            return result200;
+      }
+    }
+    if (status === 200) {
+      const _responseText = response.data;
+      let result200: any = null;
+      let resultData200 = _responseText;
+      result200 = resultData200;
+      return result200;
+    } else {
+      const _responseText = response.data;
+      let resultdefault: any = null;
+      let resultDatadefault = _responseText;
+      resultdefault = resultDatadefault;
+      return throwException(
+        'Bad Request',
+        status,
+        _responseText,
+        _headers,
+        resultdefault,
+      );
+    }
+  }
+
+  /**
+   * Get replies of a comment
+   * @return OK
+   */
+  getRepliesofComment(
+    postId: string,
+    commentId: string,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<Comment[]> {
+    let url_ = this.baseUrl + '/post/{postId}/comment/{commentId}/replies';
+    if (postId === undefined || postId === null)
+      throw new Error("The parameter 'postId' must be defined.");
+    url_ = url_.replace('{postId}', encodeURIComponent('' + postId));
+    if (commentId === undefined || commentId === null)
+      throw new Error("The parameter 'commentId' must be defined.");
+    url_ = url_.replace('{commentId}', encodeURIComponent('' + commentId));
+    url_ = url_.replace(/[?&]$/, '');
+
+    let options_ = <AxiosRequestConfig>{
+      method: 'GET',
+      url: url_,
+      headers: {
+        Accept: 'application/json',
+      },
+      cancelToken,
+      onDownloadProgress,
+    };
+
+    return this.transformOptions(options_)
+      .then((transformedOptions_) => {
+        return this.instance.request(transformedOptions_);
+      })
+      .catch((_error: any) => {
+        if (isAxiosError(_error) && _error.response) {
+          return _error.response;
         } else {
-            const _responseText = response.data;
-            let resultdefault: any = null;
-            let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+          throw _error;
         }
-    }
+      })
+      .then((_response: AxiosResponse) => {
+        return this.processGetRepliesofComment(_response);
+      });
+  }
 
-    /**
-     * Get feed of an user
-     * @param feedSortedBy (optional)
-     * @return OK
-     */
-    getFeed(page: number, limit: number, feedSortedBy?: FeedSortedBy | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Post[]> {
-        let url_ = this.baseUrl + '/post/feed?';
-        if (page === undefined || page === null)
-            {throw new Error("The parameter 'page' must be defined and cannot be null.");}
-        else
-            {url_ += 'page=' + encodeURIComponent('' + page) + '&';}
-        if (limit === undefined || limit === null)
-            {throw new Error("The parameter 'limit' must be defined and cannot be null.");}
-        else
-            {url_ += 'limit=' + encodeURIComponent('' + limit) + '&';}
-        if (feedSortedBy === null)
-            {throw new Error("The parameter 'feedSortedBy' cannot be null.");}
-        else if (feedSortedBy !== undefined)
-            {url_ += 'feedSortedBy=' + encodeURIComponent('' + feedSortedBy) + '&';}
-        url_ = url_.replace(/[?&]$/, '');
-
-        let options_ = <AxiosRequestConfig>{
-            method: 'GET',
-            url: url_,
-            headers: {
-                'Accept': 'application/json',
-            },
-            cancelToken,
-            onDownloadProgress,
-        };
-
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.instance.request(transformedOptions_);
-        }).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.processGetFeed(_response);
-        });
-    }
-
-    protected processGetFeed(response: AxiosResponse): Promise<Post[]> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
+  protected processGetRepliesofComment(
+    response: AxiosResponse,
+  ): Promise<Comment[]> {
+    const status = response.status;
+    let _headers: any = {};
+    if (response.headers && typeof response.headers === 'object') {
+      for (let k in response.headers) {
+        if (response.headers.hasOwnProperty(k)) {
+          _headers[k] = response.headers[k];
         }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = resultData200;
-            return result200;
+      }
+    }
+    if (status === 200) {
+      const _responseText = response.data;
+      let result200: any = null;
+      let resultData200 = _responseText;
+      result200 = resultData200;
+      return result200;
+    } else {
+      const _responseText = response.data;
+      let resultdefault: any = null;
+      let resultDatadefault = _responseText;
+      resultdefault = resultDatadefault;
+      return throwException(
+        'Bad Request',
+        status,
+        _responseText,
+        _headers,
+        resultdefault,
+      );
+    }
+  }
+
+  /**
+   * Get feed of an user
+   * @param feedSortedBy (optional)
+   * @return OK
+   */
+  getFeed(
+    page: number,
+    limit: number,
+    feedSortedBy?: FeedSortedBy | undefined,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<Post[]> {
+    let url_ = this.baseUrl + '/post/feed?';
+    if (page === undefined || page === null)
+      throw new Error(
+        "The parameter 'page' must be defined and cannot be null.",
+      );
+    else url_ += 'page=' + encodeURIComponent('' + page) + '&';
+    if (limit === undefined || limit === null)
+      throw new Error(
+        "The parameter 'limit' must be defined and cannot be null.",
+      );
+    else url_ += 'limit=' + encodeURIComponent('' + limit) + '&';
+    if (feedSortedBy === null)
+      throw new Error("The parameter 'feedSortedBy' cannot be null.");
+    else if (feedSortedBy !== undefined)
+      url_ += 'feedSortedBy=' + encodeURIComponent('' + feedSortedBy) + '&';
+    url_ = url_.replace(/[?&]$/, '');
+
+    let options_ = <AxiosRequestConfig>{
+      method: 'GET',
+      url: url_,
+      headers: {
+        Accept: 'application/json',
+      },
+      cancelToken,
+      onDownloadProgress,
+    };
+
+    return this.transformOptions(options_)
+      .then((transformedOptions_) => {
+        return this.instance.request(transformedOptions_);
+      })
+      .catch((_error: any) => {
+        if (isAxiosError(_error) && _error.response) {
+          return _error.response;
         } else {
-            const _responseText = response.data;
-            let resultdefault: any = null;
-            let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+          throw _error;
         }
-    }
+      })
+      .then((_response: AxiosResponse) => {
+        return this.processGetFeed(_response);
+      });
+  }
 
-    /**
-     * Get post by Id
-     * @param commentsSortedBy (optional)
-     * @return OK
-     */
-    getPostById(postId: string, commentsSortedBy?: CommentsSortedBy | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Post> {
-        let url_ = this.baseUrl + '/post/{postId}?';
-        if (postId === undefined || postId === null)
-            {throw new Error("The parameter 'postId' must be defined.");}
-        url_ = url_.replace('{postId}', encodeURIComponent('' + postId));
-        if (commentsSortedBy === null)
-            {throw new Error("The parameter 'commentsSortedBy' cannot be null.");}
-        else if (commentsSortedBy !== undefined)
-            {url_ += 'commentsSortedBy=' + encodeURIComponent('' + commentsSortedBy) + '&';}
-        url_ = url_.replace(/[?&]$/, '');
-
-        let options_ = <AxiosRequestConfig>{
-            method: 'GET',
-            url: url_,
-            headers: {
-                'Accept': 'application/json',
-            },
-            cancelToken,
-            onDownloadProgress,
-        };
-
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.instance.request(transformedOptions_);
-        }).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.processGetPostById(_response);
-        });
-    }
-
-    protected processGetPostById(response: AxiosResponse): Promise<Post> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
+  protected processGetFeed(response: AxiosResponse): Promise<Post[]> {
+    const status = response.status;
+    let _headers: any = {};
+    if (response.headers && typeof response.headers === 'object') {
+      for (let k in response.headers) {
+        if (response.headers.hasOwnProperty(k)) {
+          _headers[k] = response.headers[k];
         }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = resultData200;
-            return result200;
+      }
+    }
+    if (status === 200) {
+      const _responseText = response.data;
+      let result200: any = null;
+      let resultData200 = _responseText;
+      result200 = resultData200;
+      return result200;
+    } else {
+      const _responseText = response.data;
+      let resultdefault: any = null;
+      let resultDatadefault = _responseText;
+      resultdefault = resultDatadefault;
+      return throwException(
+        'Bad Request',
+        status,
+        _responseText,
+        _headers,
+        resultdefault,
+      );
+    }
+  }
+
+  /**
+   * Get post by Id
+   * @param commentsSortedBy (optional)
+   * @return OK
+   */
+  getPostById(
+    postId: string,
+    commentsSortedBy?: CommentsSortedBy | undefined,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<Post> {
+    let url_ = this.baseUrl + '/post/{postId}?';
+    if (postId === undefined || postId === null)
+      throw new Error("The parameter 'postId' must be defined.");
+    url_ = url_.replace('{postId}', encodeURIComponent('' + postId));
+    if (commentsSortedBy === null)
+      throw new Error("The parameter 'commentsSortedBy' cannot be null.");
+    else if (commentsSortedBy !== undefined)
+      url_ +=
+        'commentsSortedBy=' + encodeURIComponent('' + commentsSortedBy) + '&';
+    url_ = url_.replace(/[?&]$/, '');
+
+    let options_ = <AxiosRequestConfig>{
+      method: 'GET',
+      url: url_,
+      headers: {
+        Accept: 'application/json',
+      },
+      cancelToken,
+      onDownloadProgress,
+    };
+
+    return this.transformOptions(options_)
+      .then((transformedOptions_) => {
+        return this.instance.request(transformedOptions_);
+      })
+      .catch((_error: any) => {
+        if (isAxiosError(_error) && _error.response) {
+          return _error.response;
         } else {
-            const _responseText = response.data;
-            let resultdefault: any = null;
-            let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+          throw _error;
         }
-    }
+      })
+      .then((_response: AxiosResponse) => {
+        return this.processGetPostById(_response);
+      });
+  }
 
-    /**
-     * Get community information
-     * @return OK
-     */
-    getCommunityInfo(communityId: string, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<CommunityInfo> {
-        let url_ = this.baseUrl + '/community/{communityId}/information';
-        if (communityId === undefined || communityId === null)
-            {throw new Error("The parameter 'communityId' must be defined.");}
-        url_ = url_.replace('{communityId}', encodeURIComponent('' + communityId));
-        url_ = url_.replace(/[?&]$/, '');
-
-        let options_ = <AxiosRequestConfig>{
-            method: 'GET',
-            url: url_,
-            headers: {
-                'Accept': 'application/json',
-            },
-            cancelToken,
-            onDownloadProgress,
-        };
-
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.instance.request(transformedOptions_);
-        }).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.processGetCommunityInfo(_response);
-        });
-    }
-
-    protected processGetCommunityInfo(response: AxiosResponse): Promise<CommunityInfo> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
+  protected processGetPostById(response: AxiosResponse): Promise<Post> {
+    const status = response.status;
+    let _headers: any = {};
+    if (response.headers && typeof response.headers === 'object') {
+      for (let k in response.headers) {
+        if (response.headers.hasOwnProperty(k)) {
+          _headers[k] = response.headers[k];
         }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = resultData200;
-            return result200;
+      }
+    }
+    if (status === 200) {
+      const _responseText = response.data;
+      let result200: any = null;
+      let resultData200 = _responseText;
+      result200 = resultData200;
+      return result200;
+    } else {
+      const _responseText = response.data;
+      let resultdefault: any = null;
+      let resultDatadefault = _responseText;
+      resultdefault = resultDatadefault;
+      return throwException(
+        'Bad Request',
+        status,
+        _responseText,
+        _headers,
+        resultdefault,
+      );
+    }
+  }
+
+  /**
+   * Get community information
+   * @return OK
+   */
+  getCommunityInfo(
+    communityId: string,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<CommunityInfo> {
+    let url_ = this.baseUrl + '/community/{communityId}/information';
+    if (communityId === undefined || communityId === null)
+      throw new Error("The parameter 'communityId' must be defined.");
+    url_ = url_.replace('{communityId}', encodeURIComponent('' + communityId));
+    url_ = url_.replace(/[?&]$/, '');
+
+    let options_ = <AxiosRequestConfig>{
+      method: 'GET',
+      url: url_,
+      headers: {
+        Accept: 'application/json',
+      },
+      cancelToken,
+      onDownloadProgress,
+    };
+
+    return this.transformOptions(options_)
+      .then((transformedOptions_) => {
+        return this.instance.request(transformedOptions_);
+      })
+      .catch((_error: any) => {
+        if (isAxiosError(_error) && _error.response) {
+          return _error.response;
         } else {
-            const _responseText = response.data;
-            let resultdefault: any = null;
-            let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+          throw _error;
         }
-    }
+      })
+      .then((_response: AxiosResponse) => {
+        return this.processGetCommunityInfo(_response);
+      });
+  }
 
-    /**
-     * Get feed of a community
-     * @param feedSortedBy (optional)
-     * @return OK
-     */
-    getCommunityFeed(communityId: string, feedSortedBy?: FeedSortedBy | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Post[]> {
-        let url_ = this.baseUrl + '/community/{communityId}/feed?';
-        if (communityId === undefined || communityId === null)
-            {throw new Error("The parameter 'communityId' must be defined.");}
-        url_ = url_.replace('{communityId}', encodeURIComponent('' + communityId));
-        if (feedSortedBy === null)
-            {throw new Error("The parameter 'feedSortedBy' cannot be null.");}
-        else if (feedSortedBy !== undefined)
-            {url_ += 'feedSortedBy=' + encodeURIComponent('' + feedSortedBy) + '&';}
-        url_ = url_.replace(/[?&]$/, '');
-
-        let options_ = <AxiosRequestConfig>{
-            method: 'GET',
-            url: url_,
-            headers: {
-                'Accept': 'application/json',
-            },
-            cancelToken,
-            onDownloadProgress,
-        };
-
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.instance.request(transformedOptions_);
-        }).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.processGetCommunityFeed(_response);
-        });
-    }
-
-    protected processGetCommunityFeed(response: AxiosResponse): Promise<Post[]> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
+  protected processGetCommunityInfo(
+    response: AxiosResponse,
+  ): Promise<CommunityInfo> {
+    const status = response.status;
+    let _headers: any = {};
+    if (response.headers && typeof response.headers === 'object') {
+      for (let k in response.headers) {
+        if (response.headers.hasOwnProperty(k)) {
+          _headers[k] = response.headers[k];
         }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = resultData200;
-            return result200;
+      }
+    }
+    if (status === 200) {
+      const _responseText = response.data;
+      let result200: any = null;
+      let resultData200 = _responseText;
+      result200 = resultData200;
+      return result200;
+    } else {
+      const _responseText = response.data;
+      let resultdefault: any = null;
+      let resultDatadefault = _responseText;
+      resultdefault = resultDatadefault;
+      return throwException(
+        'Bad Request',
+        status,
+        _responseText,
+        _headers,
+        resultdefault,
+      );
+    }
+  }
+
+  /**
+   * Get feed of a community
+   * @param feedSortedBy (optional)
+   * @return OK
+   */
+  getCommunityFeed(
+    communityId: string,
+    feedSortedBy?: FeedSortedBy | undefined,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<Post[]> {
+    let url_ = this.baseUrl + '/community/{communityId}/feed?';
+    if (communityId === undefined || communityId === null)
+      throw new Error("The parameter 'communityId' must be defined.");
+    url_ = url_.replace('{communityId}', encodeURIComponent('' + communityId));
+    if (feedSortedBy === null)
+      throw new Error("The parameter 'feedSortedBy' cannot be null.");
+    else if (feedSortedBy !== undefined)
+      url_ += 'feedSortedBy=' + encodeURIComponent('' + feedSortedBy) + '&';
+    url_ = url_.replace(/[?&]$/, '');
+
+    let options_ = <AxiosRequestConfig>{
+      method: 'GET',
+      url: url_,
+      headers: {
+        Accept: 'application/json',
+      },
+      cancelToken,
+      onDownloadProgress,
+    };
+
+    return this.transformOptions(options_)
+      .then((transformedOptions_) => {
+        return this.instance.request(transformedOptions_);
+      })
+      .catch((_error: any) => {
+        if (isAxiosError(_error) && _error.response) {
+          return _error.response;
         } else {
-            const _responseText = response.data;
-            let resultdefault: any = null;
-            let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+          throw _error;
         }
-    }
+      })
+      .then((_response: AxiosResponse) => {
+        return this.processGetCommunityFeed(_response);
+      });
+  }
 
-    /**
-     * Get detailed community information
-     * @return OK
-     */
-    getCommunityAbout(communityId: string, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<CommunityAbout> {
-        let url_ = this.baseUrl + '/community/{communityId}/about';
-        if (communityId === undefined || communityId === null)
-            {throw new Error("The parameter 'communityId' must be defined.");}
-        url_ = url_.replace('{communityId}', encodeURIComponent('' + communityId));
-        url_ = url_.replace(/[?&]$/, '');
-
-        let options_ = <AxiosRequestConfig>{
-            method: 'GET',
-            url: url_,
-            headers: {
-                'Accept': 'application/json',
-            },
-            cancelToken,
-            onDownloadProgress,
-        };
-
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.instance.request(transformedOptions_);
-        }).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.processGetCommunityAbout(_response);
-        });
-    }
-
-    protected processGetCommunityAbout(response: AxiosResponse): Promise<CommunityAbout> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
+  protected processGetCommunityFeed(response: AxiosResponse): Promise<Post[]> {
+    const status = response.status;
+    let _headers: any = {};
+    if (response.headers && typeof response.headers === 'object') {
+      for (let k in response.headers) {
+        if (response.headers.hasOwnProperty(k)) {
+          _headers[k] = response.headers[k];
         }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = resultData200;
-            return result200;
+      }
+    }
+    if (status === 200) {
+      const _responseText = response.data;
+      let result200: any = null;
+      let resultData200 = _responseText;
+      result200 = resultData200;
+      return result200;
+    } else {
+      const _responseText = response.data;
+      let resultdefault: any = null;
+      let resultDatadefault = _responseText;
+      resultdefault = resultDatadefault;
+      return throwException(
+        'Bad Request',
+        status,
+        _responseText,
+        _headers,
+        resultdefault,
+      );
+    }
+  }
+
+  /**
+   * Get detailed community information
+   * @return OK
+   */
+  getCommunityAbout(
+    communityId: string,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<CommunityAbout> {
+    let url_ = this.baseUrl + '/community/{communityId}/about';
+    if (communityId === undefined || communityId === null)
+      throw new Error("The parameter 'communityId' must be defined.");
+    url_ = url_.replace('{communityId}', encodeURIComponent('' + communityId));
+    url_ = url_.replace(/[?&]$/, '');
+
+    let options_ = <AxiosRequestConfig>{
+      method: 'GET',
+      url: url_,
+      headers: {
+        Accept: 'application/json',
+      },
+      cancelToken,
+      onDownloadProgress,
+    };
+
+    return this.transformOptions(options_)
+      .then((transformedOptions_) => {
+        return this.instance.request(transformedOptions_);
+      })
+      .catch((_error: any) => {
+        if (isAxiosError(_error) && _error.response) {
+          return _error.response;
         } else {
-            const _responseText = response.data;
-            let resultdefault: any = null;
-            let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+          throw _error;
         }
-    }
+      })
+      .then((_response: AxiosResponse) => {
+        return this.processGetCommunityAbout(_response);
+      });
+  }
 
-    /**
-     * Get community posts by searching
-     * @param searchKeyword (optional)
-     * @return OK
-     */
-    searchCommunityPosts(communityId: string, searchKeyword?: string | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Post[]> {
-        let url_ = this.baseUrl + '/community/{communityId}/postSearch?';
-        if (communityId === undefined || communityId === null)
-            {throw new Error("The parameter 'communityId' must be defined.");}
-        url_ = url_.replace('{communityId}', encodeURIComponent('' + communityId));
-        if (searchKeyword === null)
-            {throw new Error("The parameter 'searchKeyword' cannot be null.");}
-        else if (searchKeyword !== undefined)
-            {url_ += 'searchKeyword=' + encodeURIComponent('' + searchKeyword) + '&';}
-        url_ = url_.replace(/[?&]$/, '');
-
-        let options_ = <AxiosRequestConfig>{
-            method: 'GET',
-            url: url_,
-            headers: {
-                'Accept': 'application/json',
-            },
-            cancelToken,
-            onDownloadProgress,
-        };
-
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.instance.request(transformedOptions_);
-        }).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.processSearchCommunityPosts(_response);
-        });
-    }
-
-    protected processSearchCommunityPosts(response: AxiosResponse): Promise<Post[]> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
+  protected processGetCommunityAbout(
+    response: AxiosResponse,
+  ): Promise<CommunityAbout> {
+    const status = response.status;
+    let _headers: any = {};
+    if (response.headers && typeof response.headers === 'object') {
+      for (let k in response.headers) {
+        if (response.headers.hasOwnProperty(k)) {
+          _headers[k] = response.headers[k];
         }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = resultData200;
-            return result200;
+      }
+    }
+    if (status === 200) {
+      const _responseText = response.data;
+      let result200: any = null;
+      let resultData200 = _responseText;
+      result200 = resultData200;
+      return result200;
+    } else {
+      const _responseText = response.data;
+      let resultdefault: any = null;
+      let resultDatadefault = _responseText;
+      resultdefault = resultDatadefault;
+      return throwException(
+        'Bad Request',
+        status,
+        _responseText,
+        _headers,
+        resultdefault,
+      );
+    }
+  }
+
+  /**
+   * Get community posts by searching
+   * @param searchKeyword (optional)
+   * @return OK
+   */
+  searchCommunityPosts(
+    communityId: string,
+    searchKeyword?: string | undefined,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<Post[]> {
+    let url_ = this.baseUrl + '/community/{communityId}/postSearch?';
+    if (communityId === undefined || communityId === null)
+      throw new Error("The parameter 'communityId' must be defined.");
+    url_ = url_.replace('{communityId}', encodeURIComponent('' + communityId));
+    if (searchKeyword === null)
+      throw new Error("The parameter 'searchKeyword' cannot be null.");
+    else if (searchKeyword !== undefined)
+      url_ += 'searchKeyword=' + encodeURIComponent('' + searchKeyword) + '&';
+    url_ = url_.replace(/[?&]$/, '');
+
+    let options_ = <AxiosRequestConfig>{
+      method: 'GET',
+      url: url_,
+      headers: {
+        Accept: 'application/json',
+      },
+      cancelToken,
+      onDownloadProgress,
+    };
+
+    return this.transformOptions(options_)
+      .then((transformedOptions_) => {
+        return this.instance.request(transformedOptions_);
+      })
+      .catch((_error: any) => {
+        if (isAxiosError(_error) && _error.response) {
+          return _error.response;
         } else {
-            const _responseText = response.data;
-            let resultdefault: any = null;
-            let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+          throw _error;
         }
-    }
+      })
+      .then((_response: AxiosResponse) => {
+        return this.processSearchCommunityPosts(_response);
+      });
+  }
 
-    /**
-     * Create a Test
-     * @param body (optional)
-     * @return OK
-     */
-    createTest(body?: any | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void, onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Test> {
-        let url_ = this.baseUrl + '/test/create';
-        url_ = url_.replace(/[?&]$/, '');
-
-        const content_ = JSON.stringify(body);
-
-        let options_ = <AxiosRequestConfig>{
-            data: content_,
-            method: 'POST',
-            url: url_,
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-            },
-            cancelToken,
-            onDownloadProgress,
-            onUploadProgress,
-        };
-
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.instance.request(transformedOptions_);
-        }).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.processCreateTest(_response);
-        });
-    }
-
-    protected processCreateTest(response: AxiosResponse): Promise<Test> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
+  protected processSearchCommunityPosts(
+    response: AxiosResponse,
+  ): Promise<Post[]> {
+    const status = response.status;
+    let _headers: any = {};
+    if (response.headers && typeof response.headers === 'object') {
+      for (let k in response.headers) {
+        if (response.headers.hasOwnProperty(k)) {
+          _headers[k] = response.headers[k];
         }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = resultData200;
-            return result200;
+      }
+    }
+    if (status === 200) {
+      const _responseText = response.data;
+      let result200: any = null;
+      let resultData200 = _responseText;
+      result200 = resultData200;
+      return result200;
+    } else {
+      const _responseText = response.data;
+      let resultdefault: any = null;
+      let resultDatadefault = _responseText;
+      resultdefault = resultDatadefault;
+      return throwException(
+        'Bad Request',
+        status,
+        _responseText,
+        _headers,
+        resultdefault,
+      );
+    }
+  }
+
+  /**
+   * Create a Test
+   * @param body (optional)
+   * @return OK
+   */
+  createTest(
+    body?: any | undefined,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+    onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<Test> {
+    let url_ = this.baseUrl + '/test/create';
+    url_ = url_.replace(/[?&]$/, '');
+
+    const content_ = JSON.stringify(body);
+
+    let options_ = <AxiosRequestConfig>{
+      data: content_,
+      method: 'POST',
+      url: url_,
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      cancelToken,
+      onDownloadProgress,
+      onUploadProgress,
+    };
+
+    return this.transformOptions(options_)
+      .then((transformedOptions_) => {
+        return this.instance.request(transformedOptions_);
+      })
+      .catch((_error: any) => {
+        if (isAxiosError(_error) && _error.response) {
+          return _error.response;
         } else {
-            const _responseText = response.data;
-            let resultdefault: any = null;
-            let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+          throw _error;
         }
-    }
+      })
+      .then((_response: AxiosResponse) => {
+        return this.processCreateTest(_response);
+      });
+  }
 
-    /**
-     * Get a Test
-     * @return OK
-     */
-    getTestById(testId: string, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Test> {
-        let url_ = this.baseUrl + '/test/{testId}';
-        if (testId === undefined || testId === null)
-            {throw new Error("The parameter 'testId' must be defined.");}
-        url_ = url_.replace('{testId}', encodeURIComponent('' + testId));
-        url_ = url_.replace(/[?&]$/, '');
-
-        let options_ = <AxiosRequestConfig>{
-            method: 'GET',
-            url: url_,
-            headers: {
-                'Accept': 'application/json',
-            },
-            cancelToken,
-            onDownloadProgress,
-        };
-
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.instance.request(transformedOptions_);
-        }).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.processGetTestById(_response);
-        });
-    }
-
-    protected processGetTestById(response: AxiosResponse): Promise<Test> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
+  protected processCreateTest(response: AxiosResponse): Promise<Test> {
+    const status = response.status;
+    let _headers: any = {};
+    if (response.headers && typeof response.headers === 'object') {
+      for (let k in response.headers) {
+        if (response.headers.hasOwnProperty(k)) {
+          _headers[k] = response.headers[k];
         }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = resultData200;
-            return result200;
+      }
+    }
+    if (status === 200) {
+      const _responseText = response.data;
+      let result200: any = null;
+      let resultData200 = _responseText;
+      result200 = resultData200;
+      return result200;
+    } else {
+      const _responseText = response.data;
+      let resultdefault: any = null;
+      let resultDatadefault = _responseText;
+      resultdefault = resultDatadefault;
+      return throwException(
+        'Bad Request',
+        status,
+        _responseText,
+        _headers,
+        resultdefault,
+      );
+    }
+  }
+
+  /**
+   * Get a Test
+   * @return OK
+   */
+  getTestById(
+    testId: string,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<Test> {
+    let url_ = this.baseUrl + '/test/{testId}';
+    if (testId === undefined || testId === null)
+      throw new Error("The parameter 'testId' must be defined.");
+    url_ = url_.replace('{testId}', encodeURIComponent('' + testId));
+    url_ = url_.replace(/[?&]$/, '');
+
+    let options_ = <AxiosRequestConfig>{
+      method: 'GET',
+      url: url_,
+      headers: {
+        Accept: 'application/json',
+      },
+      cancelToken,
+      onDownloadProgress,
+    };
+
+    return this.transformOptions(options_)
+      .then((transformedOptions_) => {
+        return this.instance.request(transformedOptions_);
+      })
+      .catch((_error: any) => {
+        if (isAxiosError(_error) && _error.response) {
+          return _error.response;
         } else {
-            const _responseText = response.data;
-            let resultdefault: any = null;
-            let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+          throw _error;
         }
-    }
+      })
+      .then((_response: AxiosResponse) => {
+        return this.processGetTestById(_response);
+      });
+  }
 
-    /**
-     * Get a random Test
-     * @return OK
-     */
-    getTestRandomly(cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Test> {
-        let url_ = this.baseUrl + '/test/random';
-        url_ = url_.replace(/[?&]$/, '');
-
-        let options_ = <AxiosRequestConfig>{
-            method: 'GET',
-            url: url_,
-            headers: {
-                'Accept': 'application/json',
-            },
-            cancelToken,
-            onDownloadProgress,
-        };
-
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.instance.request(transformedOptions_);
-        }).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.processGetTestRandomly(_response);
-        });
-    }
-
-    protected processGetTestRandomly(response: AxiosResponse): Promise<Test> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
+  protected processGetTestById(response: AxiosResponse): Promise<Test> {
+    const status = response.status;
+    let _headers: any = {};
+    if (response.headers && typeof response.headers === 'object') {
+      for (let k in response.headers) {
+        if (response.headers.hasOwnProperty(k)) {
+          _headers[k] = response.headers[k];
         }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = resultData200;
-            return result200;
+      }
+    }
+    if (status === 200) {
+      const _responseText = response.data;
+      let result200: any = null;
+      let resultData200 = _responseText;
+      result200 = resultData200;
+      return result200;
+    } else {
+      const _responseText = response.data;
+      let resultdefault: any = null;
+      let resultDatadefault = _responseText;
+      resultdefault = resultDatadefault;
+      return throwException(
+        'Bad Request',
+        status,
+        _responseText,
+        _headers,
+        resultdefault,
+      );
+    }
+  }
+
+  /**
+   * Get a random Test
+   * @return OK
+   */
+  getTestRandomly(
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<Test> {
+    let url_ = this.baseUrl + '/test/random';
+    url_ = url_.replace(/[?&]$/, '');
+
+    let options_ = <AxiosRequestConfig>{
+      method: 'GET',
+      url: url_,
+      headers: {
+        Accept: 'application/json',
+      },
+      cancelToken,
+      onDownloadProgress,
+    };
+
+    return this.transformOptions(options_)
+      .then((transformedOptions_) => {
+        return this.instance.request(transformedOptions_);
+      })
+      .catch((_error: any) => {
+        if (isAxiosError(_error) && _error.response) {
+          return _error.response;
         } else {
-            const _responseText = response.data;
-            let resultdefault: any = null;
-            let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+          throw _error;
         }
-    }
+      })
+      .then((_response: AxiosResponse) => {
+        return this.processGetTestRandomly(_response);
+      });
+  }
 
-    /**
-     * Submit a test
-     * @param body (optional)
-     * @return OK
-     */
-    submitTest(testId: string, body?: any | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void, onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<SubmitTestResponse> {
-        let url_ = this.baseUrl + '/test/{testId}/submit';
-        if (testId === undefined || testId === null)
-            {throw new Error("The parameter 'testId' must be defined.");}
-        url_ = url_.replace('{testId}', encodeURIComponent('' + testId));
-        url_ = url_.replace(/[?&]$/, '');
-
-        const content_ = JSON.stringify(body);
-
-        let options_ = <AxiosRequestConfig>{
-            data: content_,
-            method: 'POST',
-            url: url_,
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-            },
-            cancelToken,
-            onDownloadProgress,
-            onUploadProgress,
-        };
-
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.instance.request(transformedOptions_);
-        }).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.processSubmitTest(_response);
-        });
-    }
-
-    protected processSubmitTest(response: AxiosResponse): Promise<SubmitTestResponse> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
+  protected processGetTestRandomly(response: AxiosResponse): Promise<Test> {
+    const status = response.status;
+    let _headers: any = {};
+    if (response.headers && typeof response.headers === 'object') {
+      for (let k in response.headers) {
+        if (response.headers.hasOwnProperty(k)) {
+          _headers[k] = response.headers[k];
         }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = resultData200;
-            return result200;
+      }
+    }
+    if (status === 200) {
+      const _responseText = response.data;
+      let result200: any = null;
+      let resultData200 = _responseText;
+      result200 = resultData200;
+      return result200;
+    } else {
+      const _responseText = response.data;
+      let resultdefault: any = null;
+      let resultDatadefault = _responseText;
+      resultdefault = resultDatadefault;
+      return throwException(
+        'Bad Request',
+        status,
+        _responseText,
+        _headers,
+        resultdefault,
+      );
+    }
+  }
+
+  /**
+   * Submit a test
+   * @param body (optional)
+   * @return OK
+   */
+  submitTest(
+    testId: string,
+    body?: any | undefined,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+    onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<SubmitTestResponse> {
+    let url_ = this.baseUrl + '/test/{testId}/submit';
+    if (testId === undefined || testId === null)
+      throw new Error("The parameter 'testId' must be defined.");
+    url_ = url_.replace('{testId}', encodeURIComponent('' + testId));
+    url_ = url_.replace(/[?&]$/, '');
+
+    const content_ = JSON.stringify(body);
+
+    let options_ = <AxiosRequestConfig>{
+      data: content_,
+      method: 'POST',
+      url: url_,
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      cancelToken,
+      onDownloadProgress,
+      onUploadProgress,
+    };
+
+    return this.transformOptions(options_)
+      .then((transformedOptions_) => {
+        return this.instance.request(transformedOptions_);
+      })
+      .catch((_error: any) => {
+        if (isAxiosError(_error) && _error.response) {
+          return _error.response;
         } else {
-            const _responseText = response.data;
-            let resultdefault: any = null;
-            let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+          throw _error;
         }
-    }
+      })
+      .then((_response: AxiosResponse) => {
+        return this.processSubmitTest(_response);
+      });
+  }
 
-    /**
-     * Get suggested commmunities
-     * @return OK
-     */
-    getCommunitiesByScore(cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<CommunityInfo> {
-        let url_ = this.baseUrl + '/test/advice/communities/suggested';
-        url_ = url_.replace(/[?&]$/, '');
-
-        let options_ = <AxiosRequestConfig>{
-            method: 'GET',
-            url: url_,
-            headers: {
-                'Accept': 'application/json',
-            },
-            cancelToken,
-            onDownloadProgress,
-        };
-
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.instance.request(transformedOptions_);
-        }).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.processGetCommunitiesByScore(_response);
-        });
-    }
-
-    protected processGetCommunitiesByScore(response: AxiosResponse): Promise<CommunityInfo> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
+  protected processSubmitTest(
+    response: AxiosResponse,
+  ): Promise<SubmitTestResponse> {
+    const status = response.status;
+    let _headers: any = {};
+    if (response.headers && typeof response.headers === 'object') {
+      for (let k in response.headers) {
+        if (response.headers.hasOwnProperty(k)) {
+          _headers[k] = response.headers[k];
         }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = resultData200;
-            return result200;
+      }
+    }
+    if (status === 200) {
+      const _responseText = response.data;
+      let result200: any = null;
+      let resultData200 = _responseText;
+      result200 = resultData200;
+      return result200;
+    } else {
+      const _responseText = response.data;
+      let resultdefault: any = null;
+      let resultDatadefault = _responseText;
+      resultdefault = resultDatadefault;
+      return throwException(
+        'Bad Request',
+        status,
+        _responseText,
+        _headers,
+        resultdefault,
+      );
+    }
+  }
+
+  /**
+   * Get suggested commmunities
+   * @return OK
+   */
+  getCommunitiesByScore(
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<CommunityInfo> {
+    let url_ = this.baseUrl + '/test/advice/communities/suggested';
+    url_ = url_.replace(/[?&]$/, '');
+
+    let options_ = <AxiosRequestConfig>{
+      method: 'GET',
+      url: url_,
+      headers: {
+        Accept: 'application/json',
+      },
+      cancelToken,
+      onDownloadProgress,
+    };
+
+    return this.transformOptions(options_)
+      .then((transformedOptions_) => {
+        return this.instance.request(transformedOptions_);
+      })
+      .catch((_error: any) => {
+        if (isAxiosError(_error) && _error.response) {
+          return _error.response;
         } else {
-            const _responseText = response.data;
-            let resultdefault: any = null;
-            let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+          throw _error;
         }
-    }
+      })
+      .then((_response: AxiosResponse) => {
+        return this.processGetCommunitiesByScore(_response);
+      });
+  }
 
-    /**
-     * Create an advice
-     * @param body (optional)
-     * @return OK
-     */
-    createAdvice(body?: any | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void, onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Advice> {
-        let url_ = this.baseUrl + '/test/advice/create';
-        url_ = url_.replace(/[?&]$/, '');
-
-        const content_ = JSON.stringify(body);
-
-        let options_ = <AxiosRequestConfig>{
-            data: content_,
-            method: 'POST',
-            url: url_,
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-            },
-            cancelToken,
-            onDownloadProgress,
-            onUploadProgress,
-        };
-
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.instance.request(transformedOptions_);
-        }).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.processCreateAdvice(_response);
-        });
-    }
-
-    protected processCreateAdvice(response: AxiosResponse): Promise<Advice> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
+  protected processGetCommunitiesByScore(
+    response: AxiosResponse,
+  ): Promise<CommunityInfo> {
+    const status = response.status;
+    let _headers: any = {};
+    if (response.headers && typeof response.headers === 'object') {
+      for (let k in response.headers) {
+        if (response.headers.hasOwnProperty(k)) {
+          _headers[k] = response.headers[k];
         }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = resultData200;
-            return result200;
+      }
+    }
+    if (status === 200) {
+      const _responseText = response.data;
+      let result200: any = null;
+      let resultData200 = _responseText;
+      result200 = resultData200;
+      return result200;
+    } else {
+      const _responseText = response.data;
+      let resultdefault: any = null;
+      let resultDatadefault = _responseText;
+      resultdefault = resultDatadefault;
+      return throwException(
+        'Bad Request',
+        status,
+        _responseText,
+        _headers,
+        resultdefault,
+      );
+    }
+  }
+
+  /**
+   * Create an advice
+   * @param body (optional)
+   * @return OK
+   */
+  createAdvice(
+    body?: any | undefined,
+    cancelToken?: CancelToken | undefined,
+    onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+    onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void,
+  ): Promise<Advice> {
+    let url_ = this.baseUrl + '/test/advice/create';
+    url_ = url_.replace(/[?&]$/, '');
+
+    const content_ = JSON.stringify(body);
+
+    let options_ = <AxiosRequestConfig>{
+      data: content_,
+      method: 'POST',
+      url: url_,
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      cancelToken,
+      onDownloadProgress,
+      onUploadProgress,
+    };
+
+    return this.transformOptions(options_)
+      .then((transformedOptions_) => {
+        return this.instance.request(transformedOptions_);
+      })
+      .catch((_error: any) => {
+        if (isAxiosError(_error) && _error.response) {
+          return _error.response;
         } else {
-            const _responseText = response.data;
-            let resultdefault: any = null;
-            let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+          throw _error;
         }
+      })
+      .then((_response: AxiosResponse) => {
+        return this.processCreateAdvice(_response);
+      });
+  }
+
+  protected processCreateAdvice(response: AxiosResponse): Promise<Advice> {
+    const status = response.status;
+    let _headers: any = {};
+    if (response.headers && typeof response.headers === 'object') {
+      for (let k in response.headers) {
+        if (response.headers.hasOwnProperty(k)) {
+          _headers[k] = response.headers[k];
+        }
+      }
     }
+    if (status === 200) {
+      const _responseText = response.data;
+      let result200: any = null;
+      let resultData200 = _responseText;
+      result200 = resultData200;
+      return result200;
+    } else {
+      const _responseText = response.data;
+      let resultdefault: any = null;
+      let resultDatadefault = _responseText;
+      resultdefault = resultDatadefault;
+      return throwException(
+        'Bad Request',
+        status,
+        _responseText,
+        _headers,
+        resultdefault,
+      );
+    }
+  }
 }
 
 export interface PushToken {
-    pushToken?: string;
+  pushToken?: string;
 }
 
 export interface Post {
-    _id?: string;
-    title?: string;
-    content?: string;
-    asPseudo?: boolean;
-    tags?: string[];
-    voteCount?: number;
-    commentCount?: number;
-    createdAt?: Date;
-    community?: Community;
-    postedBy?: PostedBy;
-    comments?: Comment[];
-    isLikedByCurrentUser?: boolean;
-    postType?: string;
+  _id?: string;
+  title?: string;
+  content?: string;
+  asPseudo?: boolean;
+  tags?: string[];
+  voteCount?: number;
+  commentCount?: number;
+  createdAt?: Date;
+  community?: Community;
+  postedBy?: PostedBy;
+  comments?: Comment[];
+  isLikedByCurrentUser?: boolean;
+  postType?: string;
 }
 
 export interface Notification {
-    message?: string;
-    content?: string;
-    createdAt?: Date;
+  message?: string;
+  content?: string;
+  createdAt?: Date;
 }
 
 export interface Comment {
-    _id?: string;
-    content?: string;
-    asPseudo?: boolean;
-    voteCount?: string;
-    replyCount?: number;
-    createdAt?: Date;
-    postedBy?: PostedBy2;
-    parentPost?: ParentPost;
-    repliedTo?: string;
+  _id?: string;
+  content?: string;
+  asPseudo?: boolean;
+  voteCount?: string;
+  replyCount?: number;
+  createdAt?: Date;
+  postedBy?: PostedBy2;
+  parentPost?: ParentPost;
+  repliedTo?: string;
 }
 
 export interface RegularUserCredentials {
-    name?: string;
-    email?: string;
-    password?: string;
-    pseudonym?: string;
-    image?: string;
+  name?: string;
+  email?: string;
+  password?: string;
+  pseudonym?: string;
+  image?: string;
 }
 
 export interface ProfessionalUserCredentials {
-    email?: string;
-    password?: string;
-    name?: string;
-    verified?: boolean;
-    license?: string;
-    licenseIssued?: Date;
-    image?: string;
-    specializations?: string[];
+  email?: string;
+  password?: string;
+  name?: string;
+  verified?: boolean;
+  license?: string;
+  licenseIssued?: Date;
+  image?: string;
+  specializations?: string[];
 }
 
 export interface UserLoginCredentials {
-    email?: string;
-    password?: string;
+  email?: string;
+  password?: string;
 }
 
 export interface ErrorMessage {
-    message?: string;
+  message?: string;
 }
 
 export interface AuthResponse {
-    _id?: string;
-    name?: string;
-    message?: string;
-    jwt?: string;
-    role?: string;
-    image?: string;
+  _id?: string;
+  name?: string;
+  message?: string;
+  jwt?: string;
+  role?: string;
+  image?: string;
 }
 
 export interface CommunityInfo {
-    _id?: string;
-    name?: string;
-    description?: string;
-    image?: string;
-    members?: number;
-    hasJoined?: boolean;
-    tags?: string[];
+  _id?: string;
+  name?: string;
+  description?: string;
+  image?: string;
+  members?: number;
+  hasJoined?: boolean;
+  tags?: string[];
 }
 
 export interface CommunityAbout {
-    _id?: string;
-    name?: string;
-    detailedDescription?: string;
-    links?: Links[];
-    images?: string[];
-    symptoms?: string[];
-    toDo?: string[];
+  _id?: string;
+  name?: string;
+  detailedDescription?: string;
+  links?: Links[];
+  images?: string[];
+  symptoms?: string[];
+  toDo?: string[];
 }
 
 export interface Links {
-    link?: string;
-    title?: string;
+  link?: string;
+  title?: string;
 }
 
 export interface CommunityListElement {
-    _id?: string;
-    name?: string;
-    image?: string;
+  _id?: string;
+  name?: string;
+  image?: string;
 }
 
 export interface JoinCommunityMessage {
-    message?: string;
+  message?: string;
 }
 
 export interface SavePostMessage {
-    message?: string;
+  message?: string;
 }
 
 export interface LikePostMessage {
-    message?: string;
+  message?: string;
 }
 
 export interface CreateTest {
-    name?: string;
-    anxietyQuestions?: string[];
-    depressionQuestions?: string[];
-    stressQuestions?: string[];
+  name?: string;
+  anxietyQuestions?: string[];
+  depressionQuestions?: string[];
+  stressQuestions?: string[];
 }
 
 export interface CreateAdvice {
-    testId?: string;
-    disease?: CreateAdviceDisease;
-    messages?: string[];
-    advice?: string[];
-    range?: Range;
+  testId?: string;
+  disease?: CreateAdviceDisease;
+  messages?: string[];
+  advice?: string[];
+  range?: Range;
 }
 
 export interface Advice extends CreateAdvice {
-    _id: string;
+  _id: string;
 }
 
 export interface Test extends CreateTest {
-    _id: string;
+  _id: string;
 }
 
 export interface TestHistory {
-    _id?: string;
-    testname?: string;
-    status?: string;
-    scoreArray?: number[];
-    createdAt?: Date;
+  _id?: string;
+  testname?: string;
+  status?: string;
+  scoreArray?: number[];
+  createdAt?: Date;
 }
 
 export interface SubmitTestResponse {
-    _id?: string;
-    anxietyAdvice?: CreateAdvice;
-    depressionAdvice?: CreateAdvice;
-    stressAdvice?: CreateAdvice;
+  _id?: string;
+  anxietyAdvice?: CreateAdvice;
+  depressionAdvice?: CreateAdvice;
+  stressAdvice?: CreateAdvice;
 }
 
 export interface Score {
-    anxiety?: number;
-    depression?: number;
-    stress?: number;
+  anxiety?: number;
+  depression?: number;
+  stress?: number;
 }
 
 export interface ProfessionalUserInfo {
-    _id?: string;
-    name?: string;
-    rank?: number;
-    phone?: string;
-    email?: string;
-    image?: string;
-    about?: string;
-    address?: string;
-    license?: string;
-    licenseIssued?: Date;
-    specializations?: string[];
-    qualifications?: string[];
+  _id?: string;
+  name?: string;
+  rank?: number;
+  phone?: string;
+  email?: string;
+  image?: string;
+  about?: string;
+  address?: string;
+  license?: string;
+  licenseIssued?: Date;
+  specializations?: string[];
+  qualifications?: string[];
 }
 
 export type ProfessionalSortedBy = 'rank' | 'location';
@@ -2547,69 +3230,79 @@ export type FeedSortedBy = 'time' | 'votes' | 'professional' | 'commentCount';
 export type CommentsSortedBy = 'time' | 'votes' | 'professional';
 
 export interface Community {
-    _id?: string;
-    name?: string;
-    image?: string;
+  _id?: string;
+  name?: string;
+  image?: string;
 }
 
 export interface PostedBy {
-    _id?: string;
-    name?: string;
-    image?: string;
+  _id?: string;
+  name?: string;
+  image?: string;
 }
 
 export interface PostedBy2 {
-    _id?: string;
-    name?: string;
-    avatar?: string;
-    rank?: number;
+  _id?: string;
+  name?: string;
+  avatar?: string;
+  rank?: number;
 }
 
 export interface ParentPost {
-    _id?: string;
-    title?: string;
+  _id?: string;
+  title?: string;
 }
 
 export type CreateAdviceDisease = 'anxiety' | 'depression' | 'stress';
 
 export interface Range {
-    min?: number;
-    max?: number;
+  min?: number;
+  max?: number;
 }
 
 export class KAApiException extends Error {
-    message: string;
-    status: number;
-    response: string;
-    headers: { [key: string]: any; };
-    result: any;
+  message: string;
+  status: number;
+  response: string;
+  headers: { [key: string]: any };
+  result: any;
 
-    constructor(message: string, status: number, response: string, headers: { [key: string]: any; }, result: any) {
-        super();
+  constructor(
+    message: string,
+    status: number,
+    response: string,
+    headers: { [key: string]: any },
+    result: any,
+  ) {
+    super();
 
-        this.message = message;
-        this.status = status;
-        this.response = response;
-        this.headers = headers;
-        this.result = result;
-    }
+    this.message = message;
+    this.status = status;
+    this.response = response;
+    this.headers = headers;
+    this.result = result;
+  }
 
-    protected isKAApiException = true;
+  protected isKAApiException = true;
 
-    static isKAApiException(obj: any): obj is KAApiException {
-        return obj.isKAApiException === true;
-    }
+  static isKAApiException(obj: any): obj is KAApiException {
+    return obj.isKAApiException === true;
+  }
 }
 
-function throwException(message: string, status: number, response: string, headers: { [key: string]: any; }, result?: any): any {
-    if (result !== null && result !== undefined)
-        {throw result;}
-    else
-        {throw new KAApiException(message, status, response, headers, null);}
+function throwException(
+  message: string,
+  status: number,
+  response: string,
+  headers: { [key: string]: any },
+  result?: any,
+): any {
+  if (result !== null && result !== undefined) throw result;
+  else throw new KAApiException(message, status, response, headers, null);
 }
 
 function isAxiosError(obj: any | undefined): obj is AxiosError {
-    return obj && obj.isAxiosError === true;
+  return obj && obj.isAxiosError === true;
 }
 
 /**

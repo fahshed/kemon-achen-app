@@ -6,6 +6,7 @@ import CommunityPostsScreen from '../../screens/CommunityDetailsSubScreens/Commu
 import CommunityDescription from '../../components/CommunityDescription';
 import CommunityDetailsTabNavigator from '../../navigation/CommunityDetailsTabNavigator';
 import Api from '../../api';
+import { TopSearchBar2 } from '../../components';
 
 export default function CommunityScreen({ route }) {
   const communityId = route.params;
@@ -20,15 +21,9 @@ export default function CommunityScreen({ route }) {
     getCommunityInfo();
   }, []);
 
-  //console.log(commDesc.tags);
-
-  // const badges = [
-  //   { name: 'PTSD', id: '1' },
-  //   { name: 'Anxiety', id: '2' },
-  //   { name: 'Stress', id: '3' },
-  // ];
   return (
     <>
+      <TopSearchBar2 communityId={communityId} />
       <ImageHeader />
       {commDesc && (
         <CommunityDescription

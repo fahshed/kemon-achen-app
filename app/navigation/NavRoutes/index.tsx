@@ -18,5 +18,6 @@ export default Object.freeze({
   SAVED_POSTS: 'Saved Posts',
   REGULAR_SIGNUP: 'RegularSignup',
   PROFESSIONAL_SIGNUP: 'ProfessionalSignup',
+  COMMUNITY_SEARCH_DETAILS: 'CommunitySearchResult',
   LATEST_ADVICE: 'Latest Advice',
 });

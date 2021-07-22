@@ -31,7 +31,7 @@ export default function ProfessionalFeedbackScreen({ userId }) {
       postTitle={item.parentPost.title}
       commentBody={item.content}
       time={item.createdAt}
-      handleNaviagtion={() => console.log('this is just a placeholder!')}
+      handleNaviagtion={() => {}}
     />
   );
 

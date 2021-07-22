@@ -11,7 +11,7 @@ import {
   FormSwitch,
   SubmitButton,
 } from '../../components/FormComponents';
-import { Body1, H6Bold } from '../../styles';
+import { Body1, Container, H6Bold } from '../../styles';
 import { theme } from '../../config';
 import { ItemSeparator } from '../../components';
 import { useAppDispatch, useAppSelector } from '../../store';
@@ -79,14 +79,9 @@ function CreatePostScreen({ navigation }) {
             />
           </TouchableOpacity>
           <H6Bold style={{ padding: 8, textAlign: 'center' }}>Your Post</H6Bold>
-          <SubmitButton
-            title="Post"
-            style={{
-              height: 24,
-              width: 48,
-              marginTop: 0,
-            }}
-          />
+          <Container width="auto">
+            <SubmitButton title="Post" small={true} />
+          </Container>
         </View>
 
         <FormPicker
@@ -100,7 +95,6 @@ function CreatePostScreen({ navigation }) {
           <FormSwitch name="anonymous" />
           <Body1>Post as anonymous</Body1>
         </View>
-
         <ItemSeparator />
 
         <FormField

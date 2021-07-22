@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 
 //import { theme } from '../../config';
-import BottomBar2 from '../../components/BottomBar2';
+// import BottomBar2 from '../../components/BottomBar2';
 import UserInfoBar3 from '../../components/UserInfoBar3';
 import { Body2 } from '../../styles';
 
@@ -10,7 +10,7 @@ function Comment({
   commenterName,
   commentBody,
   commentedAgo,
-  commentLikeCount,
+  // commentLikeCount,
   RankBadgeComponent = null,
 }) {
   return (
@@ -23,7 +23,7 @@ function Comment({
       <Body2 pl="8px" pr="8px" pt="8px" pb="8px">
         {commentBody}
       </Body2>
-      <BottomBar2 commentLikeCount={commentLikeCount} />
+      {/* <BottomBar2 commentLikeCount={commentLikeCount} /> */}
     </View>
   );
 }

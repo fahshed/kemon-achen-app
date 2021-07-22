@@ -7,7 +7,7 @@ function AppButton({
   color = 'primary',
   title,
   onPress = null,
-  style = null,
+  small = false,
   mb = 0,
 }) {
   return (
@@ -19,13 +19,15 @@ function AppButton({
         justify="center"
         bg={color}
         corner="8px"
-        p="10px"
-        style={style}
+        pt="6px"
+        pb="6px"
+        pl="16px"
+        pr="16px"
       >
-        {!style ? (
-          <H6Bold color="white">{title}</H6Bold>
-        ) : (
+        {small ? (
           <Body1 color="white">{title}</Body1>
+        ) : (
+          <H6Bold color="white">{title}</H6Bold>
         )}
       </Container>
     </TouchableOpacity>

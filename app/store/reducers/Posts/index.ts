@@ -12,9 +12,9 @@ const postEntity = new schema.Entity('posts', {}, { idAttribute: '_id' });
 
 export const fetchPosts = createAsyncThunk(
   'post/fetchPosts',
-  async (_, thunkApi) => {
+  async ({ page, limit }: { page: number; limit: number }, thunkApi) => {
     try {
-      const response = await Api.getFeed();
+      const response = await Api.getFeed(page, limit);
       const normalized = normalize(response, [postEntity]);
       return normalized;
     } catch (e) {
@@ -109,7 +109,9 @@ const postAdapter = createEntityAdapter({
   selectId: (post: Post) => post._id,
 });
 
-const initialState = postAdapter.getInitialState();
+const initialState = postAdapter.getInitialState({
+  page: -1,
+});
 
 const PostSlice = createSlice({
   name: 'post',
@@ -121,6 +123,7 @@ const PostSlice = createSlice({
     builder.addCase(fetchPosts.fulfilled, (state, { payload }) => {
       state.entities = { ...state.entities, ...payload.entities.posts };
       state.ids = payload.result;
+      state.page++;
     });
     builder.addCase(likePost.fulfilled, (state, { payload }) => {
       if (payload.likeOption === 'like') {

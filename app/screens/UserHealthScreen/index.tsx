@@ -25,7 +25,7 @@ export default function UserHealthScreen() {
         <Body1Bold ml="16px" mt="16px" mb="16px">
           Overall Metric
         </Body1Bold>
-        {testHistory && (
+        {testHistory && testHistory.length !== 0 && (
           <>
             <MetricComponent
               name="Anxiety"

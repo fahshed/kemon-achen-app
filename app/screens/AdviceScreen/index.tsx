@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ScrollView } from 'react-native';
 
-import { useNavigation } from '@react-navigation/native';
+import { CommonActions, useNavigation } from '@react-navigation/native';
 import * as Animatable from 'react-native-animatable';
 
 import { AppButton, AdviceCard } from '../../components';
@@ -91,7 +91,7 @@ export default function AdviceScreen({ route }) {
           >
             <AppButton
               title="Go to Home"
-              onPress={() => navigation.navigate('Root')}
+              onPress={() => navigation.dispatch(resetAction)}
             />
           </Animatable.View>
         </Container>
@@ -99,3 +99,8 @@ export default function AdviceScreen({ route }) {
     </ScrollView>
   );
 }
+
+const resetAction = CommonActions.reset({
+  index: 1,
+  routes: [{ name: 'App' }],
+});

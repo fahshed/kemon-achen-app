@@ -23,7 +23,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: theme.white,
   },
   searchIcon: {
     padding: 10,
@@ -39,4 +38,5 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
 });
+
 export default CustomTextInput;

@@ -16,6 +16,8 @@ export default Object.freeze({
   ADVICE: 'Advice',
   QOUTE: 'Qoute',
   SAVED_POSTS: 'Saved Posts',
+  REGULAR_SIGNUP: 'RegularSignup',
+  PROFESSIONAL_SIGNUP: 'ProfessionalSignup',
   COMMUNITY_SEARCH_DETAILS: 'CommunitySearchResult',
   LATEST_ADVICE: 'Latest Advice',
 });

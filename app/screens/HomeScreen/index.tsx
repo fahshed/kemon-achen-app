@@ -10,10 +10,10 @@ import { useAppDispatch, useAppSelector } from '../../store';
 import { H5Bold } from '../../styles';
 
 export default function HomeScreen({ navigation }) {
-  const [isRefreshing, setIsRefreshing] = useState(false);
+  const [isRefreshing, setIsRefreshing] = useState(true);
   const dispatch = useAppDispatch();
 
-  const { entities } = useAppSelector((state) => state.Post);
+  const { entities, page } = useAppSelector((state) => state.Post);
 
   const posts = Object.values(entities);
 
@@ -47,7 +47,9 @@ export default function HomeScreen({ navigation }) {
   );
 
   const getHomeFeed = async () => {
-    const response = await dispatch(fetchPosts());
+    setIsRefreshing(true);
+
+    const response = await dispatch(fetchPosts({ page: page + 1, limit: 5 }));
     if ('error' in response) {
       console.log('Feed fetch error', response.error);
     }
@@ -61,7 +63,6 @@ export default function HomeScreen({ navigation }) {
 
   return (
     <>
-      {/* <TopSearchBar2 /> */}
       {isRefreshing && (
         <H5Bold align="center" color="grey5" mt="8px" mb="8px">
           Feed Loading........
@@ -75,11 +76,10 @@ export default function HomeScreen({ navigation }) {
         )}
         keyExtractor={(post) => post._id}
         refreshing={isRefreshing}
-        onRefresh={() => {
-          setIsRefreshing(true);
-          getHomeFeed();
-        }}
+        onRefresh={getHomeFeed}
         renderItem={renderItem}
+        onEndReachedThreshold={0.5}
+        onEndReached={getHomeFeed}
       />
     </>
   );

@@ -15,66 +15,93 @@ import {
   CommunitySearchResultScreen,
   LatestAdviceScreen,
 } from '../../screens';
+import { useAppSelector } from '../../store';
 
 const Stack = createStackNavigator();
 
-const AppNavigator = () => (
-  <Stack.Navigator mode="card">
-    <Stack.Screen
-      name="Qoute"
-      component={QouteScreen}
-      options={{ headerTitle: 'Qoute', headerShown: false }}
-    />
-    <Stack.Screen
-      name="Root"
-      component={BottomTabNavigator}
-      options={{ headerShown: false }}
-    />
-    <Stack.Screen
-      name="PostDetails"
-      component={PostDetailsScreen}
-      options={{ headerTitle: 'Post' }}
-    />
-    <Stack.Screen name="UserProfile" component={UserProfileScreen} />
-    <Stack.Screen
-      name="Test"
-      component={TestScreen}
-      options={{ headerTitle: 'Test', headerShown: false }}
-    />
-    <Stack.Screen
-      name="Score"
-      component={ScoreScreen}
-      options={{ headerTitle: 'Score', headerShown: false }}
-    />
-    <Stack.Screen
-      name="Advice"
-      component={AdviceScreen}
-      options={{ headerTitle: 'Advice', headerShown: false }}
-    />
+export default function AppNavigator() {
+  const { role } = useAppSelector((state) => state.User.user);
 
-    <Stack.Screen
-      name="CommunityDetails"
-      component={CommunityScreen}
-      options={{ headerTitle: '' }}
-    />
+  return (
+    <Stack.Navigator mode="card">
+      {role === 'regular' && (
+        <Stack.Screen
+          name="TestFlow"
+          component={TestFlow}
+          options={{ headerShown: false }}
+        />
+      )}
 
-    <Stack.Screen
-      name="ProfessionalProfile"
-      component={ProfessionalProfileScreen}
-      options={{ headerTitle: '' }}
-    />
+      <Stack.Screen
+        name="App"
+        component={App}
+        options={{ headerShown: false }}
+      />
+    </Stack.Navigator>
+  );
+}
 
-    <Stack.Screen
-      name="CommunitySearchResult"
-      component={CommunitySearchResultScreen}
-      options={{ headerTitle: 'Search Result' }}
-    />
-    <Stack.Screen
-      name="Latest Advice"
-      component={LatestAdviceScreen}
-      options={{ headerTitle: '' }}
-    />
-  </Stack.Navigator>
-);
+function TestFlow() {
+  return (
+    <Stack.Navigator mode="card">
+      <Stack.Screen
+        name="Qoute"
+        component={QouteScreen}
+        options={{ headerTitle: 'Qoute', headerShown: false }}
+      />
+      <Stack.Screen
+        name="Test"
+        component={TestScreen}
+        options={{ headerTitle: 'Test', headerShown: false }}
+      />
+      <Stack.Screen
+        name="Score"
+        component={ScoreScreen}
+        options={{ headerTitle: 'Score', headerShown: false }}
+      />
+      <Stack.Screen
+        name="Advice"
+        component={AdviceScreen}
+        options={{ headerTitle: 'Advice', headerShown: false }}
+      />
+    </Stack.Navigator>
+  );
+}
 
-export default AppNavigator;
+function App() {
+  return (
+    <Stack.Navigator mode="card">
+      <Stack.Screen
+        name="Root"
+        component={BottomTabNavigator}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="PostDetails"
+        component={PostDetailsScreen}
+        options={{ headerTitle: 'Post' }}
+      />
+      <Stack.Screen name="UserProfile" component={UserProfileScreen} />
+      <Stack.Screen
+        name="CommunityDetails"
+        component={CommunityScreen}
+        options={{ headerTitle: '' }}
+      />
+      <Stack.Screen
+        name="ProfessionalProfile"
+        component={ProfessionalProfileScreen}
+        options={{ headerTitle: '' }}
+      />
+      <Stack.Screen
+        name="Latest Advice"
+        component={LatestAdviceScreen}
+        options={{ headerTitle: '' }}
+      />
+      <Stack.Screen
+        name="CommunitySearchResult"
+        component={CommunitySearchResultScreen}
+        options={{ headerTitle: '' }}
+      />
+    </Stack.Navigator>
+  );
+}

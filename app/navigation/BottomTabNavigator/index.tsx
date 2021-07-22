@@ -198,7 +198,7 @@ function TabThreeNavigator() {
         name="CreatePost"
         component={CreatePostScreen}
         options={{
-          headerTitle: 'Create Post',
+          headerShown: false,
         }}
       />
     </TabThreeStack.Navigator>
@@ -229,9 +229,6 @@ function TabFiveNavigator() {
         component={NotificationScreen}
         options={{
           headerTitle: 'Notifications',
-          headerStyle: {
-            backgroundColor: 'pink',
-          },
         }}
       />
     </TabFiveStack.Navigator>

@@ -4,7 +4,8 @@ import { TouchableHighlight } from 'react-native-gesture-handler';
 
 import { theme } from '../../config';
 import { Caption, Body2Bold } from '../../styles';
-import { RankBadgeComponent, TagComponent } from '../../components';
+import RankBadgeComponent from '../RankBadgeComponent';
+import TagComponent from '../Tag';
 
 function ProfessionalCard({
   userName,

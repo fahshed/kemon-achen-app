@@ -13,7 +13,7 @@ export default function HomeScreen({ navigation }) {
   const [isRefreshing, setIsRefreshing] = useState(false);
   const dispatch = useAppDispatch();
 
-  const { entities } = useAppSelector((state) => state.Post);
+  const { entities, page } = useAppSelector((state) => state.Post);
 
   const posts = Object.values(entities);
 
@@ -47,12 +47,11 @@ export default function HomeScreen({ navigation }) {
   );
 
   const getHomeFeed = async () => {
-    const response = await dispatch(fetchPosts());
+    const response = await dispatch(fetchPosts({ page: page + 1, limit: 5 }));
     if ('error' in response) {
       console.log('Feed fetch error', response.error);
     }
-
-    setIsRefreshing(false);
+    console.log('hello');
   };
 
   useEffect(() => {
@@ -78,8 +77,11 @@ export default function HomeScreen({ navigation }) {
         onRefresh={() => {
           setIsRefreshing(true);
           getHomeFeed();
+          setIsRefreshing(false);
         }}
         renderItem={renderItem}
+        onEndReachedThreshold={0.01}
+        onEndReached={getHomeFeed}
       />
     </>
   );

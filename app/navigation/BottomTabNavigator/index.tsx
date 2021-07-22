@@ -24,8 +24,6 @@ import * as Notifications from 'expo-notifications';
 import Api from '../../api';
 import { Platform } from 'react-native';
 
-// import { useNotifications } from '../../hooks';
-
 const Tab = createBottomTabNavigator();
 
 Notifications.setNotificationHandler({
@@ -52,7 +50,6 @@ export default function BottomTabNavigator() {
     responseListener.current = Notifications.addNotificationResponseReceivedListener(
       (response) => {
         const data = response.notification.request.content.data.adviceIds;
-
         navigation.navigate(NavRoutes.LATEST_ADVICE, { data });
       },
     );
@@ -85,7 +82,7 @@ export default function BottomTabNavigator() {
       //setExpoPushToken(token);
       Api.registerPushNotificationToken({ pushToken: token });
 
-      console.log(token);
+      //console.log(token);
     } else {
       // eslint-disable-next-line no-alert
       alert('Must use physical device for Push Notifications');

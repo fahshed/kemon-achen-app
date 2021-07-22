@@ -29,7 +29,6 @@ export default function DrawerNavigator() {
     >
       <Drawer.Screen name="Feed" component={AppNavigator} />
       <Drawer.Screen name="Profile" component={UserProfileScreen} />
-      {/* <Drawer.Screen name="Saved Posts" component={SavedPosts} /> */}
     </Drawer.Navigator>
   );
 }

@@ -7,7 +7,7 @@ import { theme } from '../../../config';
 
 function CreatePostButton({ onPress }) {
   return (
-    <TouchableOpacity onPress={onPress}>
+    <TouchableOpacity onPress={onPress} style={{ marginHorizontal: 16 }}>
       <View style={styles.container}>
         <MaterialCommunityIcons
           name="plus-circle"

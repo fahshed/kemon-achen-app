@@ -16,8 +16,6 @@ export default function CommunityAboutScreen({ communityId }) {
     getCommunityAbout();
   }, []);
 
-  //console.log(communityAbout);
-
   return (
     <ScrollView>
       {communityAbout && (

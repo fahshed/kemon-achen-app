@@ -860,7 +860,7 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
   ): Promise<Post[]> {
     let url_ = this.baseUrl + '/user/{userId}/posts';
     if (userId === undefined || userId === null)
-      throw new Error("The parameter 'userId' must be defined.");
+      {throw new Error("The parameter 'userId' must be defined.");}
     url_ = url_.replace('{userId}', encodeURIComponent('' + userId));
     url_ = url_.replace(/[?&]$/, '');
 
@@ -932,7 +932,7 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
   ): Promise<Comment[]> {
     let url_ = this.baseUrl + '/user/{userId}/comments';
     if (userId === undefined || userId === null)
-      throw new Error("The parameter 'userId' must be defined.");
+      {throw new Error("The parameter 'userId' must be defined.");}
     url_ = url_.replace('{userId}', encodeURIComponent('' + userId));
     url_ = url_.replace(/[?&]$/, '');
 
@@ -1076,7 +1076,7 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
   ): Promise<JoinCommunityMessage> {
     let url_ = this.baseUrl + '/user/community/{communityId}/join';
     if (communityId === undefined || communityId === null)
-      throw new Error("The parameter 'communityId' must be defined.");
+      {throw new Error("The parameter 'communityId' must be defined.");}
     url_ = url_.replace('{communityId}', encodeURIComponent('' + communityId));
     url_ = url_.replace(/[?&]$/, '');
 
@@ -1218,7 +1218,7 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
   ): Promise<ProfessionalUserInfo> {
     let url_ = this.baseUrl + '/user/professional/{userId}/info';
     if (userId === undefined || userId === null)
-      throw new Error("The parameter 'userId' must be defined.");
+      {throw new Error("The parameter 'userId' must be defined.");}
     url_ = url_.replace('{userId}', encodeURIComponent('' + userId));
     url_ = url_.replace(/[?&]$/, '');
 
@@ -1292,7 +1292,7 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
   ): Promise<ProfessionalUserInfo> {
     let url_ = this.baseUrl + '/user/professional/{userId}/chamber';
     if (userId === undefined || userId === null)
-      throw new Error("The parameter 'userId' must be defined.");
+      {throw new Error("The parameter 'userId' must be defined.");}
     url_ = url_.replace('{userId}', encodeURIComponent('' + userId));
     url_ = url_.replace(/[?&]$/, '');
 
@@ -1585,12 +1585,12 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
   ): Promise<ProfessionalUserInfo[]> {
     let url_ = this.baseUrl + '/user/suggesetedProfessionals?';
     if (professionalSortedBy === null)
-      throw new Error("The parameter 'professionalSortedBy' cannot be null.");
+      {throw new Error("The parameter 'professionalSortedBy' cannot be null.");}
     else if (professionalSortedBy !== undefined)
-      url_ +=
+      {url_ +=
         'professionalSortedBy=' +
         encodeURIComponent('' + professionalSortedBy) +
-        '&';
+        '&';}
     url_ = url_.replace(/[?&]$/, '');
 
     let options_ = <AxiosRequestConfig>{
@@ -1665,12 +1665,12 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
   ): Promise<SavePostMessage> {
     let url_ = this.baseUrl + '/post/{postId}/save?';
     if (postId === undefined || postId === null)
-      throw new Error("The parameter 'postId' must be defined.");
+      {throw new Error("The parameter 'postId' must be defined.");}
     url_ = url_.replace('{postId}', encodeURIComponent('' + postId));
     if (saveOptions === null)
-      throw new Error("The parameter 'saveOptions' cannot be null.");
+      {throw new Error("The parameter 'saveOptions' cannot be null.");}
     else if (saveOptions !== undefined)
-      url_ += 'saveOptions=' + encodeURIComponent('' + saveOptions) + '&';
+      {url_ += 'saveOptions=' + encodeURIComponent('' + saveOptions) + '&';}
     url_ = url_.replace(/[?&]$/, '');
 
     let options_ = <AxiosRequestConfig>{
@@ -1742,13 +1742,13 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
   ): Promise<LikePostMessage> {
     let url_ = this.baseUrl + '/post/{postId}/like?';
     if (postId === undefined || postId === null)
-      throw new Error("The parameter 'postId' must be defined.");
+      {throw new Error("The parameter 'postId' must be defined.");}
     url_ = url_.replace('{postId}', encodeURIComponent('' + postId));
     if (likeOptions === undefined || likeOptions === null)
-      throw new Error(
+      {throw new Error(
         "The parameter 'likeOptions' must be defined and cannot be null.",
-      );
-    else url_ += 'likeOptions=' + encodeURIComponent('' + likeOptions) + '&';
+      );}
+    else {url_ += 'likeOptions=' + encodeURIComponent('' + likeOptions) + '&';}
     url_ = url_.replace(/[?&]$/, '');
 
     let options_ = <AxiosRequestConfig>{
@@ -1898,7 +1898,7 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
   ): Promise<Comment> {
     let url_ = this.baseUrl + '/post/{postId}/comment/create';
     if (postId === undefined || postId === null)
-      throw new Error("The parameter 'postId' must be defined.");
+      {throw new Error("The parameter 'postId' must be defined.");}
     url_ = url_.replace('{postId}', encodeURIComponent('' + postId));
     url_ = url_.replace(/[?&]$/, '');
 
@@ -1979,10 +1979,10 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
   ): Promise<Comment> {
     let url_ = this.baseUrl + '/post/{postId}/comment/{commentId}/reply/create';
     if (postId === undefined || postId === null)
-      throw new Error("The parameter 'postId' must be defined.");
+      {throw new Error("The parameter 'postId' must be defined.");}
     url_ = url_.replace('{postId}', encodeURIComponent('' + postId));
     if (commentId === undefined || commentId === null)
-      throw new Error("The parameter 'commentId' must be defined.");
+      {throw new Error("The parameter 'commentId' must be defined.");}
     url_ = url_.replace('{commentId}', encodeURIComponent('' + commentId));
     url_ = url_.replace(/[?&]$/, '');
 
@@ -2060,10 +2060,10 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
   ): Promise<Comment[]> {
     let url_ = this.baseUrl + '/post/{postId}/comment/{commentId}/replies';
     if (postId === undefined || postId === null)
-      throw new Error("The parameter 'postId' must be defined.");
+      {throw new Error("The parameter 'postId' must be defined.");}
     url_ = url_.replace('{postId}', encodeURIComponent('' + postId));
     if (commentId === undefined || commentId === null)
-      throw new Error("The parameter 'commentId' must be defined.");
+      {throw new Error("The parameter 'commentId' must be defined.");}
     url_ = url_.replace('{commentId}', encodeURIComponent('' + commentId));
     url_ = url_.replace(/[?&]$/, '');
 
@@ -2140,19 +2140,19 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
   ): Promise<Post[]> {
     let url_ = this.baseUrl + '/post/feed?';
     if (page === undefined || page === null)
-      throw new Error(
+      {throw new Error(
         "The parameter 'page' must be defined and cannot be null.",
-      );
-    else url_ += 'page=' + encodeURIComponent('' + page) + '&';
+      );}
+    else {url_ += 'page=' + encodeURIComponent('' + page) + '&';}
     if (limit === undefined || limit === null)
-      throw new Error(
+      {throw new Error(
         "The parameter 'limit' must be defined and cannot be null.",
-      );
-    else url_ += 'limit=' + encodeURIComponent('' + limit) + '&';
+      );}
+    else {url_ += 'limit=' + encodeURIComponent('' + limit) + '&';}
     if (feedSortedBy === null)
-      throw new Error("The parameter 'feedSortedBy' cannot be null.");
+      {throw new Error("The parameter 'feedSortedBy' cannot be null.");}
     else if (feedSortedBy !== undefined)
-      url_ += 'feedSortedBy=' + encodeURIComponent('' + feedSortedBy) + '&';
+      {url_ += 'feedSortedBy=' + encodeURIComponent('' + feedSortedBy) + '&';}
     url_ = url_.replace(/[?&]$/, '');
 
     let options_ = <AxiosRequestConfig>{
@@ -2225,13 +2225,13 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
   ): Promise<Post> {
     let url_ = this.baseUrl + '/post/{postId}?';
     if (postId === undefined || postId === null)
-      throw new Error("The parameter 'postId' must be defined.");
+      {throw new Error("The parameter 'postId' must be defined.");}
     url_ = url_.replace('{postId}', encodeURIComponent('' + postId));
     if (commentsSortedBy === null)
-      throw new Error("The parameter 'commentsSortedBy' cannot be null.");
+      {throw new Error("The parameter 'commentsSortedBy' cannot be null.");}
     else if (commentsSortedBy !== undefined)
-      url_ +=
-        'commentsSortedBy=' + encodeURIComponent('' + commentsSortedBy) + '&';
+      {url_ +=
+        'commentsSortedBy=' + encodeURIComponent('' + commentsSortedBy) + '&';}
     url_ = url_.replace(/[?&]$/, '');
 
     let options_ = <AxiosRequestConfig>{
@@ -2302,7 +2302,7 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
   ): Promise<CommunityInfo> {
     let url_ = this.baseUrl + '/community/{communityId}/information';
     if (communityId === undefined || communityId === null)
-      throw new Error("The parameter 'communityId' must be defined.");
+      {throw new Error("The parameter 'communityId' must be defined.");}
     url_ = url_.replace('{communityId}', encodeURIComponent('' + communityId));
     url_ = url_.replace(/[?&]$/, '');
 
@@ -2378,12 +2378,12 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
   ): Promise<Post[]> {
     let url_ = this.baseUrl + '/community/{communityId}/feed?';
     if (communityId === undefined || communityId === null)
-      throw new Error("The parameter 'communityId' must be defined.");
+      {throw new Error("The parameter 'communityId' must be defined.");}
     url_ = url_.replace('{communityId}', encodeURIComponent('' + communityId));
     if (feedSortedBy === null)
-      throw new Error("The parameter 'feedSortedBy' cannot be null.");
+      {throw new Error("The parameter 'feedSortedBy' cannot be null.");}
     else if (feedSortedBy !== undefined)
-      url_ += 'feedSortedBy=' + encodeURIComponent('' + feedSortedBy) + '&';
+      {url_ += 'feedSortedBy=' + encodeURIComponent('' + feedSortedBy) + '&';}
     url_ = url_.replace(/[?&]$/, '');
 
     let options_ = <AxiosRequestConfig>{
@@ -2454,7 +2454,7 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
   ): Promise<CommunityAbout> {
     let url_ = this.baseUrl + '/community/{communityId}/about';
     if (communityId === undefined || communityId === null)
-      throw new Error("The parameter 'communityId' must be defined.");
+      {throw new Error("The parameter 'communityId' must be defined.");}
     url_ = url_.replace('{communityId}', encodeURIComponent('' + communityId));
     url_ = url_.replace(/[?&]$/, '');
 
@@ -2530,12 +2530,12 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
   ): Promise<Post[]> {
     let url_ = this.baseUrl + '/community/{communityId}/postSearch?';
     if (communityId === undefined || communityId === null)
-      throw new Error("The parameter 'communityId' must be defined.");
+      {throw new Error("The parameter 'communityId' must be defined.");}
     url_ = url_.replace('{communityId}', encodeURIComponent('' + communityId));
     if (searchKeyword === null)
-      throw new Error("The parameter 'searchKeyword' cannot be null.");
+      {throw new Error("The parameter 'searchKeyword' cannot be null.");}
     else if (searchKeyword !== undefined)
-      url_ += 'searchKeyword=' + encodeURIComponent('' + searchKeyword) + '&';
+      {url_ += 'searchKeyword=' + encodeURIComponent('' + searchKeyword) + '&';}
     url_ = url_.replace(/[?&]$/, '');
 
     let options_ = <AxiosRequestConfig>{
@@ -2684,7 +2684,7 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
   ): Promise<Test> {
     let url_ = this.baseUrl + '/test/{testId}';
     if (testId === undefined || testId === null)
-      throw new Error("The parameter 'testId' must be defined.");
+      {throw new Error("The parameter 'testId' must be defined.");}
     url_ = url_.replace('{testId}', encodeURIComponent('' + testId));
     url_ = url_.replace(/[?&]$/, '');
 
@@ -2827,7 +2827,7 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
   ): Promise<SubmitTestResponse> {
     let url_ = this.baseUrl + '/test/{testId}/submit';
     if (testId === undefined || testId === null)
-      throw new Error("The parameter 'testId' must be defined.");
+      {throw new Error("The parameter 'testId' must be defined.");}
     url_ = url_.replace('{testId}', encodeURIComponent('' + testId));
     url_ = url_.replace(/[?&]$/, '');
 
@@ -3297,8 +3297,8 @@ function throwException(
   headers: { [key: string]: any },
   result?: any,
 ): any {
-  if (result !== null && result !== undefined) throw result;
-  else throw new KAApiException(message, status, response, headers, null);
+  if (result !== null && result !== undefined) {throw result;}
+  else {throw new KAApiException(message, status, response, headers, null);}
 }
 
 function isAxiosError(obj: any | undefined): obj is AxiosError {

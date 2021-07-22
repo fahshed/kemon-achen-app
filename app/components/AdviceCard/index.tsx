@@ -20,10 +20,10 @@ export default function AdviceCard({ title, score = null, message, advices }) {
       style={[Shadow.shadow, { backgroundColor: background[title] }]}
     >
       <Container bg="transparent">
-        {score?.(
+        {score && (
           <H6 mb="6px">
             {title} Level: {score}%
-          </H6>,
+          </H6>
         )}
       </Container>
       <H6Bold mb="6px">{message}</H6Bold>

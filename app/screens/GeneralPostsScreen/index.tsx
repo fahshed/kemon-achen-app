@@ -63,7 +63,7 @@ export default function GeneralPostsScreen({
       <FlatList
         data={posts}
         ItemSeparatorComponent={() => (
-          <ItemSeparator height={8} color={theme.grey1} />
+          <ItemSeparator height={8} color={theme.grey3} />
         )}
         keyExtractor={(post) => post._id}
         refreshing={isRefreshing}

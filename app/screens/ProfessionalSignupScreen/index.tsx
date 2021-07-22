@@ -49,15 +49,7 @@ function ProfessionalSignupScreen() {
           </H5Bold>
 
           <Container width="auto">
-            <SubmitButton
-              title="Signup"
-              color="secondary"
-              style={{
-                height: 32,
-                width: 80,
-                marginTop: 0,
-              }}
-            />
+            <SubmitButton title="Signup" color="secondary" small={true} />
           </Container>
         </Container>
 

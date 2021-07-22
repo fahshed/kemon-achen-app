@@ -50,7 +50,7 @@ function PostDetailsScreen({ route }) {
       commenterName={item.postedBy.name}
       commentBody={item.content}
       commentedAgo={item.createdAt}
-      commentLikeCount={item.voteCount}
+      // commentLikeCount={item.voteCount}
       RankBadgeComponent={
         item.postedBy.rank && <RankBadgeComponent rank={item.postedBy.rank} />
       }
@@ -79,6 +79,7 @@ function PostDetailsScreen({ route }) {
       />
 
       <ItemSeparator height={8} color={theme.grey3} />
+
       <FlatList
         data={post.comments}
         ItemSeparatorComponent={() => (

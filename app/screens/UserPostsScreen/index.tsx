@@ -1,10 +1,5 @@
 import React from 'react';
 
-//import { ItemSeparator } from '../../components';
-//import UserProfileCommentCard from '../../components/UserProfileCommentCard';
-
-//import { theme } from '../../config';
-
 import GeneralPostsScreen from '../../screens/GeneralPostsScreen';
 import { useAppSelector } from '../../store';
 

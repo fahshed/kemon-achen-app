@@ -40,14 +40,7 @@ function RegularSignupScreen() {
           </H5Bold>
 
           <Container width="auto">
-            <SubmitButton
-              title="Signup"
-              style={{
-                height: 32,
-                width: 80,
-                marginTop: 0,
-              }}
-            />
+            <SubmitButton title="Signup" small={true} />
           </Container>
         </Container>
 

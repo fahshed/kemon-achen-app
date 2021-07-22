@@ -55,12 +55,15 @@ class Post extends PureComponent<PostProps> {
           <Body2 mb="8px" pl="8px" pr="8px" pt="8px">
             {this.props.content}
           </Body2>
-          <BottomBar1
-            isPostLiked={this.props.isPostLiked}
-            voteCount={this.props.voteCount}
-            commentCount={this.props.commentCount}
-            onLikePress={this.props.onLikePress}
-          />
+
+          {!this.props.isCommunityFeed && !this.props.isProfileFeed && (
+            <BottomBar1
+              isPostLiked={this.props.isPostLiked}
+              voteCount={this.props.voteCount}
+              commentCount={this.props.commentCount}
+              onLikePress={this.props.onLikePress}
+            />
+          )}
         </>
       </TouchableOpacity>
     );

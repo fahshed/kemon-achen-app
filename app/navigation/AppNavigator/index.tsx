@@ -12,6 +12,7 @@ import {
   QouteScreen,
   ProfessionalProfileScreen,
   CommunityScreen,
+  CommunitySearchResultScreen,
   LatestAdviceScreen,
 } from '../../screens';
 
@@ -63,6 +64,11 @@ const AppNavigator = () => (
       options={{ headerTitle: '' }}
     />
 
+    <Stack.Screen
+      name="CommunitySearchResult"
+      component={CommunitySearchResultScreen}
+      options={{ headerTitle: 'Search Result' }}
+    />
     <Stack.Screen
       name="Latest Advice"
       component={LatestAdviceScreen}

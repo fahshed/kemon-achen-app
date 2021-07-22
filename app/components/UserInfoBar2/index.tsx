@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 
-import { Entypo, MaterialCommunityIcons } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
 
 import { theme } from '../../config';
 import { Body1, Body2Bold, Caption } from '../../styles';
@@ -22,11 +22,11 @@ function UserInfoBar2({ communityName, postedAgo }) {
       </View>
 
       <TouchableOpacity style={{ marginLeft: 'auto' }}>
-        <MaterialCommunityIcons
+        {/* <MaterialCommunityIcons
           style={styles.icon}
           name="dots-horizontal"
           size={24}
-        />
+        /> */}
       </TouchableOpacity>
     </View>
   );

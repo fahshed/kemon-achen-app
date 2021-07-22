@@ -1,16 +1,18 @@
-import React from 'react';
-import { Image, View, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { View, StyleSheet, Image, TouchableHighlight } from 'react-native';
 
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
 import { theme } from '../../config';
 import CustomTextInput from '../CustomTextInput';
-import { TouchableHighlight } from 'react-native-gesture-handler';
 import NavRoutes from '../../navigation/NavRoutes';
 
-function TopSearchBar2() {
+function TopSearchBar2({ communityId }) {
   const navigation = useNavigation();
+  const [searchQuery, setSearchQuery] = useState('');
+
+  //console.log(textInput);
 
   return (
     <View style={styles.container}>
@@ -33,6 +35,14 @@ function TopSearchBar2() {
             />
           }
           placeholder="Search"
+          onChangeText={(text) => setSearchQuery(text)}
+          onSubmitEditing={() => {
+            navigation.navigate(NavRoutes.COMMUNITY_SEARCH_DETAILS, {
+              searchQuery,
+              communityId,
+            });
+          }}
+          returnKeyType="search"
         />
       </View>
     </View>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, CommonActions } from '@react-navigation/native';
 import * as Animatable from 'react-native-animatable';
 
 import { Container, H4, H6, H5Bold } from '../../styles';
@@ -27,7 +27,7 @@ export default function QouteScreen() {
               <AppButton
                 title="No, I'm good"
                 color="secondary"
-                onPress={() => navigation.navigate('Root')}
+                onPress={() => navigation.dispatch(resetAction)}
               />
             </Container>
           </Container>
@@ -51,3 +51,8 @@ export default function QouteScreen() {
     </Container>
   );
 }
+
+const resetAction = CommonActions.reset({
+  index: 1,
+  routes: [{ name: 'App' }],
+});

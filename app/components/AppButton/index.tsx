@@ -15,13 +15,7 @@ function AppButton({
       onPress={onPress}
       style={{ width: '100%', marginBottom: mb }}
     >
-      <Container
-        justify="center"
-        bg={color}
-        corner="8px"
-        p="10px"
-        style={style}
-      >
+      <Container justify="center" bg={color} corner="8px" p="8px" style={style}>
         {!style ? (
           <H6Bold color="white">{title}</H6Bold>
         ) : (

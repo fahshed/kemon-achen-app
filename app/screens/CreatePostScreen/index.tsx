@@ -100,7 +100,6 @@ function CreatePostScreen({ navigation }) {
           <FormSwitch name="anonymous" />
           <Body1>Post as anonymous</Body1>
         </View>
-
         <ItemSeparator />
 
         <FormField

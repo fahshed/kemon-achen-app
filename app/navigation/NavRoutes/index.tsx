@@ -17,4 +17,5 @@ export default Object.freeze({
   QOUTE: 'Qoute',
   SAVED_POSTS: 'Saved Posts',
   REGULAR_SIGNUP: 'RegularSignup',
+  PROFESSIONAL_SIGNUP: 'ProfessionalSignup',
 });

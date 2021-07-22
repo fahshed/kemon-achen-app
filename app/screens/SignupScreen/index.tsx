@@ -18,7 +18,11 @@ function SignupScreen() {
           mb={10}
           onPress={() => navigation.navigate(NavRoutes.REGULAR_SIGNUP)}
         />
-        <AppButton title="As Professional User" color="secondary" />
+        <AppButton
+          title="As Professional User"
+          color="secondary"
+          onPress={() => navigation.navigate(NavRoutes.PROFESSIONAL_SIGNUP)}
+        />
       </Container>
     </Container>
   );

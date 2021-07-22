@@ -57,6 +57,7 @@ export const logout = createAsyncThunk('auth/logout', async (_, thunkApi) => {
     const { dispatch } = thunkApi;
     dispatch(resetPost());
     dispatch(resetCommunities());
+    await Api.logOutUser();
     dispatch(resetUser());
   } catch (e) {
     console.log('auth/logout', e);
@@ -69,7 +70,7 @@ export const fetchUserCommentsById = createAsyncThunk(
   async (userId: string, thunkApi) => {
     try {
       const response = await Api.getCommentsByUserId(userId);
-      console.log('\n\nuser/comments', response);
+      //console.log('\n\nuser/comments', response);
       return response;
     } catch (e) {
       console.log('user/comments', e);

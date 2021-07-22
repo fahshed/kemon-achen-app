@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 
 import ImageHeader from '../../components/ImageHeader';
 import ProfessionalProfileTabNavigator from '../../navigation/ProfessionalProfileTabNavigator';
@@ -9,17 +9,15 @@ import ProfessionalProfileInfoBar from '../../components/ProfessionalProfileInfo
 
 import Api from '../../api';
 
-export default function ProfessionalProfileScreen() {
-
+export default function ProfessionalProfileScreen({ route }) {
   //const { user } = useAppSelector((state) => state.User);
 
   const [profileInfo, setProfileInfo] = useState(null);
-
-  const userId = '60830ac18fc20123c40f10c0';
+  const userId = route.params;
 
   const getProfessionalInfo = async () => {
     const response = await Api.getProfessionalInfo(userId);
-    console.log(response);
+    //console.log(response);
     setProfileInfo(response);
   };
 
@@ -32,15 +30,13 @@ export default function ProfessionalProfileScreen() {
   return (
     <>
       <ImageHeader />
-      {
-        profileInfo && (
-          <ProfessionalProfileInfoBar
+      {profileInfo && (
+        <ProfessionalProfileInfoBar
           userName={profileInfo.name}
           badges={profileInfo.specialization}
           rank={profileInfo.rank}
-          />
-        )
-      }
+        />
+      )}
 
       <ProfessionalProfileTabNavigator
         FirstTabScreen={ChamberScreen}

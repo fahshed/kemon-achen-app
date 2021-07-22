@@ -4,12 +4,11 @@ import { TouchableHighlight } from 'react-native-gesture-handler';
 
 import { theme } from '../../config';
 import { Caption, Body2Bold } from '../../styles';
-import RankBadgeComponent from '../RankBadgeComponent';
-// import TagComponent from '../Tag';
+import { RankBadgeComponent, TagComponent } from '../../components';
 
 function ProfessionalCard({
   userName,
-  // badges,
+  badges,
   rank,
   location,
   handleNavigation,
@@ -27,6 +26,11 @@ function ProfessionalCard({
           <View style={{ flexDirection: 'row', marginBottom: 4 }}>
             <Body2Bold>{userName}</Body2Bold>
             <RankBadgeComponent rank={rank} />
+          </View>
+          <View style={{ flexDirection: 'row' }}>
+            {badges.map((tag) => (
+              <TagComponent badgeContent={tag.title} key={tag._id} />
+            ))}
           </View>
           <Caption color="grey6" numberOfLines={3}>
             {location}

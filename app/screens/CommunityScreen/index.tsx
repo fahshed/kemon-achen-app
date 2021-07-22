@@ -27,6 +27,7 @@ export default function CommunityScreen({ route }) {
       <ImageHeader />
       {commDesc && (
         <CommunityDescription
+          communityId={communityId}
           communityName={commDesc.name}
           badges={commDesc.tags}
           description={commDesc.description}

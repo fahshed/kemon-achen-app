@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { View, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, ScrollView, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { theme } from '../../config';
-//import NavRoutes from '../../navigation/NavRoutes';
-//import { Body2Bold, H5Bold } from '../../styles';
 
-// import { TagComponent } from '../../components';
 import { Container, Body2 } from '../../styles';
 import { ItemSeparator, Post } from '../../components';
 import NavRoutes from '../../navigation/NavRoutes';
@@ -18,11 +15,8 @@ let posts = [];
 function CommunitySearchResultScreen({ route }) {
   const { searchQuery, communityId } = route.params;
   const navigation = useNavigation();
-  //   const [searchResults, setSearchResults] = useState(null);
   const [selectedOption, setSelectedOption] = useState(0);
   const [postsState, setPosts] = useState(null);
-
-  //console.log(postsState);
 
   const handleLikePress = async (postId, isLiked) => {
     Api.likePost(postId, isLiked ? 'like' : 'unlike');
@@ -46,7 +40,6 @@ function CommunitySearchResultScreen({ route }) {
 
     setPosts(posts.filter((post) => post.postType === type));
   };
-  //console.log(searchQuery);
 
   const getSearchResult = async () => {
     const response = await Api.searchCommunityPosts(communityId, searchQuery);
@@ -60,30 +53,30 @@ function CommunitySearchResultScreen({ route }) {
 
   return (
     <>
-      <View style={styles.communityQueryContainer}>
-        <Container
-          direction="row"
-          bg="transparent"
-          justify="space-evenly"
-          p="16px"
-        >
-          {searchOptionLabels.map((label, index) => (
-            <SearchOptionButton
-              key={label}
-              label={label}
-              selected={index === selectedOption}
-              onSelect={() => {
-                onSearchOptionSelect(index);
-                filterList(index);
-              }}
-            />
-          ))}
-        </Container>
+      <Container
+        direction="row"
+        bg="transparent"
+        justify="space-evenly"
+        p="16px"
+      >
+        {searchOptionLabels.map((label, index) => (
+          <SearchOptionButton
+            key={label}
+            label={label}
+            selected={index === selectedOption}
+            onSelect={() => {
+              onSearchOptionSelect(index);
+              filterList(index);
+            }}
+          />
+        ))}
+      </Container>
 
-        <ItemSeparator height={8} color={theme.grey3} />
-        <ScrollView>
-          {postsState &&
-            postsState.map((item) => (
+      <ItemSeparator height={8} color={theme.grey3} />
+      <ScrollView>
+        {postsState &&
+          postsState.map((item, index) => (
+            <View key={index}>
               <Post
                 touchDisabled={false}
                 content={item.content}
@@ -102,19 +95,13 @@ function CommunitySearchResultScreen({ route }) {
                 isProfileFeed={false}
                 key={item._id}
               />
-            ))}
-        </ScrollView>
-      </View>
+              <ItemSeparator height={8} color={theme.grey3} />
+            </View>
+          ))}
+      </ScrollView>
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  communityQueryContainer: {
-    backgroundColor: theme.white,
-    flexDirection: 'column',
-  },
-});
 
 function SearchOptionButton({ label, selected, onSelect }) {
   return (

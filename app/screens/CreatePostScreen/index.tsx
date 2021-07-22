@@ -17,6 +17,7 @@ import { ItemSeparator } from '../../components';
 import { useAppDispatch, useAppSelector } from '../../store';
 import { fetchCommunities } from '../../store/reducers';
 import { createPost } from '../../store/reducers/Posts';
+import NavRoutes from '../../navigation/NavRoutes';
 
 const validationSchema = Yup.object().shape({
   communityName: Yup.string().required().label('Community'),
@@ -55,6 +56,7 @@ function CreatePostScreen({ navigation }) {
       }),
     );
     resetForm();
+    navigation.navigate(NavRoutes.HOME);
   };
 
   return (
@@ -95,7 +97,7 @@ function CreatePostScreen({ navigation }) {
           <FormSwitch name="anonymous" />
           <Body1>Post as anonymous</Body1>
         </View>
-        <ItemSeparator />
+        <ItemSeparator height={4} color={theme.grey3} />
 
         <FormField
           border={0}
@@ -116,7 +118,7 @@ function CreatePostScreen({ navigation }) {
           placeholder="Enter title of your post"
           textAlignVertical="top"
         />
-        <ItemSeparator />
+        <ItemSeparator height={4} color={theme.grey3} />
 
         <FormField
           border={0}
@@ -136,15 +138,6 @@ function CreatePostScreen({ navigation }) {
           placeholder="Enter description of your post"
           textAlignVertical="top"
         />
-
-        {/* {postLoading ? (
-          <Body1>Loading...</Body1>
-        ) : (
-          <View>
-            {postError && <Body1 mt="24px">Error Occured</Body1>}
-            <Body1 mt="24px">{JSON.stringify(postData)}</Body1>
-          </View>
-        )} */}
       </Form>
     </View>
   );

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ScrollView } from 'react-native';
 
-import { useNavigation } from '@react-navigation/native';
+import { CommonActions, useNavigation } from '@react-navigation/native';
 import * as Animatable from 'react-native-animatable';
 
 import { AppButton, AdviceCard } from '../../components';
@@ -26,6 +26,14 @@ export default function LatestAdviceScreen() {
       setIsLoading(false);
     })();
   }, []);
+
+  const notifyingDone = async () => {
+    try {
+      await Api.doneFollowAdvice();
+    } catch (error) {
+      console.log('error notifying');
+    }
+  };
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
@@ -80,20 +88,39 @@ export default function LatestAdviceScreen() {
               advices={depression.advice}
             />
           </Animatable.View>
-
           <Animatable.View
             animation="slideInUp"
             duration={1000}
             delay={0}
             style={{ width: '100%' }}
           >
-            <AppButton
-              title="Go to Home"
-              onPress={() => navigation.navigate('Root')}
-            />
+            <H5Bold mb="24px">Did you follow our advice?</H5Bold>
+            <Container direction="row">
+              <Container width="48%">
+                <AppButton
+                  title="Yes"
+                  onPress={() => {
+                    notifyingDone();
+                    navigation.dispatch(resetAction);
+                  }}
+                />
+              </Container>
+              <Container width="48%">
+                <AppButton
+                  title="No"
+                  color="secondary"
+                  onPress={() => navigation.dispatch(resetAction)}
+                />
+              </Container>
+            </Container>
           </Animatable.View>
         </Container>
       )}
     </ScrollView>
   );
 }
+
+const resetAction = CommonActions.reset({
+  index: 1,
+  routes: [{ name: 'App' }],
+});

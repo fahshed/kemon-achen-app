@@ -22,7 +22,7 @@ function CommunitySearchResultScreen({ route }) {
   const [selectedOption, setSelectedOption] = useState(0);
   const [postsState, setPosts] = useState(null);
 
-  console.log(postsState);
+  //console.log(postsState);
 
   const handleLikePress = async (postId, isLiked) => {
     Api.likePost(postId, isLiked ? 'like' : 'unlike');

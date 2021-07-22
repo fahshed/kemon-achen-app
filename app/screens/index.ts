@@ -17,3 +17,4 @@ export { default as CommunityScreen } from './CommunityScreen';
 export { default as GeneralPostsScreen } from './GeneralPostsScreen';
 export { default as SavedPosts } from './SavedPosts';
 export { default as CommunitySearchResultScreen } from './CommunitySearchResultScreen';
+export { default as LatestAdviceScreen } from './LatestAdviceScreen';

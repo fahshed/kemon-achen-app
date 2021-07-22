@@ -9,7 +9,7 @@ const background = {
   Depression: theme.lightBlue,
 };
 
-export default function AdviceCard({ title, score, message, advices }) {
+export default function AdviceCard({ title, score = null, message, advices }) {
   return (
     <Container
       align="flex-start"
@@ -20,9 +20,11 @@ export default function AdviceCard({ title, score, message, advices }) {
       style={[Shadow.shadow, { backgroundColor: background[title] }]}
     >
       <Container bg="transparent">
-        <H6 mb="6px">
-          {title} Level: {score}%
-        </H6>
+        {score?.(
+          <H6 mb="6px">
+            {title} Level: {score}%
+          </H6>,
+        )}
       </Container>
       <H6Bold mb="6px">{message}</H6Bold>
       <Body2 mb="6px">Try these:</Body2>

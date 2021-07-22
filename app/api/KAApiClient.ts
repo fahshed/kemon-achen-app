@@ -13,7 +13,7 @@ export class AuthorizedApiBase {
   protected accessToken: string;
   private readonly config: IConfig;
 
-  protected constructor(config: IConfig, accessToken: string = '') {
+  protected constructor(config: IConfig, accessToken: string = "") {
     this.config = config;
     this.accessToken = accessToken;
   }
@@ -23,7 +23,7 @@ export class AuthorizedApiBase {
   ): Promise<AxiosRequestConfig> => {
     options.headers = {
       ...options.headers,
-      Authorization: this.accessToken ? `Bearer ${this.accessToken}` : '',
+      Authorization: this.accessToken ? `Bearer ${this.accessToken}` : "",
     };
     return Promise.resolve(options);
   };
@@ -36,19 +36,19 @@ export class AuthorizedApiBase {
 export interface IKAApiClent {
     /**
      * Create a regular user
-     * @param body (optional)
+     * @param body (optional) 
      * @return OK
      */
     signupRegularUser(body?: RegularUserCredentials | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void, onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<AuthResponse>;
     /**
      * Create a professional user
-     * @param body (optional)
+     * @param body (optional) 
      * @return OK
      */
     signupProfessionalUser(body?: ProfessionalUserCredentials | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void, onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<AuthResponse>;
     /**
      * Logs in a user
-     * @param body (optional)
+     * @param body (optional) 
      * @return OK
      */
     loginUser(body?: UserLoginCredentials | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void, onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<AuthResponse>;
@@ -109,7 +109,7 @@ export interface IKAApiClent {
     getLatestAdvice(cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<SubmitTestResponse>;
     /**
      * Register a push notification
-     * @param body (optional)
+     * @param body (optional) 
      * @return OK
      */
     registerPushNotificationToken(body?: PushToken | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void, onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<PushToken>;
@@ -120,13 +120,13 @@ export interface IKAApiClent {
     getNotifications(cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Notification[]>;
     /**
      * Get suggested professionals
-     * @param professionalSortedBy (optional)
+     * @param professionalSortedBy (optional) 
      * @return OK
      */
     getSuggestedProfessionals(professionalSortedBy?: ProfessionalSortedBy | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<ProfessionalUserInfo[]>;
     /**
      * Save a post by user
-     * @param saveOptions (optional)
+     * @param saveOptions (optional) 
      * @return OK
      */
     savePost(postId: string, saveOptions?: SaveOptions | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<SavePostMessage>;
@@ -137,19 +137,19 @@ export interface IKAApiClent {
     likePost(postId: string, likeOptions: LikeOptions, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<LikePostMessage>;
     /**
      * Create a post
-     * @param body (optional)
+     * @param body (optional) 
      * @return OK
      */
     createPost(body?: Post | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void, onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Post>;
     /**
      * Create a comment
-     * @param body (optional)
+     * @param body (optional) 
      * @return OK
      */
     createComment(postId: string, body?: Comment | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void, onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Comment>;
     /**
      * Create a reply
-     * @param body (optional)
+     * @param body (optional) 
      * @return OK
      */
     createReply(postId: string, commentId: string, body?: Comment | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void, onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Comment>;
@@ -160,13 +160,13 @@ export interface IKAApiClent {
     getRepliesofComment(postId: string, commentId: string, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Comment[]>;
     /**
      * Get feed of an user
-     * @param feedSortedBy (optional)
+     * @param feedSortedBy (optional) 
      * @return OK
      */
     getFeed(feedSortedBy?: FeedSortedBy | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Post[]>;
     /**
      * Get post by Id
-     * @param commentsSortedBy (optional)
+     * @param commentsSortedBy (optional) 
      * @return OK
      */
     getPostById(postId: string, commentsSortedBy?: CommentsSortedBy | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Post>;
@@ -177,7 +177,7 @@ export interface IKAApiClent {
     getCommunityInfo(communityId: string, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<CommunityInfo>;
     /**
      * Get feed of a community
-     * @param feedSortedBy (optional)
+     * @param feedSortedBy (optional) 
      * @return OK
      */
     getCommunityFeed(communityId: string, feedSortedBy?: FeedSortedBy | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Post[]>;
@@ -188,13 +188,13 @@ export interface IKAApiClent {
     getCommunityAbout(communityId: string, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<CommunityAbout>;
     /**
      * Get community posts by searching
-     * @param searchKeyword (optional)
+     * @param searchKeyword (optional) 
      * @return OK
      */
     searchCommunityPosts(communityId: string, searchKeyword?: string | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Post[]>;
     /**
      * Create a Test
-     * @param body (optional)
+     * @param body (optional) 
      * @return OK
      */
     createTest(body?: any | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void, onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Test>;
@@ -210,7 +210,7 @@ export interface IKAApiClent {
     getTestRandomly(cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Test>;
     /**
      * Submit a test
-     * @param body (optional)
+     * @param body (optional) 
      * @return OK
      */
     submitTest(testId: string, body?: any | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void, onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<SubmitTestResponse>;
@@ -221,7 +221,7 @@ export interface IKAApiClent {
     getCommunitiesByScore(cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<CommunityInfo>;
     /**
      * Create an advice
-     * @param body (optional)
+     * @param body (optional) 
      * @return OK
      */
     createAdvice(body?: any | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void, onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Advice>;
@@ -235,31 +235,31 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
     constructor(configuration: IConfig, baseUrl?: string, instance?: AxiosInstance) {
         super(configuration);
         this.instance = instance ? instance : axios.create();
-        this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : 'http://localhost:9000/api/v1';
+        this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "http://localhost:9000/api/v1";
     }
 
     /**
      * Create a regular user
-     * @param body (optional)
+     * @param body (optional) 
      * @return OK
      */
     signupRegularUser(body?: RegularUserCredentials | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void, onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<AuthResponse> {
-        let url_ = this.baseUrl + '/user/regular/signup';
-        url_ = url_.replace(/[?&]$/, '');
+        let url_ = this.baseUrl + "/user/regular/signup";
+        url_ = url_.replace(/[?&]$/, "");
 
         const content_ = JSON.stringify(body);
 
         let options_ = <AxiosRequestConfig>{
             data: content_,
-            method: 'POST',
+            method: "POST",
             url: url_,
             headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
+                "Content-Type": "application/json",
+                "Accept": "application/json"
             },
             cancelToken,
             onDownloadProgress,
-            onUploadProgress,
+            onUploadProgress
         };
 
         return this.transformOptions(options_).then(transformedOptions_ => {
@@ -278,7 +278,7 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
     protected processSignupRegularUser(response: AxiosResponse): Promise<AuthResponse> {
         const status = response.status;
         let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
+        if (response.headers && typeof response.headers === "object") {
             for (let k in response.headers) {
                 if (response.headers.hasOwnProperty(k)) {
                     _headers[k] = response.headers[k];
@@ -289,39 +289,39 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
             const _responseText = response.data;
             let result200: any = null;
             let resultData200  = _responseText;
-            result200 = resultData200;
+            result200 = resultData200
             return result200;
         } else {
             const _responseText = response.data;
             let resultdefault: any = null;
             let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+            resultdefault = resultDatadefault
+            return throwException("Bad Request", status, _responseText, _headers, resultdefault);
         }
     }
 
     /**
      * Create a professional user
-     * @param body (optional)
+     * @param body (optional) 
      * @return OK
      */
     signupProfessionalUser(body?: ProfessionalUserCredentials | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void, onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<AuthResponse> {
-        let url_ = this.baseUrl + '/user/professional/signup';
-        url_ = url_.replace(/[?&]$/, '');
+        let url_ = this.baseUrl + "/user/professional/signup";
+        url_ = url_.replace(/[?&]$/, "");
 
         const content_ = JSON.stringify(body);
 
         let options_ = <AxiosRequestConfig>{
             data: content_,
-            method: 'POST',
+            method: "POST",
             url: url_,
             headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
+                "Content-Type": "application/json",
+                "Accept": "application/json"
             },
             cancelToken,
             onDownloadProgress,
-            onUploadProgress,
+            onUploadProgress
         };
 
         return this.transformOptions(options_).then(transformedOptions_ => {
@@ -340,7 +340,7 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
     protected processSignupProfessionalUser(response: AxiosResponse): Promise<AuthResponse> {
         const status = response.status;
         let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
+        if (response.headers && typeof response.headers === "object") {
             for (let k in response.headers) {
                 if (response.headers.hasOwnProperty(k)) {
                     _headers[k] = response.headers[k];
@@ -351,39 +351,39 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
             const _responseText = response.data;
             let result200: any = null;
             let resultData200  = _responseText;
-            result200 = resultData200;
+            result200 = resultData200
             return result200;
         } else {
             const _responseText = response.data;
             let resultdefault: any = null;
             let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+            resultdefault = resultDatadefault
+            return throwException("Bad Request", status, _responseText, _headers, resultdefault);
         }
     }
 
     /**
      * Logs in a user
-     * @param body (optional)
+     * @param body (optional) 
      * @return OK
      */
     loginUser(body?: UserLoginCredentials | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void, onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<AuthResponse> {
-        let url_ = this.baseUrl + '/user/login';
-        url_ = url_.replace(/[?&]$/, '');
+        let url_ = this.baseUrl + "/user/login";
+        url_ = url_.replace(/[?&]$/, "");
 
         const content_ = JSON.stringify(body);
 
         let options_ = <AxiosRequestConfig>{
             data: content_,
-            method: 'POST',
+            method: "POST",
             url: url_,
             headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
+                "Content-Type": "application/json",
+                "Accept": "application/json"
             },
             cancelToken,
             onDownloadProgress,
-            onUploadProgress,
+            onUploadProgress
         };
 
         return this.transformOptions(options_).then(transformedOptions_ => {
@@ -402,7 +402,7 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
     protected processLoginUser(response: AxiosResponse): Promise<AuthResponse> {
         const status = response.status;
         let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
+        if (response.headers && typeof response.headers === "object") {
             for (let k in response.headers) {
                 if (response.headers.hasOwnProperty(k)) {
                     _headers[k] = response.headers[k];
@@ -413,14 +413,14 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
             const _responseText = response.data;
             let result200: any = null;
             let resultData200  = _responseText;
-            result200 = resultData200;
+            result200 = resultData200
             return result200;
         } else {
             const _responseText = response.data;
             let resultdefault: any = null;
             let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+            resultdefault = resultDatadefault
+            return throwException("Bad Request", status, _responseText, _headers, resultdefault);
         }
     }
 
@@ -429,18 +429,18 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
      * @return OK
      */
     logOutUser(cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void, onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<ErrorMessage> {
-        let url_ = this.baseUrl + '/user/logout';
-        url_ = url_.replace(/[?&]$/, '');
+        let url_ = this.baseUrl + "/user/logout";
+        url_ = url_.replace(/[?&]$/, "");
 
         let options_ = <AxiosRequestConfig>{
-            method: 'POST',
+            method: "POST",
             url: url_,
             headers: {
-                'Accept': 'application/json',
+                "Accept": "application/json"
             },
             cancelToken,
             onDownloadProgress,
-            onUploadProgress,
+            onUploadProgress
         };
 
         return this.transformOptions(options_).then(transformedOptions_ => {
@@ -459,7 +459,7 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
     protected processLogOutUser(response: AxiosResponse): Promise<ErrorMessage> {
         const status = response.status;
         let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
+        if (response.headers && typeof response.headers === "object") {
             for (let k in response.headers) {
                 if (response.headers.hasOwnProperty(k)) {
                     _headers[k] = response.headers[k];
@@ -470,14 +470,14 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
             const _responseText = response.data;
             let result200: any = null;
             let resultData200  = _responseText;
-            result200 = resultData200;
+            result200 = resultData200
             return result200;
         } else {
             const _responseText = response.data;
             let resultdefault: any = null;
             let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+            resultdefault = resultDatadefault
+            return throwException("Bad Request", status, _responseText, _headers, resultdefault);
         }
     }
 
@@ -486,14 +486,14 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
      * @return OK
      */
     getCommunities(cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<CommunityListElement[]> {
-        let url_ = this.baseUrl + '/user/communities';
-        url_ = url_.replace(/[?&]$/, '');
+        let url_ = this.baseUrl + "/user/communities";
+        url_ = url_.replace(/[?&]$/, "");
 
         let options_ = <AxiosRequestConfig>{
-            method: 'GET',
+            method: "GET",
             url: url_,
             headers: {
-                'Accept': 'application/json',
+                "Accept": "application/json"
             },
             cancelToken,
             onDownloadProgress,
@@ -515,7 +515,7 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
     protected processGetCommunities(response: AxiosResponse): Promise<CommunityListElement[]> {
         const status = response.status;
         let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
+        if (response.headers && typeof response.headers === "object") {
             for (let k in response.headers) {
                 if (response.headers.hasOwnProperty(k)) {
                     _headers[k] = response.headers[k];
@@ -526,14 +526,14 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
             const _responseText = response.data;
             let result200: any = null;
             let resultData200  = _responseText;
-            result200 = resultData200;
+            result200 = resultData200
             return result200;
         } else {
             const _responseText = response.data;
             let resultdefault: any = null;
             let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+            resultdefault = resultDatadefault
+            return throwException("Bad Request", status, _responseText, _headers, resultdefault);
         }
     }
 
@@ -542,14 +542,14 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
      * @return OK
      */
     getSuggestedCommunities(cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<CommunityListElement[]> {
-        let url_ = this.baseUrl + '/user/communities/suggested';
-        url_ = url_.replace(/[?&]$/, '');
+        let url_ = this.baseUrl + "/user/communities/suggested";
+        url_ = url_.replace(/[?&]$/, "");
 
         let options_ = <AxiosRequestConfig>{
-            method: 'GET',
+            method: "GET",
             url: url_,
             headers: {
-                'Accept': 'application/json',
+                "Accept": "application/json"
             },
             cancelToken,
             onDownloadProgress,
@@ -571,7 +571,7 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
     protected processGetSuggestedCommunities(response: AxiosResponse): Promise<CommunityListElement[]> {
         const status = response.status;
         let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
+        if (response.headers && typeof response.headers === "object") {
             for (let k in response.headers) {
                 if (response.headers.hasOwnProperty(k)) {
                     _headers[k] = response.headers[k];
@@ -582,14 +582,14 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
             const _responseText = response.data;
             let result200: any = null;
             let resultData200  = _responseText;
-            result200 = resultData200;
+            result200 = resultData200
             return result200;
         } else {
             const _responseText = response.data;
             let resultdefault: any = null;
             let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+            resultdefault = resultDatadefault
+            return throwException("Bad Request", status, _responseText, _headers, resultdefault);
         }
     }
 
@@ -598,17 +598,17 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
      * @return OK
      */
     getPostsByUserId(userId: string, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Post[]> {
-        let url_ = this.baseUrl + '/user/{userId}/posts';
+        let url_ = this.baseUrl + "/user/{userId}/posts";
         if (userId === undefined || userId === null)
-            {throw new Error("The parameter 'userId' must be defined.");}
-        url_ = url_.replace('{userId}', encodeURIComponent('' + userId));
-        url_ = url_.replace(/[?&]$/, '');
+            throw new Error("The parameter 'userId' must be defined.");
+        url_ = url_.replace("{userId}", encodeURIComponent("" + userId));
+        url_ = url_.replace(/[?&]$/, "");
 
         let options_ = <AxiosRequestConfig>{
-            method: 'GET',
+            method: "GET",
             url: url_,
             headers: {
-                'Accept': 'application/json',
+                "Accept": "application/json"
             },
             cancelToken,
             onDownloadProgress,
@@ -630,7 +630,7 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
     protected processGetPostsByUserId(response: AxiosResponse): Promise<Post[]> {
         const status = response.status;
         let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
+        if (response.headers && typeof response.headers === "object") {
             for (let k in response.headers) {
                 if (response.headers.hasOwnProperty(k)) {
                     _headers[k] = response.headers[k];
@@ -641,14 +641,14 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
             const _responseText = response.data;
             let result200: any = null;
             let resultData200  = _responseText;
-            result200 = resultData200;
+            result200 = resultData200
             return result200;
         } else {
             const _responseText = response.data;
             let resultdefault: any = null;
             let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+            resultdefault = resultDatadefault
+            return throwException("Bad Request", status, _responseText, _headers, resultdefault);
         }
     }
 
@@ -657,17 +657,17 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
      * @return OK
      */
     getCommentsByUserId(userId: string, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Comment[]> {
-        let url_ = this.baseUrl + '/user/{userId}/comments';
+        let url_ = this.baseUrl + "/user/{userId}/comments";
         if (userId === undefined || userId === null)
-            {throw new Error("The parameter 'userId' must be defined.");}
-        url_ = url_.replace('{userId}', encodeURIComponent('' + userId));
-        url_ = url_.replace(/[?&]$/, '');
+            throw new Error("The parameter 'userId' must be defined.");
+        url_ = url_.replace("{userId}", encodeURIComponent("" + userId));
+        url_ = url_.replace(/[?&]$/, "");
 
         let options_ = <AxiosRequestConfig>{
-            method: 'GET',
+            method: "GET",
             url: url_,
             headers: {
-                'Accept': 'application/json',
+                "Accept": "application/json"
             },
             cancelToken,
             onDownloadProgress,
@@ -689,7 +689,7 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
     protected processGetCommentsByUserId(response: AxiosResponse): Promise<Comment[]> {
         const status = response.status;
         let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
+        if (response.headers && typeof response.headers === "object") {
             for (let k in response.headers) {
                 if (response.headers.hasOwnProperty(k)) {
                     _headers[k] = response.headers[k];
@@ -700,14 +700,14 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
             const _responseText = response.data;
             let result200: any = null;
             let resultData200  = _responseText;
-            result200 = resultData200;
+            result200 = resultData200
             return result200;
         } else {
             const _responseText = response.data;
             let resultdefault: any = null;
             let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+            resultdefault = resultDatadefault
+            return throwException("Bad Request", status, _responseText, _headers, resultdefault);
         }
     }
 
@@ -716,14 +716,14 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
      * @return OK
      */
     getUserTestsHistory(cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<TestHistory[]> {
-        let url_ = this.baseUrl + '/user/tests/history';
-        url_ = url_.replace(/[?&]$/, '');
+        let url_ = this.baseUrl + "/user/tests/history";
+        url_ = url_.replace(/[?&]$/, "");
 
         let options_ = <AxiosRequestConfig>{
-            method: 'GET',
+            method: "GET",
             url: url_,
             headers: {
-                'Accept': 'application/json',
+                "Accept": "application/json"
             },
             cancelToken,
             onDownloadProgress,
@@ -745,7 +745,7 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
     protected processGetUserTestsHistory(response: AxiosResponse): Promise<TestHistory[]> {
         const status = response.status;
         let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
+        if (response.headers && typeof response.headers === "object") {
             for (let k in response.headers) {
                 if (response.headers.hasOwnProperty(k)) {
                     _headers[k] = response.headers[k];
@@ -756,14 +756,14 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
             const _responseText = response.data;
             let result200: any = null;
             let resultData200  = _responseText;
-            result200 = resultData200;
+            result200 = resultData200
             return result200;
         } else {
             const _responseText = response.data;
             let resultdefault: any = null;
             let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+            resultdefault = resultDatadefault
+            return throwException("Bad Request", status, _responseText, _headers, resultdefault);
         }
     }
 
@@ -772,17 +772,17 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
      * @return OK
      */
     joinCommunity(communityId: string, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<JoinCommunityMessage> {
-        let url_ = this.baseUrl + '/user/community/{communityId}/join';
+        let url_ = this.baseUrl + "/user/community/{communityId}/join";
         if (communityId === undefined || communityId === null)
-            {throw new Error("The parameter 'communityId' must be defined.");}
-        url_ = url_.replace('{communityId}', encodeURIComponent('' + communityId));
-        url_ = url_.replace(/[?&]$/, '');
+            throw new Error("The parameter 'communityId' must be defined.");
+        url_ = url_.replace("{communityId}", encodeURIComponent("" + communityId));
+        url_ = url_.replace(/[?&]$/, "");
 
         let options_ = <AxiosRequestConfig>{
-            method: 'GET',
+            method: "GET",
             url: url_,
             headers: {
-                'Accept': 'application/json',
+                "Accept": "application/json"
             },
             cancelToken,
             onDownloadProgress,
@@ -804,7 +804,7 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
     protected processJoinCommunity(response: AxiosResponse): Promise<JoinCommunityMessage> {
         const status = response.status;
         let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
+        if (response.headers && typeof response.headers === "object") {
             for (let k in response.headers) {
                 if (response.headers.hasOwnProperty(k)) {
                     _headers[k] = response.headers[k];
@@ -815,14 +815,14 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
             const _responseText = response.data;
             let result200: any = null;
             let resultData200  = _responseText;
-            result200 = resultData200;
+            result200 = resultData200
             return result200;
         } else {
             const _responseText = response.data;
             let resultdefault: any = null;
             let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+            resultdefault = resultDatadefault
+            return throwException("Bad Request", status, _responseText, _headers, resultdefault);
         }
     }
 
@@ -831,14 +831,14 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
      * @return OK
      */
     getSavedPosts(cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Post[]> {
-        let url_ = this.baseUrl + '/user/savedPosts';
-        url_ = url_.replace(/[?&]$/, '');
+        let url_ = this.baseUrl + "/user/savedPosts";
+        url_ = url_.replace(/[?&]$/, "");
 
         let options_ = <AxiosRequestConfig>{
-            method: 'GET',
+            method: "GET",
             url: url_,
             headers: {
-                'Accept': 'application/json',
+                "Accept": "application/json"
             },
             cancelToken,
             onDownloadProgress,
@@ -860,7 +860,7 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
     protected processGetSavedPosts(response: AxiosResponse): Promise<Post[]> {
         const status = response.status;
         let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
+        if (response.headers && typeof response.headers === "object") {
             for (let k in response.headers) {
                 if (response.headers.hasOwnProperty(k)) {
                     _headers[k] = response.headers[k];
@@ -871,14 +871,14 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
             const _responseText = response.data;
             let result200: any = null;
             let resultData200  = _responseText;
-            result200 = resultData200;
+            result200 = resultData200
             return result200;
         } else {
             const _responseText = response.data;
             let resultdefault: any = null;
             let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+            resultdefault = resultDatadefault
+            return throwException("Bad Request", status, _responseText, _headers, resultdefault);
         }
     }
 
@@ -887,17 +887,17 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
      * @return OK
      */
     getProfessionalInfo(userId: string, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<ProfessionalUserInfo> {
-        let url_ = this.baseUrl + '/user/professional/{userId}/info';
+        let url_ = this.baseUrl + "/user/professional/{userId}/info";
         if (userId === undefined || userId === null)
-            {throw new Error("The parameter 'userId' must be defined.");}
-        url_ = url_.replace('{userId}', encodeURIComponent('' + userId));
-        url_ = url_.replace(/[?&]$/, '');
+            throw new Error("The parameter 'userId' must be defined.");
+        url_ = url_.replace("{userId}", encodeURIComponent("" + userId));
+        url_ = url_.replace(/[?&]$/, "");
 
         let options_ = <AxiosRequestConfig>{
-            method: 'GET',
+            method: "GET",
             url: url_,
             headers: {
-                'Accept': 'application/json',
+                "Accept": "application/json"
             },
             cancelToken,
             onDownloadProgress,
@@ -919,7 +919,7 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
     protected processGetProfessionalInfo(response: AxiosResponse): Promise<ProfessionalUserInfo> {
         const status = response.status;
         let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
+        if (response.headers && typeof response.headers === "object") {
             for (let k in response.headers) {
                 if (response.headers.hasOwnProperty(k)) {
                     _headers[k] = response.headers[k];
@@ -930,14 +930,14 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
             const _responseText = response.data;
             let result200: any = null;
             let resultData200  = _responseText;
-            result200 = resultData200;
+            result200 = resultData200
             return result200;
         } else {
             const _responseText = response.data;
             let resultdefault: any = null;
             let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+            resultdefault = resultDatadefault
+            return throwException("Bad Request", status, _responseText, _headers, resultdefault);
         }
     }
 
@@ -946,17 +946,17 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
      * @return OK
      */
     getProfessionalChamber(userId: string, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<ProfessionalUserInfo> {
-        let url_ = this.baseUrl + '/user/professional/{userId}/chamber';
+        let url_ = this.baseUrl + "/user/professional/{userId}/chamber";
         if (userId === undefined || userId === null)
-            {throw new Error("The parameter 'userId' must be defined.");}
-        url_ = url_.replace('{userId}', encodeURIComponent('' + userId));
-        url_ = url_.replace(/[?&]$/, '');
+            throw new Error("The parameter 'userId' must be defined.");
+        url_ = url_.replace("{userId}", encodeURIComponent("" + userId));
+        url_ = url_.replace(/[?&]$/, "");
 
         let options_ = <AxiosRequestConfig>{
-            method: 'GET',
+            method: "GET",
             url: url_,
             headers: {
-                'Accept': 'application/json',
+                "Accept": "application/json"
             },
             cancelToken,
             onDownloadProgress,
@@ -978,7 +978,7 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
     protected processGetProfessionalChamber(response: AxiosResponse): Promise<ProfessionalUserInfo> {
         const status = response.status;
         let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
+        if (response.headers && typeof response.headers === "object") {
             for (let k in response.headers) {
                 if (response.headers.hasOwnProperty(k)) {
                     _headers[k] = response.headers[k];
@@ -989,14 +989,14 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
             const _responseText = response.data;
             let result200: any = null;
             let resultData200  = _responseText;
-            result200 = resultData200;
+            result200 = resultData200
             return result200;
         } else {
             const _responseText = response.data;
             let resultdefault: any = null;
             let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+            resultdefault = resultDatadefault
+            return throwException("Bad Request", status, _responseText, _headers, resultdefault);
         }
     }
 
@@ -1005,14 +1005,14 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
      * @return OK
      */
     getLatestAdvice(cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<SubmitTestResponse> {
-        let url_ = this.baseUrl + '/user/advice/latest';
-        url_ = url_.replace(/[?&]$/, '');
+        let url_ = this.baseUrl + "/user/advice/latest";
+        url_ = url_.replace(/[?&]$/, "");
 
         let options_ = <AxiosRequestConfig>{
-            method: 'GET',
+            method: "GET",
             url: url_,
             headers: {
-                'Accept': 'application/json',
+                "Accept": "application/json"
             },
             cancelToken,
             onDownloadProgress,
@@ -1034,7 +1034,7 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
     protected processGetLatestAdvice(response: AxiosResponse): Promise<SubmitTestResponse> {
         const status = response.status;
         let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
+        if (response.headers && typeof response.headers === "object") {
             for (let k in response.headers) {
                 if (response.headers.hasOwnProperty(k)) {
                     _headers[k] = response.headers[k];
@@ -1045,39 +1045,39 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
             const _responseText = response.data;
             let result200: any = null;
             let resultData200  = _responseText;
-            result200 = resultData200;
+            result200 = resultData200
             return result200;
         } else {
             const _responseText = response.data;
             let resultdefault: any = null;
             let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+            resultdefault = resultDatadefault
+            return throwException("Bad Request", status, _responseText, _headers, resultdefault);
         }
     }
 
     /**
      * Register a push notification
-     * @param body (optional)
+     * @param body (optional) 
      * @return OK
      */
     registerPushNotificationToken(body?: PushToken | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void, onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<PushToken> {
-        let url_ = this.baseUrl + '/user/pushToken/register';
-        url_ = url_.replace(/[?&]$/, '');
+        let url_ = this.baseUrl + "/user/pushToken/register";
+        url_ = url_.replace(/[?&]$/, "");
 
         const content_ = JSON.stringify(body);
 
         let options_ = <AxiosRequestConfig>{
             data: content_,
-            method: 'POST',
+            method: "POST",
             url: url_,
             headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
+                "Content-Type": "application/json",
+                "Accept": "application/json"
             },
             cancelToken,
             onDownloadProgress,
-            onUploadProgress,
+            onUploadProgress
         };
 
         return this.transformOptions(options_).then(transformedOptions_ => {
@@ -1096,7 +1096,7 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
     protected processRegisterPushNotificationToken(response: AxiosResponse): Promise<PushToken> {
         const status = response.status;
         let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
+        if (response.headers && typeof response.headers === "object") {
             for (let k in response.headers) {
                 if (response.headers.hasOwnProperty(k)) {
                     _headers[k] = response.headers[k];
@@ -1107,14 +1107,14 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
             const _responseText = response.data;
             let result200: any = null;
             let resultData200  = _responseText;
-            result200 = resultData200;
+            result200 = resultData200
             return result200;
         } else {
             const _responseText = response.data;
             let resultdefault: any = null;
             let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+            resultdefault = resultDatadefault
+            return throwException("Bad Request", status, _responseText, _headers, resultdefault);
         }
     }
 
@@ -1123,14 +1123,14 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
      * @return OK
      */
     getNotifications(cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Notification[]> {
-        let url_ = this.baseUrl + '/user/notifications';
-        url_ = url_.replace(/[?&]$/, '');
+        let url_ = this.baseUrl + "/user/notifications";
+        url_ = url_.replace(/[?&]$/, "");
 
         let options_ = <AxiosRequestConfig>{
-            method: 'GET',
+            method: "GET",
             url: url_,
             headers: {
-                'Accept': 'application/json',
+                "Accept": "application/json"
             },
             cancelToken,
             onDownloadProgress,
@@ -1152,7 +1152,7 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
     protected processGetNotifications(response: AxiosResponse): Promise<Notification[]> {
         const status = response.status;
         let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
+        if (response.headers && typeof response.headers === "object") {
             for (let k in response.headers) {
                 if (response.headers.hasOwnProperty(k)) {
                     _headers[k] = response.headers[k];
@@ -1163,35 +1163,35 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
             const _responseText = response.data;
             let result200: any = null;
             let resultData200  = _responseText;
-            result200 = resultData200;
+            result200 = resultData200
             return result200;
         } else {
             const _responseText = response.data;
             let resultdefault: any = null;
             let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+            resultdefault = resultDatadefault
+            return throwException("Bad Request", status, _responseText, _headers, resultdefault);
         }
     }
 
     /**
      * Get suggested professionals
-     * @param professionalSortedBy (optional)
+     * @param professionalSortedBy (optional) 
      * @return OK
      */
     getSuggestedProfessionals(professionalSortedBy?: ProfessionalSortedBy | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<ProfessionalUserInfo[]> {
-        let url_ = this.baseUrl + '/user/suggesetedProfessionals?';
+        let url_ = this.baseUrl + "/user/suggesetedProfessionals?";
         if (professionalSortedBy === null)
-            {throw new Error("The parameter 'professionalSortedBy' cannot be null.");}
+            throw new Error("The parameter 'professionalSortedBy' cannot be null.");
         else if (professionalSortedBy !== undefined)
-            {url_ += 'professionalSortedBy=' + encodeURIComponent('' + professionalSortedBy) + '&';}
-        url_ = url_.replace(/[?&]$/, '');
+            url_ += "professionalSortedBy=" + encodeURIComponent("" + professionalSortedBy) + "&";
+        url_ = url_.replace(/[?&]$/, "");
 
         let options_ = <AxiosRequestConfig>{
-            method: 'GET',
+            method: "GET",
             url: url_,
             headers: {
-                'Accept': 'application/json',
+                "Accept": "application/json"
             },
             cancelToken,
             onDownloadProgress,
@@ -1213,7 +1213,7 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
     protected processGetSuggestedProfessionals(response: AxiosResponse): Promise<ProfessionalUserInfo[]> {
         const status = response.status;
         let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
+        if (response.headers && typeof response.headers === "object") {
             for (let k in response.headers) {
                 if (response.headers.hasOwnProperty(k)) {
                     _headers[k] = response.headers[k];
@@ -1224,38 +1224,38 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
             const _responseText = response.data;
             let result200: any = null;
             let resultData200  = _responseText;
-            result200 = resultData200;
+            result200 = resultData200
             return result200;
         } else {
             const _responseText = response.data;
             let resultdefault: any = null;
             let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+            resultdefault = resultDatadefault
+            return throwException("Bad Request", status, _responseText, _headers, resultdefault);
         }
     }
 
     /**
      * Save a post by user
-     * @param saveOptions (optional)
+     * @param saveOptions (optional) 
      * @return OK
      */
     savePost(postId: string, saveOptions?: SaveOptions | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<SavePostMessage> {
-        let url_ = this.baseUrl + '/post/{postId}/save?';
+        let url_ = this.baseUrl + "/post/{postId}/save?";
         if (postId === undefined || postId === null)
-            {throw new Error("The parameter 'postId' must be defined.");}
-        url_ = url_.replace('{postId}', encodeURIComponent('' + postId));
+            throw new Error("The parameter 'postId' must be defined.");
+        url_ = url_.replace("{postId}", encodeURIComponent("" + postId));
         if (saveOptions === null)
-            {throw new Error("The parameter 'saveOptions' cannot be null.");}
+            throw new Error("The parameter 'saveOptions' cannot be null.");
         else if (saveOptions !== undefined)
-            {url_ += 'saveOptions=' + encodeURIComponent('' + saveOptions) + '&';}
-        url_ = url_.replace(/[?&]$/, '');
+            url_ += "saveOptions=" + encodeURIComponent("" + saveOptions) + "&";
+        url_ = url_.replace(/[?&]$/, "");
 
         let options_ = <AxiosRequestConfig>{
-            method: 'GET',
+            method: "GET",
             url: url_,
             headers: {
-                'Accept': 'application/json',
+                "Accept": "application/json"
             },
             cancelToken,
             onDownloadProgress,
@@ -1277,7 +1277,7 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
     protected processSavePost(response: AxiosResponse): Promise<SavePostMessage> {
         const status = response.status;
         let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
+        if (response.headers && typeof response.headers === "object") {
             for (let k in response.headers) {
                 if (response.headers.hasOwnProperty(k)) {
                     _headers[k] = response.headers[k];
@@ -1288,14 +1288,14 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
             const _responseText = response.data;
             let result200: any = null;
             let resultData200  = _responseText;
-            result200 = resultData200;
+            result200 = resultData200
             return result200;
         } else {
             const _responseText = response.data;
             let resultdefault: any = null;
             let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+            resultdefault = resultDatadefault
+            return throwException("Bad Request", status, _responseText, _headers, resultdefault);
         }
     }
 
@@ -1304,21 +1304,21 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
      * @return OK
      */
     likePost(postId: string, likeOptions: LikeOptions, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<LikePostMessage> {
-        let url_ = this.baseUrl + '/post/{postId}/like?';
+        let url_ = this.baseUrl + "/post/{postId}/like?";
         if (postId === undefined || postId === null)
-            {throw new Error("The parameter 'postId' must be defined.");}
-        url_ = url_.replace('{postId}', encodeURIComponent('' + postId));
+            throw new Error("The parameter 'postId' must be defined.");
+        url_ = url_.replace("{postId}", encodeURIComponent("" + postId));
         if (likeOptions === undefined || likeOptions === null)
-            {throw new Error("The parameter 'likeOptions' must be defined and cannot be null.");}
+            throw new Error("The parameter 'likeOptions' must be defined and cannot be null.");
         else
-            {url_ += 'likeOptions=' + encodeURIComponent('' + likeOptions) + '&';}
-        url_ = url_.replace(/[?&]$/, '');
+            url_ += "likeOptions=" + encodeURIComponent("" + likeOptions) + "&";
+        url_ = url_.replace(/[?&]$/, "");
 
         let options_ = <AxiosRequestConfig>{
-            method: 'GET',
+            method: "GET",
             url: url_,
             headers: {
-                'Accept': 'application/json',
+                "Accept": "application/json"
             },
             cancelToken,
             onDownloadProgress,
@@ -1340,7 +1340,7 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
     protected processLikePost(response: AxiosResponse): Promise<LikePostMessage> {
         const status = response.status;
         let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
+        if (response.headers && typeof response.headers === "object") {
             for (let k in response.headers) {
                 if (response.headers.hasOwnProperty(k)) {
                     _headers[k] = response.headers[k];
@@ -1351,39 +1351,39 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
             const _responseText = response.data;
             let result200: any = null;
             let resultData200  = _responseText;
-            result200 = resultData200;
+            result200 = resultData200
             return result200;
         } else {
             const _responseText = response.data;
             let resultdefault: any = null;
             let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+            resultdefault = resultDatadefault
+            return throwException("Bad Request", status, _responseText, _headers, resultdefault);
         }
     }
 
     /**
      * Create a post
-     * @param body (optional)
+     * @param body (optional) 
      * @return OK
      */
     createPost(body?: Post | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void, onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Post> {
-        let url_ = this.baseUrl + '/post/create';
-        url_ = url_.replace(/[?&]$/, '');
+        let url_ = this.baseUrl + "/post/create";
+        url_ = url_.replace(/[?&]$/, "");
 
         const content_ = JSON.stringify(body);
 
         let options_ = <AxiosRequestConfig>{
             data: content_,
-            method: 'POST',
+            method: "POST",
             url: url_,
             headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
+                "Content-Type": "application/json",
+                "Accept": "application/json"
             },
             cancelToken,
             onDownloadProgress,
-            onUploadProgress,
+            onUploadProgress
         };
 
         return this.transformOptions(options_).then(transformedOptions_ => {
@@ -1402,7 +1402,7 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
     protected processCreatePost(response: AxiosResponse): Promise<Post> {
         const status = response.status;
         let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
+        if (response.headers && typeof response.headers === "object") {
             for (let k in response.headers) {
                 if (response.headers.hasOwnProperty(k)) {
                     _headers[k] = response.headers[k];
@@ -1413,42 +1413,42 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
             const _responseText = response.data;
             let result200: any = null;
             let resultData200  = _responseText;
-            result200 = resultData200;
+            result200 = resultData200
             return result200;
         } else {
             const _responseText = response.data;
             let resultdefault: any = null;
             let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+            resultdefault = resultDatadefault
+            return throwException("Bad Request", status, _responseText, _headers, resultdefault);
         }
     }
 
     /**
      * Create a comment
-     * @param body (optional)
+     * @param body (optional) 
      * @return OK
      */
     createComment(postId: string, body?: Comment | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void, onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Comment> {
-        let url_ = this.baseUrl + '/post/{postId}/comment/create';
+        let url_ = this.baseUrl + "/post/{postId}/comment/create";
         if (postId === undefined || postId === null)
-            {throw new Error("The parameter 'postId' must be defined.");}
-        url_ = url_.replace('{postId}', encodeURIComponent('' + postId));
-        url_ = url_.replace(/[?&]$/, '');
+            throw new Error("The parameter 'postId' must be defined.");
+        url_ = url_.replace("{postId}", encodeURIComponent("" + postId));
+        url_ = url_.replace(/[?&]$/, "");
 
         const content_ = JSON.stringify(body);
 
         let options_ = <AxiosRequestConfig>{
             data: content_,
-            method: 'POST',
+            method: "POST",
             url: url_,
             headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
+                "Content-Type": "application/json",
+                "Accept": "application/json"
             },
             cancelToken,
             onDownloadProgress,
-            onUploadProgress,
+            onUploadProgress
         };
 
         return this.transformOptions(options_).then(transformedOptions_ => {
@@ -1467,7 +1467,7 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
     protected processCreateComment(response: AxiosResponse): Promise<Comment> {
         const status = response.status;
         let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
+        if (response.headers && typeof response.headers === "object") {
             for (let k in response.headers) {
                 if (response.headers.hasOwnProperty(k)) {
                     _headers[k] = response.headers[k];
@@ -1478,45 +1478,45 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
             const _responseText = response.data;
             let result200: any = null;
             let resultData200  = _responseText;
-            result200 = resultData200;
+            result200 = resultData200
             return result200;
         } else {
             const _responseText = response.data;
             let resultdefault: any = null;
             let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+            resultdefault = resultDatadefault
+            return throwException("Bad Request", status, _responseText, _headers, resultdefault);
         }
     }
 
     /**
      * Create a reply
-     * @param body (optional)
+     * @param body (optional) 
      * @return OK
      */
     createReply(postId: string, commentId: string, body?: Comment | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void, onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Comment> {
-        let url_ = this.baseUrl + '/post/{postId}/comment/{commentId}/reply/create';
+        let url_ = this.baseUrl + "/post/{postId}/comment/{commentId}/reply/create";
         if (postId === undefined || postId === null)
-            {throw new Error("The parameter 'postId' must be defined.");}
-        url_ = url_.replace('{postId}', encodeURIComponent('' + postId));
+            throw new Error("The parameter 'postId' must be defined.");
+        url_ = url_.replace("{postId}", encodeURIComponent("" + postId));
         if (commentId === undefined || commentId === null)
-            {throw new Error("The parameter 'commentId' must be defined.");}
-        url_ = url_.replace('{commentId}', encodeURIComponent('' + commentId));
-        url_ = url_.replace(/[?&]$/, '');
+            throw new Error("The parameter 'commentId' must be defined.");
+        url_ = url_.replace("{commentId}", encodeURIComponent("" + commentId));
+        url_ = url_.replace(/[?&]$/, "");
 
         const content_ = JSON.stringify(body);
 
         let options_ = <AxiosRequestConfig>{
             data: content_,
-            method: 'POST',
+            method: "POST",
             url: url_,
             headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
+                "Content-Type": "application/json",
+                "Accept": "application/json"
             },
             cancelToken,
             onDownloadProgress,
-            onUploadProgress,
+            onUploadProgress
         };
 
         return this.transformOptions(options_).then(transformedOptions_ => {
@@ -1535,7 +1535,7 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
     protected processCreateReply(response: AxiosResponse): Promise<Comment> {
         const status = response.status;
         let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
+        if (response.headers && typeof response.headers === "object") {
             for (let k in response.headers) {
                 if (response.headers.hasOwnProperty(k)) {
                     _headers[k] = response.headers[k];
@@ -1546,14 +1546,14 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
             const _responseText = response.data;
             let result200: any = null;
             let resultData200  = _responseText;
-            result200 = resultData200;
+            result200 = resultData200
             return result200;
         } else {
             const _responseText = response.data;
             let resultdefault: any = null;
             let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+            resultdefault = resultDatadefault
+            return throwException("Bad Request", status, _responseText, _headers, resultdefault);
         }
     }
 
@@ -1562,20 +1562,20 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
      * @return OK
      */
     getRepliesofComment(postId: string, commentId: string, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Comment[]> {
-        let url_ = this.baseUrl + '/post/{postId}/comment/{commentId}/replies';
+        let url_ = this.baseUrl + "/post/{postId}/comment/{commentId}/replies";
         if (postId === undefined || postId === null)
-            {throw new Error("The parameter 'postId' must be defined.");}
-        url_ = url_.replace('{postId}', encodeURIComponent('' + postId));
+            throw new Error("The parameter 'postId' must be defined.");
+        url_ = url_.replace("{postId}", encodeURIComponent("" + postId));
         if (commentId === undefined || commentId === null)
-            {throw new Error("The parameter 'commentId' must be defined.");}
-        url_ = url_.replace('{commentId}', encodeURIComponent('' + commentId));
-        url_ = url_.replace(/[?&]$/, '');
+            throw new Error("The parameter 'commentId' must be defined.");
+        url_ = url_.replace("{commentId}", encodeURIComponent("" + commentId));
+        url_ = url_.replace(/[?&]$/, "");
 
         let options_ = <AxiosRequestConfig>{
-            method: 'GET',
+            method: "GET",
             url: url_,
             headers: {
-                'Accept': 'application/json',
+                "Accept": "application/json"
             },
             cancelToken,
             onDownloadProgress,
@@ -1597,7 +1597,7 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
     protected processGetRepliesofComment(response: AxiosResponse): Promise<Comment[]> {
         const status = response.status;
         let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
+        if (response.headers && typeof response.headers === "object") {
             for (let k in response.headers) {
                 if (response.headers.hasOwnProperty(k)) {
                     _headers[k] = response.headers[k];
@@ -1608,35 +1608,35 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
             const _responseText = response.data;
             let result200: any = null;
             let resultData200  = _responseText;
-            result200 = resultData200;
+            result200 = resultData200
             return result200;
         } else {
             const _responseText = response.data;
             let resultdefault: any = null;
             let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+            resultdefault = resultDatadefault
+            return throwException("Bad Request", status, _responseText, _headers, resultdefault);
         }
     }
 
     /**
      * Get feed of an user
-     * @param feedSortedBy (optional)
+     * @param feedSortedBy (optional) 
      * @return OK
      */
     getFeed(feedSortedBy?: FeedSortedBy | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Post[]> {
-        let url_ = this.baseUrl + '/post/feed?';
+        let url_ = this.baseUrl + "/post/feed?";
         if (feedSortedBy === null)
-            {throw new Error("The parameter 'feedSortedBy' cannot be null.");}
+            throw new Error("The parameter 'feedSortedBy' cannot be null.");
         else if (feedSortedBy !== undefined)
-            {url_ += 'feedSortedBy=' + encodeURIComponent('' + feedSortedBy) + '&';}
-        url_ = url_.replace(/[?&]$/, '');
+            url_ += "feedSortedBy=" + encodeURIComponent("" + feedSortedBy) + "&";
+        url_ = url_.replace(/[?&]$/, "");
 
         let options_ = <AxiosRequestConfig>{
-            method: 'GET',
+            method: "GET",
             url: url_,
             headers: {
-                'Accept': 'application/json',
+                "Accept": "application/json"
             },
             cancelToken,
             onDownloadProgress,
@@ -1658,7 +1658,7 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
     protected processGetFeed(response: AxiosResponse): Promise<Post[]> {
         const status = response.status;
         let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
+        if (response.headers && typeof response.headers === "object") {
             for (let k in response.headers) {
                 if (response.headers.hasOwnProperty(k)) {
                     _headers[k] = response.headers[k];
@@ -1669,38 +1669,38 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
             const _responseText = response.data;
             let result200: any = null;
             let resultData200  = _responseText;
-            result200 = resultData200;
+            result200 = resultData200
             return result200;
         } else {
             const _responseText = response.data;
             let resultdefault: any = null;
             let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+            resultdefault = resultDatadefault
+            return throwException("Bad Request", status, _responseText, _headers, resultdefault);
         }
     }
 
     /**
      * Get post by Id
-     * @param commentsSortedBy (optional)
+     * @param commentsSortedBy (optional) 
      * @return OK
      */
     getPostById(postId: string, commentsSortedBy?: CommentsSortedBy | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Post> {
-        let url_ = this.baseUrl + '/post/{postId}?';
+        let url_ = this.baseUrl + "/post/{postId}?";
         if (postId === undefined || postId === null)
-            {throw new Error("The parameter 'postId' must be defined.");}
-        url_ = url_.replace('{postId}', encodeURIComponent('' + postId));
+            throw new Error("The parameter 'postId' must be defined.");
+        url_ = url_.replace("{postId}", encodeURIComponent("" + postId));
         if (commentsSortedBy === null)
-            {throw new Error("The parameter 'commentsSortedBy' cannot be null.");}
+            throw new Error("The parameter 'commentsSortedBy' cannot be null.");
         else if (commentsSortedBy !== undefined)
-            {url_ += 'commentsSortedBy=' + encodeURIComponent('' + commentsSortedBy) + '&';}
-        url_ = url_.replace(/[?&]$/, '');
+            url_ += "commentsSortedBy=" + encodeURIComponent("" + commentsSortedBy) + "&";
+        url_ = url_.replace(/[?&]$/, "");
 
         let options_ = <AxiosRequestConfig>{
-            method: 'GET',
+            method: "GET",
             url: url_,
             headers: {
-                'Accept': 'application/json',
+                "Accept": "application/json"
             },
             cancelToken,
             onDownloadProgress,
@@ -1722,7 +1722,7 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
     protected processGetPostById(response: AxiosResponse): Promise<Post> {
         const status = response.status;
         let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
+        if (response.headers && typeof response.headers === "object") {
             for (let k in response.headers) {
                 if (response.headers.hasOwnProperty(k)) {
                     _headers[k] = response.headers[k];
@@ -1733,14 +1733,14 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
             const _responseText = response.data;
             let result200: any = null;
             let resultData200  = _responseText;
-            result200 = resultData200;
+            result200 = resultData200
             return result200;
         } else {
             const _responseText = response.data;
             let resultdefault: any = null;
             let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+            resultdefault = resultDatadefault
+            return throwException("Bad Request", status, _responseText, _headers, resultdefault);
         }
     }
 
@@ -1749,17 +1749,17 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
      * @return OK
      */
     getCommunityInfo(communityId: string, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<CommunityInfo> {
-        let url_ = this.baseUrl + '/community/{communityId}/information';
+        let url_ = this.baseUrl + "/community/{communityId}/information";
         if (communityId === undefined || communityId === null)
-            {throw new Error("The parameter 'communityId' must be defined.");}
-        url_ = url_.replace('{communityId}', encodeURIComponent('' + communityId));
-        url_ = url_.replace(/[?&]$/, '');
+            throw new Error("The parameter 'communityId' must be defined.");
+        url_ = url_.replace("{communityId}", encodeURIComponent("" + communityId));
+        url_ = url_.replace(/[?&]$/, "");
 
         let options_ = <AxiosRequestConfig>{
-            method: 'GET',
+            method: "GET",
             url: url_,
             headers: {
-                'Accept': 'application/json',
+                "Accept": "application/json"
             },
             cancelToken,
             onDownloadProgress,
@@ -1781,7 +1781,7 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
     protected processGetCommunityInfo(response: AxiosResponse): Promise<CommunityInfo> {
         const status = response.status;
         let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
+        if (response.headers && typeof response.headers === "object") {
             for (let k in response.headers) {
                 if (response.headers.hasOwnProperty(k)) {
                     _headers[k] = response.headers[k];
@@ -1792,38 +1792,38 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
             const _responseText = response.data;
             let result200: any = null;
             let resultData200  = _responseText;
-            result200 = resultData200;
+            result200 = resultData200
             return result200;
         } else {
             const _responseText = response.data;
             let resultdefault: any = null;
             let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+            resultdefault = resultDatadefault
+            return throwException("Bad Request", status, _responseText, _headers, resultdefault);
         }
     }
 
     /**
      * Get feed of a community
-     * @param feedSortedBy (optional)
+     * @param feedSortedBy (optional) 
      * @return OK
      */
     getCommunityFeed(communityId: string, feedSortedBy?: FeedSortedBy | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Post[]> {
-        let url_ = this.baseUrl + '/community/{communityId}/feed?';
+        let url_ = this.baseUrl + "/community/{communityId}/feed?";
         if (communityId === undefined || communityId === null)
-            {throw new Error("The parameter 'communityId' must be defined.");}
-        url_ = url_.replace('{communityId}', encodeURIComponent('' + communityId));
+            throw new Error("The parameter 'communityId' must be defined.");
+        url_ = url_.replace("{communityId}", encodeURIComponent("" + communityId));
         if (feedSortedBy === null)
-            {throw new Error("The parameter 'feedSortedBy' cannot be null.");}
+            throw new Error("The parameter 'feedSortedBy' cannot be null.");
         else if (feedSortedBy !== undefined)
-            {url_ += 'feedSortedBy=' + encodeURIComponent('' + feedSortedBy) + '&';}
-        url_ = url_.replace(/[?&]$/, '');
+            url_ += "feedSortedBy=" + encodeURIComponent("" + feedSortedBy) + "&";
+        url_ = url_.replace(/[?&]$/, "");
 
         let options_ = <AxiosRequestConfig>{
-            method: 'GET',
+            method: "GET",
             url: url_,
             headers: {
-                'Accept': 'application/json',
+                "Accept": "application/json"
             },
             cancelToken,
             onDownloadProgress,
@@ -1845,7 +1845,7 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
     protected processGetCommunityFeed(response: AxiosResponse): Promise<Post[]> {
         const status = response.status;
         let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
+        if (response.headers && typeof response.headers === "object") {
             for (let k in response.headers) {
                 if (response.headers.hasOwnProperty(k)) {
                     _headers[k] = response.headers[k];
@@ -1856,14 +1856,14 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
             const _responseText = response.data;
             let result200: any = null;
             let resultData200  = _responseText;
-            result200 = resultData200;
+            result200 = resultData200
             return result200;
         } else {
             const _responseText = response.data;
             let resultdefault: any = null;
             let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+            resultdefault = resultDatadefault
+            return throwException("Bad Request", status, _responseText, _headers, resultdefault);
         }
     }
 
@@ -1872,17 +1872,17 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
      * @return OK
      */
     getCommunityAbout(communityId: string, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<CommunityAbout> {
-        let url_ = this.baseUrl + '/community/{communityId}/about';
+        let url_ = this.baseUrl + "/community/{communityId}/about";
         if (communityId === undefined || communityId === null)
-            {throw new Error("The parameter 'communityId' must be defined.");}
-        url_ = url_.replace('{communityId}', encodeURIComponent('' + communityId));
-        url_ = url_.replace(/[?&]$/, '');
+            throw new Error("The parameter 'communityId' must be defined.");
+        url_ = url_.replace("{communityId}", encodeURIComponent("" + communityId));
+        url_ = url_.replace(/[?&]$/, "");
 
         let options_ = <AxiosRequestConfig>{
-            method: 'GET',
+            method: "GET",
             url: url_,
             headers: {
-                'Accept': 'application/json',
+                "Accept": "application/json"
             },
             cancelToken,
             onDownloadProgress,
@@ -1904,7 +1904,7 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
     protected processGetCommunityAbout(response: AxiosResponse): Promise<CommunityAbout> {
         const status = response.status;
         let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
+        if (response.headers && typeof response.headers === "object") {
             for (let k in response.headers) {
                 if (response.headers.hasOwnProperty(k)) {
                     _headers[k] = response.headers[k];
@@ -1915,38 +1915,38 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
             const _responseText = response.data;
             let result200: any = null;
             let resultData200  = _responseText;
-            result200 = resultData200;
+            result200 = resultData200
             return result200;
         } else {
             const _responseText = response.data;
             let resultdefault: any = null;
             let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+            resultdefault = resultDatadefault
+            return throwException("Bad Request", status, _responseText, _headers, resultdefault);
         }
     }
 
     /**
      * Get community posts by searching
-     * @param searchKeyword (optional)
+     * @param searchKeyword (optional) 
      * @return OK
      */
     searchCommunityPosts(communityId: string, searchKeyword?: string | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Post[]> {
-        let url_ = this.baseUrl + '/community/{communityId}/postSearch?';
+        let url_ = this.baseUrl + "/community/{communityId}/postSearch?";
         if (communityId === undefined || communityId === null)
-            {throw new Error("The parameter 'communityId' must be defined.");}
-        url_ = url_.replace('{communityId}', encodeURIComponent('' + communityId));
+            throw new Error("The parameter 'communityId' must be defined.");
+        url_ = url_.replace("{communityId}", encodeURIComponent("" + communityId));
         if (searchKeyword === null)
-            {throw new Error("The parameter 'searchKeyword' cannot be null.");}
+            throw new Error("The parameter 'searchKeyword' cannot be null.");
         else if (searchKeyword !== undefined)
-            {url_ += 'searchKeyword=' + encodeURIComponent('' + searchKeyword) + '&';}
-        url_ = url_.replace(/[?&]$/, '');
+            url_ += "searchKeyword=" + encodeURIComponent("" + searchKeyword) + "&";
+        url_ = url_.replace(/[?&]$/, "");
 
         let options_ = <AxiosRequestConfig>{
-            method: 'GET',
+            method: "GET",
             url: url_,
             headers: {
-                'Accept': 'application/json',
+                "Accept": "application/json"
             },
             cancelToken,
             onDownloadProgress,
@@ -1968,7 +1968,7 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
     protected processSearchCommunityPosts(response: AxiosResponse): Promise<Post[]> {
         const status = response.status;
         let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
+        if (response.headers && typeof response.headers === "object") {
             for (let k in response.headers) {
                 if (response.headers.hasOwnProperty(k)) {
                     _headers[k] = response.headers[k];
@@ -1979,39 +1979,39 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
             const _responseText = response.data;
             let result200: any = null;
             let resultData200  = _responseText;
-            result200 = resultData200;
+            result200 = resultData200
             return result200;
         } else {
             const _responseText = response.data;
             let resultdefault: any = null;
             let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+            resultdefault = resultDatadefault
+            return throwException("Bad Request", status, _responseText, _headers, resultdefault);
         }
     }
 
     /**
      * Create a Test
-     * @param body (optional)
+     * @param body (optional) 
      * @return OK
      */
     createTest(body?: any | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void, onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Test> {
-        let url_ = this.baseUrl + '/test/create';
-        url_ = url_.replace(/[?&]$/, '');
+        let url_ = this.baseUrl + "/test/create";
+        url_ = url_.replace(/[?&]$/, "");
 
         const content_ = JSON.stringify(body);
 
         let options_ = <AxiosRequestConfig>{
             data: content_,
-            method: 'POST',
+            method: "POST",
             url: url_,
             headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
+                "Content-Type": "application/json",
+                "Accept": "application/json"
             },
             cancelToken,
             onDownloadProgress,
-            onUploadProgress,
+            onUploadProgress
         };
 
         return this.transformOptions(options_).then(transformedOptions_ => {
@@ -2030,7 +2030,7 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
     protected processCreateTest(response: AxiosResponse): Promise<Test> {
         const status = response.status;
         let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
+        if (response.headers && typeof response.headers === "object") {
             for (let k in response.headers) {
                 if (response.headers.hasOwnProperty(k)) {
                     _headers[k] = response.headers[k];
@@ -2041,14 +2041,14 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
             const _responseText = response.data;
             let result200: any = null;
             let resultData200  = _responseText;
-            result200 = resultData200;
+            result200 = resultData200
             return result200;
         } else {
             const _responseText = response.data;
             let resultdefault: any = null;
             let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+            resultdefault = resultDatadefault
+            return throwException("Bad Request", status, _responseText, _headers, resultdefault);
         }
     }
 
@@ -2057,17 +2057,17 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
      * @return OK
      */
     getTestById(testId: string, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Test> {
-        let url_ = this.baseUrl + '/test/{testId}';
+        let url_ = this.baseUrl + "/test/{testId}";
         if (testId === undefined || testId === null)
-            {throw new Error("The parameter 'testId' must be defined.");}
-        url_ = url_.replace('{testId}', encodeURIComponent('' + testId));
-        url_ = url_.replace(/[?&]$/, '');
+            throw new Error("The parameter 'testId' must be defined.");
+        url_ = url_.replace("{testId}", encodeURIComponent("" + testId));
+        url_ = url_.replace(/[?&]$/, "");
 
         let options_ = <AxiosRequestConfig>{
-            method: 'GET',
+            method: "GET",
             url: url_,
             headers: {
-                'Accept': 'application/json',
+                "Accept": "application/json"
             },
             cancelToken,
             onDownloadProgress,
@@ -2089,7 +2089,7 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
     protected processGetTestById(response: AxiosResponse): Promise<Test> {
         const status = response.status;
         let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
+        if (response.headers && typeof response.headers === "object") {
             for (let k in response.headers) {
                 if (response.headers.hasOwnProperty(k)) {
                     _headers[k] = response.headers[k];
@@ -2100,14 +2100,14 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
             const _responseText = response.data;
             let result200: any = null;
             let resultData200  = _responseText;
-            result200 = resultData200;
+            result200 = resultData200
             return result200;
         } else {
             const _responseText = response.data;
             let resultdefault: any = null;
             let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+            resultdefault = resultDatadefault
+            return throwException("Bad Request", status, _responseText, _headers, resultdefault);
         }
     }
 
@@ -2116,14 +2116,14 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
      * @return OK
      */
     getTestRandomly(cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Test> {
-        let url_ = this.baseUrl + '/test/random';
-        url_ = url_.replace(/[?&]$/, '');
+        let url_ = this.baseUrl + "/test/random";
+        url_ = url_.replace(/[?&]$/, "");
 
         let options_ = <AxiosRequestConfig>{
-            method: 'GET',
+            method: "GET",
             url: url_,
             headers: {
-                'Accept': 'application/json',
+                "Accept": "application/json"
             },
             cancelToken,
             onDownloadProgress,
@@ -2145,7 +2145,7 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
     protected processGetTestRandomly(response: AxiosResponse): Promise<Test> {
         const status = response.status;
         let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
+        if (response.headers && typeof response.headers === "object") {
             for (let k in response.headers) {
                 if (response.headers.hasOwnProperty(k)) {
                     _headers[k] = response.headers[k];
@@ -2156,42 +2156,42 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
             const _responseText = response.data;
             let result200: any = null;
             let resultData200  = _responseText;
-            result200 = resultData200;
+            result200 = resultData200
             return result200;
         } else {
             const _responseText = response.data;
             let resultdefault: any = null;
             let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+            resultdefault = resultDatadefault
+            return throwException("Bad Request", status, _responseText, _headers, resultdefault);
         }
     }
 
     /**
      * Submit a test
-     * @param body (optional)
+     * @param body (optional) 
      * @return OK
      */
     submitTest(testId: string, body?: any | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void, onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<SubmitTestResponse> {
-        let url_ = this.baseUrl + '/test/{testId}/submit';
+        let url_ = this.baseUrl + "/test/{testId}/submit";
         if (testId === undefined || testId === null)
-            {throw new Error("The parameter 'testId' must be defined.");}
-        url_ = url_.replace('{testId}', encodeURIComponent('' + testId));
-        url_ = url_.replace(/[?&]$/, '');
+            throw new Error("The parameter 'testId' must be defined.");
+        url_ = url_.replace("{testId}", encodeURIComponent("" + testId));
+        url_ = url_.replace(/[?&]$/, "");
 
         const content_ = JSON.stringify(body);
 
         let options_ = <AxiosRequestConfig>{
             data: content_,
-            method: 'POST',
+            method: "POST",
             url: url_,
             headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
+                "Content-Type": "application/json",
+                "Accept": "application/json"
             },
             cancelToken,
             onDownloadProgress,
-            onUploadProgress,
+            onUploadProgress
         };
 
         return this.transformOptions(options_).then(transformedOptions_ => {
@@ -2210,7 +2210,7 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
     protected processSubmitTest(response: AxiosResponse): Promise<SubmitTestResponse> {
         const status = response.status;
         let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
+        if (response.headers && typeof response.headers === "object") {
             for (let k in response.headers) {
                 if (response.headers.hasOwnProperty(k)) {
                     _headers[k] = response.headers[k];
@@ -2221,14 +2221,14 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
             const _responseText = response.data;
             let result200: any = null;
             let resultData200  = _responseText;
-            result200 = resultData200;
+            result200 = resultData200
             return result200;
         } else {
             const _responseText = response.data;
             let resultdefault: any = null;
             let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+            resultdefault = resultDatadefault
+            return throwException("Bad Request", status, _responseText, _headers, resultdefault);
         }
     }
 
@@ -2237,14 +2237,14 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
      * @return OK
      */
     getCommunitiesByScore(cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<CommunityInfo> {
-        let url_ = this.baseUrl + '/test/advice/communities/suggested';
-        url_ = url_.replace(/[?&]$/, '');
+        let url_ = this.baseUrl + "/test/advice/communities/suggested";
+        url_ = url_.replace(/[?&]$/, "");
 
         let options_ = <AxiosRequestConfig>{
-            method: 'GET',
+            method: "GET",
             url: url_,
             headers: {
-                'Accept': 'application/json',
+                "Accept": "application/json"
             },
             cancelToken,
             onDownloadProgress,
@@ -2266,7 +2266,7 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
     protected processGetCommunitiesByScore(response: AxiosResponse): Promise<CommunityInfo> {
         const status = response.status;
         let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
+        if (response.headers && typeof response.headers === "object") {
             for (let k in response.headers) {
                 if (response.headers.hasOwnProperty(k)) {
                     _headers[k] = response.headers[k];
@@ -2277,39 +2277,39 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
             const _responseText = response.data;
             let result200: any = null;
             let resultData200  = _responseText;
-            result200 = resultData200;
+            result200 = resultData200
             return result200;
         } else {
             const _responseText = response.data;
             let resultdefault: any = null;
             let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+            resultdefault = resultDatadefault
+            return throwException("Bad Request", status, _responseText, _headers, resultdefault);
         }
     }
 
     /**
      * Create an advice
-     * @param body (optional)
+     * @param body (optional) 
      * @return OK
      */
     createAdvice(body?: any | undefined, cancelToken?: CancelToken | undefined, onDownloadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void, onUploadProgress?: (progressEvent: ProgressEvent<EventTarget>) => void): Promise<Advice> {
-        let url_ = this.baseUrl + '/test/advice/create';
-        url_ = url_.replace(/[?&]$/, '');
+        let url_ = this.baseUrl + "/test/advice/create";
+        url_ = url_.replace(/[?&]$/, "");
 
         const content_ = JSON.stringify(body);
 
         let options_ = <AxiosRequestConfig>{
             data: content_,
-            method: 'POST',
+            method: "POST",
             url: url_,
             headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
+                "Content-Type": "application/json",
+                "Accept": "application/json"
             },
             cancelToken,
             onDownloadProgress,
-            onUploadProgress,
+            onUploadProgress
         };
 
         return this.transformOptions(options_).then(transformedOptions_ => {
@@ -2328,7 +2328,7 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
     protected processCreateAdvice(response: AxiosResponse): Promise<Advice> {
         const status = response.status;
         let _headers: any = {};
-        if (response.headers && typeof response.headers === 'object') {
+        if (response.headers && typeof response.headers === "object") {
             for (let k in response.headers) {
                 if (response.headers.hasOwnProperty(k)) {
                     _headers[k] = response.headers[k];
@@ -2339,14 +2339,14 @@ export class KAApiClent extends AuthorizedApiBase implements IKAApiClent {
             const _responseText = response.data;
             let result200: any = null;
             let resultData200  = _responseText;
-            result200 = resultData200;
+            result200 = resultData200
             return result200;
         } else {
             const _responseText = response.data;
             let resultdefault: any = null;
             let resultDatadefault  = _responseText;
-            resultdefault = resultDatadefault;
-            return throwException('Bad Request', status, _responseText, _headers, resultdefault);
+            resultdefault = resultDatadefault
+            return throwException("Bad Request", status, _responseText, _headers, resultdefault);
         }
     }
 }
@@ -2525,15 +2525,15 @@ export interface ProfessionalUserInfo {
     qualifications?: string[];
 }
 
-export type ProfessionalSortedBy = 'rank' | 'location';
+export type ProfessionalSortedBy = "rank" | "location";
 
-export type SaveOptions = 'save' | 'unsave';
+export type SaveOptions = "save" | "unsave";
 
-export type LikeOptions = 'like' | 'unlike';
+export type LikeOptions = "like" | "unlike";
 
-export type FeedSortedBy = 'time' | 'votes' | 'professional' | 'commentCount';
+export type FeedSortedBy = "time" | "votes" | "professional" | "commentCount";
 
-export type CommentsSortedBy = 'time' | 'votes' | 'professional';
+export type CommentsSortedBy = "time" | "votes" | "professional";
 
 export interface Community {
     _id?: string;
@@ -2559,7 +2559,7 @@ export interface ParentPost {
     title?: string;
 }
 
-export type CreateAdviceDisease = 'anxiety' | 'depression' | 'stress';
+export type CreateAdviceDisease = "anxiety" | "depression" | "stress";
 
 export interface Range {
     min?: number;
@@ -2592,9 +2592,9 @@ export class KAApiException extends Error {
 
 function throwException(message: string, status: number, response: string, headers: { [key: string]: any; }, result?: any): any {
     if (result !== null && result !== undefined)
-        {throw result;}
+        throw result;
     else
-        {throw new KAApiException(message, status, response, headers, null);}
+        throw new KAApiException(message, status, response, headers, null);
 }
 
 function isAxiosError(obj: any | undefined): obj is AxiosError {

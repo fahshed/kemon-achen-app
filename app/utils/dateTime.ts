@@ -48,16 +48,16 @@ export const timeAgo = (time) => {
   const year = Math.floor(months / 30);
 
   if (year > 0) {
-    return year + ' y';
+    return year + 'y';
   }
   if (months > 0) {
-    return months + ' m';
+    return months + 'm';
   }
   if (days > 0) {
-    return days + ' d';
+    return days + 'd';
   }
   if (hours > 0) {
-    return hours + ' h';
+    return hours + 'h';
   }
-  return minutes + ' min';
+  return minutes + 'min';
 };

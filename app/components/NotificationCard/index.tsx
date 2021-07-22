@@ -4,9 +4,9 @@ import { Image, StyleSheet, View } from 'react-native';
 // import { Entypo } from '@expo/vector-icons';
 
 import { theme } from '../../config';
-import { Body2 } from '../../styles';
+import { Body2, Body2Bold } from '../../styles';
 
-function NotificationCard({ notificationTitle, time }) {
+function NotificationCard({ notificationTitle, content, time }) {
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
@@ -16,9 +16,8 @@ function NotificationCard({ notificationTitle, time }) {
         />
       </View>
       <View style={styles.detailsContainer}>
-        <Body2>{notificationTitle}</Body2>
-
-        <Body2>{time}</Body2>
+        <Body2Bold>{notificationTitle + ' • ' + time}</Body2Bold>
+        <Body2>{content}</Body2>
       </View>
     </View>
   );

@@ -17,4 +17,5 @@ export default Object.freeze({
   QOUTE: 'Qoute',
   SAVED_POSTS: 'Saved Posts',
   COMMUNITY_SEARCH_DETAILS: 'CommunitySearchResult',
+  LATEST_ADVICE: 'Latest Advice',
 });

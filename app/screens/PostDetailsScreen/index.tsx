@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FlatList } from 'react-native';
 
 import {
@@ -11,9 +11,14 @@ import {
 
 import { theme } from '../../config';
 import { useAppDispatch, useAppSelector } from '../../store';
-import { fetchPostDetails, likePost } from '../../store/reducers/Posts';
+import {
+  createComment,
+  fetchPostDetails,
+  likePost,
+} from '../../store/reducers/Posts';
 
 function PostDetailsScreen({ route }) {
+  const [commentText, setCommentText] = useState('');
   const dispatch = useAppDispatch();
   const { entities } = useAppSelector((state) => state.Post);
 
@@ -34,6 +39,10 @@ function PostDetailsScreen({ route }) {
         likeOption: !post.isLikedByCurrentUser ? 'like' : 'unlike',
       }),
     );
+  };
+
+  const handleCommentCreate = async (postId, comment) => {
+    dispatch(createComment({ postId, comment }));
   };
 
   const renderItem = ({ item }) => (
@@ -79,7 +88,10 @@ function PostDetailsScreen({ route }) {
         renderItem={renderItem}
       />
 
-      <AddCommentBottomBar onPress={null} />
+      <AddCommentBottomBar
+        onChangeText={(text) => setCommentText(text)}
+        onPress={() => handleCommentCreate(postID, commentText)}
+      />
     </>
   );
 }

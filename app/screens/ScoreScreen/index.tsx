@@ -61,7 +61,7 @@ export default function ScoreScreen({ route }) {
       <Container p="8px" mt="24px">
         <Body2 align="center" mb="24px">
           Your Depression, Anxiety, Stress levels vs normal levels. The range of
-          0-7 can be considered to be a sign of good mental health.
+          0-35 can be considered to be a sign of good mental health.
         </Body2>
         <AppButton
           title="Get Our Advice"

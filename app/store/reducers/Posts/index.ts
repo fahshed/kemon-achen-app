@@ -73,15 +73,33 @@ export const createPost = createAsyncThunk(
     thunkApi,
   ) => {
     try {
-      const response = Api.createPost({
+      const response = await Api.createPost({
         title,
         content,
         asPseudo,
         community: { name },
       });
-      return response;
+      const normalized = normalize(response, [postEntity]);
+      return normalized;
     } catch (e) {
       console.log('post/createPost', e);
+      return thunkApi.rejectWithValue(e);
+    }
+  },
+);
+
+export const createComment = createAsyncThunk(
+  'post/createComment',
+  async (
+    { postId, comment }: { postId: string; comment: string },
+    thunkApi,
+  ) => {
+    try {
+      const response = await Api.createComment(postId, { content: comment });
+      //console.log('create comment ', response);
+      return { postId, comment: response };
+    } catch (e) {
+      console.log('post/createComment', e);
       return thunkApi.rejectWithValue(e);
     }
   },
@@ -118,7 +136,13 @@ const PostSlice = createSlice({
       state.entities[payload.postId].comments = payload.comments;
     });
     builder.addCase(createPost.fulfilled, (state, { payload }) => {
-      console.log(payload);
+      //console.log('newly created post', payload);
+      state.entities = { ...payload.entities.post, ...state.entities };
+      //state.ids = { ...payload.result, ...state.ids };
+      state.ids.push(payload.result[0]);
+    });
+    builder.addCase(createComment.fulfilled, (state, { payload }) => {
+      state.entities[payload.postId].comments.unshift(payload.comment); //unshift appends at the beginning of the array
     });
   },
 });

@@ -85,7 +85,7 @@ function App() {
       <Stack.Screen
         name="CommunityDetails"
         component={CommunityScreen}
-        options={{ headerTitle: '' }}
+        options={{ headerShown: false }}
       />
       <Stack.Screen
         name="ProfessionalProfile"

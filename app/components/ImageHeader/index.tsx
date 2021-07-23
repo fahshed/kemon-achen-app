@@ -1,12 +1,16 @@
 import React from 'react';
-import { Image, StyleSheet, View } from 'react-native';
+import { Image, ImageBackground, StyleSheet, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { theme } from '../../config';
 
-function ImageHeader() {
+function ImageHeader({ communityId }) {
   return (
     <View style={styles.container}>
-      <View style={styles.backgroundBanner}>
+      <ImageBackground
+        source={{ uri: `https://picsum.photos/seed/${communityId}/500/200` }}
+        style={styles.backgroundBanner}
+      >
+        {/* <View style={styles.backgroundBanner}> */}
         <View style={styles.imageContainer}>
           <TouchableOpacity>
             <Image
@@ -15,7 +19,8 @@ function ImageHeader() {
             />
           </TouchableOpacity>
         </View>
-      </View>
+        {/* </View> */}
+      </ImageBackground>
     </View>
   );
 }
@@ -24,7 +29,6 @@ const styles = StyleSheet.create({
   backgroundBanner: {
     width: '100%',
     height: 72,
-    backgroundColor: theme.primary,
     alignItems: 'center',
   },
   container: {

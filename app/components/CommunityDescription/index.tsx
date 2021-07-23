@@ -1,33 +1,31 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { theme } from '../../config';
 import { Caption, H6Bold, Body2 } from '../../styles';
 
 import TagComponent from '../../components/Tag';
 import JoinBadge from '../JoinBadge';
-import Api from '../../api';
 
 function CommunityDescription({
-  communityId,
   communityName,
   members,
   description,
   badges,
   hasJoined,
+  onJoin,
 }) {
-  const handleJoin = async () => {
-    try {
-      await Api.joinCommunity(communityId);
-    } catch (error) {
-      console.log('Join error', error);
-    }
-  };
   return (
     <View style={styles.container}>
-      <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignContent: 'center',
+          marginBottom: 8,
+        }}
+      >
         <H6Bold>{communityName}</H6Bold>
-        <JoinBadge hasJoined={hasJoined} handleJoining={handleJoin} />
+        <JoinBadge hasJoined={hasJoined} handleJoining={onJoin} />
       </View>
       <Caption mb="8px">{members}</Caption>
       <Body2 mb="8px">{description}</Body2>
@@ -42,10 +40,10 @@ function CommunityDescription({
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: theme.white,
     flexDirection: 'column',
     justifyContent: 'flex-start',
-    padding: 16,
+    padding: 8,
+    paddingBottom: 0,
   },
   detailsContainer: {
     flexDirection: 'column',
@@ -55,7 +53,6 @@ const styles = StyleSheet.create({
   infoContainer: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
-    marginBottom: 4,
   },
 });
 

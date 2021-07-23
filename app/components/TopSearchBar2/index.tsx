@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Image, TouchableHighlight } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
@@ -8,7 +8,7 @@ import { theme } from '../../config';
 import CustomTextInput from '../CustomTextInput';
 import NavRoutes from '../../navigation/NavRoutes';
 
-function TopSearchBar2({ communityId }) {
+function TopSearchBar2({ communityId, communityName }) {
   const navigation = useNavigation();
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -16,14 +16,14 @@ function TopSearchBar2({ communityId }) {
 
   return (
     <View style={styles.container}>
-      <TouchableHighlight
+      {/* <TouchableHighlight
         onPress={() => navigation.navigate(NavRoutes.USER_PROFILE)}
       >
         <Image
           style={{ height: 40, width: 40, borderRadius: 20 }}
           source={{ uri: 'https://picsum.photos/200' }}
         />
-      </TouchableHighlight>
+      </TouchableHighlight> */}
       <View style={{ flex: 1 }}>
         <CustomTextInput
           IconComponent={
@@ -34,7 +34,7 @@ function TopSearchBar2({ communityId }) {
               style={{ paddingLeft: 8, paddingRight: 8 }}
             />
           }
-          placeholder="Search"
+          placeholder={`Search in community ${communityName}`}
           onChangeText={(text) => setSearchQuery(text)}
           onSubmitEditing={() => {
             navigation.navigate(NavRoutes.COMMUNITY_SEARCH_DETAILS, {

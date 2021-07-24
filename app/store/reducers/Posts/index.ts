@@ -24,6 +24,34 @@ export const fetchPosts = createAsyncThunk(
   },
 );
 
+export const fetchCommunityPosts = createAsyncThunk(
+  'post/fetchCommunityPosts',
+  async (communityId: string, thunkApi) => {
+    try {
+      const response = await Api.getCommunityFeed(communityId);
+      const normalized = normalize(response, [postEntity]);
+      return normalized;
+    } catch (e) {
+      console.log('post/fetchCommunityPosts', e);
+      return thunkApi.rejectWithValue(e);
+    }
+  },
+);
+
+export const fetchUserPosts = createAsyncThunk(
+  'post/fetchUserPosts',
+  async (userId: string, thunkApi) => {
+    try {
+      const response = await Api.getPostsByUserId(userId);
+      const normalized = normalize(response, [postEntity]);
+      return normalized;
+    } catch (e) {
+      console.log('post/fetchUserPosts', e);
+      return thunkApi.rejectWithValue(e);
+    }
+  },
+);
+
 export const fetchPostDetails = createAsyncThunk(
   'post/fetchPostDetails',
   async (postId: string, thunkApi) => {
@@ -125,6 +153,15 @@ const PostSlice = createSlice({
       state.ids = payload.result;
       state.page++;
     });
+
+    builder.addCase(fetchCommunityPosts.fulfilled, (state, { payload }) => {
+      state.entities = { ...state.entities, ...payload.entities.posts };
+    });
+
+    builder.addCase(fetchUserPosts.fulfilled, (state, { payload }) => {
+      state.entities = { ...state.entities, ...payload.entities.posts };
+    });
+
     builder.addCase(likePost.fulfilled, (state, { payload }) => {
       if (payload.likeOption === 'like') {
         state.entities[payload.postId].voteCount++;
@@ -135,15 +172,18 @@ const PostSlice = createSlice({
         state.entities[payload.postId].isLikedByCurrentUser = false;
       }
     });
+
     builder.addCase(fetchPostDetails.fulfilled, (state, { payload }) => {
       state.entities[payload.postId].comments = payload.comments;
     });
+
     builder.addCase(createPost.fulfilled, (state, { payload }) => {
       //console.log('newly created post', payload);
       state.entities = { ...payload.entities.post, ...state.entities };
       //state.ids = { ...payload.result, ...state.ids };
       state.ids.push(payload.result[0]);
     });
+
     builder.addCase(createComment.fulfilled, (state, { payload }) => {
       state.entities[payload.postId].comments.unshift(payload.comment); //unshift appends at the beginning of the array
     });

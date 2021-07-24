@@ -5,13 +5,8 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import * as Yup from 'yup';
 
 import { theme } from '../../config';
-import {
-  Form,
-  FormField,
-  SubmitButton,
-  // ErrorMessage,
-} from '../../components/FormComponents';
-// import { useAuth, useApi } from '../../hooks';
+import { Form, FormField, SubmitButton } from '../../components/FormComponents';
+import { ItemSeparator } from '../../components';
 import { useAppDispatch } from '../../store';
 import { login } from '../../store/reducers';
 
@@ -29,13 +24,13 @@ function LoginScreen() {
     <View style={{ padding: 8 }}>
       <Image
         style={{
-          width: 80,
-          height: 80,
+          width: 200,
+          height: 200,
           alignSelf: 'center',
           marginTop: 80,
           marginBottom: 20,
         }}
-        source={require('../../assets/logo-red.png')}
+        source={require('../../assets/logo.png')}
       />
 
       <Form
@@ -78,6 +73,8 @@ function LoginScreen() {
         />
 
         {/* <ErrorMessage error={JSON.stringify(data)} visible={error} /> */}
+
+        <ItemSeparator height={24} color={theme.white} />
 
         <SubmitButton title="Login" />
       </Form>

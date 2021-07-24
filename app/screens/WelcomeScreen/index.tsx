@@ -3,24 +3,18 @@ import { ImageBackground, StyleSheet, View, Image } from 'react-native';
 
 import { AppButton } from '../../components';
 import NavRoutes from '../../navigation/NavRoutes';
-import { H6Bold } from '../../styles';
 
 function WelcomeScreen({ navigation }) {
   return (
     <ImageBackground
-      blurRadius={2}
+      blurRadius={1}
       source={require('../../assets/welcome.jpeg')}
       style={styles.background}
     >
       <View style={styles.logoContainer}>
-        <Image
-          source={require('../../assets/logo-red.png')}
-          style={styles.logo}
-        />
-        <H6Bold style={{ marginTop: 8 }}>
-          The only journey is the journey within
-        </H6Bold>
+        <Image source={require('../../assets/logo.png')} style={styles.logo} />
       </View>
+
       <View style={styles.buttonContainer}>
         <AppButton
           title="Login"
@@ -40,19 +34,23 @@ const styles = StyleSheet.create({
   background: {
     flex: 1,
     justifyContent: 'flex-end',
-    alignItems: 'center', //align items across the secondary axis(horizontal)
+    alignItems: 'center',
+    position: 'relative',
   },
   buttonContainer: {
     padding: 16,
     width: '100%',
   },
   logo: {
-    width: 100,
-    height: 100,
+    width: 300,
+    height: 300,
+    marginBottom: 70,
   },
   logoContainer: {
     position: 'absolute',
-    top: 120,
+    width: '100%',
+    height: '100%',
+    justifyContent: 'center',
     alignItems: 'center',
   },
 });

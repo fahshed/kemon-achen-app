@@ -3,7 +3,7 @@ import { Image, ImageBackground, StyleSheet, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { theme } from '../../config';
 
-function ImageHeader({ communityId }) {
+function ImageHeader({ communityId = 10 }) {
   return (
     <View style={styles.container}>
       <ImageBackground

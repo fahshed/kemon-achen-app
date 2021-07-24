@@ -6,14 +6,18 @@ import ChamberScreen from '../ChamberScreen';
 import ProfessionalPostsScreen from '../ProfessionalPostsScreen';
 import ProfessionalFeedbackScreen from '../ProfessionalFeedbackScreen';
 import ProfessionalProfileInfoBar from '../../components/ProfessionalProfileInfoBar';
+import { useAppSelector } from '../../store';
 
 import Api from '../../api';
 
 export default function ProfessionalProfileScreen({ route }) {
-  //const { user } = useAppSelector((state) => state.User);
+  const { user } = useAppSelector((state) => state.User);
 
   const [profileInfo, setProfileInfo] = useState(null);
-  const userId = route.params;
+  let userId = route.params;
+  if (userId === undefined) {
+    userId = user._id;
+  }
 
   const getProfessionalInfo = async () => {
     const response = await Api.getProfessionalInfo(userId);

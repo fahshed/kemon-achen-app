@@ -5,17 +5,27 @@ import { useNavigation } from '@react-navigation/native';
 import { ItemSeparator, Post } from '../../../components';
 import { theme } from '../../../config';
 import NavRoutes from '../../../navigation/NavRoutes';
-
 import { H5Bold } from '../../../styles';
-import Api from '../../../api';
+import { fetchCommunityPosts, likePost } from '../../../store/reducers';
+import { useAppDispatch, useAppSelector } from '../../../store';
 
 export default function CommunityPostsScreen({ communityId }) {
-  const [posts, setPosts] = useState(null);
-  const [isRefreshing, setIsRefreshing] = useState(false);
+  const [isRefreshing, setIsRefreshing] = useState(true);
+  const dispatch = useAppDispatch();
   const navigation = useNavigation();
 
-  const handleLikePress = async (postId, isLiked) => {
-    Api.likePost(postId, isLiked ? 'like' : 'unlike');
+  const { entities } = useAppSelector((state) => state.Post);
+  const posts = Object.values(entities).filter(
+    (post) => post.community._id === communityId,
+  );
+
+  const handleLikePress = async (postId) => {
+    dispatch(
+      likePost({
+        postId,
+        likeOption: !entities[postId].isLikedByCurrentUser ? 'like' : 'unlike',
+      }),
+    );
   };
 
   const renderItem = ({ item }) => (
@@ -23,24 +33,29 @@ export default function CommunityPostsScreen({ communityId }) {
       touchDisabled={false}
       content={item.content}
       commentCount={item.commentCount}
-      communityName=""
+      communityName={item.community.name}
       postedAgo={item.createdAt}
       title={item.title}
       username={item.postedBy.name}
       voteCount={item.voteCount}
-      onLikePress={() => handleLikePress(item._id, item.isPostLiked)}
+      onLikePress={() => handleLikePress(item._id)}
       isPostLiked={item.isLikedByCurrentUser}
       onPress={() => {
         navigation.navigate(NavRoutes.POST_DETAILS, item._id);
       }}
-      isCommunityFeed={true}
       isProfileFeed={false}
+      isCommunityFeed={true}
     />
   );
 
   const getCommunityFeed = async () => {
-    const response = await Api.getCommunityFeed(communityId);
-    setPosts(response);
+    setIsRefreshing(true);
+
+    const response = await dispatch(fetchCommunityPosts(communityId));
+    if ('error' in response) {
+      console.log('Feed fetch error', response.error);
+    }
+
     setIsRefreshing(false);
   };
 
@@ -64,7 +79,6 @@ export default function CommunityPostsScreen({ communityId }) {
         keyExtractor={(post) => post._id}
         refreshing={isRefreshing}
         onRefresh={() => {
-          setIsRefreshing(true);
           getCommunityFeed();
         }}
         renderItem={renderItem}

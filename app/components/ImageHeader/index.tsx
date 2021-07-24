@@ -3,23 +3,23 @@ import { Image, ImageBackground, StyleSheet, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { theme } from '../../config';
 
-function ImageHeader({ communityId }) {
+function ImageHeader({ id }) {
   return (
     <View style={styles.container}>
       <ImageBackground
-        source={{ uri: `https://picsum.photos/seed/${communityId}/500/200` }}
+        source={{ uri: `https://picsum.photos/seed/${new Date()}/500/200` }}
         style={styles.backgroundBanner}
       >
-        {/* <View style={styles.backgroundBanner}> */}
         <View style={styles.imageContainer}>
           <TouchableOpacity>
             <Image
               style={styles.image}
-              source={{ uri: 'https://picsum.photos/200' }}
+              source={{
+                uri: `https://picsum.photos/seed/${id}/300`,
+              }}
             />
           </TouchableOpacity>
         </View>
-        {/* </View> */}
       </ImageBackground>
     </View>
   );

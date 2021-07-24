@@ -6,12 +6,14 @@ import { Entypo } from '@expo/vector-icons';
 import { theme } from '../../config';
 import { Body1, Body2Bold, Caption } from '../../styles';
 
-function UserInfoBar2({ communityName, postedAgo }) {
+function UserInfoBar2({ username, communityName, postedAgo }) {
   return (
     <View style={styles.container}>
       <Image
         style={styles.image}
-        source={{ uri: 'https://picsum.photos/200' }}
+        source={{
+          uri: `https://picsum.photos/seed/${username}/300`,
+        }}
       />
       <View style={styles.text}>
         <Body1>Community</Body1>

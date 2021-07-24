@@ -12,7 +12,7 @@ function CommunityCard({ communityName, onPress }) {
         <View style={styles.imageContainer}>
           <Image
             style={styles.image}
-            source={{ uri: 'https://picsum.photos/200' }}
+            source={{ uri: `https://picsum.photos/seed/${communityName}/300` }}
           />
         </View>
         <View style={styles.detailsContainer}>

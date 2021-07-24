@@ -50,12 +50,12 @@ function PostDetailsScreen({ route }) {
       commenterName={item.postedBy.name}
       commentBody={item.content}
       commentedAgo={item.createdAt}
-      // commentLikeCount={item.voteCount}
       RankBadgeComponent={
         item.postedBy.rank && <RankBadgeComponent rank={item.postedBy.rank} />
       }
     />
   );
+
   useEffect(() => {
     getPostDetails();
   }, []);

@@ -12,7 +12,7 @@ export default function UserProfileScreen() {
   const { user } = useAppSelector((state) => state.User);
   return (
     <>
-      <ImageHeader />
+      <ImageHeader id={user.name} />
       <RegularProfileInfoBar
         userName={user.name}
         profileDescription={user.message}

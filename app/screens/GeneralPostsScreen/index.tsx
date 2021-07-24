@@ -7,19 +7,30 @@ import { theme } from '../../config';
 import NavRoutes from '../../navigation/NavRoutes';
 
 import { H5Bold } from '../../styles';
-import Api from '../../api';
+import { useAppDispatch, useAppSelector } from '../../store';
+import { fetchUserPosts, likePost } from '../../store/reducers';
 
 export default function GeneralPostsScreen({
   userId,
   isCommunityFeed,
   isProfileFeed,
 }) {
-  const [posts, setPosts] = useState(null);
-  const [isRefreshing, setIsRefreshing] = useState(false);
+  const dispatch = useAppDispatch();
   const navigation = useNavigation();
+  const [isRefreshing, setIsRefreshing] = useState(true);
 
-  const handleLikePress = async (postId, isLiked) => {
-    Api.likePost(postId, isLiked ? 'like' : 'unlike');
+  const { entities } = useAppSelector((state) => state.Post);
+  const posts = Object.values(entities).filter(
+    (post) => post.postedBy._id === userId,
+  );
+
+  const handleLikePress = async (postId) => {
+    dispatch(
+      likePost({
+        postId,
+        likeOption: !entities[postId].isLikedByCurrentUser ? 'like' : 'unlike',
+      }),
+    );
   };
 
   const renderItem = ({ item }) => (
@@ -30,9 +41,9 @@ export default function GeneralPostsScreen({
       communityName={item.community.name}
       postedAgo={item.createdAt}
       title={item.title}
-      username=""
+      username={item.postedBy.name}
       voteCount={item.voteCount}
-      onLikePress={() => handleLikePress(item._id, item.isPostLiked)}
+      onLikePress={() => handleLikePress(item._id)}
       isPostLiked={item.isLikedByCurrentUser}
       onPress={() => {
         navigation.navigate(NavRoutes.POST_DETAILS, item._id);
@@ -43,8 +54,13 @@ export default function GeneralPostsScreen({
   );
 
   const getProfessionalPosts = async () => {
-    const response = await Api.getPostsByUserId(userId);
-    setPosts(response);
+    setIsRefreshing(true);
+
+    const response = await dispatch(fetchUserPosts(userId));
+    if ('error' in response) {
+      console.log('Feed fetch error', response.error);
+    }
+
     setIsRefreshing(false);
   };
 
@@ -68,7 +84,6 @@ export default function GeneralPostsScreen({
         keyExtractor={(post) => post._id}
         refreshing={isRefreshing}
         onRefresh={() => {
-          setIsRefreshing(true);
           getProfessionalPosts();
         }}
         renderItem={renderItem}

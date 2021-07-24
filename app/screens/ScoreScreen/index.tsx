@@ -5,7 +5,6 @@ import { useNavigation } from '@react-navigation/native';
 
 import { AppButton, DoubleBar } from '../../components';
 import { Container, H5Bold, Body2 } from '../../styles';
-import { theme } from '../../config';
 import NavRoutes from '../../navigation/NavRoutes';
 
 const FULL = 200;
@@ -31,7 +30,6 @@ export default function ScoreScreen({ route }) {
           <DoubleBar
             FULL={FULL}
             FULL_SCORE={FULL_SCORE}
-            color={theme.orange}
             value={score.anxiety}
             label="Anxiety"
             delay={0}
@@ -41,7 +39,6 @@ export default function ScoreScreen({ route }) {
           <DoubleBar
             FULL={FULL}
             FULL_SCORE={FULL_SCORE}
-            color={theme.lemon}
             value={score.stress}
             label="Stress"
             delay={500}
@@ -51,7 +48,6 @@ export default function ScoreScreen({ route }) {
           <DoubleBar
             FULL={FULL}
             FULL_SCORE={FULL_SCORE}
-            color={theme.blue}
             value={score.depression}
             label="Depression"
             delay={1000}

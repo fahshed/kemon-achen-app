@@ -43,7 +43,7 @@ export default function CommunityScreen({ route }) {
     <>
       <TopSearchBar2 communityId={communityId} communityName={commDesc?.name} />
 
-      <ImageHeader communityId={communityId} />
+      <ImageHeader id={commDesc?.name} />
 
       {joinLoading ? (
         <Container height="100px" align="center" justify="center">

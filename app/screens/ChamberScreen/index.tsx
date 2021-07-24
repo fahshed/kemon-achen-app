@@ -15,7 +15,6 @@ export default function ChamberScreen({ userId }) {
 
   const getProfessionalChamber = async () => {
     const response = await Api.getProfessionalChamber(userId);
-    //console.log(response);
     setChamber(response);
   };
 

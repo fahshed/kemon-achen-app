@@ -73,18 +73,18 @@ function CreatePostScreen({ navigation }) {
       {isUploaded ? (
         <View
           style={{
-            position: 'absolute',
             backgroundColor: 'transparent',
-            height: '100%',
             opacity: 1,
-            width: '100%',
-            zIndex: 1,
+            flex: 1,
+            justifyContent: 'center',
+            alignItems: 'center',
           }}
         >
           <LottieView
             autoPlay
             loop
             source={require('../../assets/animations/done.json')}
+            style={{ marginLeft: 5 }}
           />
         </View>
       ) : (

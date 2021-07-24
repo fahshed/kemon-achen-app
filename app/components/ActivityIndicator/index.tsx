@@ -18,16 +18,15 @@ function ActivityIndicator() {
 
 const styles = StyleSheet.create({
   container: {
-    height: 300,
-    width: 300,
-    alignSelf: 'center',
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   overlay: {
-    position: 'absolute',
     backgroundColor: 'transparent',
-    height: '100%',
+    width: 200,
+    height: 200,
     opacity: 1,
-    width: '100%',
     zIndex: 1,
   },
 });

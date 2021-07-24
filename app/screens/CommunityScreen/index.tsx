@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator } from 'react-native';
 
 import ImageHeader from '../../components/ImageHeader';
 import CommunityAboutScreen from '../../screens/CommunityDetailsSubScreens/CommunityAboutScreen';
 import CommunityPostsScreen from '../../screens/CommunityDetailsSubScreens/CommunityPostsScreen';
 import CommunityDescription from '../../components/CommunityDescription';
 import CommunityDetailsTabNavigator from '../../navigation/CommunityDetailsTabNavigator';
-import { TopSearchBar2 } from '../../components';
+import { ActivityIndicator, TopSearchBar2 } from '../../components';
 import Api from '../../api';
 
 import { Container } from '../../styles';
-import { theme } from '../../config';
 
 export default function CommunityScreen({ route }) {
   const communityId = route.params;
@@ -49,7 +47,7 @@ export default function CommunityScreen({ route }) {
 
       {joinLoading ? (
         <Container height="100px" align="center" justify="center">
-          <ActivityIndicator size="large" color={theme.primary} />
+          <ActivityIndicator />
         </Container>
       ) : (
         <>

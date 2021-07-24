@@ -4,24 +4,30 @@ import ProfessionalCard from '../../components/ProfessionalCard';
 import NavRoutes from '../../navigation/NavRoutes';
 import Api from '../../api';
 import { ScrollView, View } from 'react-native';
-import { ItemSeparator } from '../../components';
+import { ActivityIndicator, ItemSeparator } from '../../components';
 import { theme } from '../../config';
 
 function NearbyProfessionalScreen({ navigation }) {
   const [professionalList, setProfessionalList] = useState(null);
+  const [isRefreshing, setIsRefreshing] = useState(true);
 
   const getProfessionalList = async () => {
     const response = await Api.getSuggestedProfessionals('rank');
     setProfessionalList(response);
+    setIsRefreshing(false);
   };
 
   useEffect(() => {
-    getProfessionalList();
+    (async () => {
+      await getProfessionalList();
+    })();
   }, []);
 
   //console.log(professionalList);
 
-  return (
+  return isRefreshing ? (
+    <ActivityIndicator />
+  ) : (
     <ScrollView>
       {professionalList &&
         professionalList.map((professional, index) => (

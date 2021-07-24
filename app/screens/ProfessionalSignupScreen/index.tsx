@@ -8,7 +8,7 @@ import { H5Bold, Container, Body2, Body1Bold } from '../../styles';
 import { useAppDispatch } from '../../store';
 import { signupProfessional } from '../../store/reducers';
 
-const tags = ['PTSD', 'Stress', 'Anxiety', 'Eating Disorder', 'Kisu ekta'];
+const tags = ['PTSD', 'Stress', 'Anxiety', 'Eating Disorder'];
 
 function ProfessionalSignupScreen() {
   const dispatch = useAppDispatch();

@@ -10,7 +10,6 @@ function ImageHeader({ communityId = 10 }) {
         source={{ uri: `https://picsum.photos/seed/${communityId}/500/200` }}
         style={styles.backgroundBanner}
       >
-        {/* <View style={styles.backgroundBanner}> */}
         <View style={styles.imageContainer}>
           <TouchableOpacity>
             <Image
@@ -19,7 +18,6 @@ function ImageHeader({ communityId = 10 }) {
             />
           </TouchableOpacity>
         </View>
-        {/* </View> */}
       </ImageBackground>
     </View>
   );

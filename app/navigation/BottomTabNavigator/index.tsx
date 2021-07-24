@@ -14,6 +14,7 @@ import {
   HomeScreen,
   NearbyProfessionalScreen,
   NotificationScreen,
+  ProfessionalStatScreen,
 } from '../../screens';
 import CommunityListScreen from '../../screens/CommunityListScreen';
 import CreatePostButton from './CreatePostButton';
@@ -23,6 +24,7 @@ import { useNavigation } from '@react-navigation/core';
 import * as Notifications from 'expo-notifications';
 import Api from '../../api';
 import { Platform } from 'react-native';
+import { useAppSelector } from '../../store';
 
 const Tab = createBottomTabNavigator();
 
@@ -99,6 +101,8 @@ export default function BottomTabNavigator() {
     return token;
   };
 
+  const { role } = useAppSelector((state) => state.User.user);
+
   return (
     <Tab.Navigator
       tabBarOptions={{
@@ -134,15 +138,28 @@ export default function BottomTabNavigator() {
           ),
         })}
       />
-      <Tab.Screen
-        name="NearbyProfessional"
-        component={TabFourNavigator}
-        options={{
-          tabBarIcon: ({ color }) => (
-            <Fontisto name="stethoscope" size={32} color={color} />
-          ),
-        }}
-      />
+      {role === 'regular' ? (
+        <Tab.Screen
+          name="NearbyProfessional"
+          component={TabFourNavigator}
+          options={{
+            tabBarIcon: ({ color }) => (
+              <Fontisto name="stethoscope" size={32} color={color} />
+            ),
+          }}
+        />
+      ) : (
+        <Tab.Screen
+          name="ProfessionalStat"
+          component={TabSixNavigator}
+          options={{
+            tabBarIcon: ({ color }) => (
+              <Fontisto name="stethoscope" size={32} color={color} />
+            ),
+          }}
+        />
+      )}
+
       <Tab.Screen
         name="Notification"
         component={TabFiveNavigator}
@@ -229,5 +246,20 @@ function TabFiveNavigator() {
         }}
       />
     </TabFiveStack.Navigator>
+  );
+}
+
+const TabSixStack = createStackNavigator();
+function TabSixNavigator() {
+  return (
+    <TabSixStack.Navigator>
+      <TabSixStack.Screen
+        name="ProfessionalStatScreen"
+        component={ProfessionalStatScreen}
+        options={{
+          headerTitle: 'Statistics',
+        }}
+      />
+    </TabSixStack.Navigator>
   );
 }

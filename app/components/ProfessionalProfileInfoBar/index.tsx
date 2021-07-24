@@ -1,15 +1,15 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import { theme } from '../../config';
 import { Body2Bold, Caption } from '../../styles';
 
 import TagComponent from '../../components/Tag';
 import RankBadgeComponent from '../../components/RankBadgeComponent';
-import { useAppSelector } from '../../store';
+//import { useAppSelector } from '../../store';
 
 function ProfessionalProfileInfoBar({ userName, badges, rank }) {
-  const { user } = useAppSelector((state) => state.User);
+  //const { user } = useAppSelector((state) => state.User);
   return (
     <View style={styles.container}>
       <View style={styles.detailsContainer}>
@@ -26,11 +26,11 @@ function ProfessionalProfileInfoBar({ userName, badges, rank }) {
           ))}
         </View>
       </View>
-      {user.role === 'professional' ? (
+      {/* {user.role === 'professional' ? (
         <TouchableOpacity style={{ marginLeft: 160 }}>
           <Caption color="primary">Edit</Caption>
         </TouchableOpacity>
-      ) : null}
+      ) : null} */}
     </View>
   );
 }

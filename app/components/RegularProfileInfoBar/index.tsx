@@ -1,12 +1,12 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import { theme } from '../../config';
 import { Body2Bold, Caption } from '../../styles';
-import { useAppSelector } from '../../store';
+//import { useAppSelector } from '../../store';
 
 function RegularProfileInfoBar({ userName, profileDescription }) {
-  const { user } = useAppSelector((state) => state.User);
+  //const { user } = useAppSelector((state) => state.User);
 
   return (
     <View style={styles.container}>
@@ -14,11 +14,11 @@ function RegularProfileInfoBar({ userName, profileDescription }) {
         <Body2Bold>{userName}</Body2Bold>
         <Caption>{profileDescription}</Caption>
       </View>
-      {user.role === 'regular' ? (
+      {/* {user.role === 'regular' ? (
         <TouchableOpacity style={{ marginLeft: 'auto', marginRight: 16 }}>
           <Caption color="red">Edit</Caption>
         </TouchableOpacity>
-      ) : null}
+      ) : null} */}
     </View>
   );
 }

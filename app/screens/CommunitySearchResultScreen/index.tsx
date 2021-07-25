@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { theme } from '../../config';
 
 import { Container, Body2 } from '../../styles';
-import { ItemSeparator, Post } from '../../components';
+import { ActivityIndicator, ItemSeparator, Post } from '../../components';
 import NavRoutes from '../../navigation/NavRoutes';
 
 import Api from '../../api';
@@ -15,6 +15,7 @@ let posts = [];
 function CommunitySearchResultScreen({ route }) {
   const { searchQuery, communityId } = route.params;
   const navigation = useNavigation();
+  const [isLoading, setIsLoading] = useState(true);
   const [selectedOption, setSelectedOption] = useState(0);
   const [postsState, setPosts] = useState(null);
 
@@ -45,6 +46,7 @@ function CommunitySearchResultScreen({ route }) {
     const response = await Api.searchCommunityPosts(communityId, searchQuery);
     posts = response;
     setPosts(response);
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -73,32 +75,38 @@ function CommunitySearchResultScreen({ route }) {
       </Container>
 
       <ItemSeparator height={8} color={theme.grey3} />
-      <ScrollView>
-        {postsState &&
-          postsState.map((item, index) => (
-            <View key={index}>
-              <Post
-                touchDisabled={false}
-                content={item.content}
-                commentCount={item.commentCount}
-                communityName=""
-                postedAgo={item.createdAt}
-                title={item.title}
-                username={item.postedBy.name}
-                voteCount={item.voteCount}
-                onLikePress={() => handleLikePress(item._id, item.isPostLiked)}
-                isPostLiked={item.isLikedByCurrentUser}
-                onPress={() => {
-                  navigation.navigate(NavRoutes.POST_DETAILS, item._id);
-                }}
-                isCommunityFeed={true}
-                isProfileFeed={false}
-                key={item._id}
-              />
-              <ItemSeparator height={8} color={theme.grey3} />
-            </View>
-          ))}
-      </ScrollView>
+      {isLoading ? (
+        <ActivityIndicator />
+      ) : (
+        <ScrollView>
+          {postsState &&
+            postsState.map((item, index) => (
+              <View key={index}>
+                <Post
+                  touchDisabled={false}
+                  content={item.content}
+                  commentCount={item.commentCount}
+                  communityName=""
+                  postedAgo={item.createdAt}
+                  title={item.title}
+                  username={item.postedBy.name}
+                  voteCount={item.voteCount}
+                  onLikePress={() =>
+                    handleLikePress(item._id, item.isPostLiked)
+                  }
+                  isPostLiked={item.isLikedByCurrentUser}
+                  onPress={() => {
+                    navigation.navigate(NavRoutes.POST_DETAILS, item._id);
+                  }}
+                  isCommunityFeed={true}
+                  isProfileFeed={false}
+                  key={item._id}
+                />
+                <ItemSeparator height={8} color={theme.grey3} />
+              </View>
+            ))}
+        </ScrollView>
+      )}
     </>
   );
 }

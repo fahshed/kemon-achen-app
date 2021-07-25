@@ -29,7 +29,7 @@ export default function ProfessionalProfileScreen({ route }) {
 
   return (
     <>
-      <ImageHeader />
+      <ImageHeader id={profileInfo.name} />
       {profileInfo && (
         <ProfessionalProfileInfoBar
           userName={profileInfo.name}

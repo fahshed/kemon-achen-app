@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { FlatList } from 'react-native';
 
 import {
+  ActivityIndicator,
   AddCommentBottomBar,
   Comment,
   ItemSeparator,
@@ -18,6 +19,7 @@ import {
 } from '../../store/reducers/Posts';
 
 function PostDetailsScreen({ route }) {
+  const [isLoading, setIsLoading] = useState(true);
   const [commentText, setCommentText] = useState('');
   const dispatch = useAppDispatch();
   const { entities } = useAppSelector((state) => state.Post);
@@ -27,6 +29,7 @@ function PostDetailsScreen({ route }) {
 
   const getPostDetails = async () => {
     const response = await dispatch(fetchPostDetails(postID));
+    setIsLoading(false);
     if ('error' in response) {
       console.log('Post details fetch error', response.error);
     }
@@ -60,7 +63,9 @@ function PostDetailsScreen({ route }) {
     getPostDetails();
   }, []);
 
-  return (
+  return isLoading ? (
+    <ActivityIndicator />
+  ) : (
     <>
       <Post
         touchDisabled={true}

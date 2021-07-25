@@ -14,17 +14,25 @@ import {
   CommunityScreen,
   CommunitySearchResultScreen,
   LatestAdviceScreen,
+  JoinCommunityScreen,
 } from '../../screens';
 import { useAppSelector } from '../../store';
 
 const Stack = createStackNavigator();
 
 export default function AppNavigator() {
-  const { role } = useAppSelector((state) => state.User.user);
+  const { user, isCommunityListEmpty } = useAppSelector((state) => state.User);
 
   return (
     <Stack.Navigator mode="card">
-      {role === 'regular' && (
+      {isCommunityListEmpty === true && (
+        <Stack.Screen
+          name="JoinCommunity"
+          component={JoinCommunityScreen}
+          options={{ headerShown: false }}
+        />
+      )}
+      {user.role === 'regular' && (
         <Stack.Screen
           name="TestFlow"
           component={TestFlow}

@@ -50,6 +50,9 @@ export default function GeneralPostsScreen({
       }}
       isCommunityFeed={isCommunityFeed}
       isProfileFeed={isProfileFeed}
+      postType={item.postType}
+      asPseudo={item.asPseudo}
+      pseudonym={item.postedBy.name}
     />
   );
 

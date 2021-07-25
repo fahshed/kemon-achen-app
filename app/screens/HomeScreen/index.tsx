@@ -47,6 +47,8 @@ export default function HomeScreen({ navigation }) {
       isCommunityFeed={false}
       isProfileFeed={false}
       postType={item.postType}
+      asPseudo={item.asPseudo}
+      pseudonym={item.postedBy.pseudonym}
     />
   );
 

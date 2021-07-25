@@ -82,6 +82,8 @@ function PostDetailsScreen({ route }) {
         isCommunityFeed={false}
         isProfileFeed={false}
         postType={post.postType}
+        asPseudo={post.asPseudo}
+        pseudonym={post.postedBy.pseudonym}
       />
 
       <ItemSeparator height={8} color={theme.grey3} />

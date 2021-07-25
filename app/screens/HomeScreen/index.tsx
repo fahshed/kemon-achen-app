@@ -1,21 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList } from 'react-native';
 
-import { ItemSeparator, Post } from '../../components';
+import { ActivityIndicator, ItemSeparator, Post } from '../../components';
 import { theme } from '../../config';
 import NavRoutes from '../../navigation/NavRoutes';
 
 import { fetchPosts, likePost } from '../../store/reducers';
 import { useAppDispatch, useAppSelector } from '../../store';
-import { H5Bold } from '../../styles';
 
 export default function HomeScreen({ navigation }) {
   const [isRefreshing, setIsRefreshing] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+
   const dispatch = useAppDispatch();
 
   const { entities, page } = useAppSelector((state) => state.Post);
 
-  const posts = Object.values(entities);
+  const posts = Object.values(entities).sort((a, b) =>
+    new Date(a.createdAt) > new Date(b.createdAt) ? -1 : 1,
+  );
 
   const handleLikePress = async (postId) => {
     dispatch(
@@ -43,17 +46,16 @@ export default function HomeScreen({ navigation }) {
       }}
       isCommunityFeed={false}
       isProfileFeed={false}
+      postType={item.postType}
     />
   );
 
   const getHomeFeed = async () => {
-    setIsRefreshing(true);
-
     const response = await dispatch(fetchPosts({ page: page + 1, limit: 5 }));
     if ('error' in response) {
       console.log('Feed fetch error', response.error);
     }
-
+    setIsLoading(false);
     setIsRefreshing(false);
   };
 
@@ -63,24 +65,22 @@ export default function HomeScreen({ navigation }) {
 
   return (
     <>
-      {isRefreshing && (
-        <H5Bold align="center" color="grey5" mt="8px" mb="8px">
-          Feed Loading........
-        </H5Bold>
+      {isLoading ? (
+        <ActivityIndicator />
+      ) : (
+        <FlatList
+          data={posts}
+          ItemSeparatorComponent={() => (
+            <ItemSeparator height={8} color={theme.grey3} />
+          )}
+          keyExtractor={(post) => post._id}
+          refreshing={isRefreshing}
+          onRefresh={getHomeFeed}
+          renderItem={renderItem}
+          onEndReachedThreshold={0.5}
+          onEndReached={getHomeFeed}
+        />
       )}
-
-      <FlatList
-        data={posts}
-        ItemSeparatorComponent={() => (
-          <ItemSeparator height={8} color={theme.grey1} />
-        )}
-        keyExtractor={(post) => post._id}
-        refreshing={isRefreshing}
-        onRefresh={getHomeFeed}
-        renderItem={renderItem}
-        onEndReachedThreshold={0.5}
-        onEndReached={getHomeFeed}
-      />
     </>
   );
 }

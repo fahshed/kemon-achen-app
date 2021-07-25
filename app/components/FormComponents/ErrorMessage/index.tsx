@@ -7,7 +7,7 @@ function ErrorMessage({ error, visible }) {
     return null;
   }
   return (
-    <CaptionBold color="danger" style={{ paddingLeft: 8 }}>
+    <CaptionBold color="danger" mt="8px" ml="8px">
       {error}
     </CaptionBold>
   );

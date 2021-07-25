@@ -11,7 +11,9 @@ function UserInfoBar1({ username, communityName, postedAgo }) {
     <View style={styles.container}>
       <Image
         style={styles.image}
-        source={{ uri: 'https://picsum.photos/200' }}
+        source={{
+          uri: `https://picsum.photos/seed/${username}/300`,
+        }}
       />
       <View style={styles.detailsContainer}>
         <View style={styles.text}>

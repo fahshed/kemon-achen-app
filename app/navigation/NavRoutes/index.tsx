@@ -21,4 +21,5 @@ export default Object.freeze({
   COMMUNITY_SEARCH_DETAILS: 'CommunitySearchResult',
   LATEST_ADVICE: 'Latest Advice',
   PROFESSIONAL_STATS: 'Professional Stats',
+  JOIN_COMMUNITY_SCREEN: 'JoinCommunity',
 });

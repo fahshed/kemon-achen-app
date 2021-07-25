@@ -2,8 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { FlatList } from 'react-native';
 
 import Api from '../../api';
-import { ItemSeparator, NotificationCard } from '../../components';
-import { H5Bold } from '../../styles';
+import {
+  ActivityIndicator,
+  ItemSeparator,
+  NotificationCard,
+} from '../../components';
+//import { H5Bold } from '../../styles';
 import { timeAgo } from '../../utils';
 import { theme } from '../../config';
 
@@ -33,9 +37,7 @@ export default function NotificationScreen() {
   }, []);
 
   return isRefreshing ? (
-    <H5Bold align="center" mt="32px" mb="24px">
-      Loading...
-    </H5Bold>
+    <ActivityIndicator />
   ) : (
     <FlatList
       data={notifications}

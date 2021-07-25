@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { H4, Container } from '../../styles';
@@ -11,6 +12,15 @@ function SignupScreen() {
 
   return (
     <Container grow="1" justify="center">
+      <Image
+        style={{
+          width: 200,
+          height: 200,
+          marginTop: 80,
+          marginBottom: 20,
+        }}
+        source={require('../../assets/logo.png')}
+      />
       <H4 mb="24px">Sign up</H4>
       <Container width="70%">
         <AppButton

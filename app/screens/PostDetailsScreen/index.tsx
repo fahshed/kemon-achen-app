@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { FlatList } from 'react-native';
 
 import {
+  ActivityIndicator,
   AddCommentBottomBar,
   Comment,
   ItemSeparator,
@@ -18,6 +19,7 @@ import {
 } from '../../store/reducers/Posts';
 
 function PostDetailsScreen({ route }) {
+  const [isLoading, setIsLoading] = useState(true);
   const [commentText, setCommentText] = useState('');
   const dispatch = useAppDispatch();
   const { entities } = useAppSelector((state) => state.Post);
@@ -27,6 +29,7 @@ function PostDetailsScreen({ route }) {
 
   const getPostDetails = async () => {
     const response = await dispatch(fetchPostDetails(postID));
+    setIsLoading(false);
     if ('error' in response) {
       console.log('Post details fetch error', response.error);
     }
@@ -50,17 +53,19 @@ function PostDetailsScreen({ route }) {
       commenterName={item.postedBy.name}
       commentBody={item.content}
       commentedAgo={item.createdAt}
-      // commentLikeCount={item.voteCount}
       RankBadgeComponent={
         item.postedBy.rank && <RankBadgeComponent rank={item.postedBy.rank} />
       }
     />
   );
+
   useEffect(() => {
     getPostDetails();
   }, []);
 
-  return (
+  return isLoading ? (
+    <ActivityIndicator />
+  ) : (
     <>
       <Post
         touchDisabled={true}
@@ -76,6 +81,7 @@ function PostDetailsScreen({ route }) {
         onPress={null}
         isCommunityFeed={false}
         isProfileFeed={false}
+        postType={post.postType}
       />
 
       <ItemSeparator height={8} color={theme.grey3} />

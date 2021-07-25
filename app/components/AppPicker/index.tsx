@@ -84,8 +84,6 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 16,
-    marginVertical: 8,
   },
 });
 

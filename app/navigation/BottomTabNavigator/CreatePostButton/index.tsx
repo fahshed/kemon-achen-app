@@ -7,7 +7,7 @@ import { theme } from '../../../config';
 
 function CreatePostButton({ onPress }) {
   return (
-    <TouchableOpacity onPress={onPress} style={{ marginHorizontal: 16 }}>
+    <TouchableOpacity onPress={onPress} style={{ marginHorizontal: 8 }}>
       <View style={styles.container}>
         <MaterialCommunityIcons
           name="plus-circle"
@@ -23,13 +23,13 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     backgroundColor: theme.primary,
-    borderRadius: 25,
+    borderRadius: 30,
     borderColor: theme.lightGrey,
     borderWidth: 4,
-    bottom: 10,
-    height: 50,
+    bottom: 25,
+    height: 60,
+    width: 60,
     justifyContent: 'center',
-    width: 50,
   },
 });
 

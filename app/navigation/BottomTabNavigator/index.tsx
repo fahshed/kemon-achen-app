@@ -42,26 +42,30 @@ export default function BottomTabNavigator() {
   const notificationListener = useRef(null);
   const responseListener = useRef(null);
 
+  const { role } = useAppSelector((state) => state.User.user);
+
   useEffect(() => {
-    registerForPushNotificationsAsync();
+    if (role === 'regular') {
+      registerForPushNotificationsAsync();
 
-    notificationListener.current = Notifications.addNotificationReceivedListener(
-      null,
-    );
-
-    responseListener.current = Notifications.addNotificationResponseReceivedListener(
-      (response) => {
-        const data = response.notification.request.content.data.adviceIds;
-        navigation.navigate(NavRoutes.LATEST_ADVICE, { data });
-      },
-    );
-
-    return () => {
-      Notifications.removeNotificationSubscription(
-        notificationListener.current,
+      notificationListener.current = Notifications.addNotificationReceivedListener(
+        null,
       );
-      Notifications.removeNotificationSubscription(responseListener.current);
-    };
+
+      responseListener.current = Notifications.addNotificationResponseReceivedListener(
+        (response) => {
+          const data = response.notification.request.content.data.adviceIds;
+          navigation.navigate(NavRoutes.LATEST_ADVICE, { data });
+        },
+      );
+
+      return () => {
+        Notifications.removeNotificationSubscription(
+          notificationListener.current,
+        );
+        Notifications.removeNotificationSubscription(responseListener.current);
+      };
+    }
   }, []);
 
   const registerForPushNotificationsAsync = async () => {

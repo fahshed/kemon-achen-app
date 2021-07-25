@@ -1,6 +1,7 @@
 export { default as AppButton } from './AppButton';
 export { default as AppPicker } from './AppPicker';
 export { default as AddCommentBottomBar } from './AddCommentBottomBar';
+export { default as ActivityIndicator } from './ActivityIndicator';
 export { default as BottomBar1 } from './BottomBar1';
 export { default as BottomBar2 } from './BottomBar2';
 export { default as Comment } from './Comment';
@@ -24,3 +25,4 @@ export { default as AdviceCard } from './AdviceCard';
 export { default as UserInfoBar2 } from './UserInfoBar2';
 export { default as CommunityPostHeader } from './CommunityPostHeader';
 export { default as TagComponent } from './Tag';
+export { default as JoinCommunityCard } from './JoinCommunityCard';

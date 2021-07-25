@@ -7,18 +7,19 @@ import { useAppDispatch, useAppSelector } from '../../store';
 import { fetchCommunities } from '../../store/reducers';
 import CommunityCard from '../../components/CommunityCard';
 import NavRoutes from '../../navigation/NavRoutes';
-import { ItemSeparator } from '../../components';
+import { ActivityIndicator, ItemSeparator } from '../../components';
 import Api from '../../api';
 import { H6Bold } from '../../styles';
 
 function CommunityListScreen({ navigation }) {
   const dispatch = useAppDispatch();
+  const [isLoading, setIsLoading] = useState(true);
   const [suggestedCommunities, setSuggestedCommunities] = useState([]);
   const { communities } = useAppSelector((state) => state.Community);
 
   const getCommunitiesOfUser = async () => {
+    setIsLoading(true);
     const response = await dispatch(fetchCommunities());
-    //console.log(response);
     if ('error' in response) {
       console.log('Community List fetch error', response.error);
     }
@@ -28,6 +29,7 @@ function CommunityListScreen({ navigation }) {
     try {
       const response = await Api.getSuggestedCommunities();
       setSuggestedCommunities(response);
+      setIsLoading(false);
     } catch (error) {
       console.log('Suggested community fetch failed');
     }
@@ -38,9 +40,11 @@ function CommunityListScreen({ navigation }) {
     getSuggestedCommunities();
   }, []);
 
-  return (
+  return isLoading ? (
+    <ActivityIndicator />
+  ) : (
     <ScrollView>
-      <H6Bold ml="8px" mb="8px" color="primary">
+      <H6Bold ml="16px" mt="16px" color="primary">
         Your Communities
       </H6Bold>
 
@@ -55,9 +59,11 @@ function CommunityListScreen({ navigation }) {
           <ItemSeparator height={8} color={theme.grey3} />
         </View>
       ))}
-      <H6Bold ml="8px" mb="8px" color="primary">
+
+      <H6Bold ml="16px" mt="16px" color="primary">
         More Communities
       </H6Bold>
+
       {suggestedCommunities.map((item, index) => (
         <View key={index}>
           <CommunityCard

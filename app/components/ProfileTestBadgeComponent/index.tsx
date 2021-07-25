@@ -3,6 +3,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { theme } from '../../config';
 import { Caption } from '../../styles';
+import { capitalizeFirstLetter } from '../../utils';
 
 function ProfileTestBadgeComponent({ score, color }) {
   return (
@@ -14,7 +15,7 @@ function ProfileTestBadgeComponent({ score, color }) {
         },
       ]}
     >
-      <Caption color="white">{score}</Caption>
+      <Caption color="white">{capitalizeFirstLetter(score)}</Caption>
     </View>
   );
 }

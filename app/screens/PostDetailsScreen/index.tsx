@@ -45,6 +45,7 @@ function PostDetailsScreen({ route }) {
   };
 
   const handleCommentCreate = async (postId, comment) => {
+    setCommentText('');
     dispatch(createComment({ postId, comment }));
   };
 
@@ -100,6 +101,7 @@ function PostDetailsScreen({ route }) {
       <AddCommentBottomBar
         onChangeText={(text) => setCommentText(text)}
         onPress={() => handleCommentCreate(postID, commentText)}
+        value={commentText}
       />
     </>
   );

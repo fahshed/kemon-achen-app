@@ -2,9 +2,11 @@ import React from 'react';
 
 import ImageHeader from '../../components/ImageHeader';
 import RegularProfileInfoBar from '../../components/RegularProfileInfoBar';
-import UserHealthScreen from '../../screens/UserHealthScreen';
-import UserPostsScreen from '../../screens/UserPostsScreen';
-import UserCommentsScreen from '../../screens/UserCommentsScreen';
+import {
+  UserHealthScreen,
+  UserPostsScreen,
+  UserCommentsScreen,
+} from '../../screens';
 import UserProfileTabNavigator from '../../navigation/UserProfileTabNavigator';
 import { useAppSelector } from '../../store';
 

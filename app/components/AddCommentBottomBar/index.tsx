@@ -6,13 +6,14 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { theme } from '../../config';
 import CustomTextInput from '../CustomTextInput';
 
-function AddCommentBottomBar({ onPress, onChangeText }) {
+function AddCommentBottomBar({ onPress, onChangeText, value }) {
   return (
     <View style={styles.container}>
       <View style={{ flex: 1 }}>
         <CustomTextInput
           onChangeText={onChangeText}
           placeholder="Add a comment"
+          value={value}
         />
       </View>
 

@@ -20,4 +20,8 @@ export { default as RegularSignupScreen } from './RegularSignupScreen';
 export { default as ProfessionalSignupScreen } from './ProfessionalSignupScreen';
 export { default as CommunitySearchResultScreen } from './CommunitySearchResultScreen';
 export { default as LatestAdviceScreen } from './LatestAdviceScreen';
+export { default as ProfessionalStatScreen } from './professionalStatsScreen';
+export { default as UserPostsScreen } from './UserPostsScreen';
+export { default as UserCommentsScreen } from './UserCommentsScreen';
+export { default as UserHealthScreen } from './UserHealthScreen';
 export { default as JoinCommunityScreen } from './JoinCommunityScreen';

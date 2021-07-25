@@ -3,7 +3,7 @@ import { TextInput, StyleSheet, View } from 'react-native';
 
 import { theme } from '../../config';
 
-function CustomTextInput({ IconComponent = null, ...textInputProps }) {
+function CustomTextInput({ IconComponent = null, value, ...textInputProps }) {
   return (
     <View style={styles.searchSection}>
       {IconComponent}
@@ -13,6 +13,7 @@ function CustomTextInput({ IconComponent = null, ...textInputProps }) {
         //style={[styles.inputStyle, { width: IconComponent ? '85%' : '100%' }]}
         style={[styles.input /*{ paddingLeft: !IconComponent ? 8 : 0 }*/]}
         {...textInputProps}
+        value={value}
       />
     </View>
   );

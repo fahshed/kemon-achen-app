@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import { View, StyleSheet, ScrollView } from 'react-native';
 
-import { Body1Bold, Caption } from '../../styles';
+import { Body1Bold } from '../../styles';
 import { ActivityIndicator, ItemSeparator } from '../../components';
 import MetricComponent from '../../components/MetricComponent';
 import TestInfoComponent from '../../components/TestInfoComponent';
@@ -60,11 +60,11 @@ export default function UserHealthScreen() {
           <Body1Bold ml="16px" mt="32px" mb="16px">
             Test
           </Body1Bold>
-          <TouchableOpacity
+          {/* <TouchableOpacity
             style={{ marginLeft: 'auto', marginRight: 16, marginTop: 32 }}
           >
             <Caption color="red">See All</Caption>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
         {testHistory?.map((history, index) => (
           <TestInfoComponent

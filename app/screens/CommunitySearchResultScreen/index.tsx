@@ -101,6 +101,10 @@ function CommunitySearchResultScreen({ route }) {
                   isCommunityFeed={true}
                   isProfileFeed={false}
                   key={item._id}
+                  postType={item.postType}
+                  asPseudo={item.asPseudo}
+                  pseudonym={item.postedBy.name}
+                  isSearchResult={true}
                 />
                 <ItemSeparator height={8} color={theme.grey3} />
               </View>

@@ -9,6 +9,7 @@ import {
 } from '../../components';
 import { theme } from '../../config';
 import { useAppDispatch } from '../../store';
+import { setJoinedAtLeastOne } from '../../store/reducers';
 import { Body1Bold, Container, H6Bold } from '../../styles';
 
 function JoinCommunityScreen() {
@@ -33,7 +34,7 @@ function JoinCommunityScreen() {
 
   const joinCommunty = async (id, index) => {
     try {
-      Api.joinCommunity(id);
+      await Api.joinCommunity(id);
       setSuggestedCommunities([
         ...suggestedCommunities.slice(0, index),
         { community: suggestedCommunities[index].community, isJoined: true },
@@ -48,16 +49,17 @@ function JoinCommunityScreen() {
     if (!suggestedCommunities.some((com) => com.isJoined === true)) {
       if (Platform.OS === 'ios') {
         setIosBlock(true);
+      } else if (Platform.OS === 'android') {
+        ToastAndroid.showWithGravityAndOffset(
+          'You must join at least one community to continue !!!',
+          ToastAndroid.LONG,
+          ToastAndroid.BOTTOM,
+          25,
+          50,
+        );
       }
-      ToastAndroid.showWithGravityAndOffset(
-        'You must join at least one community!!!',
-        ToastAndroid.LONG,
-        ToastAndroid.BOTTOM,
-        25,
-        50,
-      );
     } else {
-      dispatch(handleNavigation);
+      dispatch(setJoinedAtLeastOne());
     }
   };
 
@@ -85,8 +87,8 @@ function JoinCommunityScreen() {
       ))}
 
       {iosBlock ? (
-        <Body1Bold mt="8px" mb="8px">
-          You must join at least one community!!!
+        <Body1Bold mt="16px" mb="8px" ml="8px" color="danger">
+          You must join at least one community to continue !!!
         </Body1Bold>
       ) : null}
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
@@ -9,11 +9,6 @@ import CustomTextInput from '../CustomTextInput';
 function AddCommentBottomBar({ onPress, onChangeText }) {
   return (
     <View style={styles.container}>
-      <Image
-        style={styles.image}
-        source={{ uri: 'https://picsum.photos/200' }}
-      />
-
       <View style={{ flex: 1 }}>
         <CustomTextInput
           onChangeText={onChangeText}
@@ -21,12 +16,8 @@ function AddCommentBottomBar({ onPress, onChangeText }) {
         />
       </View>
 
-      <TouchableOpacity onPress={onPress}>
-        <MaterialCommunityIcons
-          name={'chevron-double-down'}
-          size={40}
-          color={theme.grey5}
-        />
+      <TouchableOpacity onPress={onPress} style={{ marginLeft: 6 }}>
+        <MaterialCommunityIcons name={'send'} size={32} color={theme.primary} />
       </TouchableOpacity>
     </View>
   );
@@ -36,10 +27,10 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: theme.grey1,
-    marginTop: 8,
+    backgroundColor: theme.grey3,
     position: 'absolute',
     bottom: 0,
+    padding: 8,
   },
   image: {
     height: 36,

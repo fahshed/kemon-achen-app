@@ -8,7 +8,11 @@ import { theme } from '../../config';
 import { Form, FormField, SubmitButton } from '../../components/FormComponents';
 import { ItemSeparator } from '../../components';
 import { useAppDispatch } from '../../store';
-import { login } from '../../store/reducers';
+import {
+  fetchCommunities,
+  login,
+  setJoinedAtLeastOne,
+} from '../../store/reducers';
 
 function LoginScreen() {
   const dispatch = useAppDispatch();
@@ -17,6 +21,11 @@ function LoginScreen() {
     const response = await dispatch(login({ email, password }));
     if ('error' in response) {
       console.log('LoginScreen', response.error);
+    } else {
+      const { payload: commArray } = await dispatch(fetchCommunities());
+      if (commArray.length !== 0) {
+        await dispatch(setJoinedAtLeastOne());
+      }
     }
   };
 

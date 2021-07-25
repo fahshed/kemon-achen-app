@@ -12,7 +12,9 @@ function NotificationCard({ notificationTitle, content, time }) {
       <View style={styles.imageContainer}>
         <Image
           style={styles.image}
-          source={{ uri: 'https://picsum.photos/200' }}
+          source={{
+            uri: `https://picsum.photos/seed/${notificationTitle}/300`,
+          }}
         />
       </View>
       <View style={styles.detailsContainer}>

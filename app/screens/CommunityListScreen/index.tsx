@@ -44,7 +44,7 @@ function CommunityListScreen({ navigation }) {
     <>
       {isLoading ? <ActivityIndicator /> : null}
       <ScrollView>
-        <H6Bold ml="8px" mb="8px" color="primary">
+        <H6Bold ml="16px" mt="16px" mb="8px" color="primary">
           Your Communities
         </H6Bold>
 
@@ -59,7 +59,7 @@ function CommunityListScreen({ navigation }) {
             <ItemSeparator height={8} color={theme.grey3} />
           </View>
         ))}
-        <H6Bold ml="8px" mb="8px" color="primary">
+        <H6Bold ml="16px" mt="16px" mb="8px" color="primary">
           More Communities
         </H6Bold>
         {suggestedCommunities.map((item, index) => (

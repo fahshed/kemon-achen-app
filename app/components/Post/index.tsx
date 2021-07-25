@@ -6,6 +6,7 @@ import BottomBar1 from '../BottomBar1';
 import UserInfobar1 from '../UserInfoBar1';
 import UserInfoBar2 from '../UserInfoBar2';
 import CommunityPostHeader from '../CommunityPostHeader';
+import TagComponent from '../Tag';
 
 interface PostProps {
   username: string;
@@ -21,6 +22,7 @@ interface PostProps {
   isPostLiked: boolean;
   isCommunityFeed: boolean;
   isProfileFeed: boolean;
+  postType: string;
 }
 
 class Post extends PureComponent<PostProps> {
@@ -50,7 +52,14 @@ class Post extends PureComponent<PostProps> {
         )}
 
         <Container justify="flex-start" align="flex-start" p="8px">
-          <H6Bold mb="8px">{this.props.title}</H6Bold>
+          <H6Bold>{this.props.title}</H6Bold>
+
+          <Container align="flex-start" pt="4px" pb="8px">
+            {this.props.postType && this.props.postType !== 'General' && (
+              <TagComponent badgeContent={this.props.postType} postTag={1} />
+            )}
+          </Container>
+
           <Body2>{this.props.content}</Body2>
         </Container>
 

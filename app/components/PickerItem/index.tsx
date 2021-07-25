@@ -15,7 +15,9 @@ function PickerItem({ item, index, onPress }) {
       >
         <Image
           style={styles.image}
-          source={{ uri: 'https://picsum.photos/100' }}
+          source={{
+            uri: `https://picsum.photos/seed/${item.name}/300`,
+          }}
         />
         <Body1Bold color="grey6" align="center">
           {item.name}

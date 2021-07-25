@@ -90,6 +90,7 @@ export const createPost = createAsyncThunk(
       content,
       asPseudo,
       community: { name },
+      postType,
     }: {
       title: string;
       content: string;
@@ -97,6 +98,7 @@ export const createPost = createAsyncThunk(
       community: {
         name: string;
       };
+      postType: string;
     },
     thunkApi,
   ) => {
@@ -106,8 +108,9 @@ export const createPost = createAsyncThunk(
         content,
         asPseudo,
         community: { name },
+        postType,
       });
-      const normalized = normalize(response, [postEntity]);
+      const normalized = normalize([response], [postEntity]);
       return normalized;
     } catch (e) {
       console.log('post/createPost', e);
@@ -178,10 +181,7 @@ const PostSlice = createSlice({
     });
 
     builder.addCase(createPost.fulfilled, (state, { payload }) => {
-      //console.log('newly created post', payload);
-      state.entities = { ...payload.entities.post, ...state.entities };
-      //state.ids = { ...payload.result, ...state.ids };
-      state.ids.push(payload.result[0]);
+      state.entities = { ...payload.entities.posts, ...state.entities };
     });
 
     builder.addCase(createComment.fulfilled, (state, { payload }) => {

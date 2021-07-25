@@ -16,7 +16,9 @@ export default function HomeScreen({ navigation }) {
 
   const { entities, page } = useAppSelector((state) => state.Post);
 
-  const posts = Object.values(entities);
+  const posts = Object.values(entities).sort((a, b) =>
+    new Date(a.createdAt) > new Date(b.createdAt) ? -1 : 1,
+  );
 
   const handleLikePress = async (postId) => {
     dispatch(
@@ -44,6 +46,7 @@ export default function HomeScreen({ navigation }) {
       }}
       isCommunityFeed={false}
       isProfileFeed={false}
+      postType={item.postType}
     />
   );
 

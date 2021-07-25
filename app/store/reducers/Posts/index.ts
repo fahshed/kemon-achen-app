@@ -186,6 +186,7 @@ const PostSlice = createSlice({
 
     builder.addCase(createComment.fulfilled, (state, { payload }) => {
       state.entities[payload.postId].comments.unshift(payload.comment); //unshift appends at the beginning of the array
+      state.entities[payload.postId].commentCount++;
     });
   },
 });

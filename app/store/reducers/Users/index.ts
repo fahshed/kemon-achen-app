@@ -81,12 +81,14 @@ export const fetchUserCommentsById = createAsyncThunk(
 
 interface State {
   isAuthenticated: boolean;
+  isCommunityListEmpty: boolean;
   user: AuthResponse;
   userComments: any;
 }
 
 const initialState: State = {
   isAuthenticated: false,
+  isCommunityListEmpty: true,
   user: {
     _id: '',
     name: '',
@@ -103,6 +105,9 @@ const UserSlice = createSlice({
   initialState,
   reducers: {
     resetUser: () => initialState,
+    setJoinedAtLeastOne: (state) => {
+      state.isCommunityListEmpty = false;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(signupRegular.fulfilled, (state, { payload }) => {
@@ -133,6 +138,6 @@ const UserSlice = createSlice({
   },
 });
 
-const { resetUser } = UserSlice.actions;
+export const { resetUser, setJoinedAtLeastOne } = UserSlice.actions;
 
 export default UserSlice;

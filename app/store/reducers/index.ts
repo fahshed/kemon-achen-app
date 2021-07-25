@@ -5,6 +5,7 @@ export {
   signupRegular,
   signupProfessional,
   fetchUserCommentsById,
+  setJoinedAtLeastOne,
 } from './Users';
 export {
   default as PostSlice,

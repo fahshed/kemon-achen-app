@@ -20,3 +20,4 @@ export { default as RegularSignupScreen } from './RegularSignupScreen';
 export { default as ProfessionalSignupScreen } from './ProfessionalSignupScreen';
 export { default as CommunitySearchResultScreen } from './CommunitySearchResultScreen';
 export { default as LatestAdviceScreen } from './LatestAdviceScreen';
+export { default as JoinCommunityScreen } from './JoinCommunityScreen';

@@ -8,6 +8,7 @@ import Api from '../../api';
 import NavRoutes from '../../navigation/NavRoutes';
 
 import QuestionSet from './questionSet';
+import { ActivityIndicator } from '../../components';
 
 const testId = '60d1e485755ce453c688e5e2';
 
@@ -61,45 +62,43 @@ export default function TestScreen() {
     })();
   }, []);
 
-  return (
+  return isLoading ? (
+    <ActivityIndicator />
+  ) : (
     <ScrollView showsVerticalScrollIndicator={false} ref={scrollRef}>
-      {isLoading ? (
-        <H5Bold align="center">Loading</H5Bold>
-      ) : (
-        <Container p="8px">
-          <H5Bold align="center" mt="24px" mb="24px">
-            {testName}
-          </H5Bold>
-          {step === 0 && (
-            <QuestionSet
-              heading="Anxiety"
-              questions={anxietyQuestions}
-              setOption={setAnxietyQuestions}
-              setStep={setStep}
-              scrollRef={scrollRef}
-            />
-          )}
-          {step === 1 && (
-            <QuestionSet
-              heading="Stress"
-              questions={stressQuestions}
-              setOption={setStressQuestions}
-              setStep={setStep}
-              scrollRef={scrollRef}
-            />
-          )}
-          {step === 2 && (
-            <QuestionSet
-              heading="Depression"
-              questions={depressionQuestions}
-              setOption={setDepressionQuestions}
-              setStep={setStep}
-              scrollRef={scrollRef}
-              submitTest={submitTest}
-            />
-          )}
-        </Container>
-      )}
+      <Container p="8px">
+        <H5Bold align="center" mt="24px" mb="24px">
+          {testName}
+        </H5Bold>
+        {step === 0 && (
+          <QuestionSet
+            heading="Anxiety"
+            questions={anxietyQuestions}
+            setOption={setAnxietyQuestions}
+            setStep={setStep}
+            scrollRef={scrollRef}
+          />
+        )}
+        {step === 1 && (
+          <QuestionSet
+            heading="Stress"
+            questions={stressQuestions}
+            setOption={setStressQuestions}
+            setStep={setStep}
+            scrollRef={scrollRef}
+          />
+        )}
+        {step === 2 && (
+          <QuestionSet
+            heading="Depression"
+            questions={depressionQuestions}
+            setOption={setDepressionQuestions}
+            setStep={setStep}
+            scrollRef={scrollRef}
+            submitTest={submitTest}
+          />
+        )}
+      </Container>
     </ScrollView>
   );
 }

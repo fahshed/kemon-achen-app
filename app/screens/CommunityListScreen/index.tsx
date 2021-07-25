@@ -18,6 +18,7 @@ function CommunityListScreen({ navigation }) {
   const { communities } = useAppSelector((state) => state.Community);
 
   const getCommunitiesOfUser = async () => {
+    setIsLoading(true);
     const response = await dispatch(fetchCommunities());
     if ('error' in response) {
       console.log('Community List fetch error', response.error);
@@ -28,53 +29,51 @@ function CommunityListScreen({ navigation }) {
     try {
       const response = await Api.getSuggestedCommunities();
       setSuggestedCommunities(response);
+      setIsLoading(false);
     } catch (error) {
       console.log('Suggested community fetch failed');
     }
   };
 
   useEffect(() => {
-    setIsLoading(true);
     getCommunitiesOfUser();
     getSuggestedCommunities();
-    setIsLoading(false);
   }, []);
 
-  return (
-    <>
-      {isLoading ? <ActivityIndicator /> : null}
-      <ScrollView>
-        <H6Bold ml="8px" mb="8px" color="primary">
-          Your Communities
-        </H6Bold>
+  return isLoading ? (
+    <ActivityIndicator />
+  ) : (
+    <ScrollView>
+      <H6Bold ml="8px" mb="8px" color="primary">
+        Your Communities
+      </H6Bold>
 
-        {communities.map((item, index) => (
-          <View key={index}>
-            <CommunityCard
-              communityName={item.name}
-              onPress={() =>
-                navigation.navigate(NavRoutes.COMMUNITY_DETAILS, item._id)
-              }
-            />
-            <ItemSeparator height={8} color={theme.grey3} />
-          </View>
-        ))}
-        <H6Bold ml="8px" mb="8px" color="primary">
-          More Communities
-        </H6Bold>
-        {suggestedCommunities.map((item, index) => (
-          <View key={index}>
-            <CommunityCard
-              communityName={item.name}
-              onPress={() =>
-                navigation.navigate(NavRoutes.COMMUNITY_DETAILS, item._id)
-              }
-            />
-            <ItemSeparator height={8} color={theme.grey3} />
-          </View>
-        ))}
-      </ScrollView>
-    </>
+      {communities.map((item, index) => (
+        <View key={index}>
+          <CommunityCard
+            communityName={item.name}
+            onPress={() =>
+              navigation.navigate(NavRoutes.COMMUNITY_DETAILS, item._id)
+            }
+          />
+          <ItemSeparator height={8} color={theme.grey3} />
+        </View>
+      ))}
+      <H6Bold ml="8px" mb="8px" color="primary">
+        More Communities
+      </H6Bold>
+      {suggestedCommunities.map((item, index) => (
+        <View key={index}>
+          <CommunityCard
+            communityName={item.name}
+            onPress={() =>
+              navigation.navigate(NavRoutes.COMMUNITY_DETAILS, item._id)
+            }
+          />
+          <ItemSeparator height={8} color={theme.grey3} />
+        </View>
+      ))}
+    </ScrollView>
   );
 }
 

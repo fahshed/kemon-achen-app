@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 
 import { Body1Bold, Caption } from '../../styles';
-import { ItemSeparator } from '../../components';
+import { ActivityIndicator, ItemSeparator } from '../../components';
 import MetricComponent from '../../components/MetricComponent';
 import TestInfoComponent from '../../components/TestInfoComponent';
 import { timeAgo } from '../../utils';
@@ -11,15 +11,19 @@ import Api from '../../api';
 
 export default function UserHealthScreen() {
   const [testHistory, setTestHistory] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
       const response = await Api.getUserTestsHistory();
+      setIsLoading(false);
       setTestHistory(response);
     })();
   }, []);
 
-  return (
+  return isLoading ? (
+    <ActivityIndicator />
+  ) : (
     <ScrollView>
       <View style={styles.container}>
         <Body1Bold ml="16px" mt="16px" mb="16px">

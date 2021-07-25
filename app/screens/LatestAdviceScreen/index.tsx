@@ -95,7 +95,7 @@ export default function LatestAdviceScreen() {
           animation="slideInUp"
           duration={1000}
           delay={0}
-          style={{ width: '100%' }}
+          style={{ width: '100%', alignItems: 'center' }}
         >
           <H5Bold mb="24px">Did you follow our advice?</H5Bold>
           <Container direction="row">

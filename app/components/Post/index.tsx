@@ -25,9 +25,14 @@ interface PostProps {
   postType: string;
   asPseudo: boolean;
   pseudonym: string;
+  isSearchResult: boolean;
 }
 
 class Post extends PureComponent<PostProps> {
+  public static defaultProps = {
+    isSearchResult: false,
+  };
+
   render() {
     return (
       <TouchableOpacity
@@ -77,12 +82,14 @@ class Post extends PureComponent<PostProps> {
           <Body2>{this.props.content}</Body2>
         </Container>
 
-        <BottomBar1
-          isPostLiked={this.props.isPostLiked}
-          voteCount={this.props.voteCount}
-          commentCount={this.props.commentCount}
-          onLikePress={this.props.onLikePress}
-        />
+        {!this.props.isSearchResult && (
+          <BottomBar1
+            isPostLiked={this.props.isPostLiked}
+            voteCount={this.props.voteCount}
+            commentCount={this.props.commentCount}
+            onLikePress={this.props.onLikePress}
+          />
+        )}
       </TouchableOpacity>
     );
   }

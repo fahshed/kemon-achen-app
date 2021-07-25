@@ -9,11 +9,14 @@ import ProfessionalProfileInfoBar from '../../components/ProfessionalProfileInfo
 import { useAppSelector } from '../../store';
 
 import Api from '../../api';
+import { ActivityIndicator } from '../../components';
 
 export default function ProfessionalProfileScreen({ route }) {
   const { user } = useAppSelector((state) => state.User);
 
   const [profileInfo, setProfileInfo] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+
   let userId = route.params;
   if (userId === undefined) {
     userId = user._id;
@@ -21,6 +24,7 @@ export default function ProfessionalProfileScreen({ route }) {
 
   const getProfessionalInfo = async () => {
     const response = await Api.getProfessionalInfo(userId);
+    setIsLoading(false);
     //console.log(response);
     setProfileInfo(response);
   };
@@ -31,7 +35,9 @@ export default function ProfessionalProfileScreen({ route }) {
 
   //console.log(profileInfo);
 
-  return (
+  return isLoading ? (
+    <ActivityIndicator />
+  ) : (
     <>
       {profileInfo && (
         <>

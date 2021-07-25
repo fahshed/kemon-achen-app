@@ -20,9 +20,9 @@ export default function GeneralPostsScreen({
   const [isRefreshing, setIsRefreshing] = useState(true);
 
   const { entities } = useAppSelector((state) => state.Post);
-  const posts = Object.values(entities).filter(
-    (post) => post.postedBy._id === userId,
-  );
+  const posts = Object.values(entities)
+    .filter((post) => post.postedBy._id === userId)
+    .sort((a, b) => (new Date(a.createdAt) > new Date(b.createdAt) ? 1 : -1));
 
   const handleLikePress = async (postId) => {
     dispatch(

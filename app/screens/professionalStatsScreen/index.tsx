@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Image, View, StyleSheet } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-import { RankBadgeComponent } from '../../components';
+import { ActivityIndicator, RankBadgeComponent } from '../../components';
 import { theme } from '../../config';
 import { H6, H6Bold } from '../../styles';
 import { useAppSelector } from '../../store';
@@ -15,15 +15,19 @@ function ProfessionalStatScreen() {
   const { user } = useAppSelector((state) => state.User);
 
   const [professionalStat, setProfessionalState] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
       const response = await Api.getProfessionalStat();
+      setIsLoading(false);
       setProfessionalState(response);
     })();
   }, []);
 
-  return (
+  return isLoading ? (
+    <ActivityIndicator />
+  ) : (
     <View
       style={{
         justifyContent: 'center',

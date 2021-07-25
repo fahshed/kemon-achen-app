@@ -98,7 +98,7 @@ function App() {
       <Stack.Screen
         name="ProfessionalProfile"
         component={ProfessionalProfileScreen}
-        options={{ headerTitle: '' }}
+        options={{ headerTitle: 'Profile' }}
       />
       <Stack.Screen
         name="Latest Advice"

@@ -15,9 +15,9 @@ export default function CommunityPostsScreen({ communityId }) {
   const navigation = useNavigation();
 
   const { entities } = useAppSelector((state) => state.Post);
-  const posts = Object.values(entities).filter(
-    (post) => post.community._id === communityId,
-  );
+  const posts = Object.values(entities)
+    .filter((post) => post.community._id === communityId)
+    .sort((a, b) => (new Date(a.createdAt) > new Date(b.createdAt) ? 1 : -1));
 
   const handleLikePress = async (postId) => {
     dispatch(

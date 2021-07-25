@@ -22,6 +22,8 @@
     "android": {
       "package": "com.kemon.achen",
       "versionCode": 1,
+      "googleServicesFile": "./google-services.json",
+      "useNextNotificationsApi":true,
       "adaptiveIcon": {
         "foregroundImage": "./app/assets/logo.png",
         "backgroundColor": "#FFFFFF"

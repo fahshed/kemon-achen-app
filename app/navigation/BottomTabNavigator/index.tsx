@@ -105,7 +105,7 @@ export default function BottomTabNavigator() {
     return token;
   };
 
-  const { role } = useAppSelector((state) => state.User.user);
+  //const { role } = useAppSelector((state) => state.User.user);
 
   return (
     <Tab.Navigator

@@ -9,7 +9,7 @@ import NavRoutes from '../../navigation/NavRoutes';
 
 import Api from '../../api';
 
-const searchOptionLabels = ['All', 'Q/A', 'help', 'recommendations'];
+const searchOptionLabels = ['All', 'Q/A', 'Help', 'Recommendations'];
 let posts = [];
 
 function CommunitySearchResultScreen({ route }) {
@@ -32,9 +32,9 @@ function CommunitySearchResultScreen({ route }) {
     if (index === 1) {
       type = 'Q/A';
     } else if (index === 2) {
-      type = 'help';
+      type = 'Help';
     } else if (index === 3) {
-      type = 'recommendations';
+      type = 'Recommendations';
     } else {
       return setPosts(posts);
     }

@@ -45,6 +45,7 @@ export default function CommunityPostsScreen({ communityId }) {
       }}
       isProfileFeed={false}
       isCommunityFeed={true}
+      postType={item.postType}
     />
   );
 

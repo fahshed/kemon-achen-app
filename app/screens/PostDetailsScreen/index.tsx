@@ -81,6 +81,7 @@ function PostDetailsScreen({ route }) {
         onPress={null}
         isCommunityFeed={false}
         isProfileFeed={false}
+        postType={post.postType}
       />
 
       <ItemSeparator height={8} color={theme.grey3} />

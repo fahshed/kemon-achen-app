@@ -7,7 +7,7 @@ function ImageHeader({ id }) {
   return (
     <View style={styles.container}>
       <ImageBackground
-        source={{ uri: `https://picsum.photos/seed/${new Date()}/500/200` }}
+        source={{ uri: `https://picsum.photos/seed/${id}cover/500/200` }}
         style={styles.backgroundBanner}
       >
         <View style={styles.imageContainer}>

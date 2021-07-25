@@ -33,13 +33,15 @@ export default function ProfessionalProfileScreen({ route }) {
 
   return (
     <>
-      <ImageHeader id={profileInfo.name} />
       {profileInfo && (
-        <ProfessionalProfileInfoBar
-          userName={profileInfo.name}
-          badges={profileInfo.specialization}
-          rank={profileInfo.rank}
-        />
+        <>
+          <ImageHeader id={profileInfo?.name} />
+          <ProfessionalProfileInfoBar
+            userName={profileInfo.name}
+            badges={profileInfo.specialization}
+            rank={profileInfo.rank}
+          />
+        </>
       )}
 
       <ProfessionalProfileTabNavigator

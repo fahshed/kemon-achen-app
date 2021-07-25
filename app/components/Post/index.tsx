@@ -23,6 +23,8 @@ interface PostProps {
   isCommunityFeed: boolean;
   isProfileFeed: boolean;
   postType: string;
+  asPseudo: boolean;
+  pseudonym: string;
 }
 
 class Post extends PureComponent<PostProps> {
@@ -34,18 +36,30 @@ class Post extends PureComponent<PostProps> {
       >
         {this.props.isCommunityFeed ? (
           <CommunityPostHeader
-            postedBy={this.props.username}
+            postedBy={
+              this.props.asPseudo === true
+                ? this.props.pseudonym
+                : this.props.username
+            }
             time={this.props.postedAgo}
           />
         ) : this.props.isProfileFeed ? (
           <UserInfoBar2
-            username={this.props.username}
+            username={
+              this.props.asPseudo === true
+                ? this.props.pseudonym
+                : this.props.username
+            }
             communityName={this.props.communityName}
             postedAgo={this.props.postedAgo}
           />
         ) : (
           <UserInfobar1
-            username={this.props.username}
+            username={
+              this.props.asPseudo === true
+                ? this.props.pseudonym
+                : this.props.username
+            }
             communityName={this.props.communityName}
             postedAgo={this.props.postedAgo}
           />

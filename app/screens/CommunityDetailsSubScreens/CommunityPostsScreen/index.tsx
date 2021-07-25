@@ -46,6 +46,8 @@ export default function CommunityPostsScreen({ communityId }) {
       isProfileFeed={false}
       isCommunityFeed={true}
       postType={item.postType}
+      asPseudo={item.asPseudo}
+      pseudonym={item.postedBy.pseudonym}
     />
   );
 

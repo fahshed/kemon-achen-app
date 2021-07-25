@@ -9,6 +9,7 @@ import {
 } from '../../components';
 import { theme } from '../../config';
 import { useAppDispatch } from '../../store';
+import { setJoinedAtLeastOne } from '../../store/reducers';
 import { Body1Bold, Container, H6Bold } from '../../styles';
 
 function JoinCommunityScreen() {
@@ -33,7 +34,7 @@ function JoinCommunityScreen() {
 
   const joinCommunty = async (id, index) => {
     try {
-      Api.joinCommunity(id);
+      await Api.joinCommunity(id);
       setSuggestedCommunities([
         ...suggestedCommunities.slice(0, index),
         { community: suggestedCommunities[index].community, isJoined: true },
@@ -57,7 +58,7 @@ function JoinCommunityScreen() {
         50,
       );
     } else {
-      dispatch(handleNavigation);
+      dispatch(setJoinedAtLeastOne());
     }
   };
 

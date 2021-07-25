@@ -23,7 +23,7 @@ function UserInfoBar3({
     >
       <Image
         style={styles.image}
-        source={{ uri: 'https://picsum.photos/200' }}
+        source={{ uri: `https://picsum.photos/seed/${commenterName}/300` }}
       />
 
       <Body2Bold>{commenterName}</Body2Bold>

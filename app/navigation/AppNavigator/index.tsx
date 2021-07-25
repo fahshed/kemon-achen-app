@@ -108,7 +108,7 @@ function App() {
       <Stack.Screen
         name="CommunitySearchResult"
         component={CommunitySearchResultScreen}
-        options={{ headerTitle: '' }}
+        options={{ headerTitle: 'Search Results' }}
       />
     </Stack.Navigator>
   );

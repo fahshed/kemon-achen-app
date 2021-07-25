@@ -91,7 +91,7 @@ function PostDetailsScreen({ route }) {
       <FlatList
         data={post.comments}
         ItemSeparatorComponent={() => (
-          <ItemSeparator height={8} color={theme.grey1} />
+          <ItemSeparator height={8} color={theme.grey3} />
         )}
         keyExtractor={(comment) => comment._id}
         renderItem={renderItem}

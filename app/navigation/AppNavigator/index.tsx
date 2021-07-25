@@ -103,12 +103,12 @@ function App() {
       <Stack.Screen
         name="Latest Advice"
         component={LatestAdviceScreen}
-        options={{ headerTitle: '' }}
+        options={{ headerTitle: 'Last Advice from us' }}
       />
       <Stack.Screen
         name="CommunitySearchResult"
         component={CommunitySearchResultScreen}
-        options={{ headerTitle: '' }}
+        options={{ headerTitle: 'Search Results' }}
       />
     </Stack.Navigator>
   );

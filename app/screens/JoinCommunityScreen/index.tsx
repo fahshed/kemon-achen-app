@@ -49,14 +49,15 @@ function JoinCommunityScreen() {
     if (!suggestedCommunities.some((com) => com.isJoined === true)) {
       if (Platform.OS === 'ios') {
         setIosBlock(true);
+      } else if (Platform.OS === 'android') {
+        ToastAndroid.showWithGravityAndOffset(
+          'You must join at least one community to continue !!!',
+          ToastAndroid.LONG,
+          ToastAndroid.BOTTOM,
+          25,
+          50,
+        );
       }
-      ToastAndroid.showWithGravityAndOffset(
-        'You must join at least one community!!!',
-        ToastAndroid.LONG,
-        ToastAndroid.BOTTOM,
-        25,
-        50,
-      );
     } else {
       dispatch(setJoinedAtLeastOne());
     }
@@ -86,8 +87,8 @@ function JoinCommunityScreen() {
       ))}
 
       {iosBlock ? (
-        <Body1Bold mt="8px" mb="8px">
-          You must join at least one community!!!
+        <Body1Bold mt="16px" mb="8px" ml="8px" color="danger">
+          You must join at least one community to continue !!!
         </Body1Bold>
       ) : null}
 

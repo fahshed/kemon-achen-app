@@ -25,3 +25,4 @@ export { default as AdviceCard } from './AdviceCard';
 export { default as UserInfoBar2 } from './UserInfoBar2';
 export { default as CommunityPostHeader } from './CommunityPostHeader';
 export { default as TagComponent } from './Tag';
+export { default as JoinCommunityCard } from './JoinCommunityCard';

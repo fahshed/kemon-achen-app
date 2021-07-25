@@ -2,15 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-import { ItemSeparator, Post } from '../../../components';
+import { ActivityIndicator, ItemSeparator, Post } from '../../../components';
 import { theme } from '../../../config';
 import NavRoutes from '../../../navigation/NavRoutes';
-import { H5Bold } from '../../../styles';
 import { fetchCommunityPosts, likePost } from '../../../store/reducers';
 import { useAppDispatch, useAppSelector } from '../../../store';
 
 export default function CommunityPostsScreen({ communityId }) {
   const [isRefreshing, setIsRefreshing] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const dispatch = useAppDispatch();
   const navigation = useNavigation();
 
@@ -55,7 +55,7 @@ export default function CommunityPostsScreen({ communityId }) {
     if ('error' in response) {
       console.log('Feed fetch error', response.error);
     }
-
+    setIsLoading(false);
     setIsRefreshing(false);
   };
 
@@ -63,26 +63,20 @@ export default function CommunityPostsScreen({ communityId }) {
     getCommunityFeed();
   }, []);
 
-  return (
-    <>
-      {isRefreshing && (
-        <H5Bold align="center" color="grey5" mt="8px" mb="8px">
-          Feed Loading........
-        </H5Bold>
+  return isLoading ? (
+    <ActivityIndicator />
+  ) : (
+    <FlatList
+      data={posts}
+      ItemSeparatorComponent={() => (
+        <ItemSeparator height={8} color={theme.grey3} />
       )}
-
-      <FlatList
-        data={posts}
-        ItemSeparatorComponent={() => (
-          <ItemSeparator height={8} color={theme.grey3} />
-        )}
-        keyExtractor={(post) => post._id}
-        refreshing={isRefreshing}
-        onRefresh={() => {
-          getCommunityFeed();
-        }}
-        renderItem={renderItem}
-      />
-    </>
+      keyExtractor={(post) => post._id}
+      refreshing={isRefreshing}
+      onRefresh={() => {
+        getCommunityFeed();
+      }}
+      renderItem={renderItem}
+    />
   );
 }

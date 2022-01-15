@@ -8,4 +8,4 @@ const configMap = {
   mockServer,
 };
 
-export default configMap.development;
+export default configMap.production;

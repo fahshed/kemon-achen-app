@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "113675041256",
+    "project_id": "kemon-achen",
+    "storage_bucket": "kemon-achen.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:113675041256:android:6021fa24c0df81922b8c5d",
+        "android_client_info": {
+          "package_name": "com.kemon.achen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "113675041256-hivk5soa1m0gid8lqdfrbojdnregk4s2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgh7xNSgW9RFSbqmk_-Yjl8qg4hSyBRw4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "113675041256-hivk5soa1m0gid8lqdfrbojdnregk4s2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

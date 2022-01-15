@@ -1,13 +1,13 @@
 {
   "expo": {
-    "name": "kemon-achen-app",
-    "slug": "kemon-achen-app",
+    "name": "Kemon Achen",
+    "slug": "kemon-achen",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./app/assets/icon.png",
+    "icon": "./app/assets/logo.png",
     "splash": {
       "image": "./app/assets/splash.png",
-      "resizeMode": "contain",
+      "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },
     "updates": {
@@ -15,13 +15,20 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
+      "bundleIdentifier": "com.kemon.achen",
+      "buildNumber": "1.0.0",
       "supportsTablet": true
     },
     "android": {
+      "package": "com.kemon.achen",
+      "versionCode": 1,
+      "googleServicesFile": "./google-services.json",
+      "useNextNotificationsApi":true,
       "adaptiveIcon": {
-        "foregroundImage": "./app/assets/adaptive-icon.png",
+        "foregroundImage": "./app/assets/logo.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "softwareKeyboardLayoutMode": "pan"
     },
     "web": {
       "favicon": "./app/assets/favicon.png"
